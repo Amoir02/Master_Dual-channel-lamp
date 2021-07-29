@@ -1,0 +1,4565 @@
+---- F:\项目\酷宅\BLE移植\rx\src\main.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "system.h"
+3:                #include "WDT.h"
+4:                #include "rf297L.h"
+5:                #include "timer1.h"
+6:                #include "timer2.h"
+7:                #include "PWM.h"
+8:                #include "key_scan.h"
+9:                #include "INT0.h"
+10:               #include "ADC.h"
+11:               #include "PORTB_interrupt.h"
+12:               #include "recive.h"
+13:               #include "iic.h"
+14:               #include "e2prom.h"
+15:               /**********************************************************/
+16:               //1、在使用中断过程中，需要把systerm.c中没用到的中断及其判断条件都屏蔽掉
+17:               //2、RF部分收发延时和唤醒延时，不建议修改库，否则会出现RF不稳定情况
+18:               //3、在芯片配置选项中，需要把看门狗关闭；若需要使用看门狗，软件中开启使用看门狗即可。
+19:               //4、VPPOUTEN - ENABLE
+20:               /**********************************************************/
+21:               
+22:               
+23:               
+24:               
+25:               unsigned int sleep_flag=0;
+26:               unsigned char flag_rx=0;
+27:               extern uint8_t rf_buf[18];
+28:               
+29:               // ID1 ID2 ID3 ID4  CHANNEL  COUNT
+30:               
+31:               uint8_t control_id[12][6]=
+32:               {
+33:               	{0,0,0,0,0,0},
+34:               	{0,0,0,0,0,0},
+35:               	{0,0,0,0,0,0},
+36:               	{0,0,0,0,0,0},
+37:               	{0,0,0,0,0,0},
+38:               	{0,0,0,0,0,0},
+39:               	{0,0,0,0,0,0},
+40:               	{0,0,0,0,0,0},
+41:               	{0,0,0,0,0,0},
+42:               	{0,0,0,0,0,0},
+43:               	{0,0,0,0,0,0},
+44:               	{0,0,0,0,0,0}		
+45:               };
+46:               
+47:               uint8_t channel_flag[3]={0,0,0};
+48:               extern channel_flag_stu KEY0;
+49:               extern channel_flag_stu KEY1;
+50:               extern channel_flag_stu KEY2;
+51:               
+52:               void main()
+53:               {
+54:               	unsigned char i;
+55:               	system_set_CPU_frequency(CPU_FREQUENCY_8M);
+  06E9    3071    LDIA	0x71
+  06EA    118A    CLRB	0xA,3
+  06EB    27FB    CALL	0x7FB
+  06EC    118A    CLRB	0xA,3
+56:               	soft_delay_ms(500);
+  06ED    30F4    LDIA	0xF4
+  06EE    00F3    LD	0x73,A
+  06EF    3001    LDIA	0x1
+  06F0    00F4    LD	0x74,A
+  06F1    118A    CLRB	0xA,3
+  06F2    255A    CALL	0x55A
+  06F3    118A    CLRB	0xA,3
+  06F4    0000    NOP
+57:               	asm("nop");
+58:               	
+59:               	/**IO初始化**/
+60:               	TRISC = 0x00;
+  06F5    1683    SETB	0x3,5
+  06F6    1303    CLRB	0x3,6
+  06F7    0187    CLR	0x7
+61:               	TRISB |= 0x70;
+  06F8    3070    LDIA	0x70
+  06F9    0486    ORR	0x6
+62:               
+63:               	RC0=1; //关灯
+  06FA    1283    CLRB	0x3,5
+  06FB    1407    SETB	0x7,0
+64:               	
+65:               	IIC_Init();
+  06FC    158A    SETB	0xA,3
+  06FD    25B4    CALL	0x5B4
+  06FE    118A    CLRB	0xA,3
+66:               	key_Init();
+  06FF    158A    SETB	0xA,3
+  0700    25BA    CALL	0x5BA
+  0701    118A    CLRB	0xA,3
+67:               	RF_Init();
+  0702    158A    SETB	0xA,3
+  0703    2737    CALL	0x737
+  0704    118A    CLRB	0xA,3
+68:               	RF_Set_RxMode();
+  0705    158A    SETB	0xA,3
+  0706    263A    CALL	0x63A
+  0707    118A    CLRB	0xA,3
+69:               
+70:               	Timer1_Init(TIMER1_DIV_8);
+  0708    3030    LDIA	0x30
+  0709    158A    SETB	0xA,3
+  070A    25C0    CALL	0x5C0
+  070B    118A    CLRB	0xA,3
+71:               	Timer1_start(10000,0);
+  070C    3010    LDIA	0x10
+  070D    00F3    LD	0x73,A
+  070E    3027    LDIA	0x27
+  070F    00F4    LD	0x74,A
+  0710    01F5    CLR	0x75
+  0711    118A    CLRB	0xA,3
+  0712    27DC    CALL	0x7DC
+  0713    118A    CLRB	0xA,3
+72:               
+73:               
+74:               	for(i=0;i<12;i++)
+  0714    01EE    CLR	0x6E
+  0715    300C    LDIA	0xC
+  0716    026E    SUBA	0x6E
+  0717    1803    SZB	0x3,0
+  0718    2F2D    JP	0x72D
+75:               	{
+76:               		AT24C02_Read_Msg(i*6,control_id[i],6);
+  0719    3006    LDIA	0x6
+  071A    00F3    LD	0x73,A
+  071B    086E    LD	A,0x6E
+  071C    118A    CLRB	0xA,3
+  071D    262F    CALL	0x62F
+  071E    118A    CLRB	0xA,3
+  071F    3EA8    ADDIA	0xA8
+  0720    00D7    LD	0x57,A
+  0721    3006    LDIA	0x6
+  0722    00D8    LD	0x58,A
+  0723    00F3    LD	0x73,A
+  0724    086E    LD	A,0x6E
+  0725    118A    CLRB	0xA,3
+  0726    262F    CALL	0x62F
+  0727    118A    CLRB	0xA,3
+  0728    118A    CLRB	0xA,3
+  0729    263D    CALL	0x63D
+  072A    118A    CLRB	0xA,3
+  072B    0AEE    INCR	0x6E
+  072C    2F15    JP	0x715
+77:               	}
+78:               	
+79:               	AT24C02_Read_Msg(100,channel_flag,3);
+  072D    304E    LDIA	0x4E
+  072E    00D7    LD	0x57,A
+  072F    3003    LDIA	0x3
+  0730    00D8    LD	0x58,A
+  0731    3064    LDIA	0x64
+  0732    118A    CLRB	0xA,3
+  0733    263D    CALL	0x63D
+  0734    118A    CLRB	0xA,3
+80:               	
+81:               	for(i=0;i<12;i++)
+  0735    01EE    CLR	0x6E
+  0736    300C    LDIA	0xC
+  0737    026E    SUBA	0x6E
+  0738    1803    SZB	0x3,0
+  0739    2F48    JP	0x748
+82:               	{
+83:               		if(channel_flag[i]>=4)channel_flag[i]=0;
+  073A    086E    LD	A,0x6E
+  073B    3E4E    ADDIA	0x4E
+  073C    0084    LD	0x4,A
+  073D    3004    LDIA	0x4
+  073E    1383    CLRB	0x3,7
+  073F    0200    SUBA	0x0
+  0740    1C03    SNZB	0x3,0
+  0741    2F46    JP	0x746
+  0742    086E    LD	A,0x6E
+  0743    3E4E    ADDIA	0x4E
+  0744    0084    LD	0x4,A
+  0745    0180    CLR	0x0
+  0746    0AEE    INCR	0x6E
+  0747    2F36    JP	0x736
+84:               	}
+85:               	
+86:               	Enable_Interrupt();
+  0748    118A    CLRB	0xA,3
+  0749    2002    CALL	0x2
+  074A    118A    CLRB	0xA,3
+87:               	
+88:               	while(1)
+89:               	{	
+90:               		channel_set(0,KEY0.channel_status);
+  074B    0820    LD	A,0x20
+  074C    00F3    LD	0x73,A
+  074D    3000    LDIA	0x0
+  074E    158A    SETB	0xA,3
+  074F    2605    CALL	0x605
+  0750    118A    CLRB	0xA,3
+91:               		channel_set(1,KEY1.channel_status);
+  0751    0823    LD	A,0x23
+  0752    00F3    LD	0x73,A
+  0753    3001    LDIA	0x1
+  0754    158A    SETB	0xA,3
+  0755    2605    CALL	0x605
+  0756    118A    CLRB	0xA,3
+92:               		channel_set(2,KEY2.channel_status);
+  0757    0826    LD	A,0x26
+  0758    00F3    LD	0x73,A
+  0759    3002    LDIA	0x2
+  075A    158A    SETB	0xA,3
+  075B    2605    CALL	0x605
+  075C    118A    CLRB	0xA,3
+93:               
+94:               		recive_task();
+  075D    118A    CLRB	0xA,3
+  075E    200D    CALL	0xD
+  075F    118A    CLRB	0xA,3
+95:               		
+96:               		key_value_read();
+  0760    118A    CLRB	0xA,3
+  0761    2454    CALL	0x454
+  0762    118A    CLRB	0xA,3
+97:               
+98:               		delay_task();
+  0763    118A    CLRB	0xA,3
+  0764    2767    CALL	0x767
+  0765    118A    CLRB	0xA,3
+  0766    2F4B    JP	0x74B
+99:               	}
+100:              }
+101:              
+---- F:\项目\酷宅\BLE移植\rx\src\recive.c ----------------------------------------------------------------------
+1:                #include "recive.h"
+2:                #include "rf297L.h"
+3:                #include "e2prom.h"
+4:                #include "delay.h"
+5:                #include "key_scan.h"
+6:                #include "system.h"
+7:                
+8:                const unsigned char crc_2_4G_lib[21]={0xc7 ,0x8d ,0xd2 ,0x57 ,0xa1 ,0x3d ,0xa7 ,0x66 ,0xb0 ,0x75 ,0x31 ,0x11 ,0x48 ,0x96 ,0x77 ,0xf8 ,0xe3 ,0x46 ,0xe9,0xab ,0xd0 };
+9:                const unsigned char crc_lab[16]={0x41,0x92,0x53,0x2A,0xFC,0xAB,0xCE,0x26,0x0D,0x1E,0x99,0x78,0x00,0x22,0x99,0xDE};
+10:               const unsigned char ble_crc_38[42]={
+11:               		0xD6, 0xC5, 0x44, 0x20, 0x59,
+12:               		0xDE, 0xE1, 0x8F, 0x1B, 0xA5,
+13:               		0xAF, 0x42, 0x7B, 0x4E, 0xCD,
+14:               		0x60, 0xEB, 0x62, 0x22, 0x90,
+15:               		0x2C, 0xEF, 0xF0, 0xC7, 0x8D,
+16:               		0xD2, 0x57, 0xA1, 0x3D, 0xA7,
+17:               		0x66, 0xB0, 0x75, 0x31, 0x11,
+18:               		0x48, 0x96, 0x77 ,0xF8, 0xE3,
+19:               		0x46, 0xE9
+20:               	};
+21:               
+22:               
+23:               
+24:               uint8_t rf_buf[18];
+25:               unsigned char sys_stute = RX_MSG;
+26:               uint16_t flag_5s_add=0;
+27:               extern uint8_t control_id[12][6];
+28:               extern uint8_t channel_flag[3];
+29:               extern unsigned char key_long_flag;
+30:               extern channel_flag_stu KEY0;
+31:               extern channel_flag_stu KEY1;
+32:               extern channel_flag_stu KEY2;
+33:               uint8_t channel_delay[3]={0,0,0};
+34:               extern uint16_t flag_5min_add;
+35:               
+36:               extern unsigned char  KEY0_FLAG;
+37:               extern unsigned char  KEY1_FLAG;
+38:               extern unsigned char  KEY2_FLAG;
+39:               static uint8_t delay_flag=0;
+40:               
+41:               unsigned short UpdateCRC(unsigned char *CRC_input, unsigned int len)
+42:               {
+  0ED9    00D4    LD	0x54,A
+  0EDA    3055    LDIA	0x55
+43:                   unsigned char i,k = 0; 
+  0EDB    01D5    CLR	0x55
+44:                   unsigned short CRC_acc=0x5555;
+  0EDC    00D7    LD	0x57,A
+  0EDD    00D8    LD	0x58,A
+45:                   #define POLY_  0x1021
+46:                   while (len--)
+  0EDE    3001    LDIA	0x1
+  0EDF    02F3    SUBR	0x73
+  0EE0    3000    LDIA	0x0
+  0EE1    1C03    SNZB	0x3,0
+  0EE2    03F4    DECR	0x74
+  0EE3    02F4    SUBR	0x74
+  0EE4    0A73    INCA	0x73
+  0EE5    1903    SZB	0x3,2
+  0EE6    0A74    INCA	0x74
+  0EE7    1903    SZB	0x3,2
+  0EE8    2F0B    JP	0x70B
+47:                   {
+48:                       CRC_acc = CRC_acc ^ (CRC_input[k++] << 8);
+  0EE9    0855    LD	A,0x55
+  0EEA    0754    ADDA	0x54
+  0EEB    00D1    LD	0x51,A
+  0EEC    0084    LD	0x4,A
+  0EED    0800    LD	A,0x0
+  0EEE    00D2    LD	0x52,A
+  0EEF    01D3    CLR	0x53
+  0EF0    00D3    LD	0x53,A
+  0EF1    01D2    CLR	0x52
+  0EF2    0852    LD	A,0x52
+  0EF3    06D7    XORR	0x57
+  0EF4    0853    LD	A,0x53
+  0EF5    06D8    XORR	0x58
+  0EF6    0AD5    INCR	0x55
+49:                       
+50:                       for (i = 0; i < 8; i++)
+  0EF7    01D6    CLR	0x56
+51:                       {
+52:                           if ((CRC_acc & 0x8000) == 0x8000)
+  0EF8    1FD8    SNZB	0x58,7
+  0EF9    2F02    JP	0x702
+  0EFA    3021    LDIA	0x21
+53:                           {
+54:                               CRC_acc = CRC_acc << 1;
+  0EFB    1003    CLRB	0x3,0
+  0EFC    0DD7    RLCR	0x57
+  0EFD    0DD8    RLCR	0x58
+55:                               CRC_acc ^= POLY_;
+  0EFE    06D7    XORR	0x57
+  0EFF    3010    LDIA	0x10
+  0F00    06D8    XORR	0x58
+56:                           }
+  0F01    2F05    JP	0x705
+57:                           else
+58:                           {
+59:                               CRC_acc = CRC_acc << 1;
+  0F02    1003    CLRB	0x3,0
+  0F03    0DD7    RLCR	0x57
+  0F04    0DD8    RLCR	0x58
+  0F05    3008    LDIA	0x8
+  0F06    0AD6    INCR	0x56
+  0F07    0256    SUBA	0x56
+  0F08    1803    SZB	0x3,0
+  0F09    2EDE    JP	0x6DE
+  0F0A    2EF8    JP	0x6F8
+60:                           }
+61:                       }
+62:                   }
+63:                   return CRC_acc;
+  0F0B    0858    LD	A,0x58
+  0F0C    00F4    LD	0x74,A
+  0F0D    0857    LD	A,0x57
+  0F0E    00F3    LD	0x73,A
+  0F0F    0008    RET
+64:               }
+65:               
+66:               
+67:               
+68:               uint8_t rx_data(void)
+69:               {
+  0E4A    3012    LDIA	0x12
+70:               	uint8_t rx_flag=0;
+  0E4B    01DF    CLR	0x5F
+71:               	uint8_t rand=0;
+72:               	uint8_t i=0;
+  0E4C    01E0    CLR	0x60
+73:               	uint16_t crc16=0; 
+  0E4D    01DC    CLR	0x5C
+  0E4E    01DD    CLR	0x5D
+74:               
+75:               	if(RF_RxData(rf_buf,18))
+  0E4F    00D5    LD	0x55,A
+  0E50    303C    LDIA	0x3C
+  0E51    2710    CALL	0x710
+  0E52    158A    SETB	0xA,3
+  0E53    3A00    XORIA	0x0
+  0E54    1903    SZB	0x3,2
+  0E55    2ED7    JP	0x6D7
+76:               	{
+77:               		for(i=0;i<18;i++)
+  0E56    01E0    CLR	0x60
+78:               			{
+79:               				rf_buf[i]=rf_buf[i]^crc_2_4G_lib[3+i]^ble_crc_38[21+i];
+  0E57    0860    LD	A,0x60
+  0E58    3E16    ADDIA	0x16
+  0E59    0084    LD	0x4,A
+  0E5A    118A    CLRB	0xA,3
+  0E5B    266A    CALL	0x66A
+  0E5C    158A    SETB	0xA,3
+  0E5D    00D9    LD	0x59,A
+  0E5E    0860    LD	A,0x60
+  0E5F    3E2E    ADDIA	0x2E
+  0E60    0084    LD	0x4,A
+  0E61    118A    CLRB	0xA,3
+  0E62    266A    CALL	0x66A
+  0E63    158A    SETB	0xA,3
+  0E64    00DA    LD	0x5A,A
+  0E65    0860    LD	A,0x60
+  0E66    3E3C    ADDIA	0x3C
+  0E67    0084    LD	0x4,A
+  0E68    1383    CLRB	0x3,7
+  0E69    0800    LD	A,0x0
+  0E6A    065A    XORA	0x5A
+  0E6B    0659    XORA	0x59
+  0E6C    00DB    LD	0x5B,A
+  0E6D    0860    LD	A,0x60
+  0E6E    3E3C    ADDIA	0x3C
+  0E6F    0084    LD	0x4,A
+  0E70    085B    LD	A,0x5B
+  0E71    0080    LD	0x0,A
+  0E72    3012    LDIA	0x12
+  0E73    0AE0    INCR	0x60
+  0E74    0260    SUBA	0x60
+  0E75    1C03    SNZB	0x3,0
+  0E76    2E57    JP	0x657
+80:               			}
+81:               		crc16 = rf_buf[16]+rf_buf[17]*256;
+  0E77    084D    LD	A,0x4D
+  0E78    00D9    LD	0x59,A
+  0E79    01DA    CLR	0x5A
+  0E7A    00DA    LD	0x5A,A
+  0E7B    01D9    CLR	0x59
+  0E7C    084C    LD	A,0x4C
+  0E7D    0759    ADDA	0x59
+  0E7E    00DC    LD	0x5C,A
+  0E7F    085A    LD	A,0x5A
+  0E80    1803    SZB	0x3,0
+  0E81    0A5A    INCA	0x5A
+  0E82    00DD    LD	0x5D,A
+82:               		for(i=0;i<16;i++)
+  0E83    01E0    CLR	0x60
+83:               			{
+84:               				rf_buf[i]=rf_buf[i]^crc_lab[i];
+  0E84    0860    LD	A,0x60
+  0E85    3E40    ADDIA	0x40
+  0E86    0084    LD	0x4,A
+  0E87    118A    CLRB	0xA,3
+  0E88    266A    CALL	0x66A
+  0E89    158A    SETB	0xA,3
+  0E8A    00D9    LD	0x59,A
+  0E8B    0860    LD	A,0x60
+  0E8C    3E3C    ADDIA	0x3C
+  0E8D    0084    LD	0x4,A
+  0E8E    0800    LD	A,0x0
+  0E8F    0659    XORA	0x59
+  0E90    00DA    LD	0x5A,A
+  0E91    0860    LD	A,0x60
+  0E92    3E3C    ADDIA	0x3C
+  0E93    0084    LD	0x4,A
+  0E94    085A    LD	A,0x5A
+  0E95    0080    LD	0x0,A
+  0E96    3010    LDIA	0x10
+  0E97    0AE0    INCR	0x60
+  0E98    0260    SUBA	0x60
+  0E99    1C03    SNZB	0x3,0
+  0E9A    2E84    JP	0x684
+85:               			}
+86:               		rand = rf_buf[15];
+  0E9B    084B    LD	A,0x4B
+  0E9C    00DE    LD	0x5E,A
+87:               		for(i=7;i<15;i++)
+  0E9D    3007    LDIA	0x7
+  0E9E    00E0    LD	0x60,A
+88:               			{
+89:               				rf_buf[i]^=rand;
+  0E9F    0860    LD	A,0x60
+  0EA0    3E3C    ADDIA	0x3C
+  0EA1    0084    LD	0x4,A
+  0EA2    085E    LD	A,0x5E
+  0EA3    0680    XORR	0x0
+  0EA4    300F    LDIA	0xF
+  0EA5    0AE0    INCR	0x60
+  0EA6    0260    SUBA	0x60
+  0EA7    1C03    SNZB	0x3,0
+  0EA8    2E9F    JP	0x69F
+90:               			}
+91:               		if(crc16 ==UpdateCRC(rf_buf,16) )
+  0EA9    3010    LDIA	0x10
+  0EAA    00F3    LD	0x73,A
+  0EAB    303C    LDIA	0x3C
+  0EAC    01F4    CLR	0x74
+  0EAD    26D9    CALL	0x6D9
+  0EAE    158A    SETB	0xA,3
+  0EAF    085D    LD	A,0x5D
+  0EB0    0674    XORA	0x74
+  0EB1    1D03    SNZB	0x3,2
+  0EB2    2EB5    JP	0x6B5
+  0EB3    085C    LD	A,0x5C
+  0EB4    0673    XORA	0x73
+  0EB5    1D03    SNZB	0x3,2
+  0EB6    2ED7    JP	0x6D7
+92:               			{
+93:               				if((rf_buf[3]==0)&&(rf_buf[4]==0)&&(rf_buf[5]==0)&&(rf_buf[6]==0))
+  0EB7    08BF    TESTZ	0x3F
+  0EB8    1D03    SNZB	0x3,2
+  0EB9    2EC5    JP	0x6C5
+  0EBA    08C0    TESTZ	0x40
+  0EBB    1D03    SNZB	0x3,2
+  0EBC    2EC5    JP	0x6C5
+  0EBD    08C1    TESTZ	0x41
+  0EBE    1D03    SNZB	0x3,2
+  0EBF    2EC5    JP	0x6C5
+  0EC0    08C2    TESTZ	0x42
+  0EC1    1D03    SNZB	0x3,2
+  0EC2    2EC5    JP	0x6C5
+94:               					{
+95:               						rx_flag=0;
+  0EC3    01DF    CLR	0x5F
+96:               					}
+  0EC4    2ED7    JP	0x6D7
+97:               				else if((rf_buf[3]==0xff)&&(rf_buf[4]==0xff)&&(rf_buf[5]==0xff)&&(rf_buf[6]==0xff))
+  0EC5    083F    LD	A,0x3F
+  0EC6    3AFF    XORIA	0xFF
+  0EC7    1D03    SNZB	0x3,2
+  0EC8    2ED5    JP	0x6D5
+  0EC9    0840    LD	A,0x40
+  0ECA    3AFF    XORIA	0xFF
+  0ECB    1D03    SNZB	0x3,2
+  0ECC    2ED5    JP	0x6D5
+  0ECD    0841    LD	A,0x41
+  0ECE    3AFF    XORIA	0xFF
+  0ECF    1D03    SNZB	0x3,2
+  0ED0    2ED5    JP	0x6D5
+  0ED1    0842    LD	A,0x42
+  0ED2    3AFF    XORIA	0xFF
+  0ED3    1903    SZB	0x3,2
+  0ED4    2EC3    JP	0x6C3
+98:               					{
+99:               						rx_flag=0;
+100:              					}
+101:              				else
+102:              					rx_flag=1;
+  0ED5    01DF    CLR	0x5F
+  0ED6    0ADF    INCR	0x5F
+103:              			}
+104:              		
+105:              	}
+106:              	return rx_flag;
+  0ED7    085F    LD	A,0x5F
+  0ED8    0008    RET
+107:              }
+108:              
+109:              
+110:              extern unsigned char match_channel_flag;
+111:              void recive_task(void)
+112:              {
+113:              	uint8_t i;
+114:              	uint8_t match_flag=0;
+  000D    01E6    CLR	0x66
+115:              	uint8_t flag_led=0;
+  000E    01E5    CLR	0x65
+116:              	unsigned char msg[6];
+117:              	
+118:              	switch(sys_stute)
+  000F    086F    LD	A,0x6F
+  0010    3A01    XORIA	0x1
+  0011    1903    SZB	0x3,2
+  0012    2A6A    JP	0x26A
+  0013    3A03    XORIA	0x3
+  0014    1903    SZB	0x3,2
+  0015    289C    JP	0x9C
+  0016    3A01    XORIA	0x1
+  0017    1903    SZB	0x3,2
+  0018    281A    JP	0x1A
+  0019    2BCD    JP	0x3CD
+119:              		{
+120:              		case CLEAN_MSG:
+121:              				{
+122:              					LED_OFF;
+  001A    1683    SETB	0x3,5
+  001B    1007    CLRB	0x7,0
+  001C    1283    CLRB	0x3,5
+  001D    1407    SETB	0x7,0
+123:              					if(key_long_flag==0x11)
+  001E    0879    LD	A,0x79
+  001F    3A11    XORIA	0x11
+  0020    1D03    SNZB	0x3,2
+  0021    2835    JP	0x35
+124:              						{
+125:              							key_long_flag=0;
+  0022    01F9    CLR	0x79
+126:              							KEY0.key_flag_5s=0;
+  0023    01A2    CLR	0x22
+127:              							for(i=0;i<24;i++)
+  0024    01ED    CLR	0x6D
+  0025    3018    LDIA	0x18
+  0026    026D    SUBA	0x6D
+  0027    1803    SZB	0x3,0
+  0028    2865    JP	0x65
+128:              								{
+129:              									AT24C02_Write_Byte(i,0xff);
+  0029    30FF    LDIA	0xFF
+  002A    00D1    LD	0x51,A
+  002B    086D    LD	A,0x6D
+  002C    25B5    CALL	0x5B5
+  002D    118A    CLRB	0xA,3
+130:              									soft_delay_ms(1);
+  002E    01F3    CLR	0x73
+  002F    0AF3    INCR	0x73
+  0030    01F4    CLR	0x74
+  0031    255A    CALL	0x55A
+  0032    118A    CLRB	0xA,3
+  0033    0AED    INCR	0x6D
+  0034    2825    JP	0x25
+131:              								}
+132:              						}
+133:              					else if(key_long_flag==0x21)
+  0035    0879    LD	A,0x79
+  0036    3A21    XORIA	0x21
+  0037    1D03    SNZB	0x3,2
+  0038    284D    JP	0x4D
+134:              						{
+135:              							key_long_flag=0;
+  0039    01F9    CLR	0x79
+136:              							KEY1.key_flag_5s=0;
+  003A    01A5    CLR	0x25
+137:              							for(i=0;i<24;i++)
+  003B    01ED    CLR	0x6D
+  003C    3018    LDIA	0x18
+  003D    026D    SUBA	0x6D
+  003E    1803    SZB	0x3,0
+  003F    2865    JP	0x65
+138:              								{
+139:              									AT24C02_Write_Byte(i+24,0xff);
+  0040    30FF    LDIA	0xFF
+  0041    00D1    LD	0x51,A
+  0042    086D    LD	A,0x6D
+  0043    3E18    ADDIA	0x18
+  0044    25B5    CALL	0x5B5
+  0045    118A    CLRB	0xA,3
+140:              									soft_delay_ms(1);
+  0046    01F3    CLR	0x73
+  0047    0AF3    INCR	0x73
+  0048    01F4    CLR	0x74
+  0049    255A    CALL	0x55A
+  004A    118A    CLRB	0xA,3
+  004B    0AED    INCR	0x6D
+  004C    283C    JP	0x3C
+141:              								}
+142:              						}
+143:              					else if(key_long_flag==0x41)
+  004D    0879    LD	A,0x79
+  004E    3A41    XORIA	0x41
+  004F    1D03    SNZB	0x3,2
+  0050    2865    JP	0x65
+144:              						{
+145:              							key_long_flag=0;
+  0051    01F9    CLR	0x79
+146:              							KEY2.key_flag_5s=0;
+  0052    01A8    CLR	0x28
+147:              							for(i=0;i<24;i++)
+  0053    01ED    CLR	0x6D
+  0054    3018    LDIA	0x18
+  0055    026D    SUBA	0x6D
+  0056    1803    SZB	0x3,0
+  0057    2865    JP	0x65
+148:              								{
+149:              									AT24C02_Write_Byte(i+48,0xff);
+  0058    30FF    LDIA	0xFF
+  0059    00D1    LD	0x51,A
+  005A    086D    LD	A,0x6D
+  005B    3E30    ADDIA	0x30
+  005C    25B5    CALL	0x5B5
+  005D    118A    CLRB	0xA,3
+150:              									soft_delay_ms(1);
+  005E    01F3    CLR	0x73
+  005F    0AF3    INCR	0x73
+  0060    01F4    CLR	0x74
+  0061    255A    CALL	0x55A
+  0062    118A    CLRB	0xA,3
+  0063    0AED    INCR	0x6D
+  0064    2854    JP	0x54
+151:              								}
+152:              						}
+153:              					for(i=0;i<12;i++)
+  0065    01ED    CLR	0x6D
+  0066    300C    LDIA	0xC
+  0067    026D    SUBA	0x6D
+  0068    1803    SZB	0x3,0
+  0069    287B    JP	0x7B
+154:              							{
+155:              								AT24C02_Read_Msg(i*6,control_id[i],6);
+  006A    3006    LDIA	0x6
+  006B    00F3    LD	0x73,A
+  006C    086D    LD	A,0x6D
+  006D    262F    CALL	0x62F
+  006E    118A    CLRB	0xA,3
+  006F    3EA8    ADDIA	0xA8
+  0070    00D7    LD	0x57,A
+  0071    3006    LDIA	0x6
+  0072    00D8    LD	0x58,A
+  0073    00F3    LD	0x73,A
+  0074    086D    LD	A,0x6D
+  0075    262F    CALL	0x62F
+  0076    118A    CLRB	0xA,3
+  0077    263D    CALL	0x63D
+  0078    118A    CLRB	0xA,3
+  0079    0AED    INCR	0x6D
+  007A    2866    JP	0x66
+156:              							}
+157:              					LED_ON;
+  007B    1683    SETB	0x3,5
+  007C    1007    CLRB	0x7,0
+  007D    1283    CLRB	0x3,5
+  007E    3064    LDIA	0x64
+  007F    1007    CLRB	0x7,0
+158:              					soft_delay_ms(100);
+  0080    00F3    LD	0x73,A
+  0081    01F4    CLR	0x74
+  0082    255A    CALL	0x55A
+  0083    118A    CLRB	0xA,3
+159:              					LED_OFF;
+  0084    1683    SETB	0x3,5
+  0085    1007    CLRB	0x7,0
+  0086    1283    CLRB	0x3,5
+  0087    3064    LDIA	0x64
+  0088    1407    SETB	0x7,0
+160:              					soft_delay_ms(100);
+  0089    00F3    LD	0x73,A
+  008A    01F4    CLR	0x74
+  008B    255A    CALL	0x55A
+  008C    118A    CLRB	0xA,3
+161:              					LED_ON;
+  008D    1683    SETB	0x3,5
+  008E    1007    CLRB	0x7,0
+  008F    1283    CLRB	0x3,5
+  0090    3064    LDIA	0x64
+  0091    1007    CLRB	0x7,0
+162:              					soft_delay_ms(100);
+  0092    00F3    LD	0x73,A
+  0093    01F4    CLR	0x74
+  0094    255A    CALL	0x55A
+163:              					LED_OFF;
+  0095    1683    SETB	0x3,5
+  0096    1007    CLRB	0x7,0
+  0097    1283    CLRB	0x3,5
+  0098    1407    SETB	0x7,0
+164:              					sys_stute=RX_MSG;
+  0099    01EF    CLR	0x6F
+  009A    0AEF    INCR	0x6F
+165:              				}break;
+  009B    0008    RET
+166:              		
+167:              		case MATCH_MSG:
+168:              				{
+169:              					match_channel_flag|=0x01;
+  009C    143B    SETB	0x3B,0
+170:              					if(key_long_flag==0x11)
+  009D    0879    LD	A,0x79
+  009E    3A11    XORIA	0x11
+  009F    1D03    SNZB	0x3,2
+  00A0    28A4    JP	0xA4
+  00A1    3010    LDIA	0x10
+171:              						{
+172:              							KEY0.key_flag_3s=0;
+  00A2    01A1    CLR	0x21
+  00A3    28B1    JP	0xB1
+173:              							flag_5s_add=0;
+174:              							key_long_flag=0;
+175:              							match_channel_flag=0x10;
+176:              						}
+177:              					else if(key_long_flag==0x21)
+  00A4    0879    LD	A,0x79
+  00A5    3A21    XORIA	0x21
+  00A6    1D03    SNZB	0x3,2
+  00A7    28AB    JP	0xAB
+  00A8    3020    LDIA	0x20
+178:              						{
+179:              							KEY1.key_flag_3s=0;
+  00A9    01A4    CLR	0x24
+  00AA    28B1    JP	0xB1
+180:              							
+181:              							flag_5s_add=0;
+182:              							key_long_flag=0;
+183:              							match_channel_flag=0x20;
+184:              						}
+185:              					else if(key_long_flag==0x41)
+  00AB    0879    LD	A,0x79
+  00AC    3A41    XORIA	0x41
+  00AD    1D03    SNZB	0x3,2
+  00AE    28B5    JP	0xB5
+  00AF    3040    LDIA	0x40
+186:              						{
+187:              							KEY2.key_flag_3s=0;
+  00B0    01A7    CLR	0x27
+188:              							flag_5s_add=0;
+  00B1    01B0    CLR	0x30
+  00B2    01B1    CLR	0x31
+189:              							key_long_flag=0;
+  00B3    01F9    CLR	0x79
+190:              							match_channel_flag=0x40;
+  00B4    00BB    LD	0x3B,A
+191:              						}
+192:              
+193:              
+194:              		/*
+195:              		 0       1          2        3     4     5     6     7          8      9        10      11      12     13     14    15
+196:              		 type   version  count  ID1  ID2  ID3  ID4  GROUP cmd   para0  para1 para2
+197:              		
+198:              		*/
+199:              		
+200:              					if(rx_data())
+  00B5    158A    SETB	0xA,3
+  00B6    264A    CALL	0x64A
+  00B7    118A    CLRB	0xA,3
+  00B8    3A00    XORIA	0x0
+  00B9    1903    SZB	0x3,2
+  00BA    2A60    JP	0x260
+201:              						{
+202:              							msg[0]=rf_buf[3];
+  00BB    083F    LD	A,0x3F
+  00BC    00E7    LD	0x67,A
+203:              							msg[1]=rf_buf[4];
+  00BD    0840    LD	A,0x40
+  00BE    00E8    LD	0x68,A
+204:              							msg[2]=rf_buf[5];
+  00BF    0841    LD	A,0x41
+  00C0    00E9    LD	0x69,A
+205:              							msg[3]=rf_buf[6];
+  00C1    0842    LD	A,0x42
+  00C2    00EA    LD	0x6A,A
+206:              							msg[4]=rf_buf[10];
+  00C3    0846    LD	A,0x46
+  00C4    00EB    LD	0x6B,A
+207:              							msg[5]=rf_buf[2];
+  00C5    083E    LD	A,0x3E
+  00C6    00EC    LD	0x6C,A
+208:              							if(msg[4]!=0xff)
+  00C7    086B    LD	A,0x6B
+  00C8    3AFF    XORIA	0xFF
+  00C9    1903    SZB	0x3,2
+  00CA    0008    RET
+209:              								{
+210:              								if(match_channel_flag&0x10)
+  00CB    1E3B    SNZB	0x3B,4
+  00CC    293E    JP	0x13E
+211:              									{
+212:              										for(i=0;i<4;i++)
+  00CD    01ED    CLR	0x6D
+213:              											{
+214:              												if((msg[0]==control_id[i][0])
+215:              												&&(msg[1]==control_id[i][1])
+216:              												&&(msg[2]==control_id[i][2])
+217:              												&&(msg[3]==control_id[i][3])
+218:              												&&(msg[4]==control_id[i][4])
+219:              													)
+  00D5    3006    LDIA	0x6
+  00D6    00F3    LD	0x73,A
+  00D7    086D    LD	A,0x6D
+  00D8    262F    CALL	0x62F
+  00D9    118A    CLRB	0xA,3
+  00DA    3EA8    ADDIA	0xA8
+  00DB    0084    LD	0x4,A
+  00DC    1383    CLRB	0x3,7
+  00DD    0800    LD	A,0x0
+  00DE    0667    XORA	0x67
+  00DF    1D03    SNZB	0x3,2
+  00E0    28CF    JP	0xCF
+  00E1    3006    LDIA	0x6
+  00E2    00F3    LD	0x73,A
+  00E3    086D    LD	A,0x6D
+  00E4    262F    CALL	0x62F
+  00E5    118A    CLRB	0xA,3
+  00E6    3EA9    ADDIA	0xA9
+  00E7    0084    LD	0x4,A
+  00E8    0868    LD	A,0x68
+  00E9    0600    XORA	0x0
+  00EA    1D03    SNZB	0x3,2
+  00EB    28CF    JP	0xCF
+  00EC    3006    LDIA	0x6
+  00ED    00F3    LD	0x73,A
+  00EE    086D    LD	A,0x6D
+  00EF    262F    CALL	0x62F
+  00F0    118A    CLRB	0xA,3
+  00F1    3EAA    ADDIA	0xAA
+  00F2    0084    LD	0x4,A
+  00F3    0869    LD	A,0x69
+  00F4    0600    XORA	0x0
+  00F5    1D03    SNZB	0x3,2
+  00F6    28CF    JP	0xCF
+  00F7    3006    LDIA	0x6
+  00F8    00F3    LD	0x73,A
+  00F9    086D    LD	A,0x6D
+  00FA    262F    CALL	0x62F
+  00FB    118A    CLRB	0xA,3
+  00FC    3EAB    ADDIA	0xAB
+  00FD    0084    LD	0x4,A
+  00FE    086A    LD	A,0x6A
+  00FF    0600    XORA	0x0
+  0100    1D03    SNZB	0x3,2
+  0101    28CF    JP	0xCF
+  0102    3006    LDIA	0x6
+  0103    00F3    LD	0x73,A
+  0104    086D    LD	A,0x6D
+  0105    262F    CALL	0x62F
+  0106    118A    CLRB	0xA,3
+  0107    3EAC    ADDIA	0xAC
+  0108    0084    LD	0x4,A
+  0109    086B    LD	A,0x6B
+  010A    0600    XORA	0x0
+  010B    1D03    SNZB	0x3,2
+  010C    28CF    JP	0xCF
+220:              													{
+221:              														match_flag=1;
+  010D    01E6    CLR	0x66
+  010E    0AE6    INCR	0x66
+222:              														break;
+  00CE    28D1    JP	0xD1
+223:              													}
+224:              												else
+225:              													{
+226:              														match_flag=0;
+  00CF    01E6    CLR	0x66
+  00D0    0AED    INCR	0x6D
+  00D1    3004    LDIA	0x4
+  00D2    026D    SUBA	0x6D
+  00D3    1803    SZB	0x3,0
+  00D4    290F    JP	0x10F
+227:              													}
+228:              											}
+229:              										if(match_flag==0)
+  010F    08E6    TESTZ	0x66
+  0110    1D03    SNZB	0x3,2
+  0111    2A24    JP	0x224
+230:              											{
+231:              												AT24C02_Write_Msg(0+channel_flag[0]*6,msg,6);
+  0112    3067    LDIA	0x67
+  0113    00D5    LD	0x55,A
+  0114    3006    LDIA	0x6
+  0115    00D6    LD	0x56,A
+  0116    00F3    LD	0x73,A
+  0117    084E    LD	A,0x4E
+  0118    262F    CALL	0x62F
+  0119    118A    CLRB	0xA,3
+  011A    23CE    CALL	0x3CE
+  011B    118A    CLRB	0xA,3
+232:              												for(i=0;i<6;i++)
+  011C    01ED    CLR	0x6D
+  011D    3006    LDIA	0x6
+  011E    026D    SUBA	0x6D
+  011F    1803    SZB	0x3,0
+  0120    2937    JP	0x137
+233:              													{
+234:              														control_id[channel_flag[0]][i]=msg[i];
+  0121    086D    LD	A,0x6D
+  0122    3E67    ADDIA	0x67
+  0123    0084    LD	0x4,A
+  0124    1383    CLRB	0x3,7
+  0125    0800    LD	A,0x0
+  0126    00E1    LD	0x61,A
+  0127    3006    LDIA	0x6
+  0128    00F3    LD	0x73,A
+  0129    084E    LD	A,0x4E
+  012A    262F    CALL	0x62F
+  012B    118A    CLRB	0xA,3
+  012C    00E2    LD	0x62,A
+  012D    3EA8    ADDIA	0xA8
+  012E    00E3    LD	0x63,A
+  012F    086D    LD	A,0x6D
+  0130    0763    ADDA	0x63
+  0131    00E4    LD	0x64,A
+  0132    0084    LD	0x4,A
+  0133    0861    LD	A,0x61
+  0134    0080    LD	0x0,A
+  0135    0AED    INCR	0x6D
+  0136    291D    JP	0x11D
+  0137    3004    LDIA	0x4
+235:              													}
+236:              												channel_flag[0]++;
+  0138    0ACE    INCR	0x4E
+237:              												if(channel_flag[0]>=4)channel_flag[0]=0;
+  0139    024E    SUBA	0x4E
+  013A    1C03    SNZB	0x3,0
+  013B    2A24    JP	0x224
+  013C    01CE    CLR	0x4E
+238:              											}
+239:              										key_long_flag=0;
+  0224    01F9    CLR	0x79
+240:              									}
+  013D    2A24    JP	0x224
+241:              								else if(match_channel_flag&0x20)
+  013E    1EBB    SNZB	0x3B,5
+  013F    29B2    JP	0x1B2
+242:              									{
+243:              											for(i=0;i<4;i++)
+  0140    01ED    CLR	0x6D
+244:              											{
+245:              												if((msg[0]==control_id[i+4][0])
+246:              												&&(msg[1]==control_id[i+4][1])
+247:              												&&(msg[2]==control_id[i+4][2])
+248:              												&&(msg[3]==control_id[i+4][3])
+249:              												&&(msg[4]==control_id[i+4][4])
+250:              													)
+  0148    3006    LDIA	0x6
+  0149    00F3    LD	0x73,A
+  014A    086D    LD	A,0x6D
+  014B    262F    CALL	0x62F
+  014C    118A    CLRB	0xA,3
+  014D    3EC0    ADDIA	0xC0
+  014E    0084    LD	0x4,A
+  014F    1383    CLRB	0x3,7
+  0150    0800    LD	A,0x0
+  0151    0667    XORA	0x67
+  0152    1D03    SNZB	0x3,2
+  0153    2942    JP	0x142
+  0154    3006    LDIA	0x6
+  0155    00F3    LD	0x73,A
+  0156    086D    LD	A,0x6D
+  0157    262F    CALL	0x62F
+  0158    118A    CLRB	0xA,3
+  0159    3EC1    ADDIA	0xC1
+  015A    0084    LD	0x4,A
+  015B    0868    LD	A,0x68
+  015C    0600    XORA	0x0
+  015D    1D03    SNZB	0x3,2
+  015E    2942    JP	0x142
+  015F    3006    LDIA	0x6
+  0160    00F3    LD	0x73,A
+  0161    086D    LD	A,0x6D
+  0162    262F    CALL	0x62F
+  0163    118A    CLRB	0xA,3
+  0164    3EC2    ADDIA	0xC2
+  0165    0084    LD	0x4,A
+  0166    0869    LD	A,0x69
+  0167    0600    XORA	0x0
+  0168    1D03    SNZB	0x3,2
+  0169    2942    JP	0x142
+  016A    3006    LDIA	0x6
+  016B    00F3    LD	0x73,A
+  016C    086D    LD	A,0x6D
+  016D    262F    CALL	0x62F
+  016E    118A    CLRB	0xA,3
+  016F    3EC3    ADDIA	0xC3
+  0170    0084    LD	0x4,A
+  0171    086A    LD	A,0x6A
+  0172    0600    XORA	0x0
+  0173    1D03    SNZB	0x3,2
+  0174    2942    JP	0x142
+  0175    3006    LDIA	0x6
+  0176    00F3    LD	0x73,A
+  0177    086D    LD	A,0x6D
+  0178    262F    CALL	0x62F
+  0179    118A    CLRB	0xA,3
+  017A    3EC4    ADDIA	0xC4
+  017B    0084    LD	0x4,A
+  017C    086B    LD	A,0x6B
+  017D    0600    XORA	0x0
+  017E    1D03    SNZB	0x3,2
+  017F    2942    JP	0x142
+251:              													{
+252:              													match_flag=1;
+  0180    01E6    CLR	0x66
+  0181    0AE6    INCR	0x66
+253:              													break;
+  0141    2944    JP	0x144
+254:              													}
+255:              												else
+256:              													{
+257:              													match_flag=0;
+  0142    01E6    CLR	0x66
+  0143    0AED    INCR	0x6D
+  0144    3004    LDIA	0x4
+  0145    026D    SUBA	0x6D
+  0146    1803    SZB	0x3,0
+  0147    2982    JP	0x182
+258:              													}
+259:              											}
+260:              											if(match_flag==0)
+  0182    08E6    TESTZ	0x66
+  0183    1D03    SNZB	0x3,2
+  0184    2A24    JP	0x224
+261:              												{
+262:              													AT24C02_Write_Msg(24+channel_flag[1]*6,msg,6);
+  0185    3067    LDIA	0x67
+  0186    00D5    LD	0x55,A
+  0187    3006    LDIA	0x6
+  0188    00D6    LD	0x56,A
+  0189    00F3    LD	0x73,A
+  018A    084F    LD	A,0x4F
+  018B    262F    CALL	0x62F
+  018C    118A    CLRB	0xA,3
+  018D    3E18    ADDIA	0x18
+  018E    23CE    CALL	0x3CE
+  018F    118A    CLRB	0xA,3
+263:              													for(i=0;i<6;i++)
+  0190    01ED    CLR	0x6D
+  0191    3006    LDIA	0x6
+  0192    026D    SUBA	0x6D
+  0193    1803    SZB	0x3,0
+  0194    29AB    JP	0x1AB
+264:              														{
+265:              															control_id[channel_flag[1]+4][i]=msg[i];
+  0195    086D    LD	A,0x6D
+  0196    3E67    ADDIA	0x67
+  0197    0084    LD	0x4,A
+  0198    1383    CLRB	0x3,7
+  0199    0800    LD	A,0x0
+  019A    00E1    LD	0x61,A
+  019B    3006    LDIA	0x6
+  019C    00F3    LD	0x73,A
+  019D    084F    LD	A,0x4F
+  019E    262F    CALL	0x62F
+  019F    118A    CLRB	0xA,3
+  01A0    00E2    LD	0x62,A
+  01A1    3EC0    ADDIA	0xC0
+  01A2    00E3    LD	0x63,A
+  01A3    086D    LD	A,0x6D
+  01A4    0763    ADDA	0x63
+  01A5    00E4    LD	0x64,A
+  01A6    0084    LD	0x4,A
+  01A7    0861    LD	A,0x61
+  01A8    0080    LD	0x0,A
+  01A9    0AED    INCR	0x6D
+  01AA    2991    JP	0x191
+  01AB    3004    LDIA	0x4
+266:              														}
+267:              													channel_flag[1]++;
+  01AC    0ACF    INCR	0x4F
+268:              													if(channel_flag[1]>=4)channel_flag[1]=0;
+  01AD    024F    SUBA	0x4F
+  01AE    1C03    SNZB	0x3,0
+  01AF    2A24    JP	0x224
+  01B0    01CF    CLR	0x4F
+  01B1    2A24    JP	0x224
+269:              												}
+270:              										key_long_flag=0;
+271:              									}
+272:              								else if(match_channel_flag&0x40)
+  01B2    1F3B    SNZB	0x3B,6
+  01B3    2A25    JP	0x225
+273:              									{
+274:              
+275:              											for(i=0;i<4;i++)
+  01B4    01ED    CLR	0x6D
+276:              											{
+277:              												if((msg[0]==control_id[i+8][0])
+278:              												&&(msg[1]==control_id[i+8][1])
+279:              												&&(msg[2]==control_id[i+8][2])
+280:              												&&(msg[3]==control_id[i+8][3])
+281:              												&&(msg[4]==control_id[i+8][4])
+282:              													)
+  01BC    3006    LDIA	0x6
+  01BD    00F3    LD	0x73,A
+  01BE    086D    LD	A,0x6D
+  01BF    262F    CALL	0x62F
+  01C0    118A    CLRB	0xA,3
+  01C1    3ED8    ADDIA	0xD8
+  01C2    0084    LD	0x4,A
+  01C3    1383    CLRB	0x3,7
+  01C4    0800    LD	A,0x0
+  01C5    0667    XORA	0x67
+  01C6    1D03    SNZB	0x3,2
+  01C7    29B6    JP	0x1B6
+  01C8    3006    LDIA	0x6
+  01C9    00F3    LD	0x73,A
+  01CA    086D    LD	A,0x6D
+  01CB    262F    CALL	0x62F
+  01CC    118A    CLRB	0xA,3
+  01CD    3ED9    ADDIA	0xD9
+  01CE    0084    LD	0x4,A
+  01CF    0868    LD	A,0x68
+  01D0    0600    XORA	0x0
+  01D1    1D03    SNZB	0x3,2
+  01D2    29B6    JP	0x1B6
+  01D3    3006    LDIA	0x6
+  01D4    00F3    LD	0x73,A
+  01D5    086D    LD	A,0x6D
+  01D6    262F    CALL	0x62F
+  01D7    118A    CLRB	0xA,3
+  01D8    3EDA    ADDIA	0xDA
+  01D9    0084    LD	0x4,A
+  01DA    0869    LD	A,0x69
+  01DB    0600    XORA	0x0
+  01DC    1D03    SNZB	0x3,2
+  01DD    29B6    JP	0x1B6
+  01DE    3006    LDIA	0x6
+  01DF    00F3    LD	0x73,A
+  01E0    086D    LD	A,0x6D
+  01E1    262F    CALL	0x62F
+  01E2    118A    CLRB	0xA,3
+  01E3    3EDB    ADDIA	0xDB
+  01E4    0084    LD	0x4,A
+  01E5    086A    LD	A,0x6A
+  01E6    0600    XORA	0x0
+  01E7    1D03    SNZB	0x3,2
+  01E8    29B6    JP	0x1B6
+  01E9    3006    LDIA	0x6
+  01EA    00F3    LD	0x73,A
+  01EB    086D    LD	A,0x6D
+  01EC    262F    CALL	0x62F
+  01ED    118A    CLRB	0xA,3
+  01EE    3EDC    ADDIA	0xDC
+  01EF    0084    LD	0x4,A
+  01F0    086B    LD	A,0x6B
+  01F1    0600    XORA	0x0
+  01F2    1D03    SNZB	0x3,2
+  01F3    29B6    JP	0x1B6
+283:              													{
+284:              													match_flag=1;
+  01F4    01E6    CLR	0x66
+  01F5    0AE6    INCR	0x66
+285:              													break;
+  01B5    29B8    JP	0x1B8
+286:              													}
+287:              												else
+288:              													{
+289:              													match_flag=0;
+  01B6    01E6    CLR	0x66
+  01B7    0AED    INCR	0x6D
+  01B8    3004    LDIA	0x4
+  01B9    026D    SUBA	0x6D
+  01BA    1803    SZB	0x3,0
+  01BB    29F6    JP	0x1F6
+290:              													}
+291:              											}
+292:              											if(match_flag==0)
+  01F6    08E6    TESTZ	0x66
+  01F7    1D03    SNZB	0x3,2
+  01F8    2A24    JP	0x224
+293:              												{
+294:              													AT24C02_Write_Msg(48+channel_flag[2]*6,msg,6);
+  01F9    3067    LDIA	0x67
+  01FA    00D5    LD	0x55,A
+  01FB    3006    LDIA	0x6
+  01FC    00D6    LD	0x56,A
+  01FD    00F3    LD	0x73,A
+  01FE    0850    LD	A,0x50
+  01FF    262F    CALL	0x62F
+  0200    118A    CLRB	0xA,3
+  0201    3E30    ADDIA	0x30
+  0202    23CE    CALL	0x3CE
+  0203    118A    CLRB	0xA,3
+295:              													for(i=0;i<6;i++)
+  0204    01ED    CLR	0x6D
+  0205    3006    LDIA	0x6
+  0206    026D    SUBA	0x6D
+  0207    1803    SZB	0x3,0
+  0208    2A1F    JP	0x21F
+296:              														{
+297:              															control_id[channel_flag[2]+8][i]=msg[i];
+  0209    086D    LD	A,0x6D
+  020A    3E67    ADDIA	0x67
+  020B    0084    LD	0x4,A
+  020C    1383    CLRB	0x3,7
+  020D    0800    LD	A,0x0
+  020E    00E1    LD	0x61,A
+  020F    3006    LDIA	0x6
+  0210    00F3    LD	0x73,A
+  0211    0850    LD	A,0x50
+  0212    262F    CALL	0x62F
+  0213    118A    CLRB	0xA,3
+  0214    00E2    LD	0x62,A
+  0215    3ED8    ADDIA	0xD8
+  0216    00E3    LD	0x63,A
+  0217    086D    LD	A,0x6D
+  0218    0763    ADDA	0x63
+  0219    00E4    LD	0x64,A
+  021A    0084    LD	0x4,A
+  021B    0861    LD	A,0x61
+  021C    0080    LD	0x0,A
+  021D    0AED    INCR	0x6D
+  021E    2A05    JP	0x205
+  021F    3004    LDIA	0x4
+298:              														}
+299:              													channel_flag[2]++;
+  0220    0AD0    INCR	0x50
+300:              													if(channel_flag[2]>=4)channel_flag[2]=0;
+  0221    0250    SUBA	0x50
+  0222    1803    SZB	0x3,0
+  0223    01D0    CLR	0x50
+301:              												}
+302:              										key_long_flag=0;
+303:              									}
+304:              
+305:              								AT24C02_Write_Msg(100,channel_flag,3);
+  0225    304E    LDIA	0x4E
+  0226    00D5    LD	0x55,A
+  0227    3003    LDIA	0x3
+  0228    00D6    LD	0x56,A
+  0229    3064    LDIA	0x64
+  022A    23CE    CALL	0x3CE
+  022B    118A    CLRB	0xA,3
+306:              								AT24C02_Write_Msg(100,channel_flag,3);
+  022C    304E    LDIA	0x4E
+  022D    00D5    LD	0x55,A
+  022E    3003    LDIA	0x3
+  022F    00D6    LD	0x56,A
+  0230    3064    LDIA	0x64
+  0231    23CE    CALL	0x3CE
+  0232    118A    CLRB	0xA,3
+307:              								
+308:              								for(i=0;i<12;i++)
+  0233    01ED    CLR	0x6D
+  0234    300C    LDIA	0xC
+  0235    026D    SUBA	0x6D
+  0236    1803    SZB	0x3,0
+  0237    2A49    JP	0x249
+309:              								{
+310:              									AT24C02_Read_Msg(i*6,control_id[i],6);
+  0238    3006    LDIA	0x6
+  0239    00F3    LD	0x73,A
+  023A    086D    LD	A,0x6D
+  023B    262F    CALL	0x62F
+  023C    118A    CLRB	0xA,3
+  023D    3EA8    ADDIA	0xA8
+  023E    00D7    LD	0x57,A
+  023F    3006    LDIA	0x6
+  0240    00D8    LD	0x58,A
+  0241    00F3    LD	0x73,A
+  0242    086D    LD	A,0x6D
+  0243    262F    CALL	0x62F
+  0244    118A    CLRB	0xA,3
+  0245    263D    CALL	0x63D
+  0246    118A    CLRB	0xA,3
+  0247    0AED    INCR	0x6D
+  0248    2A34    JP	0x234
+311:              								}
+312:              								AT24C02_Read_Msg(100,channel_flag,3);
+  0249    304E    LDIA	0x4E
+  024A    00D7    LD	0x57,A
+  024B    3003    LDIA	0x3
+  024C    00D8    LD	0x58,A
+  024D    3064    LDIA	0x64
+  024E    263D    CALL	0x63D
+  024F    118A    CLRB	0xA,3
+313:              								
+314:              								sys_stute=RX_MSG;
+  0250    01EF    CLR	0x6F
+  0251    0AEF    INCR	0x6F
+315:              								
+316:              								LED_ON;
+  0252    1683    SETB	0x3,5
+  0253    1007    CLRB	0x7,0
+  0254    1283    CLRB	0x3,5
+  0255    3064    LDIA	0x64
+  0256    1007    CLRB	0x7,0
+317:              								soft_delay_ms(100);
+  0257    00F3    LD	0x73,A
+  0258    01F4    CLR	0x74
+  0259    255A    CALL	0x55A
+318:              								LED_OFF;
+  025A    1683    SETB	0x3,5
+  025B    1007    CLRB	0x7,0
+  025C    1283    CLRB	0x3,5
+  025D    1407    SETB	0x7,0
+319:              								match_channel_flag=0;
+  025E    01BB    CLR	0x3B
+  025F    0008    RET
+320:              								}
+321:              						}
+322:              					else
+323:              						{
+324:              							if(flag_5s_add>500)
+  0260    3001    LDIA	0x1
+  0261    0231    SUBA	0x31
+  0262    30F5    LDIA	0xF5
+  0263    1903    SZB	0x3,2
+  0264    0230    SUBA	0x30
+  0265    1C03    SNZB	0x3,0
+  0266    0008    RET
+325:              								{
+326:              									sys_stute=RX_MSG;
+  0267    01EF    CLR	0x6F
+  0268    0AEF    INCR	0x6F
+  0269    2A5E    JP	0x25E
+327:              									match_channel_flag=0;
+328:              								}
+329:              						}
+330:              				}break;
+331:              		case RX_MSG:
+332:              				{
+333:              					if(rx_data())
+  026A    158A    SETB	0xA,3
+  026B    264A    CALL	0x64A
+  026C    118A    CLRB	0xA,3
+  026D    3A00    XORIA	0x0
+  026E    1903    SZB	0x3,2
+  026F    0008    RET
+334:              						{
+335:              							if(rf_buf[10]!=0xff)
+  0270    0846    LD	A,0x46
+  0271    3AFF    XORIA	0xFF
+  0272    1903    SZB	0x3,2
+  0273    2B22    JP	0x322
+336:              								{
+337:              									for(i=0;i<12;i++)
+  0274    01ED    CLR	0x6D
+  0275    300C    LDIA	0xC
+  0276    026D    SUBA	0x6D
+  0277    1803    SZB	0x3,0
+  0278    2BC5    JP	0x3C5
+338:              									{
+339:              										if((rf_buf[3]==control_id[i][0])
+340:              										&&(rf_buf[4]==control_id[i][1])
+341:              										&&(rf_buf[5]==control_id[i][2])
+342:              										&&(rf_buf[6]==control_id[i][3]))
+  0279    3006    LDIA	0x6
+  027A    00F3    LD	0x73,A
+  027B    086D    LD	A,0x6D
+  027C    262F    CALL	0x62F
+  027D    118A    CLRB	0xA,3
+  027E    3EA8    ADDIA	0xA8
+  027F    0084    LD	0x4,A
+  0280    083F    LD	A,0x3F
+  0281    1383    CLRB	0x3,7
+  0282    0600    XORA	0x0
+  0283    1D03    SNZB	0x3,2
+  0284    2B20    JP	0x320
+  0285    3006    LDIA	0x6
+  0286    00F3    LD	0x73,A
+  0287    086D    LD	A,0x6D
+  0288    262F    CALL	0x62F
+  0289    118A    CLRB	0xA,3
+  028A    3EA9    ADDIA	0xA9
+  028B    0084    LD	0x4,A
+  028C    0840    LD	A,0x40
+  028D    0600    XORA	0x0
+  028E    1D03    SNZB	0x3,2
+  028F    2B20    JP	0x320
+  0290    3006    LDIA	0x6
+  0291    00F3    LD	0x73,A
+  0292    086D    LD	A,0x6D
+  0293    262F    CALL	0x62F
+  0294    118A    CLRB	0xA,3
+  0295    3EAA    ADDIA	0xAA
+  0296    0084    LD	0x4,A
+  0297    0841    LD	A,0x41
+  0298    0600    XORA	0x0
+  0299    1D03    SNZB	0x3,2
+  029A    2B20    JP	0x320
+  029B    3006    LDIA	0x6
+  029C    00F3    LD	0x73,A
+  029D    086D    LD	A,0x6D
+  029E    262F    CALL	0x62F
+  029F    118A    CLRB	0xA,3
+  02A0    3EAB    ADDIA	0xAB
+  02A1    0084    LD	0x4,A
+  02A2    0842    LD	A,0x42
+  02A3    0600    XORA	0x0
+  02A4    1D03    SNZB	0x3,2
+  02A5    2B20    JP	0x320
+343:              											{
+344:              												if(rf_buf[2]!=control_id[i][5])
+  02A6    3006    LDIA	0x6
+  02A7    00F3    LD	0x73,A
+  02A8    086D    LD	A,0x6D
+  02A9    262F    CALL	0x62F
+  02AA    118A    CLRB	0xA,3
+  02AB    3EAD    ADDIA	0xAD
+  02AC    0084    LD	0x4,A
+  02AD    083E    LD	A,0x3E
+  02AE    0600    XORA	0x0
+  02AF    1903    SZB	0x3,2
+  02B0    2B20    JP	0x320
+345:              													{
+346:              														control_id[i][5]=rf_buf[2];   //更新累加数												
+  02B1    3006    LDIA	0x6
+  02B2    00F3    LD	0x73,A
+  02B3    086D    LD	A,0x6D
+  02B4    262F    CALL	0x62F
+  02B5    118A    CLRB	0xA,3
+  02B6    3EAD    ADDIA	0xAD
+  02B7    0084    LD	0x4,A
+  02B8    083E    LD	A,0x3E
+  02B9    0080    LD	0x0,A
+347:              														if(rf_buf[10]==control_id[i][4])
+  02BA    3006    LDIA	0x6
+  02BB    00F3    LD	0x73,A
+  02BC    086D    LD	A,0x6D
+  02BD    262F    CALL	0x62F
+  02BE    118A    CLRB	0xA,3
+  02BF    3EAC    ADDIA	0xAC
+  02C0    0084    LD	0x4,A
+  02C1    0846    LD	A,0x46
+  02C2    0600    XORA	0x0
+  02C3    1D03    SNZB	0x3,2
+  02C4    2B20    JP	0x320
+348:              															{
+349:              																if(flag_led==0)
+  02C5    08E5    TESTZ	0x65
+  02C6    1D03    SNZB	0x3,2
+  02C7    2AD7    JP	0x2D7
+350:              																{
+351:              																	flag_led=1;
+  02C8    01E5    CLR	0x65
+  02C9    0AE5    INCR	0x65
+352:              																	LED_ON;
+  02CA    1683    SETB	0x3,5
+  02CB    1007    CLRB	0x7,0
+  02CC    1283    CLRB	0x3,5
+  02CD    3064    LDIA	0x64
+  02CE    1007    CLRB	0x7,0
+353:              																	soft_delay_ms(100);
+  02CF    00F3    LD	0x73,A
+  02D0    01F4    CLR	0x74
+  02D1    255A    CALL	0x55A
+  02D2    118A    CLRB	0xA,3
+354:              																	LED_OFF;
+  02D3    1683    SETB	0x3,5
+  02D4    1007    CLRB	0x7,0
+  02D5    1283    CLRB	0x3,5
+  02D6    1407    SETB	0x7,0
+355:              																}
+356:              																
+357:              																if(rf_buf[11]==0)
+  02D7    08C7    TESTZ	0x47
+  02D8    1D03    SNZB	0x3,2
+  02D9    2B09    JP	0x309
+358:              																	{
+359:              																		if(i<4)
+  02DA    3004    LDIA	0x4
+  02DB    026D    SUBA	0x6D
+  02DC    1803    SZB	0x3,0
+  02DD    2AEB    JP	0x2EB
+360:              																			{
+361:              																				if((KEY0_FLAG==0))
+  02DE    08F6    TESTZ	0x76
+  02DF    1D03    SNZB	0x3,2
+  02E0    2B20    JP	0x320
+362:              																					{
+363:              																						if(rf_buf[9]==2)
+  02E1    0845    LD	A,0x45
+  02E2    3A02    XORIA	0x2
+  02E3    1D03    SNZB	0x3,2
+  02E4    2AE8    JP	0x2E8
+364:              																							KEY0.channel_status^=1;
+  02E5    3001    LDIA	0x1
+  02E6    06A0    XORR	0x20
+  02E7    2B20    JP	0x320
+365:              																						else
+366:              																							KEY0.channel_status=rf_buf[9];																					}
+  02E8    0845    LD	A,0x45
+  02E9    00A0    LD	0x20,A
+  02EA    2B20    JP	0x320
+367:              																			}
+368:              																		else if(i<8)
+  02EB    3008    LDIA	0x8
+  02EC    026D    SUBA	0x6D
+  02ED    1803    SZB	0x3,0
+  02EE    2AFC    JP	0x2FC
+369:              																			{
+370:              																				if((KEY1_FLAG==0))
+  02EF    08F7    TESTZ	0x77
+  02F0    1D03    SNZB	0x3,2
+  02F1    2B20    JP	0x320
+371:              																					{
+372:              																					if(rf_buf[9]==2)
+  02F2    0845    LD	A,0x45
+  02F3    3A02    XORIA	0x2
+  02F4    1D03    SNZB	0x3,2
+  02F5    2AF9    JP	0x2F9
+373:              																						KEY1.channel_status^=1;
+  02F6    3001    LDIA	0x1
+  02F7    06A3    XORR	0x23
+  02F8    2B20    JP	0x320
+374:              																					else
+375:              																						KEY1.channel_status=rf_buf[9];
+  02F9    0845    LD	A,0x45
+  02FA    00A3    LD	0x23,A
+  02FB    2B20    JP	0x320
+376:              
+377:              																					}
+378:              																			}
+379:              																		else
+380:              																			{
+381:              																				if((KEY2_FLAG==0))
+  02FC    08F8    TESTZ	0x78
+  02FD    1D03    SNZB	0x3,2
+  02FE    2B20    JP	0x320
+382:              																					{
+383:              																					if(rf_buf[9]==2)
+  02FF    0845    LD	A,0x45
+  0300    3A02    XORIA	0x2
+  0301    1D03    SNZB	0x3,2
+  0302    2B06    JP	0x306
+384:              																						KEY2.channel_status^=1;
+  0303    3001    LDIA	0x1
+  0304    06A6    XORR	0x26
+  0305    2B20    JP	0x320
+385:              																					else
+386:              																						KEY2.channel_status=rf_buf[9];
+  0306    0845    LD	A,0x45
+  0307    00A6    LD	0x26,A
+  0308    2B20    JP	0x320
+387:              																					
+388:              
+389:              																					}
+390:              																			}
+391:              																	}
+392:              																else   //延时操作
+393:              																	{
+394:              																		flag_5min_add=0;
+  0309    01AE    CLR	0x2E
+  030A    01AF    CLR	0x2F
+395:              																		if(delay_flag==1)
+  030B    0B39    SZDECA	0x39
+  030C    2B0F    JP	0x30F
+396:              																			{
+397:              																				channel_delay[0]=0;
+  030D    01A9    CLR	0x29
+398:              																				delay_flag=0;
+  030E    01B9    CLR	0x39
+399:              																			}
+400:              																		if(i<4)
+  030F    3004    LDIA	0x4
+  0310    026D    SUBA	0x6D
+  0311    1803    SZB	0x3,0
+  0312    2B15    JP	0x315
+401:              																			{
+402:              																			channel_delay[0]|=0x01;
+  0313    1429    SETB	0x29,0
+403:              																			}
+  0314    2B1C    JP	0x31C
+404:              																		else if(i<8)
+  0315    3008    LDIA	0x8
+  0316    026D    SUBA	0x6D
+  0317    1803    SZB	0x3,0
+  0318    2B1B    JP	0x31B
+405:              																			{
+406:              																			channel_delay[0]|=0x02;
+  0319    14A9    SETB	0x29,1
+407:              																			}
+  031A    2B1C    JP	0x31C
+408:              																		else
+409:              																			{
+410:              																			channel_delay[0]|=0x04;
+  031B    1529    SETB	0x29,2
+411:              																			}
+412:              																			channel_delay[1]=rf_buf[9];
+  031C    0845    LD	A,0x45
+  031D    00AA    LD	0x2A,A
+413:              																			channel_delay[2]=rf_buf[11];
+  031E    0847    LD	A,0x47
+  031F    00AB    LD	0x2B,A
+  0320    0AED    INCR	0x6D
+  0321    2A75    JP	0x275
+414:              																	}
+415:              															}
+416:              													}
+417:              											}
+418:              										
+419:              									}
+420:              								}
+421:              							else
+422:              								{
+423:              									
+424:              										{
+425:              											for(i=0;i<12;i++)
+  0322    01ED    CLR	0x6D
+  0323    300C    LDIA	0xC
+  0324    026D    SUBA	0x6D
+  0325    1803    SZB	0x3,0
+  0326    2BC5    JP	0x3C5
+426:              												{
+427:              													if((rf_buf[3]==control_id[i][0])
+428:              													&&(rf_buf[4]==control_id[i][1])
+429:              													&&(rf_buf[5]==control_id[i][2])
+430:              													&&(rf_buf[6]==control_id[i][3]))
+  0327    3006    LDIA	0x6
+  0328    00F3    LD	0x73,A
+  0329    086D    LD	A,0x6D
+  032A    262F    CALL	0x62F
+  032B    118A    CLRB	0xA,3
+  032C    3EA8    ADDIA	0xA8
+  032D    0084    LD	0x4,A
+  032E    083F    LD	A,0x3F
+  032F    1383    CLRB	0x3,7
+  0330    0600    XORA	0x0
+  0331    1D03    SNZB	0x3,2
+  0332    2BC3    JP	0x3C3
+  0333    3006    LDIA	0x6
+  0334    00F3    LD	0x73,A
+  0335    086D    LD	A,0x6D
+  0336    262F    CALL	0x62F
+  0337    118A    CLRB	0xA,3
+  0338    3EA9    ADDIA	0xA9
+  0339    0084    LD	0x4,A
+  033A    0840    LD	A,0x40
+  033B    0600    XORA	0x0
+  033C    1D03    SNZB	0x3,2
+  033D    2BC3    JP	0x3C3
+  033E    3006    LDIA	0x6
+  033F    00F3    LD	0x73,A
+  0340    086D    LD	A,0x6D
+  0341    262F    CALL	0x62F
+  0342    118A    CLRB	0xA,3
+  0343    3EAA    ADDIA	0xAA
+  0344    0084    LD	0x4,A
+  0345    0841    LD	A,0x41
+  0346    0600    XORA	0x0
+  0347    1D03    SNZB	0x3,2
+  0348    2BC3    JP	0x3C3
+  0349    3006    LDIA	0x6
+  034A    00F3    LD	0x73,A
+  034B    086D    LD	A,0x6D
+  034C    262F    CALL	0x62F
+  034D    118A    CLRB	0xA,3
+  034E    3EAB    ADDIA	0xAB
+  034F    0084    LD	0x4,A
+  0350    0842    LD	A,0x42
+  0351    0600    XORA	0x0
+  0352    1D03    SNZB	0x3,2
+  0353    2BC3    JP	0x3C3
+431:              														{
+432:              															if((rf_buf[2]!=control_id[i][5]))
+  0354    3006    LDIA	0x6
+  0355    00F3    LD	0x73,A
+  0356    086D    LD	A,0x6D
+  0357    262F    CALL	0x62F
+  0358    118A    CLRB	0xA,3
+  0359    3EAD    ADDIA	0xAD
+  035A    0084    LD	0x4,A
+  035B    083E    LD	A,0x3E
+  035C    0600    XORA	0x0
+  035D    1903    SZB	0x3,2
+  035E    2BC3    JP	0x3C3
+433:              															{
+434:              																control_id[i][5]=rf_buf[2];
+  035F    3006    LDIA	0x6
+  0360    00F3    LD	0x73,A
+  0361    086D    LD	A,0x6D
+  0362    262F    CALL	0x62F
+  0363    118A    CLRB	0xA,3
+  0364    3EAD    ADDIA	0xAD
+  0365    0084    LD	0x4,A
+  0366    083E    LD	A,0x3E
+  0367    0080    LD	0x0,A
+435:              																if(flag_led==0)
+  0368    08E5    TESTZ	0x65
+  0369    1D03    SNZB	0x3,2
+  036A    2B7A    JP	0x37A
+436:              																	{
+437:              																		flag_led=1;
+  036B    01E5    CLR	0x65
+  036C    0AE5    INCR	0x65
+438:              																		LED_ON;
+  036D    1683    SETB	0x3,5
+  036E    1007    CLRB	0x7,0
+  036F    1283    CLRB	0x3,5
+  0370    3064    LDIA	0x64
+  0371    1007    CLRB	0x7,0
+439:              																		soft_delay_ms(100);
+  0372    00F3    LD	0x73,A
+  0373    01F4    CLR	0x74
+  0374    255A    CALL	0x55A
+  0375    118A    CLRB	0xA,3
+440:              																		LED_OFF;
+  0376    1683    SETB	0x3,5
+  0377    1007    CLRB	0x7,0
+  0378    1283    CLRB	0x3,5
+  0379    1407    SETB	0x7,0
+441:              																	}
+442:              																if((rf_buf[11]==0))
+  037A    08C7    TESTZ	0x47
+  037B    1D03    SNZB	0x3,2
+  037C    2BAC    JP	0x3AC
+443:              																	{
+444:              																
+445:              																		if(i<4)
+  037D    3004    LDIA	0x4
+  037E    026D    SUBA	0x6D
+  037F    1803    SZB	0x3,0
+  0380    2B8E    JP	0x38E
+446:              																		{
+447:              																			if((KEY0_FLAG==0))
+  0381    08F6    TESTZ	0x76
+  0382    1D03    SNZB	0x3,2
+  0383    2BC3    JP	0x3C3
+448:              																				{
+449:              																					if(rf_buf[9]==2)
+  0384    0845    LD	A,0x45
+  0385    3A02    XORIA	0x2
+  0386    1D03    SNZB	0x3,2
+  0387    2B8B    JP	0x38B
+450:              																						KEY0.channel_status^=1;
+  0388    3001    LDIA	0x1
+  0389    06A0    XORR	0x20
+  038A    2BC3    JP	0x3C3
+451:              																					else
+452:              																						KEY0.channel_status=rf_buf[9];
+  038B    0845    LD	A,0x45
+  038C    00A0    LD	0x20,A
+  038D    2BC3    JP	0x3C3
+453:              																				}
+454:              																		}
+455:              																		else if(i<8)
+  038E    3008    LDIA	0x8
+  038F    026D    SUBA	0x6D
+  0390    1803    SZB	0x3,0
+  0391    2B9F    JP	0x39F
+456:              																		{
+457:              																			if((KEY1_FLAG==0))
+  0392    08F7    TESTZ	0x77
+  0393    1D03    SNZB	0x3,2
+  0394    2BC3    JP	0x3C3
+458:              																				{
+459:              																				if(rf_buf[9]==2)
+  0395    0845    LD	A,0x45
+  0396    3A02    XORIA	0x2
+  0397    1D03    SNZB	0x3,2
+  0398    2B9C    JP	0x39C
+460:              																					KEY1.channel_status^=1;
+  0399    3001    LDIA	0x1
+  039A    06A3    XORR	0x23
+  039B    2BC3    JP	0x3C3
+461:              																				else
+462:              																					KEY1.channel_status=rf_buf[9];
+  039C    0845    LD	A,0x45
+  039D    00A3    LD	0x23,A
+  039E    2BC3    JP	0x3C3
+463:              																				}
+464:              																		}
+465:              																		else
+466:              																		{
+467:              																			if((KEY2_FLAG==0))
+  039F    08F8    TESTZ	0x78
+  03A0    1D03    SNZB	0x3,2
+  03A1    2BC3    JP	0x3C3
+468:              																				{
+469:              																				if(rf_buf[9]==2)
+  03A2    0845    LD	A,0x45
+  03A3    3A02    XORIA	0x2
+  03A4    1D03    SNZB	0x3,2
+  03A5    2BA9    JP	0x3A9
+470:              																					KEY2.channel_status^=1;
+  03A6    3001    LDIA	0x1
+  03A7    06A6    XORR	0x26
+  03A8    2BC3    JP	0x3C3
+471:              																				else
+472:              																					KEY2.channel_status=rf_buf[9];
+  03A9    0845    LD	A,0x45
+  03AA    00A6    LD	0x26,A
+  03AB    2BC3    JP	0x3C3
+473:              																				}
+474:              																		}	
+475:              																	}
+476:              																else
+477:              																	{
+478:              																		flag_5min_add=0;
+  03AC    01AE    CLR	0x2E
+  03AD    01AF    CLR	0x2F
+479:              																		if(delay_flag==1)
+  03AE    0B39    SZDECA	0x39
+  03AF    2BB2    JP	0x3B2
+480:              																			{
+481:              																				channel_delay[0]=0;
+  03B0    01A9    CLR	0x29
+482:              																				delay_flag=0;
+  03B1    01B9    CLR	0x39
+483:              																			}
+484:              																		if(i<4)
+  03B2    3004    LDIA	0x4
+  03B3    026D    SUBA	0x6D
+  03B4    1803    SZB	0x3,0
+  03B5    2BB8    JP	0x3B8
+485:              																			{
+486:              																			channel_delay[0]|=0x01;
+  03B6    1429    SETB	0x29,0
+487:              																			}
+  03B7    2BBF    JP	0x3BF
+488:              																		else if(i<8)
+  03B8    3008    LDIA	0x8
+  03B9    026D    SUBA	0x6D
+  03BA    1803    SZB	0x3,0
+  03BB    2BBE    JP	0x3BE
+489:              																			{
+490:              																			channel_delay[0]|=0x02;
+  03BC    14A9    SETB	0x29,1
+491:              																			}
+  03BD    2BBF    JP	0x3BF
+492:              																		else
+493:              																			{
+494:              																			channel_delay[0]|=0x04;
+  03BE    1529    SETB	0x29,2
+495:              																			}
+496:              																			channel_delay[1]=rf_buf[9];
+  03BF    0845    LD	A,0x45
+  03C0    00AA    LD	0x2A,A
+497:              																			channel_delay[2]=rf_buf[11];
+  03C1    0847    LD	A,0x47
+  03C2    00AB    LD	0x2B,A
+  03C3    0AED    INCR	0x6D
+  03C4    2B23    JP	0x323
+498:              																	}
+499:              																
+500:              															}
+501:              														}
+502:              												}
+503:              										}
+504:              									
+505:              									
+506:              								}
+507:              							//防止同一帧数据重复响应
+508:              							soft_delay_ms(100);
+  03C5    3064    LDIA	0x64
+  03C6    00F3    LD	0x73,A
+  03C7    01F4    CLR	0x74
+  03C8    255A    CALL	0x55A
+509:              							RF_ClearFIFO();
+  03C9    158A    SETB	0xA,3
+  03CA    27EC    CALL	0x7EC
+510:              							RF_ClearStatus();
+  03CB    158A    SETB	0xA,3
+  03CC    2FFC    JP	0x7FC
+  03CD    0008    RET
+511:              
+512:              						}
+513:              				}break;
+514:              		}
+515:              	
+516:              }
+517:              
+518:              
+519:              void channel_set(uint8_t channel_num, uint8_t status)
+520:              {
+  0E05    00F4    LD	0x74,A
+521:              	switch(channel_num)
+  0E06    2E2E    JP	0x62E
+522:              		{
+523:              			case 0 :
+524:              					{
+525:              						if(status)
+  0E07    0873    LD	A,0x73
+  0E08    1903    SZB	0x3,2
+  0E09    2E0F    JP	0x60F
+526:              							{
+527:              								TRISB6=0;
+  0E0A    1683    SETB	0x3,5
+  0E0B    1306    CLRB	0x6,6
+528:              								RB6=1;
+  0E0C    1283    CLRB	0x3,5
+  0E0D    1706    SETB	0x6,6
+529:              							}
+  0E0E    0008    RET
+530:              						else 
+531:              							{
+532:              								TRISB6=0;
+  0E0F    1683    SETB	0x3,5
+  0E10    1306    CLRB	0x6,6
+533:              								RB6=0;
+  0E11    1283    CLRB	0x3,5
+  0E12    1306    CLRB	0x6,6
+  0E13    0008    RET
+534:              							}
+535:              					}break;
+536:              			case 1:
+537:              					{
+538:              						if(status)
+  0E14    0873    LD	A,0x73
+  0E15    1903    SZB	0x3,2
+  0E16    2E1C    JP	0x61C
+539:              							{
+540:              							TRISB5=0;
+  0E17    1683    SETB	0x3,5
+  0E18    1286    CLRB	0x6,5
+541:              							RB5=1;
+  0E19    1283    CLRB	0x3,5
+  0E1A    1686    SETB	0x6,5
+542:              							}
+  0E1B    0008    RET
+543:              						else 
+544:              							{
+545:              							TRISB5=0;
+  0E1C    1683    SETB	0x3,5
+  0E1D    1286    CLRB	0x6,5
+546:              							RB5=0;
+  0E1E    1283    CLRB	0x3,5
+  0E1F    1286    CLRB	0x6,5
+  0E20    0008    RET
+547:              							}
+548:              					}break;
+549:              			case 2: 
+550:              					{
+551:              						if(status)
+  0E21    0873    LD	A,0x73
+  0E22    1903    SZB	0x3,2
+  0E23    2E29    JP	0x629
+552:              							{
+553:              							TRISB4=0;
+  0E24    1683    SETB	0x3,5
+  0E25    1206    CLRB	0x6,4
+554:              							RB4=1;
+  0E26    1283    CLRB	0x3,5
+  0E27    1606    SETB	0x6,4
+555:              							}
+  0E28    0008    RET
+556:              						else 
+557:              							{
+558:              							TRISB4=0;
+  0E29    1683    SETB	0x3,5
+  0E2A    1206    CLRB	0x6,4
+559:              							RB4=0;
+  0E2B    1283    CLRB	0x3,5
+  0E2C    1206    CLRB	0x6,4
+  0E2D    0008    RET
+  0E2E    0874    LD	A,0x74
+  0E2F    3A00    XORIA	0x0
+  0E30    1903    SZB	0x3,2
+  0E31    2E07    JP	0x607
+  0E32    3A01    XORIA	0x1
+  0E33    1903    SZB	0x3,2
+  0E34    2E14    JP	0x614
+  0E35    3A03    XORIA	0x3
+  0E36    1903    SZB	0x3,2
+  0E37    2E21    JP	0x621
+  0E38    2E39    JP	0x639
+  0E39    0008    RET
+560:              							}
+561:              					}break;
+562:              		}
+563:              }
+564:              
+565:              void delay_task(void)
+566:              {
+567:              
+568:              	if(channel_delay[0]!=0)
+  0767    0829    LD	A,0x29
+  0768    1903    SZB	0x3,2
+  0769    0008    RET
+569:              		{
+570:              			if(delay_flag==0)delay_flag=1;
+  076A    08B9    TESTZ	0x39
+  076B    1D03    SNZB	0x3,2
+  076C    2F6F    JP	0x76F
+  076D    01B9    CLR	0x39
+  076E    0AB9    INCR	0x39
+571:              			if(channel_delay[2]>0)
+  076F    082B    LD	A,0x2B
+  0770    1903    SZB	0x3,2
+  0771    2FC0    JP	0x7C0
+572:              				{
+573:              					if(flag_5min_add>=30000)// 30000
+  0772    3075    LDIA	0x75
+  0773    022F    SUBA	0x2F
+  0774    3030    LDIA	0x30
+  0775    1903    SZB	0x3,2
+  0776    022E    SUBA	0x2E
+  0777    1C03    SNZB	0x3,0
+  0778    0008    RET
+574:              						{
+575:              						flag_5min_add=0;
+  0779    01AE    CLR	0x2E
+  077A    01AF    CLR	0x2F
+576:              						channel_delay[2]--;
+  077B    03AB    DECR	0x2B
+  077C    0008    RET
+577:              						}
+578:              				}
+579:              			else
+580:              				{
+581:              					switch(channel_delay[0])
+582:              						{
+583:              						case 1:
+584:              								{
+585:              									if(channel_delay[1]!=2)
+  077D    082A    LD	A,0x2A
+  077E    3A02    XORIA	0x2
+  077F    1903    SZB	0x3,2
+  0780    2F84    JP	0x784
+586:              										KEY0.channel_status=channel_delay[1];
+  0781    082A    LD	A,0x2A
+  0782    00A0    LD	0x20,A
+  0783    2FD7    JP	0x7D7
+587:              									else 
+588:              										KEY0.channel_status^=1;
+  0784    3001    LDIA	0x1
+  0785    06A0    XORR	0x20
+  0786    2FD7    JP	0x7D7
+589:              
+590:              									
+591:              									}break;
+592:              						case 2:
+593:              								{
+594:              									if(channel_delay[1]!=2)
+  0787    082A    LD	A,0x2A
+  0788    3A02    XORIA	0x2
+  0789    1D03    SNZB	0x3,2
+  078A    2F99    JP	0x799
+595:              										KEY1.channel_status=channel_delay[1];
+  078B    3001    LDIA	0x1
+  078C    2F9E    JP	0x79E
+596:              									else 
+597:              										KEY1.channel_status^=1;
+598:              
+599:              									
+600:              									}break;
+601:              						case 4:
+602:              								{
+603:              									if(channel_delay[1]!=2)
+  078D    082A    LD	A,0x2A
+  078E    3A02    XORIA	0x2
+  078F    1D03    SNZB	0x3,2
+  0790    2FB8    JP	0x7B8
+604:              										KEY2.channel_status=channel_delay[1];
+  0791    3001    LDIA	0x1
+  0792    2FBE    JP	0x7BE
+605:              									else 
+606:              										KEY2.channel_status^=1;
+607:              
+608:              									}break;
+609:              						case 3:
+610:              								{
+611:              									if(channel_delay[1]!=2)
+  0793    082A    LD	A,0x2A
+  0794    3A02    XORIA	0x2
+  0795    1903    SZB	0x3,2
+  0796    2F9C    JP	0x79C
+612:              										{
+613:              										KEY0.channel_status=channel_delay[1];
+  0797    082A    LD	A,0x2A
+  0798    00A0    LD	0x20,A
+614:              										KEY1.channel_status=channel_delay[1];
+  0799    082A    LD	A,0x2A
+  079A    00A3    LD	0x23,A
+615:              										}
+  079B    2FD7    JP	0x7D7
+616:              									else 
+617:              										{
+618:              										KEY0.channel_status^=1;
+  079C    3001    LDIA	0x1
+  079D    06A0    XORR	0x20
+619:              										KEY1.channel_status^=1;
+  079E    06A3    XORR	0x23
+  079F    2FD7    JP	0x7D7
+620:              										}
+621:              									}break;
+622:              						case 5:
+623:              								{
+624:              									if(channel_delay[1]!=2)
+  07A0    082A    LD	A,0x2A
+  07A1    3A02    XORIA	0x2
+  07A2    1903    SZB	0x3,2
+  07A3    2FA7    JP	0x7A7
+625:              										{
+626:              										KEY0.channel_status=channel_delay[1];
+  07A4    082A    LD	A,0x2A
+  07A5    00A0    LD	0x20,A
+  07A6    2FB8    JP	0x7B8
+627:              										KEY2.channel_status=channel_delay[1];
+628:              										}
+629:              									else 
+630:              										{
+631:              										KEY0.channel_status^=1;
+  07A7    3001    LDIA	0x1
+  07A8    06A0    XORR	0x20
+  07A9    2FBE    JP	0x7BE
+632:              										KEY2.channel_status^=1;
+633:              										}
+634:              									}break;
+635:              						case 6:
+636:              								{
+637:              									if(channel_delay[1]!=2)
+  07AA    082A    LD	A,0x2A
+  07AB    3A02    XORIA	0x2
+  07AC    1D03    SNZB	0x3,2
+  07AD    2FB6    JP	0x7B6
+638:              										{
+639:              										KEY1.channel_status=channel_delay[1];
+  07AE    3001    LDIA	0x1
+  07AF    2FBD    JP	0x7BD
+640:              										KEY2.channel_status=channel_delay[1];
+641:              										}
+642:              									else 
+643:              										{
+644:              										KEY1.channel_status^=1;
+645:              										KEY2.channel_status^=1;
+646:              										}
+647:              									}break;
+648:              						case 7:
+649:              								{
+650:              									if(channel_delay[1]!=2)
+  07B0    082A    LD	A,0x2A
+  07B1    3A02    XORIA	0x2
+  07B2    1903    SZB	0x3,2
+  07B3    2FBB    JP	0x7BB
+651:              										{
+652:              										KEY0.channel_status=channel_delay[1];
+  07B4    082A    LD	A,0x2A
+  07B5    00A0    LD	0x20,A
+653:              										KEY1.channel_status=channel_delay[1];
+  07B6    082A    LD	A,0x2A
+  07B7    00A3    LD	0x23,A
+654:              										KEY2.channel_status=channel_delay[1];
+  07B8    082A    LD	A,0x2A
+  07B9    00A6    LD	0x26,A
+655:              										}
+  07BA    2FD7    JP	0x7D7
+656:              									else 
+657:              										{
+658:              										KEY0.channel_status^=1;
+  07BB    3001    LDIA	0x1
+  07BC    06A0    XORR	0x20
+659:              										KEY1.channel_status^=1;
+  07BD    06A3    XORR	0x23
+660:              										KEY2.channel_status^=1;
+  07BE    06A6    XORR	0x26
+  07BF    2FD7    JP	0x7D7
+  07C0    0829    LD	A,0x29
+  07C1    3A01    XORIA	0x1
+  07C2    1903    SZB	0x3,2
+  07C3    2F7D    JP	0x77D
+  07C4    3A03    XORIA	0x3
+  07C5    1903    SZB	0x3,2
+  07C6    2F87    JP	0x787
+  07C7    3A01    XORIA	0x1
+  07C8    1903    SZB	0x3,2
+  07C9    2F93    JP	0x793
+  07CA    3A07    XORIA	0x7
+  07CB    1903    SZB	0x3,2
+  07CC    2F8D    JP	0x78D
+  07CD    3A01    XORIA	0x1
+  07CE    1903    SZB	0x3,2
+  07CF    2FA0    JP	0x7A0
+  07D0    3A03    XORIA	0x3
+  07D1    1903    SZB	0x3,2
+  07D2    2FAA    JP	0x7AA
+  07D3    3A01    XORIA	0x1
+  07D4    1903    SZB	0x3,2
+  07D5    2FB0    JP	0x7B0
+  07D6    2FD7    JP	0x7D7
+661:              										}
+662:              									}break;
+663:              						}
+664:              
+665:              
+666:              					channel_delay[0]=0;
+  07D7    01A9    CLR	0x29
+667:              					channel_delay[1]=0;
+  07D8    01AA    CLR	0x2A
+668:              					channel_delay[2]=0;
+  07D9    01AB    CLR	0x2B
+669:              					delay_flag=0;
+  07DA    01B9    CLR	0x39
+  07DB    0008    RET
+670:              				}
+671:              		}
+672:              }
+---- F:\项目\酷宅\BLE移植\rx\src\e2prom.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "iic.h"
+3:                #include "e2prom.h"
+4:                #include "delay.h"
+5:                
+6:                
+7:                
+8:                void AT24C02_Write_Byte(unsigned char addr ,unsigned char data)
+9:                {
+  05B5    00D2    LD	0x52,A
+10:               	IIC_START();
+  05B6    2619    CALL	0x619
+  05B7    118A    CLRB	0xA,3
+11:               	I2C_SendByte(0XA0);	 
+  05B8    30A0    LDIA	0xA0
+  05B9    25F7    CALL	0x5F7
+  05BA    118A    CLRB	0xA,3
+12:               	IIC_Wait_ACK(); 
+  05BB    25E4    CALL	0x5E4
+  05BC    118A    CLRB	0xA,3
+13:               	I2C_SendByte(addr);
+  05BD    0852    LD	A,0x52
+  05BE    25F7    CALL	0x5F7
+  05BF    118A    CLRB	0xA,3
+14:               	IIC_Wait_ACK(); 
+  05C0    25E4    CALL	0x5E4
+  05C1    118A    CLRB	0xA,3
+15:               	I2C_SendByte(data);
+  05C2    0851    LD	A,0x51
+  05C3    25F7    CALL	0x5F7
+  05C4    118A    CLRB	0xA,3
+16:               	IIC_Wait_ACK(); 
+  05C5    25E4    CALL	0x5E4
+  05C6    118A    CLRB	0xA,3
+17:               	IIC_STOP();	
+  05C7    2E26    JP	0x626
+18:               }
+19:               
+20:               unsigned char AT24C02_Read_Byte(unsigned char addr)
+21:               {
+  05C8    00D5    LD	0x55,A
+22:               	unsigned char temp = 0;		  	    																 
+23:                  	IIC_START();
+  05C9    2619    CALL	0x619
+  05CA    118A    CLRB	0xA,3
+24:               
+25:               	I2C_SendByte(0XA0);	   		
+  05CB    30A0    LDIA	0xA0
+  05CC    25F7    CALL	0x5F7
+  05CD    118A    CLRB	0xA,3
+26:               	IIC_Wait_ACK();
+  05CE    25E4    CALL	0x5E4
+  05CF    118A    CLRB	0xA,3
+27:               	I2C_SendByte(addr);			    	 	   
+  05D0    0855    LD	A,0x55
+  05D1    25F7    CALL	0x5F7
+  05D2    118A    CLRB	0xA,3
+28:               	IIC_Wait_ACK(); 
+  05D3    25E4    CALL	0x5E4
+  05D4    118A    CLRB	0xA,3
+29:               //  I2C_SendByte(addr%256);   		
+30:               //	IIC_Wait_ACK();	    
+31:               	IIC_START(); 	 	   
+  05D5    2619    CALL	0x619
+  05D6    118A    CLRB	0xA,3
+32:               	I2C_SendByte(0XA1);           				   
+  05D7    30A1    LDIA	0xA1
+  05D8    25F7    CALL	0x5F7
+  05D9    118A    CLRB	0xA,3
+33:               	IIC_Wait_ACK();	 
+  05DA    25E4    CALL	0x5E4
+  05DB    118A    CLRB	0xA,3
+34:               	temp = I2C_ReadByte(1);		   
+  05DC    3001    LDIA	0x1
+  05DD    258F    CALL	0x58F
+  05DE    118A    CLRB	0xA,3
+  05DF    0874    LD	A,0x74
+  05E0    00D6    LD	0x56,A
+35:                  	IIC_STOP();								   
+  05E1    2626    CALL	0x626
+36:               	
+37:               	return temp;
+  05E2    0856    LD	A,0x56
+  05E3    0008    RET
+38:               }
+39:               
+40:               void AT24C02_Write_Msg(unsigned char addr ,unsigned char *data,unsigned char len)
+41:               {
+  03CE    00D8    LD	0x58,A
+42:               	unsigned char i=0;
+  03CF    01D9    CLR	0x59
+43:               	for(i=0;i<len;i++)
+  03D0    01D9    CLR	0x59
+  03D1    0856    LD	A,0x56
+  03D2    0259    SUBA	0x59
+  03D3    1803    SZB	0x3,0
+  03D4    0008    RET
+44:               	{
+45:               	AT24C02_Write_Byte(addr,data[i]);
+  03D5    0859    LD	A,0x59
+  03D6    0755    ADDA	0x55
+  03D7    00D7    LD	0x57,A
+  03D8    0084    LD	0x4,A
+  03D9    1383    CLRB	0x3,7
+  03DA    0800    LD	A,0x0
+  03DB    00D1    LD	0x51,A
+  03DC    0858    LD	A,0x58
+  03DD    25B5    CALL	0x5B5
+  03DE    118A    CLRB	0xA,3
+  03DF    3005    LDIA	0x5
+46:               	addr++;
+  03E0    0AD8    INCR	0x58
+47:               	soft_delay_ms(5);
+  03E1    00F3    LD	0x73,A
+  03E2    01F4    CLR	0x74
+  03E3    255A    CALL	0x55A
+  03E4    118A    CLRB	0xA,3
+  03E5    0AD9    INCR	0x59
+  03E6    2BD1    JP	0x3D1
+48:               	}
+49:               }
+50:               
+51:               
+52:               void AT24C02_Read_Msg(unsigned char addr,unsigned char *data,unsigned char len)
+53:               {
+  063D    00DA    LD	0x5A,A
+54:               	unsigned char i=0;
+  063E    01DB    CLR	0x5B
+55:               	for(i=0;i<len;i++)
+  063F    01DB    CLR	0x5B
+  0640    0858    LD	A,0x58
+  0641    025B    SUBA	0x5B
+  0642    1803    SZB	0x3,0
+  0643    0008    RET
+56:               	{
+57:               	data[i]=AT24C02_Read_Byte(addr);
+  0644    085B    LD	A,0x5B
+  0645    0757    ADDA	0x57
+  0646    00D9    LD	0x59,A
+  0647    0084    LD	0x4,A
+  0648    085A    LD	A,0x5A
+  0649    25C8    CALL	0x5C8
+  064A    118A    CLRB	0xA,3
+  064B    1383    CLRB	0x3,7
+  064C    0080    LD	0x0,A
+58:               	addr++;
+  064D    0ADA    INCR	0x5A
+59:               	soft_delay_ms(1);
+  064E    01F3    CLR	0x73
+  064F    0AF3    INCR	0x73
+  0650    01F4    CLR	0x74
+  0651    255A    CALL	0x55A
+  0652    118A    CLRB	0xA,3
+  0653    0ADB    INCR	0x5B
+  0654    2E40    JP	0x640
+60:               	}
+61:               }
+62:               
+63:               
+64:               
+65:               
+66:               
+67:               
+68:               
+---- F:\项目\酷宅\BLE移植\rx\src\key_scan.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "key_scan.h"
+3:                #include "timer1.h"
+4:                #include "PORTB_interrupt.h"
+5:                #include "recive.h"
+6:                #include "delay.h"
+7:                #include "system.h"
+8:                
+9:                unsigned char  KEY0_FLAG=0;
+10:               unsigned char  KEY1_FLAG=0;
+11:               unsigned char  KEY2_FLAG=0;
+12:               
+13:               uint16_t flag_time_key0_add=0;
+14:               uint16_t flag_time_key1_add=0;
+15:               uint16_t flag_time_key2_add=0;
+16:               
+17:               channel_flag_stu KEY0 = 0;
+18:               channel_flag_stu KEY1 = 0;
+19:               channel_flag_stu KEY2 = 0;
+20:               
+21:               unsigned char key_long_flag=0;
+22:               
+23:               extern unsigned char sys_stute ;
+24:               unsigned char match_channel_flag=0;
+25:               unsigned char key_long_flag_add=0;
+26:               
+27:               void key_scan(void)
+28:               {
+29:               	if(RB1==0)
+  03E7    1886    SZB	0x6,1
+  03E8    2BFA    JP	0x3FA
+30:               		{
+31:               			soft_delay_ms(10);
+  03E9    300A    LDIA	0xA
+  03EA    00F3    LD	0x73,A
+  03EB    01F4    CLR	0x74
+  03EC    255A    CALL	0x55A
+  03ED    118A    CLRB	0xA,3
+32:               			if(RB1==0)
+  03EE    1C86    SNZB	0x6,1
+33:               			if((KEY0_FLAG&0x01)==0)
+  03EF    1876    SZB	0x76,0
+  03F0    2C00    JP	0x400
+34:               				{
+35:               					flag_time_key0_add=0;
+  03F1    01B2    CLR	0x32
+  03F2    01B3    CLR	0x33
+36:               					KEY0_FLAG|=0X01;
+  03F3    1476    SETB	0x76,0
+37:               					if(key_long_flag_add==0)
+  03F4    08FA    TESTZ	0x7A
+  03F5    1D03    SNZB	0x3,2
+  03F6    2C00    JP	0x400
+38:               						key_long_flag_add=1;
+  03F7    01FA    CLR	0x7A
+  03F8    0AFA    INCR	0x7A
+  03F9    2C00    JP	0x400
+39:               				}
+40:               		}
+41:               	else 
+42:               		{
+43:               			if(KEY0_FLAG&0x01)
+  03FA    1C76    SNZB	0x76,0
+  03FB    2C00    JP	0x400
+44:               				{
+45:               					KEY0_FLAG|=0X02;
+  03FC    14F6    SETB	0x76,1
+46:               					if(key_long_flag_add==1)key_long_flag_add=0;
+  03FD    0B7A    SZDECA	0x7A
+  03FE    2C00    JP	0x400
+  03FF    01FA    CLR	0x7A
+47:               				}
+48:               		}
+49:               
+50:               	if(RB2==0)
+  0400    1906    SZB	0x6,2
+  0401    2C13    JP	0x413
+51:               		{
+52:               			soft_delay_ms(10);
+  0402    300A    LDIA	0xA
+  0403    00F3    LD	0x73,A
+  0404    01F4    CLR	0x74
+  0405    255A    CALL	0x55A
+  0406    118A    CLRB	0xA,3
+53:               			if(RB2==0)
+  0407    1D06    SNZB	0x6,2
+54:               			if((KEY1_FLAG&0x01)==0)
+  0408    1877    SZB	0x77,0
+  0409    2C1A    JP	0x41A
+55:               				{
+56:               					flag_time_key1_add=0;
+  040A    01B4    CLR	0x34
+  040B    01B5    CLR	0x35
+57:               					KEY1_FLAG|=0X01;
+  040C    1477    SETB	0x77,0
+58:               					if(key_long_flag_add==0)
+  040D    08FA    TESTZ	0x7A
+  040E    1D03    SNZB	0x3,2
+  040F    2C1A    JP	0x41A
+59:               						key_long_flag_add=2;
+  0410    3002    LDIA	0x2
+  0411    00FA    LD	0x7A,A
+  0412    2C1A    JP	0x41A
+60:               				}
+61:               		
+62:               		}
+63:               	else 
+64:               		{
+65:               			if(KEY1_FLAG&0x01)
+  0413    1C77    SNZB	0x77,0
+  0414    2C1A    JP	0x41A
+66:               				{
+67:               					KEY1_FLAG|=0X02;
+  0415    14F7    SETB	0x77,1
+68:               					if(key_long_flag_add==2)key_long_flag_add=0;
+  0416    087A    LD	A,0x7A
+  0417    3A02    XORIA	0x2
+  0418    1903    SZB	0x3,2
+  0419    01FA    CLR	0x7A
+69:               				}
+70:               		}
+71:               
+72:               
+73:               
+74:               	
+75:               
+76:               	if(RB3==0)
+  041A    1986    SZB	0x6,3
+  041B    2C2D    JP	0x42D
+77:               		{
+78:               			soft_delay_ms(10);
+  041C    300A    LDIA	0xA
+  041D    00F3    LD	0x73,A
+  041E    01F4    CLR	0x74
+  041F    255A    CALL	0x55A
+  0420    118A    CLRB	0xA,3
+79:               			if(RB3==0)
+  0421    1D86    SNZB	0x6,3
+80:               			if((KEY2_FLAG&0x01)==0)
+  0422    1878    SZB	0x78,0
+  0423    2C45    JP	0x445
+81:               				{
+82:               					flag_time_key2_add=0;
+  0424    01B6    CLR	0x36
+  0425    01B7    CLR	0x37
+83:               					KEY2_FLAG|=0X01;
+  0426    1478    SETB	0x78,0
+84:               					if(key_long_flag_add==0)
+  0427    08FA    TESTZ	0x7A
+  0428    1D03    SNZB	0x3,2
+  0429    2C45    JP	0x445
+85:               						key_long_flag_add=4;
+  042A    3004    LDIA	0x4
+  042B    00FA    LD	0x7A,A
+  042C    2C45    JP	0x445
+86:               				}
+87:               		}
+88:               	else
+89:               		{
+90:               			if(KEY2_FLAG&0x01)
+  042D    1C78    SNZB	0x78,0
+  042E    2C45    JP	0x445
+91:               				{
+92:               					KEY2_FLAG|=0X02;
+  042F    14F8    SETB	0x78,1
+93:               					if(key_long_flag_add==4)key_long_flag_add=0;
+  0430    087A    LD	A,0x7A
+  0431    3A04    XORIA	0x4
+  0432    1D03    SNZB	0x3,2
+  0433    2C45    JP	0x445
+  0434    01FA    CLR	0x7A
+  0435    2C45    JP	0x445
+94:               				}
+95:               		}
+96:               
+97:               
+98:               	switch(key_long_flag_add)
+99:               		{
+100:              			case 0:
+101:              				{
+102:              					
+103:              				}break;
+104:              			case 1:
+105:              				{
+106:              					flag_time_key1_add=0;
+  0436    01B4    CLR	0x34
+  0437    01B5    CLR	0x35
+107:              					flag_time_key2_add=0;
+  0438    01B6    CLR	0x36
+  0439    01B7    CLR	0x37
+108:              				}break;
+  043A    0008    RET
+109:              			case 2:
+110:              				{
+111:              					flag_time_key0_add=0;
+  043B    01B2    CLR	0x32
+  043C    01B3    CLR	0x33
+112:              					flag_time_key2_add=0;
+  043D    01B6    CLR	0x36
+  043E    01B7    CLR	0x37
+113:              				}break;
+  043F    0008    RET
+114:              			case 4:
+115:              				{
+116:              					flag_time_key0_add=0;
+  0440    01B2    CLR	0x32
+  0441    01B3    CLR	0x33
+117:              					flag_time_key1_add=0;
+  0442    01B4    CLR	0x34
+  0443    01B5    CLR	0x35
+118:              				}break;
+  0444    0008    RET
+  0445    087A    LD	A,0x7A
+  0446    3A00    XORIA	0x0
+  0447    1903    SZB	0x3,2
+  0448    2C53    JP	0x453
+  0449    3A01    XORIA	0x1
+  044A    1903    SZB	0x3,2
+  044B    2C36    JP	0x436
+  044C    3A03    XORIA	0x3
+  044D    1903    SZB	0x3,2
+  044E    2C3B    JP	0x43B
+  044F    3A06    XORIA	0x6
+  0450    1903    SZB	0x3,2
+  0451    2C40    JP	0x440
+  0452    2C53    JP	0x453
+  0453    0008    RET
+119:              		}
+120:              }
+121:              
+122:              
+123:              
+124:              
+125:              void key_value_read(void)
+126:              {
+127:              	key_scan();
+  0454    23E7    CALL	0x3E7
+  0455    118A    CLRB	0xA,3
+128:              	if(KEY0_FLAG==0x01)
+  0456    0B76    SZDECA	0x76
+  0457    2C7F    JP	0x47F
+129:              		{
+130:              			 	
+131:              				if(flag_time_key0_add>=500)
+  0458    3001    LDIA	0x1
+  0459    0233    SUBA	0x33
+  045A    30F4    LDIA	0xF4
+  045B    1903    SZB	0x3,2
+  045C    0232    SUBA	0x32
+  045D    1C03    SNZB	0x3,0
+  045E    2C72    JP	0x472
+132:              						{
+133:              							if(key_long_flag==0x01)
+  045F    0B79    SZDECA	0x79
+  0460    2CAA    JP	0x4AA
+134:              								{
+135:              									key_long_flag=0x10;
+  0461    3010    LDIA	0x10
+  0462    00F9    LD	0x79,A
+136:              									LED_ON;
+137:              									soft_delay_ms(100);
+  0463    2655    CALL	0x655
+  0464    118A    CLRB	0xA,3
+  0465    255A    CALL	0x55A
+  0466    118A    CLRB	0xA,3
+138:              									LED_OFF;
+139:              									soft_delay_ms(100);
+  0467    265D    CALL	0x65D
+  0468    118A    CLRB	0xA,3
+  0469    255A    CALL	0x55A
+  046A    118A    CLRB	0xA,3
+140:              									LED_ON;
+141:              									soft_delay_ms(100);
+  046B    2655    CALL	0x655
+  046C    118A    CLRB	0xA,3
+  046D    255A    CALL	0x55A
+  046E    118A    CLRB	0xA,3
+142:              									LED_OFF;
+  046F    2665    CALL	0x665
+  0470    118A    CLRB	0xA,3
+143:              								}
+144:              						}
+  0471    2CAA    JP	0x4AA
+145:              					else if(flag_time_key0_add>=300)
+  0472    3001    LDIA	0x1
+  0473    0233    SUBA	0x33
+  0474    302C    LDIA	0x2C
+  0475    1903    SZB	0x3,2
+  0476    0232    SUBA	0x32
+  0477    1C03    SNZB	0x3,0
+  0478    2CAA    JP	0x4AA
+146:              						{
+147:              							if(key_long_flag==0)
+  0479    08F9    TESTZ	0x79
+  047A    1D03    SNZB	0x3,2
+  047B    2CAA    JP	0x4AA
+148:              								{
+149:              									key_long_flag=0x01;
+  047C    01F9    CLR	0x79
+  047D    0AF9    INCR	0x79
+  047E    2C6B    JP	0x46B
+150:              									LED_ON;
+151:              									soft_delay_ms(100);
+152:              									LED_OFF;
+153:              								}
+154:              						}
+155:              					
+156:              
+157:              		}
+158:              	else if(KEY0_FLAG==0x03)
+  047F    0876    LD	A,0x76
+  0480    3A03    XORIA	0x3
+  0481    1D03    SNZB	0x3,2
+  0482    2CAA    JP	0x4AA
+  0483    3001    LDIA	0x1
+159:              		{
+160:              			KEY0_FLAG=0;
+  0484    01F6    CLR	0x76
+161:              			
+162:              			if((flag_time_key0_add<300))
+  0485    0233    SUBA	0x33
+  0486    302C    LDIA	0x2C
+  0487    1903    SZB	0x3,2
+  0488    0232    SUBA	0x32
+163:              				{
+164:              					KEY0.channel_status^=1;
+  0489    3001    LDIA	0x1
+  048A    1803    SZB	0x3,0
+  048B    2C8E    JP	0x48E
+  048C    06A0    XORR	0x20
+165:              				}
+  048D    2CAA    JP	0x4AA
+166:              
+167:              				else  if(flag_time_key0_add<500)
+  048E    0233    SUBA	0x33
+  048F    30F4    LDIA	0xF4
+  0490    1903    SZB	0x3,2
+  0491    0232    SUBA	0x32
+  0492    1803    SZB	0x3,0
+  0493    2C9C    JP	0x49C
+168:              					{
+169:              						if(key_long_flag==0x01)
+  0494    0B79    SZDECA	0x79
+  0495    2CAA    JP	0x4AA
+  0496    3011    LDIA	0x11
+170:              							{
+171:              								KEY0.key_flag_3s=1;
+  0497    01A1    CLR	0x21
+  0498    0AA1    INCR	0x21
+172:              								key_long_flag=0x11;
+  0499    00F9    LD	0x79,A
+173:              								sys_stute=MATCH_MSG;
+  049A    3002    LDIA	0x2
+  049B    2CA5    JP	0x4A5
+174:              								flag_time_key1_add=0;
+  04A6    01B4    CLR	0x34
+  04A7    01B5    CLR	0x35
+175:              									flag_time_key2_add=0;
+  04A8    01B6    CLR	0x36
+  04A9    01B7    CLR	0x37
+176:              							}
+177:              					}
+178:              				else
+179:              					{
+180:              						if(key_long_flag==0x10)
+  049C    0879    LD	A,0x79
+  049D    3A10    XORIA	0x10
+  049E    1D03    SNZB	0x3,2
+  049F    2CAA    JP	0x4AA
+  04A0    3011    LDIA	0x11
+181:              							{
+182:              								KEY0.key_flag_5s=1;
+  04A1    01A2    CLR	0x22
+  04A2    0AA2    INCR	0x22
+183:              								key_long_flag=0x11;
+  04A3    00F9    LD	0x79,A
+184:              								sys_stute=CLEAN_MSG;
+  04A4    3003    LDIA	0x3
+  04A5    00EF    LD	0x6F,A
+185:              								flag_time_key1_add=0;
+186:              									flag_time_key2_add=0;
+187:              							}
+188:              					}
+189:              				
+190:              		}
+191:              	
+192:              
+193:              	if(KEY1_FLAG==0x01)
+  04AA    0B77    SZDECA	0x77
+  04AB    2CD5    JP	0x4D5
+194:              		{
+195:              				
+196:              				if(flag_time_key1_add>=500)
+  04AC    3001    LDIA	0x1
+  04AD    0235    SUBA	0x35
+  04AE    30F4    LDIA	0xF4
+  04AF    1903    SZB	0x3,2
+  04B0    0234    SUBA	0x34
+  04B1    1C03    SNZB	0x3,0
+  04B2    2CC8    JP	0x4C8
+197:              					{
+198:              						if(key_long_flag==0x02)
+  04B3    0879    LD	A,0x79
+  04B4    3A02    XORIA	0x2
+  04B5    1D03    SNZB	0x3,2
+  04B6    2D01    JP	0x501
+199:              							{
+200:              								key_long_flag=0x20;
+  04B7    3020    LDIA	0x20
+  04B8    00F9    LD	0x79,A
+201:              								LED_ON;
+202:              								soft_delay_ms(100);
+  04B9    2655    CALL	0x655
+  04BA    118A    CLRB	0xA,3
+  04BB    255A    CALL	0x55A
+  04BC    118A    CLRB	0xA,3
+203:              								LED_OFF;
+204:              								soft_delay_ms(100);
+  04BD    265D    CALL	0x65D
+  04BE    118A    CLRB	0xA,3
+  04BF    255A    CALL	0x55A
+  04C0    118A    CLRB	0xA,3
+205:              								LED_ON;
+206:              								soft_delay_ms(100);
+  04C1    2655    CALL	0x655
+  04C2    118A    CLRB	0xA,3
+  04C3    255A    CALL	0x55A
+  04C4    118A    CLRB	0xA,3
+207:              								LED_OFF;
+  04C5    2665    CALL	0x665
+  04C6    118A    CLRB	0xA,3
+208:              							}
+209:              					}
+  04C7    2D01    JP	0x501
+210:              				else if(flag_time_key1_add>=300)
+  04C8    3001    LDIA	0x1
+  04C9    0235    SUBA	0x35
+  04CA    302C    LDIA	0x2C
+  04CB    1903    SZB	0x3,2
+  04CC    0234    SUBA	0x34
+  04CD    1C03    SNZB	0x3,0
+  04CE    2D01    JP	0x501
+211:              					{
+212:              						if(key_long_flag==0)
+  04CF    08F9    TESTZ	0x79
+  04D0    1D03    SNZB	0x3,2
+  04D1    2D01    JP	0x501
+213:              							{
+214:              								key_long_flag=0x02;
+  04D2    3002    LDIA	0x2
+  04D3    00F9    LD	0x79,A
+  04D4    2CC1    JP	0x4C1
+215:              								LED_ON;
+216:              								soft_delay_ms(100);
+217:              								LED_OFF;
+218:              							}
+219:              					}
+220:              			
+221:              		}
+222:              	else if(KEY1_FLAG==0x03)
+  04D5    0877    LD	A,0x77
+  04D6    3A03    XORIA	0x3
+  04D7    1D03    SNZB	0x3,2
+  04D8    2D01    JP	0x501
+  04D9    3001    LDIA	0x1
+223:              		{
+224:              			KEY1_FLAG=0;
+  04DA    01F7    CLR	0x77
+225:              			if((flag_time_key1_add<300))
+  04DB    0235    SUBA	0x35
+  04DC    302C    LDIA	0x2C
+  04DD    1903    SZB	0x3,2
+  04DE    0234    SUBA	0x34
+226:              				{
+227:              					KEY1.channel_status^=1;
+  04DF    3001    LDIA	0x1
+  04E0    1803    SZB	0x3,0
+  04E1    2CE4    JP	0x4E4
+  04E2    06A3    XORR	0x23
+228:              				}
+  04E3    2D01    JP	0x501
+229:              			
+230:              				else if(flag_time_key1_add<500)
+  04E4    0235    SUBA	0x35
+  04E5    30F4    LDIA	0xF4
+  04E6    1903    SZB	0x3,2
+  04E7    0234    SUBA	0x34
+231:              					{
+232:              						if(key_long_flag==0x02)
+  04E8    0879    LD	A,0x79
+  04E9    1803    SZB	0x3,0
+  04EA    2CF4    JP	0x4F4
+  04EB    3A02    XORIA	0x2
+  04EC    1D03    SNZB	0x3,2
+  04ED    2D01    JP	0x501
+  04EE    3021    LDIA	0x21
+233:              							{
+234:              								KEY1.key_flag_3s=1;
+  04EF    01A4    CLR	0x24
+  04F0    0AA4    INCR	0x24
+235:              								key_long_flag=0x21;
+  04F1    00F9    LD	0x79,A
+236:              								sys_stute=MATCH_MSG;
+  04F2    3002    LDIA	0x2
+  04F3    2CFC    JP	0x4FC
+237:              								flag_time_key2_add=0;
+  04FD    01B6    CLR	0x36
+  04FE    01B7    CLR	0x37
+238:              									flag_time_key0_add=0;
+  04FF    01B2    CLR	0x32
+  0500    01B3    CLR	0x33
+239:              							}
+240:              					}
+241:              				else
+242:              					{
+243:              						if(key_long_flag==0x20)
+  04F4    3A20    XORIA	0x20
+  04F5    1D03    SNZB	0x3,2
+  04F6    2D01    JP	0x501
+  04F7    3021    LDIA	0x21
+244:              							{
+245:              								KEY1.key_flag_5s=1;
+  04F8    01A5    CLR	0x25
+  04F9    0AA5    INCR	0x25
+246:              								key_long_flag=0x21;
+  04FA    00F9    LD	0x79,A
+247:              								sys_stute=CLEAN_MSG;
+  04FB    3003    LDIA	0x3
+  04FC    00EF    LD	0x6F,A
+248:              								flag_time_key2_add=0;
+249:              									flag_time_key0_add=0;
+250:              							}
+251:              					}
+252:              				
+253:              			
+254:              		}
+255:              
+256:              
+257:              		if(KEY2_FLAG==0x01)
+  0501    0B78    SZDECA	0x78
+  0502    2D2D    JP	0x52D
+258:              				{
+259:              
+260:              					
+261:              							if(flag_time_key2_add>=500)
+  0503    3001    LDIA	0x1
+  0504    0237    SUBA	0x37
+  0505    30F4    LDIA	0xF4
+  0506    1903    SZB	0x3,2
+  0507    0236    SUBA	0x36
+  0508    1C03    SNZB	0x3,0
+  0509    2D20    JP	0x520
+262:              								{
+263:              									if(key_long_flag==0x04)
+  050A    0879    LD	A,0x79
+  050B    3A04    XORIA	0x4
+  050C    1D03    SNZB	0x3,2
+  050D    0008    RET
+264:              									{
+265:              										key_long_flag=0x40;
+  050E    3040    LDIA	0x40
+  050F    00F9    LD	0x79,A
+266:              										LED_ON;
+267:              										soft_delay_ms(100);
+  0510    2655    CALL	0x655
+  0511    118A    CLRB	0xA,3
+  0512    255A    CALL	0x55A
+  0513    118A    CLRB	0xA,3
+268:              										LED_OFF;
+269:              										soft_delay_ms(100);
+  0514    265D    CALL	0x65D
+  0515    118A    CLRB	0xA,3
+  0516    255A    CALL	0x55A
+  0517    118A    CLRB	0xA,3
+270:              										LED_ON;
+271:              										soft_delay_ms(100);
+  0518    2655    CALL	0x655
+  0519    118A    CLRB	0xA,3
+  051A    255A    CALL	0x55A
+272:              										LED_OFF;
+  051B    1683    SETB	0x3,5
+  051C    1007    CLRB	0x7,0
+  051D    1283    CLRB	0x3,5
+  051E    1407    SETB	0x7,0
+  051F    0008    RET
+273:              										
+274:              									}
+275:              								}
+276:              							else if(flag_time_key2_add>=300)
+  0520    3001    LDIA	0x1
+  0521    0237    SUBA	0x37
+  0522    302C    LDIA	0x2C
+  0523    1903    SZB	0x3,2
+  0524    0236    SUBA	0x36
+  0525    1C03    SNZB	0x3,0
+  0526    0008    RET
+277:              								{
+278:              									if(key_long_flag==0)
+  0527    08F9    TESTZ	0x79
+  0528    1D03    SNZB	0x3,2
+  0529    0008    RET
+279:              									{
+280:              										key_long_flag=0x04;
+  052A    3004    LDIA	0x4
+  052B    00F9    LD	0x79,A
+  052C    2D18    JP	0x518
+281:              										LED_ON;
+282:              										soft_delay_ms(100);
+283:              										LED_OFF;
+284:              									}
+285:              								}
+286:              						
+287:              				}
+288:              			else if(KEY2_FLAG==0x03)
+  052D    0878    LD	A,0x78
+  052E    3A03    XORIA	0x3
+  052F    1D03    SNZB	0x3,2
+  0530    0008    RET
+  0531    3001    LDIA	0x1
+289:              				{
+290:              					KEY2_FLAG=0;
+  0532    01F8    CLR	0x78
+291:              					if((flag_time_key2_add<300))
+  0533    0237    SUBA	0x37
+  0534    302C    LDIA	0x2C
+  0535    1903    SZB	0x3,2
+  0536    0236    SUBA	0x36
+292:              						{
+293:              							KEY2.channel_status^=1;
+  0537    3001    LDIA	0x1
+  0538    1803    SZB	0x3,0
+  0539    2D3C    JP	0x53C
+  053A    06A6    XORR	0x26
+294:              						}
+  053B    0008    RET
+295:              
+296:              						
+297:              						else if(flag_time_key2_add<500)
+  053C    0237    SUBA	0x37
+  053D    30F4    LDIA	0xF4
+  053E    1903    SZB	0x3,2
+  053F    0236    SUBA	0x36
+298:              							{
+299:              								if(key_long_flag==0x04)
+  0540    0879    LD	A,0x79
+  0541    1803    SZB	0x3,0
+  0542    2D51    JP	0x551
+  0543    3A04    XORIA	0x4
+  0544    1D03    SNZB	0x3,2
+  0545    0008    RET
+  0546    3041    LDIA	0x41
+300:              								{
+301:              									KEY2.key_flag_3s=1;
+  0547    01A7    CLR	0x27
+  0548    0AA7    INCR	0x27
+302:              									key_long_flag=0x41;
+  0549    00F9    LD	0x79,A
+303:              									sys_stute=MATCH_MSG;
+  054A    3002    LDIA	0x2
+  054B    00EF    LD	0x6F,A
+304:              									flag_time_key1_add=0;
+  054C    01B4    CLR	0x34
+  054D    01B5    CLR	0x35
+305:              									flag_time_key0_add=0;
+  054E    01B2    CLR	0x32
+  054F    01B3    CLR	0x33
+  0550    0008    RET
+306:              									
+307:              								}
+308:              							}
+309:              						else
+310:              							{
+311:              								if(key_long_flag==0x40)
+  0551    3A40    XORIA	0x40
+  0552    1D03    SNZB	0x3,2
+  0553    0008    RET
+  0554    3041    LDIA	0x41
+312:              								{
+313:              									KEY2.key_flag_5s=1;
+  0555    01A8    CLR	0x28
+  0556    0AA8    INCR	0x28
+314:              									key_long_flag=0x41;
+  0557    00F9    LD	0x79,A
+315:              									sys_stute=CLEAN_MSG;
+  0558    3003    LDIA	0x3
+  0559    2D4B    JP	0x54B
+316:              									flag_time_key1_add=0;
+317:              									flag_time_key0_add=0;
+318:              								}
+319:              							}
+320:              						
+321:              				}
+322:              
+323:              }
+324:              
+325:              
+326:              
+327:              /************************************************
+328:              *按键初始化
+329:              *PAN2416通常采用PORTB口做按键
+330:              *************************************************/
+331:              void key_Init(void)
+332:              {
+333:              	OPTION_REG &= ~0x80;
+  0DBA    1683    SETB	0x3,5
+  0DBB    1381    CLRB	0x1,7
+334:              	TRISB|=0x0e;
+  0DBC    300E    LDIA	0xE
+  0DBD    0486    ORR	0x6
+335:              	WPUB|=0x0e;
+  0DBE    0495    ORR	0x15
+  0DBF    0008    RET
+336:              }
+---- F:\项目\酷宅\BLE移植\rx\src\delay.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "delay.h"
+3:                
+4:                void soft_delay_ms(unsigned int ms);
+5:                
+6:                
+7:                
+8:                
+9:                void soft_delay_ms(unsigned int ms)
+10:               {
+11:               //	8M主频
+12:               	volatile unsigned int i;
+13:               	volatile unsigned char j,k;
+14:               	for(i=0;i<ms;i++){
+  055A    1283    CLRB	0x3,5
+  055B    01D1    CLR	0x51
+  055C    01D2    CLR	0x52
+  055D    0874    LD	A,0x74
+  055E    0252    SUBA	0x52
+  055F    1D03    SNZB	0x3,2
+  0560    2D63    JP	0x563
+  0561    0873    LD	A,0x73
+  0562    0251    SUBA	0x51
+  0563    1803    SZB	0x3,0
+  0564    0008    RET
+15:               		for(j=0;j<10;j++){
+  0565    01D3    CLR	0x53
+  0566    300A    LDIA	0xA
+  0567    0253    SUBA	0x53
+  0568    1803    SZB	0x3,0
+  0569    2D73    JP	0x573
+16:               			for(k=0;k<32;k++);
+  056A    01D4    CLR	0x54
+  056B    3020    LDIA	0x20
+  056C    0254    SUBA	0x54
+  056D    1803    SZB	0x3,0
+  056E    2D71    JP	0x571
+  056F    0AD4    INCR	0x54
+  0570    2D6B    JP	0x56B
+  0571    0AD3    INCR	0x53
+  0572    2D66    JP	0x566
+  0573    0AD1    INCR	0x51
+  0574    1903    SZB	0x3,2
+  0575    0AD2    INCR	0x52
+  0576    2D5D    JP	0x55D
+17:               		}
+18:               	}
+19:               }
+---- F:\项目\酷宅\BLE移植\rx\src\iic.c ----------------------------------------------------------------------
+1:                #include "iic.h"
+2:                #include "cms.h"
+3:                
+4:                
+5:                void iic_delay_us(unsigned char delay)
+6:                {
+  0612    00F3    LD	0x73,A
+7:                	while(delay--);
+  0613    03F3    DECR	0x73
+  0614    0873    LD	A,0x73
+  0615    3AFF    XORIA	0xFF
+  0616    1903    SZB	0x3,2
+  0617    0008    RET
+  0618    2E13    JP	0x613
+8:                }
+9:                
+10:               void IIC_Init(void)
+11:               {
+12:               	OPTION_REG &= ~0x80;
+  0DB4    1683    SETB	0x3,5
+  0DB5    1381    CLRB	0x1,7
+13:               //	TRISC&=~(3<<1);
+14:               	SDA_H;
+  0DB6    1283    CLRB	0x3,5
+  0DB7    1487    SETB	0x7,1
+15:               	SCL_H;
+  0DB8    1507    SETB	0x7,2
+  0DB9    0008    RET
+16:               }
+17:               
+18:               
+19:               void IIC_START(void)
+20:               {
+21:                   SDA_OUT;
+  0619    1683    SETB	0x3,5
+  061A    1087    CLRB	0x7,1
+22:                   SDA_H;
+  061B    1283    CLRB	0x3,5
+  061C    3001    LDIA	0x1
+  061D    1487    SETB	0x7,1
+23:                   SCL_H;
+  061E    1507    SETB	0x7,2
+24:                   iic_delay_us(1);
+  061F    2612    CALL	0x612
+  0620    118A    CLRB	0xA,3
+  0621    3001    LDIA	0x1
+25:                   SDA_L; //START:when CLK is high,SDA change from hig to low
+  0622    1087    CLRB	0x7,1
+26:                   iic_delay_us(1);
+  0623    2612    CALL	0x612
+27:                   SCL_L; //Ready Transmit or Receive
+  0624    1107    CLRB	0x7,2
+  0625    0008    RET
+28:               }
+29:               
+30:               
+31:               void IIC_STOP(void)
+32:               {
+33:                   SDA_OUT;
+  0626    1683    SETB	0x3,5
+  0627    1087    CLRB	0x7,1
+34:                   SDA_L;
+  0628    1283    CLRB	0x3,5
+  0629    3001    LDIA	0x1
+  062A    1087    CLRB	0x7,1
+35:                   SCL_H; 
+  062B    1507    SETB	0x7,2
+36:                   iic_delay_us(1);
+  062C    2612    CALL	0x612
+37:                   SDA_H; //STOP:when CLK is low,SDA change from low to high
+  062D    1487    SETB	0x7,1
+  062E    0008    RET
+38:               }
+39:               
+40:               
+41:               unsigned char IIC_Wait_ACK(void)
+42:               {
+43:                   unsigned char RE = 0;
+44:               	SDA_OUT;
+  05E4    1683    SETB	0x3,5
+  05E5    1087    CLRB	0x7,1
+45:               	SDA_H;
+  05E6    1283    CLRB	0x3,5
+  05E7    1487    SETB	0x7,1
+46:               	SDA_IN;
+  05E8    1683    SETB	0x3,5
+  05E9    1487    SETB	0x7,1
+  05EA    1703    SETB	0x3,6
+  05EB    148F    SETB	0xF,1
+47:               	
+48:               	SCL_L;  
+  05EC    1283    CLRB	0x3,5
+  05ED    3001    LDIA	0x1
+  05EE    1303    CLRB	0x3,6
+  05EF    1107    CLRB	0x7,2
+49:                   iic_delay_us(1);
+  05F0    2612    CALL	0x612
+  05F1    118A    CLRB	0xA,3
+  05F2    3001    LDIA	0x1
+50:               	SCL_H;
+  05F3    1507    SETB	0x7,2
+51:               	iic_delay_us(1);   
+  05F4    2612    CALL	0x612
+52:                   
+53:                  if(IIC_SDA)
+  05F5    1107    CLRB	0x7,2
+  05F6    0008    RET
+54:                  	{
+55:                  		RE=1;
+56:                  	}
+57:                  else
+58:                  	{
+59:               		RE=0;
+60:                  	}
+61:                   SCL_L; //时钟输出0
+62:                   return RE;
+63:               
+64:               }
+65:               
+66:               void IIC_ACK(void)
+67:               {
+68:                   SDA_OUT;
+  0577    1683    SETB	0x3,5
+  0578    1087    CLRB	0x7,1
+69:                   SDA_L;
+  0579    1283    CLRB	0x3,5
+  057A    3001    LDIA	0x1
+  057B    1087    CLRB	0x7,1
+70:                   iic_delay_us(1);
+  057C    2612    CALL	0x612
+  057D    118A    CLRB	0xA,3
+  057E    3001    LDIA	0x1
+71:                   SCL_H;
+  057F    1507    SETB	0x7,2
+72:                   iic_delay_us(1);
+  0580    2612    CALL	0x612
+73:                   SCL_L;
+  0581    1107    CLRB	0x7,2
+74:                   SDA_H;
+  0582    1487    SETB	0x7,1
+  0583    0008    RET
+75:               }
+76:               
+77:               void IIC_NACK(void)
+78:               {
+  0584    3001    LDIA	0x1
+79:               	SDA_H;	/* CPU?y?ˉSDA = 1 */
+  0585    1487    SETB	0x7,1
+80:               	iic_delay_us(1);
+  0586    2612    CALL	0x612
+  0587    118A    CLRB	0xA,3
+  0588    3001    LDIA	0x1
+81:               	SCL_H;	/* CPU2úéú1??ê±?ó */
+  0589    1507    SETB	0x7,2
+82:               	iic_delay_us(1);
+  058A    2612    CALL	0x612
+  058B    118A    CLRB	0xA,3
+  058C    3001    LDIA	0x1
+83:               	SCL_L;
+  058D    1107    CLRB	0x7,2
+84:               	iic_delay_us(1);	
+  058E    2E12    JP	0x612
+85:               }
+86:               
+87:               
+88:               
+89:               
+90:               void I2C_SendByte(unsigned char Data)
+91:               {
+  05F7    00F4    LD	0x74,A
+92:                 unsigned char cnt;
+93:                 SDA_OUT;
+  05F8    1683    SETB	0x3,5
+  05F9    1087    CLRB	0x7,1
+94:                 for(cnt=0; cnt<8; cnt++)
+  05FA    01F5    CLR	0x75
+95:                 {
+96:               
+97:                
+98:                   if(Data & 0x80)
+  05FB    1FF4    SNZB	0x74,7
+  05FC    2E00    JP	0x600
+99:                   {
+100:                    SDA_H;                         
+  05FD    1283    CLRB	0x3,5
+  05FE    1487    SETB	0x7,1
+101:                  }
+  05FF    2E02    JP	0x602
+102:                  else
+103:                  {
+104:                    SDA_L;                         
+  0600    1283    CLRB	0x3,5
+  0601    1087    CLRB	0x7,1
+  0602    3001    LDIA	0x1
+105:                  }
+106:                  Data <<= 1;
+  0603    1003    CLRB	0x3,0
+  0604    0DF4    RLCR	0x74
+107:                  SCL_H;                              
+  0605    1507    SETB	0x7,2
+108:                  iic_delay_us(1);
+  0606    2612    CALL	0x612
+  0607    118A    CLRB	0xA,3
+  0608    3001    LDIA	0x1
+109:                  SCL_L;                              
+  0609    1107    CLRB	0x7,2
+110:                  iic_delay_us(1);
+  060A    2612    CALL	0x612
+  060B    118A    CLRB	0xA,3
+  060C    3008    LDIA	0x8
+  060D    0AF5    INCR	0x75
+  060E    0275    SUBA	0x75
+  060F    1803    SZB	0x3,0
+  0610    0008    RET
+  0611    2DFB    JP	0x5FB
+111:              //    if(cnt==7)SDA_H; 
+112:                }
+113:              }
+114:              
+115:              
+116:              unsigned int I2C_ReadByte(unsigned char ack)
+117:              {
+  058F    00D1    LD	0x51,A
+118:                unsigned char cnt;
+119:                unsigned int data;
+120:                SDA_IN;	
+  0590    1683    SETB	0x3,5
+  0591    1487    SETB	0x7,1
+  0592    1703    SETB	0x3,6
+  0593    148F    SETB	0xF,1
+121:              	
+122:                for(cnt=0; cnt<8; cnt++)
+  0594    1283    CLRB	0x3,5
+  0595    1303    CLRB	0x3,6
+  0596    01D4    CLR	0x54
+  0597    3001    LDIA	0x1
+123:                {
+124:                  SCL_L;                                
+  0598    1107    CLRB	0x7,2
+125:                  iic_delay_us(1);
+  0599    2612    CALL	0x612
+  059A    118A    CLRB	0xA,3
+126:              		
+127:                  SCL_H;                             
+  059B    1507    SETB	0x7,2
+128:                  data <<= 1;
+  059C    1003    CLRB	0x3,0
+  059D    0DD2    RLCR	0x52
+  059E    0DD3    RLCR	0x53
+129:                  if(IIC_SDA)
+  059F    1887    SZB	0x7,1
+130:                  {
+131:                    data |= 0x01;                              
+  05A0    1452    SETB	0x52,0
+132:                  }
+133:                   iic_delay_us(1);
+  05A1    3001    LDIA	0x1
+  05A2    2612    CALL	0x612
+  05A3    118A    CLRB	0xA,3
+  05A4    3008    LDIA	0x8
+  05A5    0AD4    INCR	0x54
+  05A6    0254    SUBA	0x54
+  05A7    1C03    SNZB	0x3,0
+  05A8    2D97    JP	0x597
+134:                }
+135:                if(ack == 0)
+  05A9    08D1    TESTZ	0x51
+  05AA    1D03    SNZB	0x3,2
+  05AB    2DAF    JP	0x5AF
+136:                {
+137:                   IIC_NACK();
+  05AC    2584    CALL	0x584
+  05AD    118A    CLRB	0xA,3
+138:                }
+  05AE    2DB0    JP	0x5B0
+139:                else
+140:                {
+141:                   IIC_ACK();
+  05AF    2577    CALL	0x577
+142:                }
+143:                return data;                                  
+  05B0    0853    LD	A,0x53
+  05B1    00F5    LD	0x75,A
+  05B2    0852    LD	A,0x52
+  05B3    00F4    LD	0x74,A
+  05B4    0008    RET
+144:              }
+145:              
+146:              
+147:              
+148:              
+149:              
+150:              
+151:              
+---- F:\项目\酷宅\BLE移植\rx\src\rf297L.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "delay.h"
+3:                #include "rf297l.h"
+4:                
+5:                #define delay_ms(ms) soft_delay_ms(ms)
+6:                const unsigned char TX_ADDRESS_DEF[3] = {0xCC,0xCC,0xCC};
+7:                const unsigned char RX_ADDRESS_DEF[3] = {0x2D,0xD7,0XB9};
+8:                static unsigned char ACK_Payload_length;
+9:                
+10:               unsigned char RF_ReadReg(unsigned char reg_addr);
+11:               void RF_WriteReg(unsigned char reg_addr, unsigned char write_data);
+12:               void RF_Write_Buff(unsigned char reg_addr,unsigned char *pBuff,unsigned char length);
+13:               void RF_Read_Buff(unsigned char reg_addr, unsigned char *pBuff, unsigned char length);
+14:               void RF_Set_TxMode(void);
+15:               void RF_Set_RxMode(void);
+16:               unsigned char RF_GetStatus(void);
+17:               void RF_ClearStatus(void);
+18:               void RF_ClearFIFO(void);
+19:               void RF_SetChannel(unsigned char Channel);
+20:               void RF_TxData(unsigned char *payload_buff,unsigned char length);
+21:               unsigned char RF_Read_RxData(unsigned char *payload_buff,unsigned char length);
+22:               void RF_Init(void);
+23:               TX_RESULT_e RF_get_TX_result(void);
+24:               
+25:               static unsigned char SPI_RW(unsigned char read_reg_addr);
+26:               static void SPI_init(void);
+27:               
+28:               
+29:               TX_RESULT_e RF_get_TX_result(void)
+30:               {
+31:               	unsigned char status = 0;
+32:               	status = RF_GetStatus();
+33:               	if(status == TX_DS_FLAG){
+34:               		return SENT_SUCCESS;
+35:               	}else if(status == RX_TX_FLAG){
+36:               		return ACK_PAYLOAD_SENT_SUCCESS;
+37:               	}else if(MAX_RT_FLAG){
+38:               		return SENT_FAILURE;
+39:               	}else{
+40:               		return UNKNOW_STATUS;
+41:               	}
+42:               }
+43:               
+44:               void RF_Init(void)
+45:               {	
+46:               #ifdef	IC_TYPE_MX5325          	  //MX5325配置
+47:               	#if(DATA_RATE == DR_1M) 
+48:               		const unsigned char  BB_cal_data[]    = {0x0A,0x6D,0x67,0x9C,0x46}; 
+49:               		const unsigned char  RF_cal_data[]    = {0xF6,0x37,0x5D};                                      
+50:               		const unsigned char  RF_cal2_data[]   = {0x45,0x21,0xeF,0x2c,0x5a,0x40};
+51:               		const unsigned char  Dem_cal_data[]   = {0x01};  
+52:               		const unsigned char  Dem_cal2_data[]  = {0x0B,0xDF,0x02};   
+53:               	#elif(DATA_RATE == DR_250K) 
+54:               		const unsigned char   BB_cal_data[]    = {0x12,0xec,0x6f,0xa1,0x46}; 
+55:               		const unsigned char   RF_cal_data[]    = {0xf6,0x37,0x5d};
+56:               		const unsigned char   RF_cal2_data[]   = {0xd5,0x21,0xeb,0x2c,0x5a,0x40};
+57:               		const unsigned char   Dem_cal_data[]   = {0x1F};  
+58:               		const unsigned char   Dem_cal2_data[]  = {0x0B,0xDF,0x02};
+59:               	#endif
+60:               #else			//PAN2416配置			//对应POWER值不一样
+61:               	#if(DATA_RATE == DR_1M) 
+62:               		const unsigned char  BB_cal_data[]    = {0x0A,0x6D,0x67,0x9C,0x46}; 
+63:               		const unsigned char  RF_cal_data[]    = {0x16,0x33,0x27};                      
+64:               		const unsigned char  RF_cal2_data[]   = {0x45,0x21,0x3F,0x2D,0x5C,0x40};
+65:               		const unsigned char  Dem_cal_data[]   = {0x01};  
+66:               		const unsigned char  Dem_cal2_data[]  = {0x0B,0xDF,0x02};   
+67:               	#elif(DATA_RATE == DR_250K) 
+68:               		const unsigned char   BB_cal_data[]    = {0x12,0xEC,0x6f,0xA9,0x46}; 
+69:               		const unsigned char   RF_cal_data[]    = {0x06,0x33,0x00};
+70:               		const unsigned char   RF_cal2_data[]   = {0xD5,0x21,0x3B,0x2D,0x5C,0x40};
+71:               		const unsigned char   Dem_cal_data[]   = {0x03};  
+72:               		const unsigned char   Dem_cal2_data[]  = {0x0B,0xDF,0x02};
+73:               	#endif
+74:               #endif
+75:                   unsigned char feature = 0x00;
+76:                   SPI_init();
+  0F37    27E1    CALL	0x7E1
+  0F38    158A    SETB	0xA,3
+77:                   RF_WriteReg(RST_FSPI, 0x5A);	//Software Reset    			
+  0F39    305A    LDIA	0x5A
+  0F3A    00F5    LD	0x75,A
+  0F3B    3053    LDIA	0x53
+  0F3C    27AE    CALL	0x7AE
+  0F3D    158A    SETB	0xA,3
+78:                   RF_WriteReg(RST_FSPI, 0XA5);
+  0F3E    30A5    LDIA	0xA5
+  0F3F    00F5    LD	0x75,A
+  0F40    3053    LDIA	0x53
+  0F41    27AE    CALL	0x7AE
+  0F42    158A    SETB	0xA,3
+  0F43    30E1    LDIA	0xE1
+79:                   RF_WriteReg(FLUSH_TX, 0);			// CLEAR TXFIFO		    			 
+  0F44    01F5    CLR	0x75
+  0F45    27AE    CALL	0x7AE
+  0F46    158A    SETB	0xA,3
+  0F47    30E2    LDIA	0xE2
+80:                   RF_WriteReg(FLUSH_RX, 0);			// CLEAR  RXFIFO
+  0F48    01F5    CLR	0x75
+  0F49    27AE    CALL	0x7AE
+  0F4A    158A    SETB	0xA,3
+81:                   RF_WriteReg(W_REGISTER + STATUS, 0x70);	// CLEAR  STATUS	
+  0F4B    3070    LDIA	0x70
+  0F4C    00F5    LD	0x75,A
+  0F4D    3027    LDIA	0x27
+  0F4E    27AE    CALL	0x7AE
+  0F4F    158A    SETB	0xA,3
+  0F50    3022    LDIA	0x22
+82:                   RF_WriteReg(W_REGISTER + EN_RXADDR, 0x01);	// Enable Pipe0
+  0F51    01F5    CLR	0x75
+  0F52    0AF5    INCR	0x75
+  0F53    27AE    CALL	0x7AE
+  0F54    158A    SETB	0xA,3
+  0F55    3023    LDIA	0x23
+83:                   RF_WriteReg(W_REGISTER + SETUP_AW,  0x01);	// address witdth is 5 bytes
+  0F56    01F5    CLR	0x75
+  0F57    0AF5    INCR	0x75
+  0F58    27AE    CALL	0x7AE
+  0F59    158A    SETB	0xA,3
+84:                   RF_WriteReg(W_REGISTER + RF_CH, DEFAULT_CHANNEL); // 2478M HZ
+  0F5A    301A    LDIA	0x1A
+  0F5B    00F5    LD	0x75,A
+  0F5C    3025    LDIA	0x25
+  0F5D    27AE    CALL	0x7AE
+  0F5E    158A    SETB	0xA,3
+85:                   RF_WriteReg(W_REGISTER + RX_PW_P0, PAYLOAD_WIDTH);// PAYLOAD_WIDTH bytes
+  0F5F    3012    LDIA	0x12
+  0F60    00F5    LD	0x75,A
+  0F61    3031    LDIA	0x31
+  0F62    27AE    CALL	0x7AE
+  0F63    158A    SETB	0xA,3
+86:                   RF_Write_Buff(W_REGISTER + TX_ADDR, TX_ADDRESS_DEF, sizeof(TX_ADDRESS_DEF));	// Writes TX_Address to PN006
+  0F64    3075    LDIA	0x75
+  0F65    00D1    LD	0x51,A
+  0F66    3003    LDIA	0x3
+  0F67    00D2    LD	0x52,A
+  0F68    3030    LDIA	0x30
+  0F69    27B7    CALL	0x7B7
+  0F6A    158A    SETB	0xA,3
+87:                   RF_Write_Buff(W_REGISTER + RX_ADDR_P0,RX_ADDRESS_DEF, sizeof(RX_ADDRESS_DEF));	// RX_Addr0 same as TX_Adr for Auto.Ack   
+  0F6B    3072    LDIA	0x72
+  0F6C    00D1    LD	0x51,A
+  0F6D    3003    LDIA	0x3
+  0F6E    00D2    LD	0x52,A
+  0F6F    302A    LDIA	0x2A
+  0F70    27B7    CALL	0x7B7
+  0F71    158A    SETB	0xA,3
+88:                   RF_Write_Buff(W_REGISTER + BB_CAL,    BB_cal_data,  sizeof(BB_cal_data));
+  0F72    3061    LDIA	0x61
+  0F73    00D1    LD	0x51,A
+  0F74    3005    LDIA	0x5
+  0F75    00D2    LD	0x52,A
+  0F76    303F    LDIA	0x3F
+  0F77    27B7    CALL	0x7B7
+  0F78    158A    SETB	0xA,3
+89:                   RF_Write_Buff(W_REGISTER + RF_CAL2,   RF_cal2_data, sizeof(RF_cal2_data));
+  0F79    3056    LDIA	0x56
+  0F7A    00D1    LD	0x51,A
+  0F7B    3006    LDIA	0x6
+  0F7C    00D2    LD	0x52,A
+  0F7D    303A    LDIA	0x3A
+  0F7E    27B7    CALL	0x7B7
+  0F7F    158A    SETB	0xA,3
+90:                   RF_Write_Buff(W_REGISTER + DEM_CAL,   Dem_cal_data, sizeof(Dem_cal_data));
+  0F80    3079    LDIA	0x79
+  0F81    00D1    LD	0x51,A
+  0F82    3039    LDIA	0x39
+  0F83    01D2    CLR	0x52
+  0F84    0AD2    INCR	0x52
+  0F85    27B7    CALL	0x7B7
+  0F86    158A    SETB	0xA,3
+91:                   RF_Write_Buff(W_REGISTER + RF_CAL,    RF_cal_data,  sizeof(RF_cal_data));
+  0F87    306F    LDIA	0x6F
+  0F88    00D1    LD	0x51,A
+  0F89    3003    LDIA	0x3
+  0F8A    00D2    LD	0x52,A
+  0F8B    303E    LDIA	0x3E
+  0F8C    27B7    CALL	0x7B7
+  0F8D    158A    SETB	0xA,3
+92:                   RF_Write_Buff(W_REGISTER + DEM_CAL2,  Dem_cal2_data,sizeof(Dem_cal2_data));
+  0F8E    306C    LDIA	0x6C
+  0F8F    00D1    LD	0x51,A
+  0F90    3003    LDIA	0x3
+  0F91    00D2    LD	0x52,A
+  0F92    303B    LDIA	0x3B
+  0F93    27B7    CALL	0x7B7
+  0F94    158A    SETB	0xA,3
+  0F95    303C    LDIA	0x3C
+93:                   RF_WriteReg(W_REGISTER + DYNPD, 0x00);					                            
+  0F96    01F5    CLR	0x75
+  0F97    27AE    CALL	0x7AE
+  0F98    158A    SETB	0xA,3
+94:                   RF_WriteReg(W_REGISTER + RF_SETUP, RF_POWER);						// 		
+  0F99    300E    LDIA	0xE
+  0F9A    00F5    LD	0x75,A
+  0F9B    3026    LDIA	0x26
+  0F9C    27AE    CALL	0x7AE
+  0F9D    158A    SETB	0xA,3
+95:                   RF_WriteReg(ACTIVATE, 0x73);
+  0F9E    3073    LDIA	0x73
+  0F9F    00F5    LD	0x75,A
+  0FA0    3050    LDIA	0x50
+  0FA1    27AE    CALL	0x7AE
+  0FA2    158A    SETB	0xA,3
+  0FA3    3024    LDIA	0x24
+96:                   
+97:               	#if(TRANSMIT_TYPE == TRANS_ENHANCE_MODE)      	//双向
+98:               		RF_WriteReg(W_REGISTER + SETUP_RETR,0x01);							//  1 retrans... 	
+99:               		RF_WriteReg(W_REGISTER + EN_AA,     0x01);							// Enable Auto.Ack:Pipe0  	
+100:              	#elif(TRANSMIT_TYPE == TRANS_BURST_MODE)        //单向                                                      
+101:              		RF_WriteReg(W_REGISTER + SETUP_RETR,0x00);							// Disable retrans... 	
+  0FA4    01F5    CLR	0x75
+  0FA5    27AE    CALL	0x7AE
+  0FA6    158A    SETB	0xA,3
+  0FA7    3021    LDIA	0x21
+102:              		RF_WriteReg(W_REGISTER + EN_AA,     0x00);							// Disable AutoAck 
+  0FA8    01F5    CLR	0x75
+  0FA9    27AE    CALL	0x7AE
+  0FAA    158A    SETB	0xA,3
+103:              	#endif
+104:              
+105:              	#if(EN_DYNPLOAD == 1)		//使能动态PAYLOAD长度
+106:              		feature |= 0x04;
+107:              		RF_WriteReg(W_REGISTER + DYNPD, 0x01);
+108:              	#endif
+109:              
+110:              	#if(EN_ACK_PAYLOAD == 1)	//使能ACK_PAYLOAD
+111:              		feature |= 0x02;
+112:              	#endif
+113:              	if(PAYLOAD_WIDTH >32){
+  0FAB    303D    LDIA	0x3D
+114:              		feature |= 0x18;
+115:              	}
+116:              	//feature |= 0x20 ; //ce order by mcu not pin
+117:              	RF_WriteReg(W_REGISTER + FEATURE, feature);
+  0FAC    01F5    CLR	0x75
+  0FAD    2FAE    JP	0x7AE
+118:              }
+119:              
+120:              
+121:              /******************************************************************************/
+122:              //            RF_RxData普通模式下
+123:              //            读出接收到的数据：
+124:              //            参数：
+125:              //              1. payload_buff：存储读取到的数据的Buffer
+126:              //              2. length:    读取的数据长度
+127:              //              Return:
+128:              //              1. 0: 没有接收到数据
+129:              //              2. 1: 读取接收到的数据成功
+130:              //              note: Only use in Rx Mode
+131:              //              length 通常等于 PAYLOAD_WIDTH
+132:              /******************************************************************************/
+133:              unsigned char RF_RxData(unsigned char *payload_buff,unsigned char length)
+134:              { 
+  0F10    00D7    LD	0x57,A
+135:                  if(!(RF_GetStatus() & RX_DR_FLAG))
+  0F11    27E8    CALL	0x7E8
+  0F12    158A    SETB	0xA,3
+  0F13    00D6    LD	0x56,A
+  0F14    1F56    SNZB	0x56,6
+136:                  {
+137:                    return 0;                                                                 		
+  0F15    3400    RET	0x0
+138:                  }
+139:              	RF_Read_Buff(R_RX_PAYLOAD, payload_buff, length);
+  0F16    0857    LD	A,0x57
+  0F17    00D1    LD	0x51,A
+  0F18    0855    LD	A,0x55
+  0F19    00D2    LD	0x52,A
+  0F1A    3061    LDIA	0x61
+  0F1B    2721    CALL	0x721
+  0F1C    158A    SETB	0xA,3
+140:              	
+141:              	RF_ClearFIFO();
+  0F1D    27EC    CALL	0x7EC
+  0F1E    158A    SETB	0xA,3
+142:              	RF_ClearStatus();
+  0F1F    27FC    CALL	0x7FC
+143:                  return 1;
+  0F20    3401    RET	0x1
+144:              }
+145:              
+146:              /******************************************************************************/
+147:              //            RF_ENHANCE_RxData增强模式下
+148:              //            读出接收到的数据：
+149:              //            参数：
+150:              //              1. payload_buff：存储读取到的数据的Buffer
+151:              //              2. length:    读取的数据长度
+152:              //              3. postback_buff :发送回传数据给发送端
+153:              //              Return:
+154:              //              1. 0: 没有接收到数据
+155:              //              2. 1: 读取接收到的数据成功
+156:              //              note: Only use in Rx Mode
+157:              //              length 通常等于 PAYLOAD_WIDTH
+158:              /******************************************************************************/
+159:              unsigned char RF_ENHANCE_RxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff)
+160:              { 
+161:                  if(!(RF_GetStatus() & RX_DR_FLAG))
+162:                  {
+163:                    return 0;                                                                 		
+164:                  }
+165:              	#if	(TRANSMIT_TYPE == TRANS_ENHANCE_MODE)			//ACK_PAYLOAD模式
+166:              	RF_Write_Buff(W_ACK_PAYLOAD, postback_buff, ACK_PAYLOAD_WIDTH);
+167:              	delay_ms(2);
+168:              	//读动态RX接收数据宽度 ，要使能动态功能1D 动态长度1C，要打开ACK   
+169:              	RF_Read_Buff(R_RX_PAYLOAD, payload_buff, length);  
+170:              	
+171:              	#else
+172:              	RF_Read_Buff(R_RX_PAYLOAD, payload_buff, length);
+173:              	#endif       //将接收到的数据读出到ucPayload，且清除rxfifo
+174:              	
+175:              	RF_ClearFIFO();
+176:              	RF_ClearStatus();
+177:                  return 1;
+178:              }
+179:              /******************************************************************************/
+180:              //           普通模式下 发送数据：
+181:              //            参数：
+182:              //              1. payload_buff：需要发送的数据首地址
+183:              //              2. length:  需要发送的数据长度
+184:              //              Return:
+185:              //              1. MAX_RT: TX Failure  (Enhance mode)
+186:              //              2. TX_DS:  TX Successful (Enhance mode)
+187:              //              note: Only use in Tx Mode
+188:              //              length 通常等于 PAYLOAD_WIDTH
+189:              //            发送结果
+190:              //            参数：只在增强模式下，使能ack带Payload有效
+191:              //                  1、ucAckPayload: AckPayload的首地址
+192:              //                  2、length：AckPayload的长度
+193:              /******************************************************************************/
+194:              void RF_TxData(unsigned char *payload_buff,unsigned char length)
+195:              {
+196:              	unsigned char ret;
+197:                  RF_Write_Buff(W_TX_PAYLOAD, payload_buff, length);                               		//write data to txfifo                                                                      		//rf entery tx mode start send data                                                                       		//rf entery stb3
+198:                  delay_ms(3);
+199:              	
+200:              	RF_ClearFIFO();
+201:              	RF_ClearStatus();
+202:              }
+203:              
+204:              /******************************************************************************/
+205:              //            增强模式下发送数据：
+206:              //            参数：
+207:              //              1. payload_buff：需要发送的数据首地址
+208:              //              2. length:  需要发送的数据长度
+209:              //              3. postback_buff：接收由接收端回传的数据
+210:              //              Return:
+211:              //              1. MAX_RT: TX Failure  (Enhance mode)
+212:              //              2. TX_DS:  TX Successful (Enhance mode)
+213:              //              note: Only use in Tx Mode
+214:              //              length 通常等于 PAYLOAD_WIDTH
+215:              //            发送结果
+216:              //            参数：只在增强模式下，使能ack带Payload有效
+217:              //                  1、ucAckPayload: AckPayload的首地址
+218:              //                  2、length：AckPayload的长度
+219:              /******************************************************************************/
+220:              void RF_ENHANCE_TxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff)
+221:              {
+222:              	unsigned char ret;
+223:                  RF_Write_Buff(W_TX_PAYLOAD, payload_buff, length);                               		//write data to txfifo                                                                      		//rf entery tx mode start send data                                                                       		//rf entery stb3
+224:                  delay_ms(2);
+225:              	#if	(TRANSMIT_TYPE == TRANS_ENHANCE_MODE)			//ACK_PAYLOAD模式
+226:              	ret = RF_GetStatus();
+227:              	if(RF_GetStatus() == RX_TX_FLAG)
+228:              	{
+229:              		RF_Read_Buff(R_RX_PAYLOAD,postback_buff,ACK_PAYLOAD_WIDTH);//payload_buff把接收到数据再发送过去 feedback_buff 
+230:              	}
+231:              	#endif       //将接收到的数据读出到ucPayload，且清除rxfifo
+232:              	
+233:              	RF_ClearFIFO();
+234:              	RF_ClearStatus();
+235:              }
+236:              
+237:              void RF_SetChannel(unsigned char Channel)
+238:              {    
+239:                  RF_WriteReg(W_REGISTER + RF_CH, Channel);
+240:              }
+241:              
+242:              void RF_ClearFIFO(void)
+243:              {
+  0FEC    30E1    LDIA	0xE1
+244:                  RF_WriteReg(FLUSH_TX, 0);			                                		//清除RF 的 TX FIFO		
+  0FED    01F5    CLR	0x75
+  0FEE    27AE    CALL	0x7AE
+  0FEF    158A    SETB	0xA,3
+  0FF0    30E2    LDIA	0xE2
+245:                  RF_WriteReg(FLUSH_RX, 0);                                                   		//清除RF 的 RX FIFO	
+  0FF1    01F5    CLR	0x75
+  0FF2    2FAE    JP	0x7AE
+246:              }
+247:              
+248:              void RF_ClearStatus(void)
+249:              {
+250:                  RF_WriteReg(W_REGISTER + STATUS,0x70);							//清除RF的IRQ标志 
+  0FFC    3070    LDIA	0x70
+  0FFD    00F5    LD	0x75,A
+  0FFE    3027    LDIA	0x27
+251:              }
+252:              
+253:              unsigned char RF_GetStatus(void)
+254:              {
+255:                  return RF_ReadReg(STATUS)&0x70;		//读取RF的状态 
+  0FE8    3007    LDIA	0x7
+  0FE9    27F3    CALL	0x7F3
+  0FEA    3970    ANDIA	0x70
+  0FEB    0008    RET
+256:              }
+257:              
+258:              void RF_Set_TxMode(void)
+259:              {
+260:                  RF_WriteReg(W_REGISTER + CONFIG,  0X8E);							// 将RF设置成TX模式
+261:                  delay_ms(10);   
+262:                  CE_HIGH;	
+263:                  delay_ms(10);
+264:              }
+265:              
+266:              void RF_Set_RxMode(void)
+267:              {
+268:                  RF_WriteReg(W_REGISTER + CONFIG,  0X87);							// 将RF设置成TX模式
+  0E3A    3087    LDIA	0x87
+  0E3B    00F5    LD	0x75,A
+  0E3C    3020    LDIA	0x20
+  0E3D    27AE    CALL	0x7AE
+269:                  delay_ms(10);   
+  0E3E    300A    LDIA	0xA
+  0E3F    00F3    LD	0x73,A
+  0E40    01F4    CLR	0x74
+  0E41    118A    CLRB	0xA,3
+  0E42    255A    CALL	0x55A
+  0E43    158A    SETB	0xA,3
+  0E44    300A    LDIA	0xA
+270:                  CE_HIGH;	
+  0E45    1785    SETB	0x5,7
+271:                  delay_ms(10);
+  0E46    00F3    LD	0x73,A
+  0E47    01F4    CLR	0x74
+  0E48    118A    CLRB	0xA,3
+  0E49    2D5A    JP	0x55A
+272:              }
+273:              
+274:              void RF_Read_Buff(unsigned char reg_addr, unsigned char *pBuff, unsigned char length)
+275:              {
+  0F21    00D3    LD	0x53,A
+276:                  unsigned char byte_ctr;
+277:                  CSN_LOW;                    		                               			
+  0F22    1109    CLRB	0x9,2
+278:                  SPI_RW(reg_addr);       		                                                		
+  0F23    27CC    CALL	0x7CC
+  0F24    158A    SETB	0xA,3
+279:                  for(byte_ctr=0;byte_ctr<length;byte_ctr++){
+  0F25    01D4    CLR	0x54
+  0F26    0852    LD	A,0x52
+  0F27    0254    SUBA	0x54
+  0F28    1803    SZB	0x3,0
+  0F29    2F35    JP	0x735
+280:                  	pBuff[byte_ctr] = SPI_RW(0);         
+  0F2A    0854    LD	A,0x54
+  0F2B    0751    ADDA	0x51
+  0F2C    00F5    LD	0x75,A
+  0F2D    0084    LD	0x4,A
+  0F2E    3000    LDIA	0x0
+  0F2F    27CC    CALL	0x7CC
+  0F30    158A    SETB	0xA,3
+  0F31    1383    CLRB	0x3,7
+  0F32    0080    LD	0x0,A
+  0F33    0AD4    INCR	0x54
+  0F34    2F26    JP	0x726
+281:              	}                                        		
+282:                  CSN_HIGH;                                                                   		
+  0F35    1509    SETB	0x9,2
+  0F36    0008    RET
+283:              }
+284:              
+285:              void RF_Write_Buff(unsigned char reg_addr,unsigned char *pBuff,unsigned char length)
+286:              {
+  0FB7    00D3    LD	0x53,A
+287:                  unsigned char i;
+288:                  CSN_LOW;
+  0FB8    1109    CLRB	0x9,2
+289:                  SPI_RW(reg_addr);
+  0FB9    27CC    CALL	0x7CC
+  0FBA    158A    SETB	0xA,3
+290:                  for(i=0;i<length;i++)
+  0FBB    01D4    CLR	0x54
+  0FBC    0852    LD	A,0x52
+  0FBD    0254    SUBA	0x54
+  0FBE    1803    SZB	0x3,0
+  0FBF    2FCA    JP	0x7CA
+291:                  {
+292:                      SPI_RW(pBuff[i]);
+  0FC0    0854    LD	A,0x54
+  0FC1    0751    ADDA	0x51
+  0FC2    0084    LD	0x4,A
+  0FC3    118A    CLRB	0xA,3
+  0FC4    266A    CALL	0x66A
+  0FC5    158A    SETB	0xA,3
+  0FC6    27CC    CALL	0x7CC
+  0FC7    158A    SETB	0xA,3
+  0FC8    0AD4    INCR	0x54
+  0FC9    2FBC    JP	0x7BC
+293:                  }
+294:                  CSN_HIGH;
+  0FCA    1509    SETB	0x9,2
+  0FCB    0008    RET
+295:              }
+296:              
+297:              void RF_WriteReg(unsigned char reg_addr, unsigned char write_data)
+298:              {
+  0FAE    1283    CLRB	0x3,5
+  0FAF    00D1    LD	0x51,A
+299:                  CSN_LOW;
+  0FB0    1109    CLRB	0x9,2
+300:                  SPI_RW(reg_addr);
+  0FB1    27CC    CALL	0x7CC
+  0FB2    158A    SETB	0xA,3
+301:                  SPI_RW(write_data);
+  0FB3    0875    LD	A,0x75
+  0FB4    27CC    CALL	0x7CC
+302:                  CSN_HIGH;
+  0FB5    1509    SETB	0x9,2
+  0FB6    0008    RET
+303:              }
+304:              
+305:              unsigned char RF_ReadReg(unsigned char reg_addr)
+306:              {
+  0FF3    00D1    LD	0x51,A
+307:              	unsigned char tmp;
+308:                  CSN_LOW;
+  0FF4    1109    CLRB	0x9,2
+309:                  SPI_RW(reg_addr);
+  0FF5    27CC    CALL	0x7CC
+  0FF6    158A    SETB	0xA,3
+310:                  tmp = SPI_RW(0);
+  0FF7    3000    LDIA	0x0
+  0FF8    27CC    CALL	0x7CC
+  0FF9    00D2    LD	0x52,A
+311:                  CSN_HIGH;
+  0FFA    1509    SETB	0x9,2
+312:                  return tmp;
+  0FFB    0008    RET
+313:              }
+314:              
+315:              static void SPI_init(void)
+316:              {
+317:              	
+318:              	SPI_CSN_IO =0;	
+  0FE1    1109    CLRB	0x9,2
+319:              	SPI_SCK_IO=0;	
+  0FE2    1089    CLRB	0x9,1
+320:              	SPI_MOSI_IO=0;	
+  0FE3    1285    CLRB	0x5,5
+321:              	SPI_CE_IO = 0;
+  0FE4    1385    CLRB	0x5,7
+322:              
+323:              	SPI_IRQ_IO = 1;
+  0FE5    1585    SETB	0x5,3
+324:              	SPI_MISO_IO=1;
+  0FE6    1605    SETB	0x5,4
+  0FE7    0008    RET
+325:              }
+326:              
+327:              /******************************************************************************
+328:              * SPI写入一个BYTE的同时，读出一个BYTE返回
+329:              ******************************************************************************/
+330:              static unsigned char SPI_RW(unsigned char read_reg_addr)
+331:              {
+  0FCC    00F3    LD	0x73,A
+332:                  unsigned char i;
+333:                  for(i = 0; i < 8; i++)
+  0FCD    01F4    CLR	0x74
+334:                  {
+335:                      SCK_LOW;
+  0FCE    1089    CLRB	0x9,1
+336:                      if(read_reg_addr & 0x80)
+  0FCF    1FF3    SNZB	0x73,7
+  0FD0    2FD3    JP	0x7D3
+337:                      {
+338:                          MOSI_HIGH;
+  0FD1    1685    SETB	0x5,5
+339:                      }
+  0FD2    2FD4    JP	0x7D4
+340:                      else
+341:                      {
+342:                          MOSI_LOW;
+  0FD3    1285    CLRB	0x5,5
+343:                      }
+344:                      read_reg_addr = read_reg_addr << 1;
+  0FD4    1003    CLRB	0x3,0
+  0FD5    0DF3    RLCR	0x73
+345:                      SCK_HIGH;
+  0FD6    1489    SETB	0x9,1
+346:                      if( MISO )
+  0FD7    1A05    SZB	0x5,4
+347:                      {
+348:                        read_reg_addr = read_reg_addr | 0x01;
+  0FD8    1473    SETB	0x73,0
+  0FD9    3008    LDIA	0x8
+  0FDA    0AF4    INCR	0x74
+  0FDB    0274    SUBA	0x74
+349:                      }
+350:                  }
+351:                  SCK_LOW;
+  0FDC    1089    CLRB	0x9,1
+  0FDD    1C03    SNZB	0x3,0
+  0FDE    2FCF    JP	0x7CF
+352:                  return read_reg_addr;
+  0FDF    0873    LD	A,0x73
+  0FE0    0008    RET
+353:              }
+354:              
+355:              /******************************************************************************/
+356:              //            		进入RF休眠模式
+357:              /******************************************************************************/
+358:              void RF_Sleep()
+359:              {
+360:              	unsigned char reg_config;
+361:              	reg_config = RF_ReadReg(CONFIG);
+362:              	RF_WriteReg(W_REGISTER + CONFIG, reg_config & (~(0x02))); 
+363:              	CE_LOW;
+364:              }
+365:              
+366:              
+367:              /******************************************************************************/
+368:              //            		从RF休眠模式中唤醒
+369:              /******************************************************************************/
+370:              void RF_awaken()
+371:              {
+372:              	unsigned char reg_config;
+373:              	reg_config = RF_ReadReg(CONFIG);
+374:              	RF_WriteReg(W_REGISTER + CONFIG, reg_config | 0x02); 
+375:              	CE_HIGH;
+376:              	delay_ms(7);
+377:              }
+378:              
+379:              /******************************************************************************/
+380:              //            		进入载波模式
+381:              /******************************************************************************/
+382:              void RF_Carrier(unsigned char Channel)
+383:              {
+384:                  const unsigned char  BB_cal_data[]    = {0x0A,0x6D,0x67,0x9C,0x46};
+385:                  const unsigned char  RF_cal_data[]    = {0x16,0x33,0x27};                                       
+386:                  const unsigned char  RF_cal2_data[]   = {0x45,0x21,0x3F,0x2D,0x5C,0x40};
+387:                  const unsigned char  Dem_cal_data[]   = {0xE1};
+388:                  const unsigned char  Dem_cal2_data[]  = {0x0B,0xDF,0x02};
+389:                  CE_LOW;
+390:                  delay_ms(1);				 						                    //delay 500us
+391:                  RF_WriteReg(W_REGISTER + CONFIG, 0X8e);        					         	//tx mode 
+392:                  RF_WriteReg(W_REGISTER + RF_CH, Channel);						        //单载波频点	   
+393:                  RF_WriteReg(W_REGISTER + RF_SETUP, RF_POWER);      					     	//dbm
+394:                  RF_Write_Buff(W_REGISTER + BB_CAL,    BB_cal_data,  sizeof(BB_cal_data));
+395:                  RF_Write_Buff(W_REGISTER + RF_CAL2,   RF_cal2_data, sizeof(RF_cal2_data));
+396:                  RF_Write_Buff(W_REGISTER + DEM_CAL,   Dem_cal_data, sizeof(Dem_cal_data));
+397:                  RF_Write_Buff(W_REGISTER + RF_CAL,    RF_cal_data,  sizeof(RF_cal_data));
+398:                  RF_Write_Buff(W_REGISTER + DEM_CAL2,  Dem_cal2_data,sizeof(Dem_cal2_data));
+399:                  delay_ms(1);
+400:              }
+401:              
+402:              
+---- F:\项目\酷宅\BLE移植\rx\src\system.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "system.h"
+3:                #include "INT0.h"
+4:                #include "timer0.h"
+5:                #include "timer1.h"
+6:                #include "timer2.h"
+7:                #include "PWM.h"
+8:                #include "PORTB_interrupt.h"
+9:                #include "ADC.h"
+10:               #include "rf297L.h"
+11:               
+12:               void system_set_CPU_frequency(CPU_FREQUENCY_e CPU_Frequency);
+13:               void clear_interrupt_flag(void);
+14:               void system_to_sleep(void);
+15:               void Enable_Interrupt(void);
+16:               void Disable_Interrupt(void);
+17:               
+18:               void system_set_CPU_frequency(CPU_FREQUENCY_e CPU_Frequency)
+19:               {
+  07FB    00F3    LD	0x73,A
+20:               	OSCCON = CPU_Frequency;
+  07FC    1683    SETB	0x3,5
+  07FD    008F    LD	0xF,A
+21:               	OSCTUNE = 0X00;
+  07FE    0190    CLR	0x10
+  07FF    0008    RET
+22:               }
+23:               
+24:               void clear_interrupt_flag(void)
+25:               {
+26:               	PIR1&= ~0x4f;		//bit0==TMR1IF bit1==TMR2IF bit2==CCP1IF bit3==SSPIF bit6==ADIF
+27:               	PIR2&= ~0x19;		//bit0==CCP2IF bit3==BCLIF bit4==EEIF
+28:               	INTCON&= ~0x07;	//bit0==RBIF bit1==INTF bit2==T0IF
+29:               }
+30:               
+31:               void system_to_sleep(void)
+32:               {
+33:               	asm("sleep");
+34:               	asm("nop");
+35:               }
+36:               
+37:               void Enable_Interrupt(void)
+38:               {
+39:               	INTCON |= 0x80;
+  0002    178B    SETB	0xB,7
+  0003    0008    RET
+40:               }
+41:               
+42:               void Disable_Interrupt(void)
+43:               {
+44:               	INTCON &= ~(0x80);
+45:               }
+46:               
+47:               void interrupt ISR(void)
+48:               {
+49:               	unsigned char inside_intterrupt_enable,peripheral_intterrupt_enable;
+50:               	unsigned char inside_intterrupt_touch,peripheral_intterrupt_touch;
+51:               	
+52:               	//读取中断标志	
+53:               	inside_intterrupt_enable = INTCON & 0x38;
+  0DDD    1683    SETB	0x3,5
+  0DDE    1303    CLRB	0x3,6
+54:               	peripheral_intterrupt_enable = PIE1 & 0x43;
+55:               	inside_intterrupt_touch = INTCON & 0x07;
+  0DDF    1283    CLRB	0x3,5
+  0DE0    080C    LD	A,0xC
+  0DE1    00F2    LD	0x72,A
+  0DE2    3043    LDIA	0x43
+  0DE3    05F2    ANDR	0x72
+56:               	peripheral_intterrupt_touch = PIR1 & 0x43;
+57:               	
+58:               	//跳转到中断函数	
+59:               //	if(inside_intterrupt_touch & PORTB_CHANGE_ISR_TOUCH) 	{		//RBIF
+60:               //			PORTB_CHANGE_ISR();
+61:               //	} 
+62:               		
+63:               //	if(inside_intterrupt_touch & INT0_ISR_TOUCH){							//INTF
+64:               //			INT0_ISR();
+65:               //	}
+66:               		
+67:               //	if(inside_intterrupt_touch & TIMER0_ISR_TOUCH) {						//T0IF	
+68:               //			TIMER0_ISR();			
+69:               //	}
+70:               	
+71:               	if(peripheral_intterrupt_touch & TIMER1_ISR_TOUCH) {				//TMR1IF
+  0DE4    1C72    SNZB	0x72,0
+  0DE5    2DE7    JP	0x5E7
+72:               			TIMER1_ISR();
+  0DE6    25EE    CALL	0x5EE
+  0DE7    0871    LD	A,0x71
+  0DE8    008A    LD	0xA,A
+  0DE9    0E70    SWAPA	0x70
+  0DEA    0083    LD	0x3,A
+  0DEB    0EFE    SWAPR	0x7E
+  0DEC    0E7E    SWAPA	0x7E
+  0DED    0009    RETI
+73:               	}
+74:               		 
+75:               //	if(peripheral_intterrupt_touch & TIMER2_ISR_TOUCH) {				//TMR2IF
+76:               //			TIMER2_ISR();
+77:               //	}
+78:               	
+79:               //	if(peripheral_intterrupt_touch & ADC_ISR_TOUCH) {					//ADIF	
+80:               //			ADC_ISR();
+81:               //	}
+82:               }
+83:               
+84:               
+85:               void System_sleep_mode(void)
+86:               {
+87:               	RF_Sleep();
+88:               	asm("sleep");
+89:               	asm("nop");
+90:               }
+91:               
+---- F:\项目\酷宅\BLE移植\rx\src\timer1.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "virtual_timer.h"
+3:                #include "timer1.h"
+4:                #include "key_scan.h"
+5:                #include "recive.h"
+6:                
+7:                
+8:                static volatile unsigned int Timer1_set_time;
+9:                extern unsigned int sleep_flag;
+10:               
+11:               
+12:               
+13:               extern uint16_t flag_time_key0_add;
+14:               extern uint16_t flag_time_key1_add;
+15:               extern uint16_t flag_time_key2_add;
+16:               extern uint16_t flag_5s_add;
+17:               uint16_t flag_5min_add=0;
+18:               
+19:               void Timer1_Init(TIMER1_DIVIDER_e TIMER1_DIVIDER);
+20:               void Timer1_start(unsigned int T_nums, unsigned char Timer1_ISR_execution_total_time);
+21:               void Timer1_stop(void);
+22:               void TIMER1_ISR(void);
+23:               
+24:               /**************************************************************************
+25:               *时钟源为F = Fosc
+26:               *最小定时时间 T = (1/F)*TIMER1_DIVIDER
+27:               **************************************************************************/
+28:               void Timer1_Init(TIMER1_DIVIDER_e TIMER1_DIVIDER)
+29:               {
+  0DC0    00F3    LD	0x73,A
+30:               	T1CON = 0x00;	//TMR1GE = 0,Timer1由TMR1ON控制	TMR1CS = 0;选择内部时钟FOSC
+  0DC1    0190    CLR	0x10
+31:               	T1CON |= TIMER1_DIVIDER;	//分频设置	Bit5 Bit4 
+  0DC2    0490    ORR	0x10
+32:               	INTCON |= (0x40);	//PEIE = 1;		允许未被屏蔽的外部中断
+  0DC3    170B    SETB	0xB,6
+33:               	PIE1 |= 0x01;		//TMR1IE = 1;	开TMR1中断
+  0DC4    1683    SETB	0x3,5
+  0DC5    140C    SETB	0xC,0
+  0DC6    0008    RET
+34:               }
+35:               
+36:               /*************************************************************************************
+37:               *实际时间与定时时间有偏差,可通过Timer1_ISR_execution_total_time修正，
+38:               *Timer1_ISR_execution_total_time == （Timer1中断产生进入中断函数到退出中断函数执行时间）/TIMER1_DIVIDER,
+39:               *定时时间 == T_nums * T
+40:               *T = (1/F)*TIMER1_DIVIDER
+41:               *************************************************************************************/
+42:               void Timer1_start(unsigned int T_nums, unsigned char Timer1_ISR_execution_total_time)
+43:               {
+44:               	Timer1_set_time = 0xffff - T_nums + Timer1_ISR_execution_total_time;
+  07DC    0875    LD	A,0x75
+  07DD    1283    CLRB	0x3,5
+  07DE    00AC    LD	0x2C,A
+  07DF    01AD    CLR	0x2D
+  07E0    0874    LD	A,0x74
+  07E1    00D2    LD	0x52,A
+  07E2    0873    LD	A,0x73
+  07E3    00D1    LD	0x51,A
+  07E4    09D1    COMR	0x51
+  07E5    09D2    COMR	0x52
+  07E6    0851    LD	A,0x51
+  07E7    07AC    ADDR	0x2C
+  07E8    1803    SZB	0x3,0
+  07E9    0AAD    INCR	0x2D
+  07EA    0852    LD	A,0x52
+  07EB    07AD    ADDR	0x2D
+45:               	TMR1L = (unsigned char)(Timer1_set_time);
+  07EC    082C    LD	A,0x2C
+  07ED    008E    LD	0xE,A
+46:               	TMR1H = (unsigned char)(Timer1_set_time>>8);
+  07EE    082D    LD	A,0x2D
+  07EF    008F    LD	0xF,A
+47:               	PIR1 &= ~(0x01);	// TMR1IF = 0;	
+  07F0    100C    CLRB	0xC,0
+48:               	T1CON |= 0x01;		// TMR1ON = 1;	Start Timer0
+  07F1    1410    SETB	0x10,0
+  07F2    0008    RET
+49:               }
+50:               
+51:               
+52:               void Timer1_stop(void)
+53:               {
+54:               	PIE1 &= ~(0x01);		//TMR1IE = 0;	关TMR1中断
+55:               	T1CON &= ~(0x01);	//TMR1ON = 0;	关定时器
+56:               	PIR1 &= ~(0x01);	// TMR1IF = 0;	
+57:               }
+58:               
+59:               void TIMER1_ISR(void)
+60:               {
+61:               	static unsigned int flag_1s_add=0;
+62:               	static unsigned int flag_1min_add=0;
+63:               	T1CON &= ~(0x01);	//TMR1ON = 0;	关定时器
+  0DEE    1010    CLRB	0x10,0
+64:               	TMR1L = (unsigned char)(Timer1_set_time);
+  0DEF    082C    LD	A,0x2C
+  0DF0    008E    LD	0xE,A
+65:               	TMR1H = (unsigned char)(Timer1_set_time>>8);
+  0DF1    082D    LD	A,0x2D
+  0DF2    008F    LD	0xF,A
+66:               	//Do something
+67:               	flag_time_key0_add++;
+  0DF3    0AB2    INCR	0x32
+  0DF4    1903    SZB	0x3,2
+  0DF5    0AB3    INCR	0x33
+68:               	flag_time_key1_add++;
+  0DF6    0AB4    INCR	0x34
+  0DF7    1903    SZB	0x3,2
+  0DF8    0AB5    INCR	0x35
+69:               	flag_time_key2_add++;
+  0DF9    0AB6    INCR	0x36
+  0DFA    1903    SZB	0x3,2
+  0DFB    0AB7    INCR	0x37
+70:               	flag_5s_add++;
+  0DFC    0AB0    INCR	0x30
+  0DFD    1903    SZB	0x3,2
+  0DFE    0AB1    INCR	0x31
+71:               	flag_5min_add++;
+72:               	flag_1s_add++;
+  0DFF    0AAE    INCR	0x2E
+  0E00    1903    SZB	0x3,2
+  0E01    0AAF    INCR	0x2F
+73:               	///////////////////////////////////////////////////
+74:               	PIR1 &= ~(0x01);	// TMR1IF = 0;	
+  0E02    100C    CLRB	0xC,0
+75:               	T1CON |= 0x01;		//TMR1ON = 1;		打开时器
+  0E03    1410    SETB	0x10,0
+  0E04    0008    RET
+76:               }
+---- stringtab ------------------------------------------------------------------
+  066A    3006    LDIA	0x6
+  066B    008A    LD	0xA,A
+  066C    0804    LD	A,0x4
+  066D    0A84    INCR	0x4
+  066E    0782    ADDR	0x2
+  066F    3400    RET	0x0
+  0670    34D6    RET	0xD6
+  0671    34C5    RET	0xC5
+  0672    3444    RET	0x44
+  0673    3420    RET	0x20
+  0674    3459    RET	0x59
+  0675    34DE    RET	0xDE
+  0676    34E1    RET	0xE1
+  0677    348F    RET	0x8F
+  0678    341B    RET	0x1B
+  0679    34A5    RET	0xA5
+  067A    34AF    RET	0xAF
+  067B    3442    RET	0x42
+  067C    347B    RET	0x7B
+  067D    344E    RET	0x4E
+  067E    34CD    RET	0xCD
+  067F    3460    RET	0x60
+  0680    34EB    RET	0xEB
+  0681    3462    RET	0x62
+  0682    3422    RET	0x22
+  0683    3490    RET	0x90
+  0684    342C    RET	0x2C
+  0685    34EF    RET	0xEF
+  0686    34F0    RET	0xF0
+  0687    34C7    RET	0xC7
+  0688    348D    RET	0x8D
+  0689    34D2    RET	0xD2
+  068A    3457    RET	0x57
+  068B    34A1    RET	0xA1
+  068C    343D    RET	0x3D
+  068D    34A7    RET	0xA7
+  068E    3466    RET	0x66
+  068F    34B0    RET	0xB0
+  0690    3475    RET	0x75
+  0691    3431    RET	0x31
+  0692    3411    RET	0x11
+  0693    3448    RET	0x48
+  0694    3496    RET	0x96
+  0695    3477    RET	0x77
+  0696    34F8    RET	0xF8
+  0697    34E3    RET	0xE3
+  0698    3446    RET	0x46
+  0699    34E9    RET	0xE9
+  069A    34C7    RET	0xC7
+  069B    348D    RET	0x8D
+  069C    34D2    RET	0xD2
+  069D    3457    RET	0x57
+  069E    34A1    RET	0xA1
+  069F    343D    RET	0x3D
+  06A0    34A7    RET	0xA7
+  06A1    3466    RET	0x66
+  06A2    34B0    RET	0xB0
+  06A3    3475    RET	0x75
+  06A4    3431    RET	0x31
+  06A5    3411    RET	0x11
+  06A6    3448    RET	0x48
+  06A7    3496    RET	0x96
+  06A8    3477    RET	0x77
+  06A9    34F8    RET	0xF8
+  06AA    34E3    RET	0xE3
+  06AB    3446    RET	0x46
+  06AC    34E9    RET	0xE9
+  06AD    34AB    RET	0xAB
+  06AE    34D0    RET	0xD0
+  06AF    3441    RET	0x41
+  06B0    3492    RET	0x92
+  06B1    3453    RET	0x53
+  06B2    342A    RET	0x2A
+  06B3    34FC    RET	0xFC
+  06B4    34AB    RET	0xAB
+  06B5    34CE    RET	0xCE
+  06B6    3426    RET	0x26
+  06B7    340D    RET	0xD
+  06B8    341E    RET	0x1E
+  06B9    3499    RET	0x99
+  06BA    3478    RET	0x78
+  06BB    3400    RET	0x0
+  06BC    3422    RET	0x22
+  06BD    3499    RET	0x99
+  06BE    34DE    RET	0xDE
+  06BF    3445    RET	0x45
+  06C0    3421    RET	0x21
+  06C1    343F    RET	0x3F
+  06C2    342D    RET	0x2D
+  06C3    345C    RET	0x5C
+  06C4    3440    RET	0x40
+  06C5    3445    RET	0x45
+  06C6    3421    RET	0x21
+  06C7    343F    RET	0x3F
+  06C8    342D    RET	0x2D
+  06C9    345C    RET	0x5C
+  06CA    3440    RET	0x40
+  06CB    340A    RET	0xA
+  06CC    346D    RET	0x6D
+  06CD    3467    RET	0x67
+  06CE    349C    RET	0x9C
+  06CF    3446    RET	0x46
+  06D0    340A    RET	0xA
+  06D1    346D    RET	0x6D
+  06D2    3467    RET	0x67
+  06D3    349C    RET	0x9C
+  06D4    3446    RET	0x46
+  06D5    340B    RET	0xB
+  06D6    34DF    RET	0xDF
+  06D7    3402    RET	0x2
+  06D8    3416    RET	0x16
+  06D9    3433    RET	0x33
+  06DA    3427    RET	0x27
+  06DB    340B    RET	0xB
+  06DC    34DF    RET	0xDF
+  06DD    3402    RET	0x2
+  06DE    3416    RET	0x16
+  06DF    3433    RET	0x33
+  06E0    3427    RET	0x27
+  06E1    342D    RET	0x2D
+  06E2    34D7    RET	0xD7
+  06E3    34B9    RET	0xB9
+  06E4    34CC    RET	0xCC
+  06E5    34CC    RET	0xCC
+  06E6    34CC    RET	0xCC
+  06E7    34E1    RET	0xE1
+  06E8    3401    RET	0x1
+---- reset_enter ------------------------------------------------------------------
+  0000    118A    CLRB	0xA,3
+  0001    280B    JP	0xB
+  000B    158A    SETB	0xA,3
+  000C    2DC7    JP	0x5C7
+---- start_initialization ------------------------------------------------------------------
+  07F3    0064    CLRWDT
+  07F4    0180    CLR	0x0
+  07F5    0A84    INCR	0x4
+  07F6    0604    XORA	0x4
+  07F7    1903    SZB	0x3,2
+  07F8    3400    RET	0x0
+  07F9    0604    XORA	0x4
+  07FA    2FF4    JP	0x7F4
+  0DC7    3020    LDIA	0x20
+  0DC8    01F6    CLR	0x76
+  0DC9    01F7    CLR	0x77
+  0DCA    01F8    CLR	0x78
+  0DCB    01F9    CLR	0x79
+  0DCC    01FA    CLR	0x7A
+  0DCD    1383    CLRB	0x3,7
+  0DCE    0084    LD	0x4,A
+  0DCF    3051    LDIA	0x51
+  0DD0    118A    CLRB	0xA,3
+  0DD1    27F3    CALL	0x7F3
+  0DD2    158A    SETB	0xA,3
+  0DD3    30A0    LDIA	0xA0
+  0DD4    0084    LD	0x4,A
+  0DD5    30F0    LDIA	0xF0
+  0DD6    118A    CLRB	0xA,3
+  0DD7    27F3    CALL	0x7F3
+  0DD8    3001    LDIA	0x1
+  0DD9    00EF    LD	0x6F,A
+  0DDA    0183    CLR	0x3
+  0DDB    118A    CLRB	0xA,3
+  0DDC    2EE9    JP	0x6E9
+---- interrupt_function_enter ----------------------------------------------------------
+  0004    00FE    LD	0x7E,A
+  0005    0E03    SWAPA	0x3
+  0006    00F0    LD	0x70,A
+  0007    080A    LD	A,0xA
+  0008    00F1    LD	0x71,A
+  0009    158A    SETB	0xA,3
+  000A    2DDD    JP	0x5DD
+---- common_function ------------------------------------------------------------------
+  062F    00F5    LD	0x75,A
+  0630    01F4    CLR	0x74
+  0631    0873    LD	A,0x73
+  0632    1875    SZB	0x75,0
+  0633    07F4    ADDR	0x74
+  0634    1003    CLRB	0x3,0
+  0635    0DF3    RLCR	0x73
+  0636    1003    CLRB	0x3,0
+  0637    0CF5    RRCR	0x75
+  0638    08F5    TESTZ	0x75
+  0639    1D03    SNZB	0x3,2
+  063A    2E31    JP	0x631
+  063B    0874    LD	A,0x74
+  063C    0008    RET
+  0655    1683    SETB	0x3,5
+  0656    1007    CLRB	0x7,0
+  0657    1283    CLRB	0x3,5
+  0658    3064    LDIA	0x64
+  0659    1007    CLRB	0x7,0
+  065A    00F3    LD	0x73,A
+  065B    01F4    CLR	0x74
+  065C    0008    RET
+  065D    1683    SETB	0x3,5
+  065E    1007    CLRB	0x7,0
+  065F    1283    CLRB	0x3,5
+  0660    3064    LDIA	0x64
+  0661    1407    SETB	0x7,0
+  0662    00F3    LD	0x73,A
+  0663    01F4    CLR	0x74
+  0664    0008    RET
+  0665    1683    SETB	0x3,5
+  0666    1007    CLRB	0x7,0
+  0667    1283    CLRB	0x3,5
+  0668    1407    SETB	0x7,0
+  0669    0008    RET

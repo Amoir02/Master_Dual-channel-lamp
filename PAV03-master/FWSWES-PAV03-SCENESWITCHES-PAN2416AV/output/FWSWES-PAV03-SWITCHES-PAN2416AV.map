@@ -1,0 +1,1040 @@
+HI-TECH Software C Compiler 
+
+Linker command line:
+
+\
+  --edf=F:\–Ì‘Û±Ú\PAN2416\PAN2416\±‡“Î∆˜\CMS_IDE_V1.41.03_CRC_PANCHIP\CMS_IDE_V1.41.03_CRC_PANCHIP\data\dat\en_msgs.txt \
+  -cs -h+FWSWES-PAV03-SWITCHES-PAN2416AV.sym -z -QPAN2416AV -ol.obj \
+  -MFWSWES-PAV03-SWITCHES-PAN2416AV.map -E1 -ACONST=00h-0FFhx16 \
+  -ACODE=00h-07FFhx2 -ASTRCODE=00h-0FFFh -AENTRY=00h-0FFhx16 \
+  -ASTRING=00h-0FFhx16 -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh \
+  -ARAM=020h-06Fh,0A0h-0EFh -AABS1=020h-07Fh,0A0h-0EFh -ACOMMON=070h-07Fh \
+  -ASFR0=00h-01Fh -ASFR1=080h-09Fh -ASFR2=0100h-016Fh -ASFR3=0180h-01EFh \
+  -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pfunctab=CODE \
+  -ACONFIG=02007h-02008h -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h \
+  -pidloc=IDLOC -DIDLOC=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
+  -DENTRY=2 -k startup.obj FWSWES-PAV03-SWITCHES-PAN2416AV.obj 
+
+Object code version is 3.10
+
+Machine type is PAN2416AV
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+startup.obj     end_init                              B        B        2        8       0
+                reset_vec                             0        0        2        0       0
+FWSWES-PAV03-SWITCHES-PAN2416AV.obj
+                intentry                              4        4        7        8       0
+                text1168                            527      527       28      7BA       0
+                text1167                            5A3      5A3        5      7BA       0
+                text1165                            59D      59D        6      7BA       0
+                text1164                            597      597        6      7BA       0
+                text1163                            590      590        7      7BA       0
+                text1162                            567      567       17      7BA       0
+                text1161                            5A8      5A8        2      7BA       0
+                text1160                            4F2      4F2       35      7BA       0
+                text1159                            3DD      3DD       75      7BA       0
+                text1147                            57E      57E        A      7BA       0
+                text1141                              D        D      1C6        8       0
+                text1140                            1D3      1D3      18B        8       0
+                text1135                            4AD      4AD       45      7BA       0
+                text1132                            808      808      7F8     1010       0
+                maintext                            452      452       5B      7BA       0
+                cstackBANK0                          50       50       1D       20       1
+                cstackCOMMON                         70       70        6       70       1
+                clrtext                             588      588        8      7BA       0
+                bssBANK1                             A0       A0       4E       A0       1
+                dataBANK0                            6D       6D        2       20       1
+                bssBANK0                             20       20       30       20       1
+                bssCOMMON                            76       76        5       70       1
+                cinit                               54F      54F       18      7BA       0
+                strings                             35E      35E       7F      6BC       0
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   CONST          
+
+        CLASS   CODE           
+                end_init                              B        B        2         0
+                intentry                              4        4        7         0
+                reset_vec                             0        0        2         0
+                text1168                            527      527       28         0
+                text1167                            5A3      5A3        5         0
+                text1165                            59D      59D        6         0
+                text1164                            597      597        6         0
+                text1163                            590      590        7         0
+                text1162                            567      567       17         0
+                text1161                            5A8      5A8        2         0
+                text1160                            4F2      4F2       35         0
+                text1159                            3DD      3DD       75         0
+                text1147                            57E      57E        A         0
+                text1141                              D        D      1C6         0
+                text1140                            1D3      1D3      18B         0
+                text1135                            4AD      4AD       45         0
+                text1132                            808      808      7F8         0
+                maintext                            452      452       5B         0
+                clrtext                             588      588        8         0
+                cinit                               54F      54F       18         0
+
+        CLASS   STRCODE        
+
+        CLASS   ENTRY          
+
+        CLASS   STRING         
+                strings                             35E      35E       7F         0
+
+        CLASS   BANK0          
+                cstackBANK0                          50       50       1D         1
+                dataBANK0                            6D       6D        2         1
+                bssBANK0                             20       20       30         1
+
+        CLASS   BANK1          
+                bssBANK1                             A0       A0       4E         1
+
+        CLASS   RAM            
+
+        CLASS   ABS1           
+                abs_s1                               7E       7E        2         1
+
+        CLASS   COMMON         
+                cstackCOMMON                         70       70        6         1
+                bssCOMMON                            76       76        5         1
+
+        CLASS   SFR0           
+
+        CLASS   SFR1           
+
+        CLASS   SFR2           
+
+        CLASS   SFR3           
+
+        CLASS   CONFIG         
+
+        CLASS   IDLOC          
+
+        CLASS   BANK3          
+
+        CLASS   BANK2          
+
+        CLASS   EEDATA         
+
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
+
+                reset_vec                      000000  000002  000002         0       0  CODE        2
+                intentry                       000004  00035A  00035E         8       0  CODE        2
+                bssBANK0                       000020  00004F  00006F        20       1  BANK0       1
+                cstackCOMMON                   000070  00000B  00007B        70       1  COMMON      1
+                bssBANK1                       0000A0  00004E  0000EE        A0       1  BANK1       1
+                strings                        00035E  00007F  0003DD       6BC       0  STRING      2
+                text1159                       0003DD  0001CD  0005AA       7BA       0  CODE        2
+                text1132                       000808  0007F8  001000      1010       0  CODE        2
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            006F-006F              1           1
+        BANK1            00EE-00EF              2           1
+        CODE             0002-0003              2           2
+                         05AA-0807            256
+        COMMON           007B-007D              3           1
+        CONFIG           2007-2008              2           2
+        CONST            0002-0003              2           2
+                         05AA-0807            100
+        ENTRY            0002-0003              2           2
+                         05AA-0807            100
+        IDLOC            2000-2003              4           2
+        RAM              006F-006F              1           1
+                         00EE-00EF              2
+        SFR0             0000-001F             20           1
+        SFR1             0080-009F             20           1
+        SFR2             0100-016F             70           1
+        SFR3             0180-01EF             70           1
+        STRCODE          0002-0003              2           2
+                         05AA-0807            25E
+        STRING           0002-0003              2           2
+                         05AA-0807            100
+
+                                  Symbol Table
+
+??_AT24C02_Read_Byte                         cstackCOMMON 0076
+??_AT24C02_Read_Msg                          cstackBANK0  0058
+??_AT24C02_Write_Byte                        cstackCOMMON 0076
+??_AT24C02_Write_Msg                         cstackBANK0  0056
+??_Enable_Interrupt                          cstackCOMMON 0073
+??_I2C_ReadByte                              cstackCOMMON 0076
+??_I2C_SendByte                              cstackCOMMON 0074
+??_IIC_ACK                                   cstackCOMMON 0074
+??_IIC_Init                                  cstackCOMMON 0073
+??_IIC_NACK                                  cstackCOMMON 0074
+??_IIC_START                                 cstackCOMMON 0074
+??_IIC_STOP                                  cstackCOMMON 0074
+??_IIC_Wait_ACK                              cstackCOMMON 0074
+??_ISR                                       cstackCOMMON 0070
+??_RF_ClearFIFO                              cstackCOMMON 0076
+??_RF_ClearStatus                            cstackCOMMON 0076
+??_RF_GetStatus                              cstackCOMMON 0075
+??_RF_Init                                   cstackCOMMON 0076
+??_RF_ReadReg                                cstackCOMMON 0075
+??_RF_Read_Buff                              cstackCOMMON 0075
+??_RF_RxData                                 cstackBANK0  0055
+??_RF_Set_RxMode                             cstackCOMMON 0076
+??_RF_WriteReg                               cstackCOMMON 0076
+??_RF_Write_Buff                             cstackCOMMON 0075
+??_SPI_RW                                    cstackCOMMON 0073
+??_SPI_init                                  cstackCOMMON 0073
+??_TIMER1_ISR                                cstackCOMMON 0070
+??_Timer1_Init                               cstackCOMMON 0073
+??_Timer1_start                              cstackBANK0  0050
+??_UpdateCRC                                 cstackBANK0  0050
+??___bmul                                    cstackCOMMON 0074
+??_channel_set                               cstackCOMMON 0074
+??_delay_task                                cstackCOMMON 0073
+??_iic_delay_us                              cstackCOMMON 0073
+??_key_Init                                  cstackCOMMON 0073
+??_key_scan                                  cstackCOMMON 0075
+??_key_value_read                            cstackCOMMON 0075
+??_loadParamsFromEeprom                      cstackCOMMON 0076
+??_main                                      cstackCOMMON 0076
+??_recive_task                               cstackBANK0  0060
+??_rx_data                                   cstackBANK0  0058
+??_soft_delay_ms                             cstackCOMMON 0075
+??_system_set_CPU_frequency                  cstackCOMMON 0073
+?_AT24C02_Read_Byte                          cstackCOMMON 0070
+?_AT24C02_Read_Msg                           cstackBANK0  0056
+?_AT24C02_Write_Byte                         cstackBANK0  0050
+?_AT24C02_Write_Msg                          cstackBANK0  0054
+?_Enable_Interrupt                           cstackCOMMON 0070
+?_I2C_ReadByte                               cstackCOMMON 0074
+?_I2C_SendByte                               cstackCOMMON 0070
+?_IIC_ACK                                    cstackCOMMON 0070
+?_IIC_Init                                   cstackCOMMON 0070
+?_IIC_NACK                                   cstackCOMMON 0070
+?_IIC_START                                  cstackCOMMON 0070
+?_IIC_STOP                                   cstackCOMMON 0070
+?_IIC_Wait_ACK                               cstackCOMMON 0070
+?_ISR                                        cstackCOMMON 0070
+?_RF_ClearFIFO                               cstackCOMMON 0070
+?_RF_ClearStatus                             cstackCOMMON 0070
+?_RF_GetStatus                               cstackCOMMON 0070
+?_RF_Init                                    cstackCOMMON 0070
+?_RF_ReadReg                                 cstackCOMMON 0070
+?_RF_Read_Buff                               cstackBANK0  0050
+?_RF_RxData                                  cstackBANK0  0054
+?_RF_Set_RxMode                              cstackCOMMON 0070
+?_RF_WriteReg                                cstackCOMMON 0075
+?_RF_Write_Buff                              cstackBANK0  0050
+?_SPI_RW                                     cstackCOMMON 0070
+?_SPI_init                                   cstackCOMMON 0070
+?_TIMER1_ISR                                 cstackCOMMON 0070
+?_Timer1_Init                                cstackCOMMON 0070
+?_Timer1_start                               cstackCOMMON 0073
+?_UpdateCRC                                  cstackCOMMON 0073
+?___bmul                                     cstackCOMMON 0073
+?_channel_set                                cstackCOMMON 0073
+?_delay_task                                 cstackCOMMON 0070
+?_iic_delay_us                               cstackCOMMON 0070
+?_key_Init                                   cstackCOMMON 0070
+?_key_scan                                   cstackCOMMON 0070
+?_key_value_read                             cstackCOMMON 0070
+?_loadParamsFromEeprom                       cstackCOMMON 0070
+?_main                                       cstackCOMMON 0070
+?_recive_task                                cstackCOMMON 0070
+?_rx_data                                    cstackCOMMON 0070
+?_soft_delay_ms                              cstackCOMMON 0073
+?_system_set_CPU_frequency                   cstackCOMMON 0070
+AT24C02_Read_Byte@addr                       cstackBANK0  0054
+AT24C02_Read_Byte@temp                       cstackBANK0  0055
+AT24C02_Read_Msg@addr                        cstackBANK0  0059
+AT24C02_Read_Msg@data                        cstackBANK0  0056
+AT24C02_Read_Msg@i                           cstackBANK0  005A
+AT24C02_Read_Msg@len                         cstackBANK0  0057
+AT24C02_Write_Byte@addr                      cstackBANK0  0051
+AT24C02_Write_Byte@data                      cstackBANK0  0050
+AT24C02_Write_Msg@addr                       cstackBANK0  0057
+AT24C02_Write_Msg@data                       cstackBANK0  0054
+AT24C02_Write_Msg@i                          cstackBANK0  0058
+AT24C02_Write_Msg@len                        cstackBANK0  0055
+I2C_ReadByte@ack                             cstackBANK0  0050
+I2C_ReadByte@cnt                             cstackBANK0  0053
+I2C_ReadByte@data                            cstackBANK0  0051
+I2C_SendByte@Data                            cstackCOMMON 0074
+I2C_SendByte@cnt                             cstackCOMMON 0075
+ISR@peripheral_intterrupt_touch              cstackCOMMON 0072
+RF_Carrier@BB_cal_data                       strings      03BF
+RF_Carrier@Dem_cal2_data                     strings      03C9
+RF_Carrier@Dem_cal_data                      strings      03DB
+RF_Carrier@RF_cal2_data                      strings      03B3
+RF_Carrier@RF_cal_data                       strings      03CC
+RF_Init@BB_cal_data                          strings      03C4
+RF_Init@Dem_cal2_data                        strings      03CF
+RF_Init@Dem_cal_data                         strings      03DC
+RF_Init@RF_cal2_data                         strings      03B9
+RF_Init@RF_cal_data                          strings      03D2
+RF_ReadReg@reg_addr                          cstackBANK0  0050
+RF_ReadReg@tmp                               cstackBANK0  0051
+RF_Read_Buff@byte_ctr                        cstackBANK0  0053
+RF_Read_Buff@length                          cstackBANK0  0051
+RF_Read_Buff@pBuff                           cstackBANK0  0050
+RF_Read_Buff@reg_addr                        cstackBANK0  0052
+RF_RxData@length                             cstackBANK0  0054
+RF_RxData@payload_buff                       cstackBANK0  0056
+RF_WriteReg@reg_addr                         cstackBANK0  0050
+RF_WriteReg@write_data                       cstackCOMMON 0075
+RF_Write_Buff@i                              cstackBANK0  0053
+RF_Write_Buff@length                         cstackBANK0  0051
+RF_Write_Buff@pBuff                          cstackBANK0  0050
+RF_Write_Buff@reg_addr                       cstackBANK0  0052
+SPI_RW@i                                     cstackCOMMON 0074
+SPI_RW@read_reg_addr                         cstackCOMMON 0073
+Timer1_Init@TIMER1_DIVIDER                   cstackCOMMON 0073
+Timer1_start@T_nums                          cstackCOMMON 0073
+Timer1_start@Timer1_ISR_execution_total_time cstackCOMMON 0075
+UpdateCRC@CRC_acc                            cstackBANK0  0056
+UpdateCRC@CRC_input                          cstackBANK0  0053
+UpdateCRC@i                                  cstackBANK0  0055
+UpdateCRC@k                                  cstackBANK0  0054
+UpdateCRC@len                                cstackCOMMON 0073
+_ADC_digital_value                           bssBANK0     002C
+_AT24C02_Read_Byte                           text1132     0808
+_AT24C02_Read_Msg                            text1132     0F93
+_AT24C02_Write_Byte                          text1132     0FAB
+_AT24C02_Write_Msg                           text1132     0F7A
+_Enable_Interrupt                            text1161     05A8
+_I2C_ReadByte                                text1135     04AD
+_I2C_SendByte                                text1132     0FBE
+_IIC_ACK                                     text1135     04E3
+_IIC_Init                                    text1165     059D
+_IIC_NACK                                    text1135     04D5
+_IIC_START                                   text1132     0FF3
+_IIC_STOP                                    text1147     057E
+_IIC_Wait_ACK                                text1132     0FD9
+_INTCON                                      (abs)        000B
+_ISR                                         text1168     0527
+_KEY0                                        bssBANK0     0020
+_KEY0_FLAG                                   bssCOMMON    0076
+_KEY1                                        bssBANK0     0023
+_KEY1_FLAG                                   bssCOMMON    0077
+_KEY2                                        bssBANK0     0026
+_KEY2_FLAG                                   bssCOMMON    0078
+_OPTION_REG                                  (abs)        0081
+_OSCCON                                      (abs)        008F
+_OSCTUNE                                     (abs)        0090
+_PIE1                                        (abs)        008C
+_PIR1                                        (abs)        000C
+_RA4                                         (abs)        002C
+_RA5                                         (abs)        002D
+_RA7                                         (abs)        002F
+_RB1                                         (abs)        0031
+_RB2                                         (abs)        0032
+_RB3                                         (abs)        0033
+_RB4                                         (abs)        0034
+_RB5                                         (abs)        0035
+_RB6                                         (abs)        0036
+_RC0                                         (abs)        0038
+_RC1                                         (abs)        0039
+_RC2                                         (abs)        003A
+_RE1                                         (abs)        0049
+_RE2                                         (abs)        004A
+_RF_ClearFIFO                                text1141     01BF
+_RF_ClearStatus                              text1141     01CF
+_RF_GetStatus                                text1141     01BB
+_RF_Init                                     text1141     010A
+_RF_ReadReg                                  text1141     01C6
+_RF_Read_Buff                                text1141     00F4
+_RF_RxData                                   text1141     00E3
+_RF_Set_RxMode                               text1141     000D
+_RF_WriteReg                                 text1141     0181
+_RF_Write_Buff                               text1141     018A
+_RX_ADDRESS_DEF                              strings      03D5
+_SPI_RW                                      text1141     019F
+_SPI_init                                    text1141     01B4
+_T1CON                                       (abs)        0010
+_TIMER1_ISR                                  text1168     0538
+_TMR1H                                       (abs)        000F
+_TMR1L                                       (abs)        000E
+_TRISA3                                      (abs)        042B
+_TRISA4                                      (abs)        042C
+_TRISA5                                      (abs)        042D
+_TRISA7                                      (abs)        042F
+_TRISB                                       (abs)        0086
+_TRISB4                                      (abs)        0434
+_TRISB5                                      (abs)        0435
+_TRISB6                                      (abs)        0436
+_TRISC                                       (abs)        0087
+_TRISC0                                      (abs)        0438
+_TRISC1                                      (abs)        0439
+_TRISE1                                      (abs)        0449
+_TRISE2                                      (abs)        044A
+_TX_ADDRESS_DEF                              strings      03D8
+_Timer0_set_time                             bssBANK0     003A
+_Timer1_Init                                 text1163     0590
+_Timer1_set_time                             bssBANK0     002E
+_Timer1_start                                text1162     0567
+_UpdateCRC                                   text1141     00AC
+_WPUB                                        (abs)        0095
+_WPUC1                                       (abs)        0C79
+__Habs1                                      abs1         0000
+__Hbank0                                     bank0        0000
+__Hbank1                                     bank1        0000
+__Hbank2                                     bank2        0000
+__Hbank3                                     bank3        0000
+__HbssBANK0                                  bssBANK0     0000
+__HbssBANK1                                  bssBANK1     0000
+__HbssCOMMON                                 bssCOMMON    0000
+__Hcinit                                     cinit        0000
+__Hclrtext                                   clrtext      0000
+__Hcode                                      code         0000
+__Hcommon                                    common       0000
+__Hconfig                                    config       0000
+__HcstackBANK0                               cstackBANK0  0000
+__HcstackCOMMON                              cstackCOMMON 0000
+__HdataBANK0                                 dataBANK0    0000
+__Heeprom_data                               eeprom_data  0000
+__Hend_init                                  end_init     000D
+__Hfunctab                                   functab      0000
+__HidataBANK0                                idataBANK0   0000
+__Hidloc                                     idloc        0000
+__Hinit                                      init         000B
+__Hintentry                                  intentry     000B
+__Hmaintext                                  maintext     0000
+__Hpa_nodes                                  pa_nodes     0000
+__Hpowerup                                   powerup      0000
+__Hram                                       ram          0000
+__Hreset_vec                                 reset_vec    0002
+__Hsfr0                                      sfr0         0000
+__Hsfr1                                      sfr1         0000
+__Hsfr2                                      sfr2         0000
+__Hsfr3                                      sfr3         0000
+__Hstrings                                   strings      0000
+__Htext                                      text         0000
+__Labs1                                      abs1         0000
+__Lbank0                                     bank0        0000
+__Lbank1                                     bank1        0000
+__Lbank2                                     bank2        0000
+__Lbank3                                     bank3        0000
+__LbssBANK0                                  bssBANK0     0000
+__LbssBANK1                                  bssBANK1     0000
+__LbssCOMMON                                 bssCOMMON    0000
+__Lcinit                                     cinit        0000
+__Lclrtext                                   clrtext      0000
+__Lcode                                      code         0000
+__Lcommon                                    common       0000
+__Lconfig                                    config       0000
+__LcstackBANK0                               cstackBANK0  0000
+__LcstackCOMMON                              cstackCOMMON 0000
+__LdataBANK0                                 dataBANK0    0000
+__Leeprom_data                               eeprom_data  0000
+__Lend_init                                  end_init     000B
+__Lfunctab                                   functab      0000
+__LidataBANK0                                idataBANK0   0000
+__Lidloc                                     idloc        0000
+__Linit                                      init         000B
+__Lintentry                                  intentry     0004
+__Lmaintext                                  maintext     0000
+__Lpa_nodes                                  pa_nodes     0000
+__Lpowerup                                   powerup      0000
+__Lram                                       ram          0000
+__Lreset_vec                                 reset_vec    0000
+__Lsfr0                                      sfr0         0000
+__Lsfr1                                      sfr1         0000
+__Lsfr2                                      sfr2         0000
+__Lsfr3                                      sfr3         0000
+__Lstrings                                   strings      0000
+__Ltext                                      text         0000
+__S0                                         (abs)        1000
+__S1                                         (abs)        00EE
+___bmul                                      text1132     0F4F
+___bmul@multiplicand                         cstackCOMMON 0073
+___bmul@multiplier                           cstackCOMMON 0075
+___bmul@product                              cstackCOMMON 0074
+__end_of_AT24C02_Read_Byte                   text1132     0825
+__end_of_AT24C02_Read_Msg                    text1132     0FAB
+__end_of_AT24C02_Write_Byte                  text1132     0FBE
+__end_of_AT24C02_Write_Msg                   text1132     0F93
+__end_of_Enable_Interrupt                    text1161     05AA
+__end_of_I2C_ReadByte                        text1135     04D5
+__end_of_I2C_SendByte                        text1132     0FD9
+__end_of_IIC_ACK                             text1135     04F2
+__end_of_IIC_Init                            text1165     05A3
+__end_of_IIC_NACK                            text1135     04E3
+__end_of_IIC_START                           text1132     1000
+__end_of_IIC_STOP                            text1147     0588
+__end_of_IIC_Wait_ACK                        text1132     0FEC
+__end_of_ISR                                 text1168     0538
+__end_of_RF_ClearFIFO                        text1141     01C6
+__end_of_RF_ClearStatus                      text1141     01D3
+__end_of_RF_GetStatus                        text1141     01BF
+__end_of_RF_Init                             text1141     0181
+__end_of_RF_ReadReg                          text1141     01CF
+__end_of_RF_Read_Buff                        text1141     010A
+__end_of_RF_RxData                           text1141     00F4
+__end_of_RF_Set_RxMode                       text1141     001D
+__end_of_RF_WriteReg                         text1141     018A
+__end_of_RF_Write_Buff                       text1141     019F
+__end_of_SPI_RW                              text1141     01B4
+__end_of_SPI_init                            text1141     01BB
+__end_of_TIMER1_ISR                          text1168     054F
+__end_of_Timer1_Init                         text1163     0597
+__end_of_Timer1_start                        text1162     057E
+__end_of_UpdateCRC                           text1141     00E3
+__end_of___bmul                              text1132     0F5D
+__end_of_channel_set                         text1160     0527
+__end_of_delay_task                          text1159     0452
+__end_of_iic_delay_us                        text1132     0FF3
+__end_of_key_Init                            text1164     059D
+__end_of_key_scan                            text1140     0349
+__end_of_key_value_read                      text1140     02D9
+__end_of_loadParamsFromEeprom                text1132     0841
+__end_of_main                                maintext     04AD
+__end_of_recive_task                         text1132     0F4F
+__end_of_rx_data                             text1141     00AC
+__end_of_soft_delay_ms                       text1132     0F7A
+__end_of_system_set_CPU_frequency            text1167     05A8
+__pbssBANK0                                  bssBANK0     0020
+__pbssBANK1                                  bssBANK1     00A0
+__pbssCOMMON                                 bssCOMMON    0076
+__pcstackBANK0                               cstackBANK0  0050
+__pcstackCOMMON                              cstackCOMMON 0070
+__pdataBANK0                                 dataBANK0    006D
+__pidataBANK0                                idataBANK0   0000
+__pintentry                                  intentry     0004
+__pmaintext                                  maintext     0452
+__pstrings                                   strings      035E
+__ptext1128                                  text1132     0841
+__ptext1129                                  text1132     0825
+__ptext1130                                  text1141     001D
+__ptext1131                                  text1132     0F93
+__ptext1132                                  text1132     0808
+__ptext1133                                  text1132     0F7A
+__ptext1134                                  text1141     00E3
+__ptext1135                                  text1135     04AD
+__ptext1136                                  text1132     0FAB
+__ptext1137                                  text1141     01CF
+__ptext1138                                  text1141     01BF
+__ptext1139                                  text1141     01BB
+__ptext1140                                  text1140     01D3
+__ptext1141                                  text1141     000D
+__ptext1142                                  text1141     010A
+__ptext1143                                  text1132     0FBE
+__ptext1144                                  text1135     04D5
+__ptext1145                                  text1135     04E3
+__ptext1146                                  text1132     0FD9
+__ptext1147                                  text1147     057E
+__ptext1148                                  text1132     0FF3
+__ptext1149                                  text1140     02D9
+__ptext1150                                  text1141     01C6
+__ptext1151                                  text1141     00F4
+__ptext1152                                  text1141     018A
+__ptext1153                                  text1141     0181
+__ptext1154                                  text1132     0F4F
+__ptext1155                                  text1132     0FEC
+__ptext1156                                  text1141     00AC
+__ptext1157                                  text1141     019F
+__ptext1158                                  text1141     01B4
+__ptext1159                                  text1159     03DD
+__ptext1160                                  text1160     04F2
+__ptext1161                                  text1161     05A8
+__ptext1162                                  text1162     0567
+__ptext1163                                  text1163     0590
+__ptext1164                                  text1164     0597
+__ptext1165                                  text1165     059D
+__ptext1166                                  text1132     0F5D
+__ptext1167                                  text1167     05A3
+__ptext1168                                  text1168     0527
+__ptext1169                                  text1168     0538
+__ptext1170                                  text1170     0000
+__size_of_AT24C02_Read_Byte                  (abs)        0000
+__size_of_AT24C02_Read_Msg                   (abs)        0000
+__size_of_AT24C02_Write_Byte                 (abs)        0000
+__size_of_AT24C02_Write_Msg                  (abs)        0000
+__size_of_Enable_Interrupt                   (abs)        0000
+__size_of_I2C_ReadByte                       (abs)        0000
+__size_of_I2C_SendByte                       (abs)        0000
+__size_of_IIC_ACK                            (abs)        0000
+__size_of_IIC_Init                           (abs)        0000
+__size_of_IIC_NACK                           (abs)        0000
+__size_of_IIC_START                          (abs)        0000
+__size_of_IIC_STOP                           (abs)        0000
+__size_of_IIC_Wait_ACK                       (abs)        0000
+__size_of_ISR                                (abs)        0000
+__size_of_RF_ClearFIFO                       (abs)        0000
+__size_of_RF_ClearStatus                     (abs)        0000
+__size_of_RF_GetStatus                       (abs)        0000
+__size_of_RF_Init                            (abs)        0000
+__size_of_RF_ReadReg                         (abs)        0000
+__size_of_RF_Read_Buff                       (abs)        0000
+__size_of_RF_RxData                          (abs)        0000
+__size_of_RF_Set_RxMode                      (abs)        0000
+__size_of_RF_WriteReg                        (abs)        0000
+__size_of_RF_Write_Buff                      (abs)        0000
+__size_of_SPI_RW                             (abs)        0000
+__size_of_SPI_init                           (abs)        0000
+__size_of_TIMER1_ISR                         (abs)        0000
+__size_of_Timer1_Init                        (abs)        0000
+__size_of_Timer1_start                       (abs)        0000
+__size_of_UpdateCRC                          (abs)        0000
+__size_of___bmul                             (abs)        0000
+__size_of_channel_set                        (abs)        0000
+__size_of_delay_task                         (abs)        0000
+__size_of_iic_delay_us                       (abs)        0000
+__size_of_key_Init                           (abs)        0000
+__size_of_key_scan                           (abs)        0000
+__size_of_key_value_read                     (abs)        0000
+__size_of_loadParamsFromEeprom               (abs)        0000
+__size_of_main                               (abs)        0000
+__size_of_recive_task                        (abs)        0000
+__size_of_rx_data                            (abs)        0000
+__size_of_soft_delay_ms                      (abs)        0000
+__size_of_system_set_CPU_frequency           (abs)        0000
+_ble_crc_38                                  strings      0364
+_channel_delay                               bssBANK0     0029
+_channel_flag                                bssBANK0     004F
+_channel_set                                 text1160     04F2
+_control_id                                  bssBANK1     00A6
+_crc_2_4G_lib                                strings      038E
+_crc_lab                                     strings      03A3
+_delay_flag                                  bssBANK0     003B
+_delay_task                                  text1159     03DD
+_exit                                        init         000B
+_flag_5min_add                               bssBANK0     0030
+_flag_5s_add                                 bssBANK0     0032
+_flag_time_key0_add                          bssBANK0     0034
+_flag_time_key1_add                          bssBANK0     0036
+_flag_time_key2_add                          bssBANK0     0038
+_iic_delay_us                                text1132     0FEC
+_key_Init                                    text1164     0597
+_key_long_flag                               bssCOMMON    0079
+_key_long_flag_add                           bssCOMMON    007A
+_key_scan                                    text1140     02D9
+_key_value_read                              text1140     01D3
+_last_PORTB_value                            bssBANK0     003C
+_loadParamsFromEeprom                        text1132     0825
+_main                                        maintext     0452
+_match_channel_flag                          dataBANK0    006D
+_recive_task                                 text1132     0841
+_rf_buf                                      bssBANK0     003D
+_rx_data                                     text1141     001D
+_soft_delay_ms                               text1132     0F5D
+_sys_stute                                   dataBANK0    006E
+_system_set_CPU_frequency                    text1167     05A3
+_virtual_timer_group                         bssBANK1     00A0
+btemp                                        (abs)        007E
+channel_set@channel_num                      cstackCOMMON 0074
+channel_set@status                           cstackCOMMON 0073
+clear_ram                                    clrtext      0588
+end_of_initialization                        cinit        0564
+i1l14854                                                      
+i1l14856                                                      
+i1l14858                                                      
+i1l14862                                                      
+i1l14864                                                      
+i1l14866                                                      
+i1l14868                                                      
+i1l14870                                                      
+i1l14872                                                      
+i1l14874                                                      
+i1l14876                                                      
+i1l14878                                                      
+i1l2599                                                       
+iic_delay_us@delay                           cstackCOMMON 0073
+interrupt_function                           intentry     0004
+intlevel0                                    functab      0000
+intlevel1                                    functab      0000
+intlevel2                                    functab      0000
+intlevel3                                    functab      0000
+intlevel4                                    functab      0000
+intlevel5                                    functab      0000
+l10706                                                        
+l10709                                                        
+l10712                                                        
+l10715                                                        
+l10720                                                        
+l10723                                                        
+l10726                                                        
+l10733                                                        
+l10741                                                        
+l11376                                                        
+l11379                                                        
+l11385                                                        
+l11391                                                        
+l11397                                                        
+l1298                                                         
+l1307                                                         
+l14728                                                        
+l14730                                                        
+l14758                                                        
+l14760                                                        
+l14762                                                        
+l14764                                                        
+l14766                                                        
+l14768                                                        
+l14770                                                        
+l14772                                                        
+l14774                                                        
+l14776                                                        
+l14778                                                        
+l14780                                                        
+l14782                                                        
+l14784                                                        
+l14786                                                        
+l14792                                                        
+l14794                                                        
+l14800                                                        
+l14804                                                        
+l14880                                                        
+l14900                                                        
+l14902                                                        
+l14906                                                        
+l14908                                                        
+l14916                                                        
+l14920                                                        
+l14928                                                        
+l14932                                                        
+l14940                                                        
+l14942                                                        
+l15004                                                        
+l15008                                                        
+l15014                                                        
+l15016                                                        
+l15022                                                        
+l15024                                                        
+l15030                                                        
+l15036                                                        
+l15038                                                        
+l15044                                                        
+l15052                                                        
+l15058                                                        
+l15060                                                        
+l15066                                                        
+l15080                                                        
+l15082                                                        
+l15084                                                        
+l15086                                                        
+l15090                                                        
+l15092                                                        
+l15094                                                        
+l15096                                                        
+l15098                                                        
+l15100                                                        
+l15102                                                        
+l15104                                                        
+l15106                                                        
+l15108                                                        
+l15110                                                        
+l15112                                                        
+l15114                                                        
+l15122                                                        
+l15124                                                        
+l15126                                                        
+l15128                                                        
+l15130                                                        
+l15132                                                        
+l15134                                                        
+l15136                                                        
+l15138                                                        
+l15140                                                        
+l15142                                                        
+l15150                                                        
+l15152                                                        
+l15154                                                        
+l15156                                                        
+l15212                                                        
+l15214                                                        
+l15216                                                        
+l15220                                                        
+l15222                                                        
+l15224                                                        
+l15226                                                        
+l15228                                                        
+l15230                                                        
+l15232                                                        
+l15234                                                        
+l15236                                                        
+l15240                                                        
+l15242                                                        
+l15260                                                        
+l15268                                                        
+l15270                                                        
+l15274                                                        
+l15280                                                        
+l15286                                                        
+l15292                                                        
+l15294                                                        
+l15296                                                        
+l15298                                                        
+l15300                                                        
+l15302                                                        
+l15306                                                        
+l15308                                                        
+l15310                                                        
+l15312                                                        
+l15334                                                        
+l15344                                                        
+l15348                                                        
+l15354                                                        
+l15360                                                        
+l15366                                                        
+l15368                                                        
+l15370                                                        
+l15372                                                        
+l15374                                                        
+l15376                                                        
+l15380                                                        
+l15382                                                        
+l15384                                                        
+l15386                                                        
+l15408                                                        
+l15418                                                        
+l15422                                                        
+l15428                                                        
+l15444                                                        
+l15446                                                        
+l15452                                                        
+l15454                                                        
+l15456                                                        
+l15458                                                        
+l15464                                                        
+l15466                                                        
+l15506                                                        
+l15508                                                        
+l15510                                                        
+l15512                                                        
+l15514                                                        
+l15516                                                        
+l15518                                                        
+l15520                                                        
+l15522                                                        
+l15524                                                        
+l15526                                                        
+l15528                                                        
+l16658                                                        
+l16670                                                        
+l16672                                                        
+l16676                                                        
+l16678                                                        
+l16680                                                        
+l16682                                                        
+l16684                                                        
+l16686                                                        
+l16690                                                        
+l16694                                                        
+l16696                                                        
+l16698                                                        
+l16702                                                        
+l16706                                                        
+l16708                                                        
+l16710                                                        
+l16712                                                        
+l16716                                                        
+l16718                                                        
+l16720                                                        
+l16722                                                        
+l16724                                                        
+l16726                                                        
+l16728                                                        
+l16730                                                        
+l16732                                                        
+l16734                                                        
+l16736                                                        
+l16738                                                        
+l16740                                                        
+l16742                                                        
+l16744                                                        
+l16746                                                        
+l16748                                                        
+l16750                                                        
+l16752                                                        
+l16754                                                        
+l16756                                                        
+l16758                                                        
+l16760                                                        
+l16764                                                        
+l16766                                                        
+l16768                                                        
+l16770                                                        
+l16774                                                        
+l16778                                                        
+l16780                                                        
+l16788                                                        
+l16790                                                        
+l16792                                                        
+l16796                                                        
+l16800                                                        
+l16802                                                        
+l16804                                                        
+l16808                                                        
+l16812                                                        
+l16814                                                        
+l16816                                                        
+l16820                                                        
+l16822                                                        
+l16832                                                        
+l16834                                                        
+l16838                                                        
+l16846                                                        
+l16848                                                        
+l16856                                                        
+l16858                                                        
+l16886                                                        
+l16894                                                        
+l16900                                                        
+l16902                                                        
+l16912                                                        
+l16920                                                        
+l16928                                                        
+l16936                                                        
+l16944                                                        
+l16954                                                        
+l16956                                                        
+l16966                                                        
+l16970                                                        
+l16972                                                        
+l16974                                                        
+l16976                                                        
+l16978                                                        
+l16980                                                        
+l16982                                                        
+l16984                                                        
+l16986                                                        
+l16990                                                        
+l16996                                                        
+l17002                                                        
+l17028                                                        
+l17036                                                        
+l17042                                                        
+l17050                                                        
+l17056                                                        
+l17058                                                        
+l17064                                                        
+l17068                                                        
+l17070                                                        
+l17102                                                        
+l17106                                                        
+l17108                                                        
+l17116                                                        
+l17124                                                        
+l17126                                                        
+l17128                                                        
+l17130                                                        
+l17132                                                        
+l17164                                                        
+l17172                                                        
+l17174                                                        
+l17180                                                        
+l17188                                                        
+l17194                                                        
+l17200                                                        
+l17204                                                        
+l17212                                                        
+l17240                                                        
+l17248                                                        
+l17254                                                        
+l17262                                                        
+l17268                                                        
+l17274                                                        
+l17278                                                        
+l17280                                                        
+l17288                                                        
+l17316                                                        
+l17324                                                        
+l17330                                                        
+l17338                                                        
+l17344                                                        
+l17350                                                        
+l17354                                                        
+l17362                                                        
+l17370                                                        
+l17378                                                        
+l17426                                                        
+l17430                                                        
+l17432                                                        
+l17434                                                        
+l17436                                                        
+l17474                                                        
+l17496                                                        
+l17504                                                        
+l17516                                                        
+l17518                                                        
+l17526                                                        
+l17532                                                        
+l17534                                                        
+l17540                                                        
+l17554                                                        
+l17562                                                        
+l17564                                                        
+l17566                                                        
+l17568                                                        
+l17596                                                        
+l17598                                                        
+l17600                                                        
+l17634                                                        
+l17636                                                        
+l17670                                                        
+l17674                                                        
+l17676                                                        
+l17678                                                        
+l17712                                                        
+l17714                                                        
+l17736                                                        
+l17738                                                        
+l17740                                                        
+l17742                                                        
+l17744                                                        
+l17746                                                        
+l17748                                                        
+l17750                                                        
+l17752                                                        
+l17754                                                        
+l17756                                                        
+l17758                                                        
+l17760                                                        
+l17762                                                        
+l17764                                                        
+l17766                                                        
+l17768                                                        
+l17770                                                        
+l17774                                                        
+l17776                                                        
+l17778                                                        
+l17780                                                        
+l17782                                                        
+l2586                                                         
+l2589                                                         
+l5156                                                         
+l5176                                                         
+l5179                                                         
+l5182                                                         
+l5188                                                         
+l5194                                                         
+l5200                                                         
+l5203                                                         
+l5206                                                         
+l5209                                                         
+l5217                                                         
+l5866                                                         
+l665                                                          
+l7221                                                         
+l9807                                                         
+l9822                                                         
+loadParamsFromEeprom@i                       cstackBANK0  005B
+recive_task@flag                             cstackBANK0  006B
+recive_task@i                                cstackBANK0  006C
+recive_task@match_flag                       cstackBANK0  006A
+recive_task@msg                              cstackBANK0  0064
+reset_vec                                    reset_vec    0000
+rx_data@crc16                                cstackBANK0  005B
+rx_data@i                                    cstackBANK0  005F
+rx_data@rand                                 cstackBANK0  005D
+rx_data@rx_flag                              cstackBANK0  005E
+saved_w                                      (abs)        007E
+soft_delay_ms@i                              cstackBANK0  0050
+soft_delay_ms@j                              cstackBANK0  0052
+soft_delay_ms@k                              cstackBANK0  0053
+soft_delay_ms@ms                             cstackCOMMON 0073
+start                                        init         000B
+start_initialization                         cinit        054F
+system_set_CPU_frequency@CPU_Frequency       cstackCOMMON 0073
+wtemp0                                       (abs)        007E

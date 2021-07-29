@@ -1,0 +1,49 @@
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer1.h	第28行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer0.h	第8行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer1.h	第28行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer0.h	第8行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer0.c	第6行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer0.c	第20行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer1.h	第28行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer1.c	第20行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer1.c	第42行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第86行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第87行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第88行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第89行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第90行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第91行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第92行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第394行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第395行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第396行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第397行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第398行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[1390]:	F:\项目\酷宅\BLE移植\rx\src\timer1.h	第28行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1090]:	F:\项目\酷宅\BLE移植\rx\src\main.c	第25行	variable "_sleep_flag" is not used
+Warning[1090]:	F:\项目\酷宅\BLE移植\rx\src\rf297L.c	第8行	variable "_ACK_Payload_length" is not used
+Warning[1090]:	F:\项目\酷宅\BLE移植\rx\src\main.c	第26行	variable "_flag_rx" is not used
+Warning[1090]:	F:\项目\酷宅\BLE移植\rx\src\system.c	第49行	variable "_inside_intterrupt_enable" is not used
+Warning[1090]:	F:\项目\酷宅\BLE移植\rx\src\system.c	第49行	variable "_peripheral_intterrupt_enable" is not used
+Warning[1090]:	F:\项目\酷宅\BLE移植\rx\src\system.c	第50行	variable "_inside_intterrupt_touch" is not used
+Warning[1257]:	F:\项目\酷宅\BLE移植\rx\src\iic.c	第128行	local variable "_data" is used but never given a value
+
+Memory Summary:
+    Program space        used   A4Ch (  2636) of  1000h words   ( 64.4%)
+    Data space           used    ADh (   173) of    B0h bytes   ( 98.3%)
+    EEPROM space         None available
+    Configuration bits   used     0h (     0) of     2h words   (  0.0%)
+    ID Location space    used     0h (     0) of     4h bytes   (  0.0%)
+

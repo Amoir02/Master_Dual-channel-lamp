@@ -1,0 +1,3 @@
+---- IIC_Init Matches (2 in 2 files) ----
+Iic.c (f:\项目\酷宅\ble移植\rx\src):void IIC_Init(void)
+Iic.h (f:\项目\酷宅\ble移植\rx\src):void IIC_Init(void);

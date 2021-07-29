@@ -1,0 +1,793 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"6 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c
+[v F160 `Cuc  -> 42 `i t ]
+"6 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c
+[v _whitening_map `F160  -> 3 `i s ]
+"48 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c
+[v _ble_nonconn_buffer `Cuc  -> 20 `i s ]
+"60 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c
+[v _rf_tx_buffer `uc  -> 20 `i e ]
+"22 F:\PAN2416\±àÒëÆ÷\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\string.h
+[v _memcpy `(*v  0 ef3`*v`*Cv`ui ]
+"33 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.h
+[v _check_crc24 `(ul  0 ef2`*Cuc`uc ]
+"31 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.h
+[v _invert_8 `(uc  0 ef1`uc ]
+"32 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.h
+[v _invert_32 `(ul  0 ef1`ul ]
+"151 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c
+[v _tx_rx_address `Cuc  -> 0 `x e ]
+"87 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\rf297L.h
+[v _RF_WriteReg `(v  0 ef2`uc`uc ]
+"88 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\rf297L.h
+[v _RF_Write_Buff `(v  0 ef3`uc`*uc`uc ]
+"95 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\rf297L.h
+[v _RF_SetChannel `(v  0 ef1`uc ]
+"96 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\rf297L.h
+[v _RF_TxData `(v  0 ef2`*uc`uc ]
+"94 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\rf297L.h
+[v _RF_ClearFIFO `(v  0 ef ]
+"93 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\rf297L.h
+[v _RF_ClearStatus `(v  0 ef ]
+"221 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c
+[v _RF_Read_RxData `(i  0 ef ]
+[; ;rf297L.h: 79: typedef enum{
+[; ;rf297L.h: 80: UNKNOW_STATUS,
+[; ;rf297L.h: 81: SENT_SUCCESS,
+[; ;rf297L.h: 82: ACK_PAYLOAD_SENT_SUCCESS,
+[; ;rf297L.h: 83: SENT_FAILURE,
+[; ;rf297L.h: 84: }TX_RESULT_e;
+[; ;rf297L.h: 86: extern unsigned char RF_ReadReg(unsigned char reg_addr);
+[; ;rf297L.h: 87: extern void RF_WriteReg(unsigned char reg_addr, unsigned char write_data);
+[; ;rf297L.h: 88: extern void RF_Write_Buff(unsigned char reg_addr,unsigned char *pBuff,unsigned char length);
+[; ;rf297L.h: 89: extern void RF_Read_Buff(unsigned char reg_addr, unsigned char *pBuff, unsigned char length);
+[; ;rf297L.h: 90: extern void RF_Set_TxMode(void);
+[; ;rf297L.h: 91: extern void RF_Set_RxMode(void);
+[; ;rf297L.h: 92: extern unsigned char RF_GetStatus(void);
+[; ;rf297L.h: 93: extern void RF_ClearStatus(void);
+[; ;rf297L.h: 94: extern void RF_ClearFIFO(void);
+[; ;rf297L.h: 95: extern void RF_SetChannel(unsigned char Channel);
+[; ;rf297L.h: 96: extern void RF_TxData(unsigned char *payload_buff,unsigned char length);
+[; ;rf297L.h: 97: extern void RF_ENHANCE_TxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff);
+[; ;rf297L.h: 98: extern unsigned char RF_RxData(unsigned char *payload_buff,unsigned char length);
+[; ;rf297L.h: 99: extern unsigned char RF_ENHANCE_RxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff);
+[; ;rf297L.h: 101: extern void RF_Init(void);
+[; ;rf297L.h: 102: extern TX_RESULT_e RF_get_TX_result(void);
+[; ;rf297L.h: 103: void RF_Sleep();
+[; ;rf297L.h: 104: void RF_awaken();
+[; ;rf297L.h: 105: void RF_Carrier(unsigned char Channel);
+[; ;user_ble.h: 30: void ble_craft_packet_noconn(unsigned char *data, unsigned char length, unsigned char channel_index);
+[; ;user_ble.h: 31: unsigned char invert_8(unsigned char data);
+[; ;user_ble.h: 32: unsigned long int invert_32(unsigned long int data);
+[; ;user_ble.h: 33: unsigned long int check_crc24(const unsigned char *data, unsigned char length);
+[; ;user_ble.h: 35: void ble_rf_init(unsigned char whitening_enable);
+[; ;user_ble.h: 36: void rf_tx_send_data(unsigned char *pBuff);
+[; ;user_ble.h: 37: void rf_tx_rev_data(unsigned char *pBuff);
+[; ;string.h: 4: typedef int ptrdiff_t;
+[; ;string.h: 5: typedef unsigned size_t;
+[; ;string.h: 6: typedef unsigned short wchar_t;
+[; ;string.h: 9: extern int errno;
+[; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 24: extern void * memset(void *, int, size_t);
+[; ;string.h: 35: extern char * strcat(char *, const char *);
+[; ;string.h: 36: extern char * strcpy(char *, const char *);
+[; ;string.h: 37: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 38: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strdup(const char *);
+[; ;string.h: 40: extern char * strtok(char *, const char *);
+[; ;string.h: 43: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 44: extern int strcmp(const char *, const char *);
+[; ;string.h: 45: extern int stricmp(const char *, const char *);
+[; ;string.h: 46: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 47: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 49: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 50: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 51: extern size_t strspn(const char *, const char *);
+[; ;string.h: 52: extern char * strstr(const char *, const char *);
+[; ;string.h: 53: extern char * stristr(const char *, const char *);
+[; ;string.h: 54: extern char * strerror(int);
+[; ;string.h: 55: extern size_t strlen(const char *);
+[; ;string.h: 56: extern char * strchr(const char *, int);
+[; ;string.h: 57: extern char * strichr(const char *, int);
+[; ;string.h: 58: extern char * strrchr(const char *, int);
+[; ;string.h: 59: extern char * strrichr(const char *, int);
+"6 F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c
+[i _whitening_map
+:U ..
+:U ..
+"10
+-> -> 141 `i `uc
+-> -> 210 `i `uc
+-> -> 87 `i `uc
+-> -> 161 `i `uc
+-> -> 61 `i `uc
+"11
+-> -> 167 `i `uc
+-> -> 102 `i `uc
+-> -> 176 `i `uc
+-> -> 117 `i `uc
+-> -> 49 `i `uc
+"12
+-> -> 17 `i `uc
+-> -> 72 `i `uc
+-> -> 150 `i `uc
+-> -> 119 `i `uc
+-> -> 248 `i `uc
+"13
+-> -> 227 `i `uc
+-> -> 70 `i `uc
+-> -> 233 `i `uc
+-> -> 171 `i `uc
+-> -> 208 `i `uc
+"14
+-> -> 158 `i `uc
+-> -> 83 `i `uc
+-> -> 51 `i `uc
+-> -> 216 `i `uc
+-> -> 186 `i `uc
+"15
+-> -> 152 `i `uc
+-> -> 8 `i `uc
+-> -> 36 `i `uc
+-> -> 203 `i `uc
+-> -> 59 `i `uc
+"16
+-> -> 252 `i `uc
+-> -> 113 `i `uc
+-> -> 163 `i `uc
+-> -> 244 `i `uc
+-> -> 85 `i `uc
+"17
+-> -> 104 `i `uc
+-> -> 207 `i `uc
+-> -> 169 `i `uc
+-> -> 25 `i `uc
+-> -> 108 `i `uc
+"18
+-> -> 93 `i `uc
+"19
+-> -> 76 `i `uc
+..
+:U ..
+"23
+-> -> 214 `i `uc
+-> -> 197 `i `uc
+-> -> 68 `i `uc
+-> -> 32 `i `uc
+-> -> 89 `i `uc
+"24
+-> -> 222 `i `uc
+-> -> 225 `i `uc
+-> -> 143 `i `uc
+-> -> 27 `i `uc
+-> -> 165 `i `uc
+"25
+-> -> 175 `i `uc
+-> -> 66 `i `uc
+-> -> 123 `i `uc
+-> -> 78 `i `uc
+-> -> 205 `i `uc
+"26
+-> -> 96 `i `uc
+-> -> 235 `i `uc
+-> -> 98 `i `uc
+-> -> 34 `i `uc
+-> -> 144 `i `uc
+"27
+-> -> 44 `i `uc
+-> -> 239 `i `uc
+-> -> 240 `i `uc
+-> -> 199 `i `uc
+-> -> 141 `i `uc
+"28
+-> -> 210 `i `uc
+-> -> 87 `i `uc
+-> -> 161 `i `uc
+-> -> 61 `i `uc
+-> -> 167 `i `uc
+"29
+-> -> 102 `i `uc
+-> -> 176 `i `uc
+-> -> 117 `i `uc
+-> -> 49 `i `uc
+-> -> 17 `i `uc
+"30
+-> -> 72 `i `uc
+-> -> 150 `i `uc
+-> -> 119 `i `uc
+-> -> 248 `i `uc
+-> -> 227 `i `uc
+"31
+-> -> 70 `i `uc
+"32
+-> -> 233 `i `uc
+..
+:U ..
+"36
+-> -> 31 `i `uc
+-> -> 55 `i `uc
+-> -> 74 `i `uc
+-> -> 95 `i `uc
+-> -> 133 `i `uc
+"37
+-> -> 246 `i `uc
+-> -> 156 `i `uc
+-> -> 154 `i `uc
+-> -> 193 `i `uc
+-> -> 214 `i `uc
+"38
+-> -> 197 `i `uc
+-> -> 68 `i `uc
+-> -> 32 `i `uc
+-> -> 89 `i `uc
+-> -> 222 `i `uc
+"39
+-> -> 225 `i `uc
+-> -> 143 `i `uc
+-> -> 27 `i `uc
+-> -> 165 `i `uc
+-> -> 175 `i `uc
+"40
+-> -> 66 `i `uc
+-> -> 123 `i `uc
+-> -> 78 `i `uc
+-> -> 205 `i `uc
+-> -> 96 `i `uc
+"41
+-> -> 235 `i `uc
+-> -> 98 `i `uc
+-> -> 34 `i `uc
+-> -> 144 `i `uc
+-> -> 44 `i `uc
+"42
+-> -> 239 `i `uc
+-> -> 240 `i `uc
+-> -> 199 `i `uc
+-> -> 141 `i `uc
+-> -> 210 `i `uc
+"43
+-> -> 87 `i `uc
+-> -> 161 `i `uc
+-> -> 61 `i `uc
+-> -> 167 `i `uc
+-> -> 102 `i `uc
+"44
+-> -> 176 `i `uc
+"45
+-> -> 117 `i `uc
+..
+..
+]
+[; ;user_ble.c: 6: const static unsigned char whitening_map[3][42] =
+[; ;user_ble.c: 7: {
+[; ;user_ble.c: 9: {
+[; ;user_ble.c: 10: 0x8D, 0xD2, 0x57, 0xA1, 0x3D,
+[; ;user_ble.c: 11: 0xA7, 0x66, 0xB0, 0x75, 0x31,
+[; ;user_ble.c: 12: 0x11, 0x48, 0x96, 0x77, 0xF8,
+[; ;user_ble.c: 13: 0xE3, 0x46, 0xE9, 0xAB, 0xD0,
+[; ;user_ble.c: 14: 0x9E, 0x53, 0x33, 0xD8, 0xBA,
+[; ;user_ble.c: 15: 0x98, 0x08, 0x24, 0xCB, 0x3B,
+[; ;user_ble.c: 16: 0xFC, 0x71, 0xA3, 0xF4, 0x55,
+[; ;user_ble.c: 17: 0x68, 0xCF, 0xA9, 0x19, 0x6C,
+[; ;user_ble.c: 18: 0x5D, 0x4C
+[; ;user_ble.c: 19: },
+[; ;user_ble.c: 22: {
+[; ;user_ble.c: 23: 0xD6, 0xC5, 0x44, 0x20, 0x59,
+[; ;user_ble.c: 24: 0xDE, 0xE1, 0x8F, 0x1B, 0xA5,
+[; ;user_ble.c: 25: 0xAF, 0x42, 0x7B, 0x4E, 0xCD,
+[; ;user_ble.c: 26: 0x60, 0xEB, 0x62, 0x22, 0x90,
+[; ;user_ble.c: 27: 0x2C, 0xEF, 0xF0, 0xC7, 0x8D,
+[; ;user_ble.c: 28: 0xD2, 0x57, 0xA1, 0x3D, 0xA7,
+[; ;user_ble.c: 29: 0x66, 0xB0, 0x75, 0x31, 0x11,
+[; ;user_ble.c: 30: 0x48, 0x96, 0x77 ,0xF8, 0xE3,
+[; ;user_ble.c: 31: 0x46, 0xE9
+[; ;user_ble.c: 32: },
+[; ;user_ble.c: 35: {
+[; ;user_ble.c: 36: 0x1F, 0x37, 0x4A, 0x5F, 0x85,
+[; ;user_ble.c: 37: 0xF6, 0x9C, 0x9A, 0xC1, 0xD6,
+[; ;user_ble.c: 38: 0xC5, 0x44, 0x20, 0x59, 0xDE,
+[; ;user_ble.c: 39: 0xE1, 0x8F, 0x1B, 0xA5, 0xAF,
+[; ;user_ble.c: 40: 0x42, 0x7B, 0x4E, 0xCD, 0x60,
+[; ;user_ble.c: 41: 0xEB, 0x62, 0x22, 0x90, 0x2C,
+[; ;user_ble.c: 42: 0xEF, 0xF0, 0xC7, 0x8D, 0xD2,
+[; ;user_ble.c: 43: 0x57, 0xA1, 0x3D, 0xA7, 0x66,
+[; ;user_ble.c: 44: 0xB0, 0x75
+[; ;user_ble.c: 45: }
+[; ;user_ble.c: 46: };
+"48
+[i _ble_nonconn_buffer
+:U ..
+"50
+-> -> 170 `i `uc
+-> -> 214 `i `uc
+-> -> 190 `i `uc
+-> -> 137 `i `uc
+-> -> 142 `i `uc
+"51
+-> -> 66 `i `uc
+-> -> 255 `i `uc
+-> -> 102 `i `uc
+-> -> 85 `i `uc
+-> -> 68 `i `uc
+-> -> 51 `i `uc
+-> -> 34 `i `uc
+-> -> 17 `i `uc
+"52
+-> -> 2 `i `uc
+-> -> 1 `i `uc
+-> -> 26 `i `uc
+"53
+-> -> 255 `i `uc
+-> -> 255 `i `uc
+-> -> 240 `i `uc
+"54
+-> -> 255 `i `uc
+..
+]
+[; ;user_ble.c: 48: const static unsigned char ble_nonconn_buffer[20] =
+[; ;user_ble.c: 49: {
+[; ;user_ble.c: 50: 0xAA, 0xD6, 0xBE, 0x89, 0x8E,
+[; ;user_ble.c: 51: 0x42, 0xFF, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11,
+[; ;user_ble.c: 52: 0x02, 0x01, 0x1A,
+[; ;user_ble.c: 53: 0xFF, 0xFF, 0xF0, 0xFF
+[; ;user_ble.c: 54: };
+[; ;user_ble.c: 56: unsigned char invert_8(unsigned char data);
+[; ;user_ble.c: 57: unsigned long int invert_32(unsigned long int data);
+[; ;user_ble.c: 58: unsigned long int check_crc24(const unsigned char *data, unsigned char length);
+[; ;user_ble.c: 60: unsigned char rf_tx_buffer[20];
+"65
+[v _ble_craft_packet_noconn `(v  1 ef3`*uc`uc`uc ]
+{
+[; ;user_ble.c: 64: void ble_craft_packet_noconn(unsigned char *data, unsigned char length, unsigned char channel_index)
+[; ;user_ble.c: 65: {
+[e :U _ble_craft_packet_noconn ]
+[v _data `*uc  1 r1 ]
+[v _length `uc  1 r2 ]
+[v _channel_index `uc  1 r3 ]
+[f ]
+[; ;user_ble.c: 67: memcpy(rf_tx_buffer, ble_nonconn_buffer, 20);
+"67
+[e ( _memcpy (3 , , -> &U _rf_tx_buffer `*v -> &U _ble_nonconn_buffer `*Cv -> -> 20 `i `ui ]
+[; ;user_ble.c: 68: memcpy(rf_tx_buffer + 20, data, length);
+"68
+[e ( _memcpy (3 , , -> + &U _rf_tx_buffer * -> -> 20 `i `x -> -> # *U &U _rf_tx_buffer `i `x `*v -> _data `*Cv -> _length `ui ]
+[; ;user_ble.c: 71: rf_tx_buffer[6] = 13 + length;
+"71
+[e = *U + &U _rf_tx_buffer * -> -> -> 6 `i `ui `ux -> -> # *U &U _rf_tx_buffer `ui `ux -> + -> 13 `i -> _length `i `uc ]
+[; ;user_ble.c: 72: rf_tx_buffer[16] = 3 + length;
+"72
+[e = *U + &U _rf_tx_buffer * -> -> -> 16 `i `ui `ux -> -> # *U &U _rf_tx_buffer `ui `ux -> + -> 3 `i -> _length `i `uc ]
+"74
+[v _calc_crc `ul  1 a ]
+[; ;user_ble.c: 74: unsigned long int calc_crc = check_crc24(rf_tx_buffer + 5, 15 + length);
+[e = _calc_crc ( _check_crc24 (2 , -> + &U _rf_tx_buffer * -> -> 5 `i `x -> -> # *U &U _rf_tx_buffer `i `x `*Cuc -> + -> 15 `i -> _length `i `uc ]
+[; ;user_ble.c: 76: rf_tx_buffer[20 + length + 0] = calc_crc;
+"76
+[e = *U + &U _rf_tx_buffer * -> -> + + -> 20 `i -> _length `i -> 0 `i `ui `ux -> -> # *U &U _rf_tx_buffer `ui `ux -> _calc_crc `uc ]
+[; ;user_ble.c: 77: rf_tx_buffer[20 + length + 1] = calc_crc >> 8;
+"77
+[e = *U + &U _rf_tx_buffer * -> -> + + -> 20 `i -> _length `i -> 1 `i `ui `ux -> -> # *U &U _rf_tx_buffer `ui `ux -> >> _calc_crc -> 8 `i `uc ]
+[; ;user_ble.c: 78: rf_tx_buffer[20 + length + 2] = calc_crc >> 16;
+"78
+[e = *U + &U _rf_tx_buffer * -> -> + + -> 20 `i -> _length `i -> 2 `i `ui `ux -> -> # *U &U _rf_tx_buffer `ui `ux -> >> _calc_crc -> 16 `i `uc ]
+[; ;user_ble.c: 80: for (unsigned char i = 0; i < 18 + length; i++)
+"80
+{
+[v _i `uc  1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 5  ]
+"81
+[e :U 2 ]
+[; ;user_ble.c: 81: {
+{
+[; ;user_ble.c: 82: rf_tx_buffer[5 + i] ^= whitening_map[channel_index - 37][i];
+"82
+[e =^ *U + &U _rf_tx_buffer * -> -> + -> 5 `i -> _i `i `ui `ux -> -> # *U &U _rf_tx_buffer `ui `ux *U + &U *U + &U _whitening_map * -> -> - -> _channel_index `i -> 37 `i `ui `ux -> * -> # *U &U *U &U _whitening_map `ui -> -> 42 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _whitening_map * -> -> - -> _channel_index `i -> 37 `i `ui `ux -> * -> # *U &U *U &U _whitening_map `ui -> -> 42 `i `ui `ux `ui `ux ]
+"83
+}
+"80
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 5 ]
+[e $ < -> _i `i + -> 18 `i -> _length `i 2  ]
+[e :U 3 ]
+"83
+}
+[; ;user_ble.c: 83: }
+[; ;user_ble.c: 86: }
+"86
+[e :UE 1 ]
+}
+"89
+[v _check_crc24 `(ul  1 ef2`*Cuc`uc ]
+{
+[; ;user_ble.c: 88: unsigned long int check_crc24(const unsigned char *data, unsigned char length)
+[; ;user_ble.c: 89: {
+[e :U _check_crc24 ]
+[v _data `*Cuc  1 r1 ]
+[v _length `uc  1 r2 ]
+[f ]
+"90
+[v _crc `ul  1 a ]
+[; ;user_ble.c: 90: unsigned long int crc = 0x55555500;
+[e = _crc -> -> 1431655680 `l `ul ]
+"91
+[v _poly `ul  1 a ]
+[; ;user_ble.c: 91: unsigned long int poly = 0x000065B00;
+[e = _poly -> -> 416512 `l `ul ]
+"92
+[v _input_byte `ul  1 a ]
+[; ;user_ble.c: 92: unsigned long int input_byte = 0;
+[e = _input_byte -> -> -> 0 `i `l `ul ]
+[; ;user_ble.c: 94: for (unsigned char i = 0; i < length; i++)
+"94
+{
+[v _i `uc  1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $U 10  ]
+"95
+[e :U 7 ]
+[; ;user_ble.c: 95: {
+{
+[; ;user_ble.c: 96: input_byte = invert_8(data[i]);
+"96
+[e = _input_byte -> ( _invert_8 (1 *U + _data * -> _i `ux -> -> # *U _data `ui `ux `ul ]
+[; ;user_ble.c: 98: crc ^= (input_byte << 24);
+"98
+[e =^ _crc << _input_byte -> 24 `i ]
+[; ;user_ble.c: 100: for (unsigned char j = 0; j < 8; j++)
+"100
+{
+[v _j `uc  1 a ]
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 8 `i 11  ]
+[e $U 12  ]
+"101
+[e :U 11 ]
+[; ;user_ble.c: 101: {
+{
+[; ;user_ble.c: 102: if (crc & 0x80000000)
+"102
+[e $ ! != & _crc -> -2147483648 `ul -> -> 0 `i `ul 14  ]
+[; ;user_ble.c: 103: {
+"103
+{
+[; ;user_ble.c: 104: crc = (crc << 1) ^ poly;
+"104
+[e = _crc ^ << _crc -> 1 `i _poly ]
+"105
+}
+[; ;user_ble.c: 105: }
+[e $U 15  ]
+"106
+[e :U 14 ]
+[; ;user_ble.c: 106: else
+[; ;user_ble.c: 107: {
+"107
+{
+[; ;user_ble.c: 108: crc = (crc << 1);
+"108
+[e = _crc << _crc -> 1 `i ]
+"109
+}
+[e :U 15 ]
+"110
+}
+"100
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 8 `i 11  ]
+[e :U 12 ]
+"110
+}
+"111
+}
+"94
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 10 ]
+[e $ < -> _i `i -> _length `i 7  ]
+[e :U 8 ]
+"111
+}
+[; ;user_ble.c: 109: }
+[; ;user_ble.c: 110: }
+[; ;user_ble.c: 111: }
+[; ;user_ble.c: 113: crc = invert_32(crc);
+"113
+[e = _crc ( _invert_32 (1 _crc ]
+[; ;user_ble.c: 114: return crc;
+"114
+[e ) _crc ]
+[e $UE 6  ]
+[; ;user_ble.c: 115: }
+"115
+[e :UE 6 ]
+}
+"118
+[v _invert_8 `(uc  1 ef1`uc ]
+{
+[; ;user_ble.c: 117: unsigned char invert_8(unsigned char data)
+[; ;user_ble.c: 118: {
+[e :U _invert_8 ]
+[v _data `uc  1 r1 ]
+[f ]
+"119
+[v _temp `uc  1 a ]
+[; ;user_ble.c: 119: unsigned char temp = 0;
+[e = _temp -> -> 0 `i `uc ]
+[; ;user_ble.c: 121: for (unsigned char i = 0; i < 8; i++)
+"121
+{
+[v _i `uc  1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 8 `i 17  ]
+[e $U 18  ]
+"122
+[e :U 17 ]
+[; ;user_ble.c: 122: {
+{
+[; ;user_ble.c: 123: if (data & (1 << i))
+"123
+[e $ ! != & -> _data `i << -> 1 `i _i -> 0 `i 20  ]
+[; ;user_ble.c: 124: {
+"124
+{
+[; ;user_ble.c: 125: temp |= 1 << (7 - i);
+"125
+[e =| _temp -> << -> 1 `i - -> 7 `i -> _i `i `uc ]
+"126
+}
+[e :U 20 ]
+"127
+}
+"121
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 8 `i 17  ]
+[e :U 18 ]
+"127
+}
+[; ;user_ble.c: 126: }
+[; ;user_ble.c: 127: }
+[; ;user_ble.c: 129: return temp;
+"129
+[e ) _temp ]
+[e $UE 16  ]
+[; ;user_ble.c: 130: }
+"130
+[e :UE 16 ]
+}
+"133
+[v _invert_32 `(ul  1 ef1`ul ]
+{
+[; ;user_ble.c: 132: unsigned long int invert_32(unsigned long int data)
+[; ;user_ble.c: 133: {
+[e :U _invert_32 ]
+[v _data `ul  1 r1 ]
+[f ]
+"134
+[v _temp `ul  1 A ]
+[; ;user_ble.c: 134: register unsigned long int temp = 0;
+[e = _temp -> -> -> 0 `i `l `ul ]
+[; ;user_ble.c: 136: for (unsigned char i = 0; i < 32; i++)
+"136
+{
+[v _i `uc  1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 32 `i 22  ]
+[e $U 23  ]
+"137
+[e :U 22 ]
+[; ;user_ble.c: 137: {
+{
+[; ;user_ble.c: 138: if (data & (1UL << i))
+"138
+[e $ ! != & _data << -> 1 `ul _i -> -> 0 `i `ul 25  ]
+[; ;user_ble.c: 139: {
+"139
+{
+[; ;user_ble.c: 140: temp |= 1UL << (31 - i);
+"140
+[e =| _temp << -> 1 `ul - -> 31 `i -> _i `i ]
+"141
+}
+[; ;user_ble.c: 141: }
+[e $U 26  ]
+"142
+[e :U 25 ]
+[; ;user_ble.c: 142: else
+[; ;user_ble.c: 143: {
+"143
+{
+[; ;user_ble.c: 144: temp = temp;
+"144
+[e = _temp _temp ]
+"145
+}
+[e :U 26 ]
+"146
+}
+"136
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 32 `i 22  ]
+[e :U 23 ]
+"146
+}
+[; ;user_ble.c: 145: }
+[; ;user_ble.c: 146: }
+[; ;user_ble.c: 148: return temp;
+"148
+[e ) _temp ]
+[e $UE 21  ]
+[; ;user_ble.c: 149: }
+"149
+[e :UE 21 ]
+}
+"151
+[i _tx_rx_address
+:U ..
+-> -> 204 `i `uc
+-> -> 204 `i `uc
+-> -> 204 `i `uc
+-> -> 204 `i `uc
+-> -> 204 `i `uc
+..
+]
+[; ;user_ble.c: 151: const unsigned char tx_rx_address[] = {0xCC, 0xCC, 0xCC, 0xCC, 0xCC};
+"153
+[v _ble_rf_init `(v  1 ef1`uc ]
+{
+[; ;user_ble.c: 152: void ble_rf_init(unsigned char whitening_enable)
+[; ;user_ble.c: 153: {
+[e :U _ble_rf_init ]
+[v _whitening_enable `uc  1 r1 ]
+[f ]
+"154
+[v F188 `uc  -> 0 `x s ]
+[i F188
+:U ..
+-> -> 1 `i `uc
+..
+]
+[v _Dem_cal_data_ble `uc  1  a ]
+[; ;user_ble.c: 154: unsigned char Dem_cal_data_ble[] = {0x01};
+[e = _Dem_cal_data_ble F188 ]
+[; ;user_ble.c: 155: if (whitening_enable == 1)
+"155
+[e $ ! == -> _whitening_enable `i -> 1 `i 28  ]
+[; ;user_ble.c: 156: {
+"156
+{
+[; ;user_ble.c: 157: Dem_cal_data_ble[0] = 0x01;
+"157
+[e = *U + &U _Dem_cal_data_ble * -> -> -> 0 `i `ui `ux -> -> # *U &U _Dem_cal_data_ble `ui `ux -> -> 1 `i `uc ]
+"158
+}
+[; ;user_ble.c: 158: }
+[e $U 29  ]
+"159
+[e :U 28 ]
+[; ;user_ble.c: 159: else
+[; ;user_ble.c: 160: {
+"160
+{
+[; ;user_ble.c: 161: Dem_cal_data_ble[0] = 0x00;
+"161
+[e = *U + &U _Dem_cal_data_ble * -> -> -> 0 `i `ui `ux -> -> # *U &U _Dem_cal_data_ble `ui `ux -> -> 0 `i `uc ]
+"162
+}
+[e :U 29 ]
+[; ;user_ble.c: 162: }
+[; ;user_ble.c: 164: RF_WriteReg(0x20 + 0x11, 1);
+"164
+[e ( _RF_WriteReg (2 , -> + -> 32 `i -> 17 `i `uc -> -> 1 `i `uc ]
+[; ;user_ble.c: 165: RF_Write_Buff(0x20 + 0x10, tx_rx_address, sizeof(tx_rx_address));
+"165
+[e ( _RF_Write_Buff (3 , , -> + -> 32 `i -> 16 `i `uc -> &U _tx_rx_address `*uc -> -> # _tx_rx_address `ui `uc ]
+[; ;user_ble.c: 166: RF_Write_Buff(0x20 + 0x0A, tx_rx_address, sizeof(tx_rx_address));
+"166
+[e ( _RF_Write_Buff (3 , , -> + -> 32 `i -> 10 `i `uc -> &U _tx_rx_address `*uc -> -> # _tx_rx_address `ui `uc ]
+[; ;user_ble.c: 167: RF_Write_Buff(0x20 + 0x19,Dem_cal_data_ble, sizeof(Dem_cal_data_ble));
+"167
+[e ( _RF_Write_Buff (3 , , -> + -> 32 `i -> 25 `i `uc &U _Dem_cal_data_ble -> -> # _Dem_cal_data_ble `ui `uc ]
+[; ;user_ble.c: 168: }
+"168
+[e :UE 27 ]
+}
+[; ;user_ble.c: 170: typedef struct
+[; ;user_ble.c: 171: {
+[; ;user_ble.c: 172: unsigned char tx_data;
+[; ;user_ble.c: 173: unsigned char tx_cnt;
+[; ;user_ble.c: 174: unsigned char tx_enable;
+[; ;user_ble.c: 175: } tx_param_t;
+"180
+[v _rf_tx_send_data `(v  1 ef1`*uc ]
+{
+[; ;user_ble.c: 179: void rf_tx_send_data(unsigned char *pBuff)
+[; ;user_ble.c: 180: {
+[e :U _rf_tx_send_data ]
+[v _pBuff `*uc  1 r1 ]
+[f ]
+"186
+[v _temp_data `uc  -> 24 `i a ]
+"187
+[v _temp_length `uc  1 a ]
+[; ;user_ble.c: 186: unsigned char temp_data[24];
+[; ;user_ble.c: 187: unsigned char temp_length =1;
+[e = _temp_length -> -> 1 `i `uc ]
+[; ;user_ble.c: 193: ble_craft_packet_noconn(pBuff, temp_length, 37);
+"193
+[e ( _ble_craft_packet_noconn (3 , , _pBuff _temp_length -> -> 37 `i `uc ]
+[; ;user_ble.c: 194: RF_SetChannel(02);
+"194
+[e ( _RF_SetChannel (1 -> -> 2 `i `uc ]
+[; ;user_ble.c: 195: RF_TxData(rf_tx_buffer, 23 + temp_length);
+"195
+[e ( _RF_TxData (2 , &U _rf_tx_buffer -> + -> 23 `i -> _temp_length `i `uc ]
+[; ;user_ble.c: 196: RF_ClearFIFO();
+"196
+[e ( _RF_ClearFIFO ..  ]
+[; ;user_ble.c: 197: RF_ClearStatus();
+"197
+[e ( _RF_ClearStatus ..  ]
+[; ;user_ble.c: 201: ble_craft_packet_noconn(pBuff, temp_length, 38);
+"201
+[e ( _ble_craft_packet_noconn (3 , , _pBuff _temp_length -> -> 38 `i `uc ]
+[; ;user_ble.c: 202: RF_SetChannel(26);
+"202
+[e ( _RF_SetChannel (1 -> -> 26 `i `uc ]
+[; ;user_ble.c: 203: RF_TxData(rf_tx_buffer, 23 + temp_length);
+"203
+[e ( _RF_TxData (2 , &U _rf_tx_buffer -> + -> 23 `i -> _temp_length `i `uc ]
+[; ;user_ble.c: 204: RF_ClearFIFO();
+"204
+[e ( _RF_ClearFIFO ..  ]
+[; ;user_ble.c: 205: RF_ClearStatus();
+"205
+[e ( _RF_ClearStatus ..  ]
+[; ;user_ble.c: 209: ble_craft_packet_noconn(pBuff, temp_length, 39);
+"209
+[e ( _ble_craft_packet_noconn (3 , , _pBuff _temp_length -> -> 39 `i `uc ]
+[; ;user_ble.c: 210: RF_SetChannel(80);
+"210
+[e ( _RF_SetChannel (1 -> -> 80 `i `uc ]
+[; ;user_ble.c: 211: RF_TxData(rf_tx_buffer, 23 + temp_length);
+"211
+[e ( _RF_TxData (2 , &U _rf_tx_buffer -> + -> 23 `i -> _temp_length `i `uc ]
+[; ;user_ble.c: 212: RF_ClearFIFO();
+"212
+[e ( _RF_ClearFIFO ..  ]
+[; ;user_ble.c: 213: RF_ClearStatus();
+"213
+[e ( _RF_ClearStatus ..  ]
+[; ;user_ble.c: 216: }
+"216
+[e :UE 31 ]
+}
+"220
+[v _rf_tx_rev_data `(v  1 ef1`*uc ]
+{
+[; ;user_ble.c: 219: void rf_tx_rev_data(unsigned char *pBuff)
+[; ;user_ble.c: 220: {
+[e :U _rf_tx_rev_data ]
+[v _pBuff `*uc  1 r1 ]
+[f ]
+[; ;user_ble.c: 221: if (RF_Read_RxData(pBuff, 1))
+"221
+[e $ ! != ( _RF_Read_RxData , _pBuff -> 1 `i -> 0 `i 33  ]
+[; ;user_ble.c: 222: {
+"222
+{
+[; ;user_ble.c: 225: RF_ClearFIFO();
+"225
+[e ( _RF_ClearFIFO ..  ]
+[; ;user_ble.c: 226: RF_ClearStatus();
+"226
+[e ( _RF_ClearStatus ..  ]
+"227
+}
+[e :U 33 ]
+[; ;user_ble.c: 227: }
+[; ;user_ble.c: 228: }
+"228
+[e :UE 32 ]
+}

@@ -1,0 +1,300 @@
+
+# 1 "F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c"
+
+# 79 "F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\rf297L.h"
+typedef enum{
+UNKNOW_STATUS,
+SENT_SUCCESS,
+ACK_PAYLOAD_SENT_SUCCESS,
+SENT_FAILURE,
+}TX_RESULT_e;
+
+extern unsigned char RF_ReadReg(unsigned char reg_addr);
+extern void RF_WriteReg(unsigned char reg_addr, unsigned char write_data);
+extern void RF_Write_Buff(unsigned char reg_addr,unsigned char *pBuff,unsigned char length);
+extern void RF_Read_Buff(unsigned char reg_addr, unsigned char *pBuff, unsigned char length);
+extern void RF_Set_TxMode(void);
+extern void RF_Set_RxMode(void);
+extern unsigned char RF_GetStatus(void);
+extern void RF_ClearStatus(void);
+extern void RF_ClearFIFO(void);
+extern void RF_SetChannel(unsigned char Channel);
+extern void RF_TxData(unsigned char *payload_buff,unsigned char length);
+extern void RF_ENHANCE_TxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff);
+extern unsigned char RF_RxData(unsigned char *payload_buff,unsigned char length);
+extern unsigned char RF_ENHANCE_RxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff);
+
+extern void RF_Init(void);
+extern TX_RESULT_e RF_get_TX_result(void);
+void RF_Sleep();
+void RF_awaken();
+void RF_Carrier(unsigned char Channel);
+
+# 30 "F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.h"
+void ble_craft_packet_noconn(unsigned char *data, unsigned char length, unsigned char channel_index);
+unsigned char invert_8(unsigned char data);
+unsigned long int invert_32(unsigned long int data);
+unsigned long int check_crc24(const unsigned char *data, unsigned char length);
+
+void ble_rf_init(unsigned char whitening_enable);
+void rf_tx_send_data(unsigned char *pBuff);
+void rf_tx_rev_data(unsigned char *pBuff);
+
+# 4 "F:\PAN2416\±àÒëÆ÷\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\string.h"
+typedef int ptrdiff_t;
+typedef unsigned size_t;
+typedef unsigned short wchar_t;
+
+
+extern int errno;
+
+# 22
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+# 35
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
+# 6 "F:\ÏîÄ¿\¿áÕ¬\BLEÒÆÖ²\test\src\user_ble.c"
+const static unsigned char whitening_map[3][42] =
+{
+
+{
+0x8D, 0xD2, 0x57, 0xA1, 0x3D,
+0xA7, 0x66, 0xB0, 0x75, 0x31,
+0x11, 0x48, 0x96, 0x77, 0xF8,
+0xE3, 0x46, 0xE9, 0xAB, 0xD0,
+0x9E, 0x53, 0x33, 0xD8, 0xBA,
+0x98, 0x08, 0x24, 0xCB, 0x3B,
+0xFC, 0x71, 0xA3, 0xF4, 0x55,
+0x68, 0xCF, 0xA9, 0x19, 0x6C,
+0x5D, 0x4C
+},
+
+
+{
+0xD6, 0xC5, 0x44, 0x20, 0x59,
+0xDE, 0xE1, 0x8F, 0x1B, 0xA5,
+0xAF, 0x42, 0x7B, 0x4E, 0xCD,
+0x60, 0xEB, 0x62, 0x22, 0x90,
+0x2C, 0xEF, 0xF0, 0xC7, 0x8D,
+0xD2, 0x57, 0xA1, 0x3D, 0xA7,
+0x66, 0xB0, 0x75, 0x31, 0x11,
+0x48, 0x96, 0x77 ,0xF8, 0xE3,
+0x46, 0xE9
+},
+
+
+{
+0x1F, 0x37, 0x4A, 0x5F, 0x85,
+0xF6, 0x9C, 0x9A, 0xC1, 0xD6,
+0xC5, 0x44, 0x20, 0x59, 0xDE,
+0xE1, 0x8F, 0x1B, 0xA5, 0xAF,
+0x42, 0x7B, 0x4E, 0xCD, 0x60,
+0xEB, 0x62, 0x22, 0x90, 0x2C,
+0xEF, 0xF0, 0xC7, 0x8D, 0xD2,
+0x57, 0xA1, 0x3D, 0xA7, 0x66,
+0xB0, 0x75
+}
+};
+
+const static unsigned char ble_nonconn_buffer[20] =
+{
+0xAA, 0xD6, 0xBE, 0x89, 0x8E,
+0x42, 0xFF, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11,
+0x02, 0x01, 0x1A,
+0xFF, 0xFF, 0xF0, 0xFF
+};
+
+unsigned char invert_8(unsigned char data);
+unsigned long int invert_32(unsigned long int data);
+unsigned long int check_crc24(const unsigned char *data, unsigned char length);
+
+unsigned char rf_tx_buffer[20];
+
+
+
+void ble_craft_packet_noconn(unsigned char *data, unsigned char length, unsigned char channel_index)
+{
+
+memcpy(rf_tx_buffer, ble_nonconn_buffer, 20);
+memcpy(rf_tx_buffer + 20, data, length);
+
+
+rf_tx_buffer[6] = 13 + length;
+rf_tx_buffer[16] = 3 + length;
+
+unsigned long int calc_crc = check_crc24(rf_tx_buffer + 5, 15 + length);
+
+rf_tx_buffer[20 + length + 0] = calc_crc;
+rf_tx_buffer[20 + length + 1] = calc_crc >> 8;
+rf_tx_buffer[20 + length + 2] = calc_crc >> 16;
+
+for (unsigned char i = 0; i < 18 + length; i++)
+{
+rf_tx_buffer[5 + i] ^= whitening_map[channel_index - 37][i];
+}
+
+
+}
+
+unsigned long int check_crc24(const unsigned char *data, unsigned char length)
+{
+unsigned long int crc = 0x55555500;
+unsigned long int poly = 0x000065B00;
+unsigned long int input_byte = 0;
+
+for (unsigned char i = 0; i < length; i++)
+{
+input_byte = invert_8(data[i]);
+
+crc ^= (input_byte << 24);
+
+for (unsigned char j = 0; j < 8; j++)
+{
+if (crc & 0x80000000)
+{
+crc = (crc << 1) ^ poly;
+}
+else
+{
+crc = (crc << 1);
+}
+}
+}
+
+crc = invert_32(crc);
+return crc;
+}
+
+unsigned char invert_8(unsigned char data)
+{
+unsigned char temp = 0;
+
+for (unsigned char i = 0; i < 8; i++)
+{
+if (data & (1 << i))
+{
+temp |= 1 << (7 - i);
+}
+}
+
+return temp;
+}
+
+unsigned long int invert_32(unsigned long int data)
+{
+register unsigned long int temp = 0;
+
+for (unsigned char i = 0; i < 32; i++)
+{
+if (data & (1UL << i))
+{
+temp |= 1UL << (31 - i);
+}
+else
+{
+temp = temp;
+}
+}
+
+return temp;
+}
+
+const unsigned char tx_rx_address[] = {0xCC, 0xCC, 0xCC, 0xCC, 0xCC};
+void ble_rf_init(unsigned char whitening_enable)
+{
+unsigned char Dem_cal_data_ble[] = {0x01};
+if (whitening_enable == 1)
+{
+Dem_cal_data_ble[0] = 0x01;
+}
+else
+{
+Dem_cal_data_ble[0] = 0x00;
+}
+
+RF_WriteReg(0x20 + 0x11, 1);
+RF_Write_Buff(0x20 + 0x10, tx_rx_address, sizeof(tx_rx_address));
+RF_Write_Buff(0x20 + 0x0A, tx_rx_address, sizeof(tx_rx_address));
+RF_Write_Buff(0x20 + 0x19,Dem_cal_data_ble, sizeof(Dem_cal_data_ble));
+}
+
+typedef struct
+{
+unsigned char tx_data;
+unsigned char tx_cnt;
+unsigned char tx_enable;
+} tx_param_t;
+
+
+
+void rf_tx_send_data(unsigned char *pBuff)
+{
+
+# 186
+unsigned char temp_data[24];
+unsigned char temp_length =1;
+
+# 193
+ble_craft_packet_noconn(pBuff, temp_length, 37);
+RF_SetChannel(02);
+RF_TxData(rf_tx_buffer, 23 + temp_length);
+RF_ClearFIFO();
+RF_ClearStatus();
+
+
+
+ble_craft_packet_noconn(pBuff, temp_length, 38);
+RF_SetChannel(26);
+RF_TxData(rf_tx_buffer, 23 + temp_length);
+RF_ClearFIFO();
+RF_ClearStatus();
+
+
+
+ble_craft_packet_noconn(pBuff, temp_length, 39);
+RF_SetChannel(80);
+RF_TxData(rf_tx_buffer, 23 + temp_length);
+RF_ClearFIFO();
+RF_ClearStatus();
+
+
+}
+
+
+void rf_tx_rev_data(unsigned char *pBuff)
+{
+if (RF_Read_RxData(pBuff, 1))
+{
+
+
+RF_ClearFIFO();
+RF_ClearStatus();
+}
+}

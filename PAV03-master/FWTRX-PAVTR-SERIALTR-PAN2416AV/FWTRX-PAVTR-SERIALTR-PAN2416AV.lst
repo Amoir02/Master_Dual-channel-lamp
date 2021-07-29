@@ -1,0 +1,2501 @@
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\main.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "system.h"
+3:                #include "WDT.h"
+4:                #include "rf297L.h"
+5:                #include "timer1.h"
+6:                #include "timer2.h"
+7:                #include "PWM.h"
+8:                #include "key_scan.h"
+9:                #include "INT0.h"
+10:               #include "ADC.h"
+11:               #include "PORTB_interrupt.h"
+12:               #include "recive.h"
+13:               #include "iic.h"
+14:               #include "e2prom.h"
+15:               #include "uart.h"
+16:               #include "string.h"
+17:               /**********************************************************/
+18:               //1、在使用中断过程中，需要把systerm.c中没用到的中断及其判断条件都屏蔽掉
+19:               //2、RF部分收发延时和唤醒延时，不建议修改库，否则会出现RF不稳定情况
+20:               //3、在芯片配置选项中，需要把看门狗关闭；若需要使用看门狗，软件中开启使用看门狗即可。
+21:               //4、VPPOUTEN - ENABLE
+22:               /**********************************************************/
+23:               
+24:               
+25:               
+26:               
+27:               unsigned int sleep_flag=0;
+28:               unsigned char flag_rx=0;
+29:               extern uint8_t rf_buf[20];
+30:               
+31:               /** ID1 ID2 ID3 ID4  CHANNEL  COUNT**/
+32:               
+33:               uint8_t control_id[12][6]=
+34:               {
+35:               	{0,0,0,0,0,0},
+36:               	{0,0,0,0,0,0},
+37:               	{0,0,0,0,0,0},
+38:               	{0,0,0,0,0,0},
+39:               	{0,0,0,0,0,0},
+40:               	{0,0,0,0,0,0},
+41:               	{0,0,0,0,0,0},
+42:               	{0,0,0,0,0,0},
+43:               	{0,0,0,0,0,0},
+44:               	{0,0,0,0,0,0},
+45:               	{0,0,0,0,0,0},
+46:               	{0,0,0,0,0,0}		
+47:               };
+48:               
+49:               uint8_t channel_flag[3]={0,0,0};
+50:               extern channel_flag_stu KEY0;
+51:               extern channel_flag_stu KEY1;
+52:               extern channel_flag_stu KEY2;
+53:               
+54:               void main()
+55:               {
+56:               	unsigned char i=0;
+57:               	system_set_CPU_frequency(CPU_FREQUENCY_8M);
+  038C    3071    LDIA	0x71
+  038D    118A    CLRB	0xA,3
+  038E    241D    CALL	0x41D
+  038F    118A    CLRB	0xA,3
+58:               	soft_delay_ms(100); /*延迟500ms*/  
+  0390    3064    LDIA	0x64
+  0391    1283    CLRB	0x3,5
+  0392    00CE    LD	0x4E,A
+  0393    01CF    CLR	0x4F
+  0394    118A    CLRB	0xA,3
+  0395    2022    CALL	0x22
+  0396    118A    CLRB	0xA,3
+  0397    0000    NOP
+59:               	asm("nop");			/*空操作指令*/
+60:               	
+61:               	/**IO初始化**/
+62:               	TRISC = 0x00; 		/*PWM1和PWM2  IO口初始化*/
+  0398    1683    SETB	0x3,5
+  0399    1303    CLRB	0x3,6
+  039A    0187    CLR	0x7
+63:               	TRISB |= 0x00;		/*bit4,bit5,bit6设置为输入引脚AN11(RELAY2),AN13(RELAY1),ICSPCLK(RELAY0)*/
+  039B    0806    LD	A,0x6
+64:               	
+65:               	RC0=1;       		/*关灯*/
+  039C    1283    CLRB	0x3,5
+  039D    1407    SETB	0x7,0
+66:               	RB1=1;       		/*关灯*/
+  039E    1486    SETB	0x6,1
+67:               	
+68:               	IIC_Init();  		/*SDA、SCL高电平,IIC初始化*/
+  039F    118A    CLRB	0xA,3
+  03A0    2417    CALL	0x417
+  03A1    118A    CLRB	0xA,3
+69:               	key_Init();	  		/*KEY0、KET1、KEY2按键初始化定义为输入脚，使能上拉*/
+  03A2    118A    CLRB	0xA,3
+  03A3    2411    CALL	0x411
+  03A4    118A    CLRB	0xA,3
+70:               	RF_Init();			/*PAN2416配置，对应POWER值不一样*/
+  03A5    118A    CLRB	0xA,3
+  03A6    21C8    CALL	0x1C8
+  03A7    118A    CLRB	0xA,3
+71:               	RF_Set_RxMode();	/*增强型接收模式*/ 
+  03A8    118A    CLRB	0xA,3
+  03A9    2013    CALL	0x13
+  03AA    118A    CLRB	0xA,3
+72:               
+73:               	Timer1_Init(TIMER1_DIV_8);/*1：8 预分频比 外部中断允许*/
+  03AB    3030    LDIA	0x30
+  03AC    118A    CLRB	0xA,3
+  03AD    240A    CALL	0x40A
+  03AE    118A    CLRB	0xA,3
+74:               	Timer1_start(10000,0);	  /*定时10ms*/
+  03AF    3010    LDIA	0x10
+  03B0    1283    CLRB	0x3,5
+  03B1    00CE    LD	0x4E,A
+  03B2    3027    LDIA	0x27
+  03B3    00CF    LD	0x4F,A
+  03B4    01D0    CLR	0x50
+  03B5    118A    CLRB	0xA,3
+  03B6    23DA    CALL	0x3DA
+  03B7    118A    CLRB	0xA,3
+75:               
+76:               	Enable_Interrupt();  /*允许所有未被屏蔽的中断*/
+  03B8    118A    CLRB	0xA,3
+  03B9    2422    CALL	0x422
+  03BA    118A    CLRB	0xA,3
+77:               	
+78:               	while(1)
+79:               	{	
+80:                       recive_task();	 /*接收端数据处理*/
+  03BB    118A    CLRB	0xA,3
+  03BC    203E    CALL	0x3E
+  03BD    118A    CLRB	0xA,3
+  03BE    2BBB    JP	0x3BB
+81:               	}
+82:               }
+83:               
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\rf297L.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "delay.h"
+3:                #include "rf297l.h"
+4:                
+5:                #define delay_ms(ms) soft_delay_ms(ms)
+6:                const unsigned char TX_ADDRESS_DEF[3] = {0xCC,0xCC,0xCC};
+7:                const unsigned char RX_ADDRESS_DEF[3] = {0x2D,0xD7,0XB9};
+8:                static unsigned char ACK_Payload_length;
+9:                
+10:               unsigned char RF_ReadReg(unsigned char reg_addr);
+11:               void RF_WriteReg(unsigned char reg_addr, unsigned char write_data);
+12:               void RF_Write_Buff(unsigned char reg_addr,unsigned char *pBuff,unsigned char length);
+13:               void RF_Read_Buff(unsigned char reg_addr, unsigned char *pBuff, unsigned char length);
+14:               void RF_Set_TxMode(void);
+15:               void RF_Set_RxMode(void);
+16:               unsigned char RF_GetStatus(void);
+17:               void RF_ClearStatus(void);
+18:               void RF_ClearFIFO(void);
+19:               void RF_SetChannel(unsigned char Channel);
+20:               void RF_TxData(unsigned char *payload_buff,unsigned char length);
+21:               unsigned char RF_Read_RxData(unsigned char *payload_buff,unsigned char length);
+22:               void RF_Init(void);
+23:               TX_RESULT_e RF_get_TX_result(void);
+24:               
+25:               static unsigned char SPI_RW(unsigned char read_reg_addr);
+26:               static void SPI_init(void);
+27:               
+28:               
+29:               TX_RESULT_e RF_get_TX_result(void)
+30:               {
+31:               	unsigned char status = 0;
+32:               	status = RF_GetStatus();
+33:               	if(status == TX_DS_FLAG){
+34:               		return SENT_SUCCESS;
+35:               	}else if(status == RX_TX_FLAG){
+36:               		return ACK_PAYLOAD_SENT_SUCCESS;
+37:               	}else if(MAX_RT_FLAG){
+38:               		return SENT_FAILURE;
+39:               	}else{
+40:               		return UNKNOW_STATUS;
+41:               	}
+42:               }
+43:               
+44:               void RF_Init(void)
+45:               {	
+46:               #ifdef	IC_TYPE_MX5325          	  //MX5325配置
+47:               	#if(DATA_RATE == DR_1M) 
+48:               		const unsigned char  BB_cal_data[]    = {0x0A,0x6D,0x67,0x9C,0x46}; 
+49:               		const unsigned char  RF_cal_data[]    = {0xF6,0x37,0x5D};                                      
+50:               		const unsigned char  RF_cal2_data[]   = {0x45,0x21,0xeF,0x2c,0x5a,0x40};
+51:               		const unsigned char  Dem_cal_data[]   = {0x01};  
+52:               		const unsigned char  Dem_cal2_data[]  = {0x0B,0xDF,0x02};   
+53:               	#elif(DATA_RATE == DR_250K) 
+54:               		const unsigned char   BB_cal_data[]    = {0x12,0xec,0x6f,0xa1,0x46}; 
+55:               		const unsigned char   RF_cal_data[]    = {0xf6,0x37,0x5d};
+56:               		const unsigned char   RF_cal2_data[]   = {0xd5,0x21,0xeb,0x2c,0x5a,0x40};
+57:               		const unsigned char   Dem_cal_data[]   = {0x1F};  
+58:               		const unsigned char   Dem_cal2_data[]  = {0x0B,0xDF,0x02};
+59:               	#endif
+60:               #else			//PAN2416配置			//对应POWER值不一样
+61:               	#if(DATA_RATE == DR_1M) 
+62:               		const unsigned char  BB_cal_data[]    = {0x0A,0x6D,0x67,0x9C,0x46}; 
+63:               		const unsigned char  RF_cal_data[]    = {0x16,0x33,0x27};                      
+64:               		const unsigned char  RF_cal2_data[]   = {0x45,0x21,0x3F,0x2D,0x5C,0x40};
+65:               		const unsigned char  Dem_cal_data[]   = {0x01};  
+66:               		const unsigned char  Dem_cal2_data[]  = {0x0B,0xDF,0x02};   
+67:               	#elif(DATA_RATE == DR_250K) 
+68:               		const unsigned char   BB_cal_data[]    = {0x12,0xEC,0x6f,0xA9,0x46}; 
+69:               		const unsigned char   RF_cal_data[]    = {0x06,0x33,0x00};
+70:               		const unsigned char   RF_cal2_data[]   = {0xD5,0x21,0x3B,0x2D,0x5C,0x40};
+71:               		const unsigned char   Dem_cal_data[]   = {0x03};  
+72:               		const unsigned char   Dem_cal2_data[]  = {0x0B,0xDF,0x02};
+73:               	#endif
+74:               #endif
+75:                   unsigned char feature = 0x00;
+76:                   SPI_init();
+  01C8    2272    CALL	0x272
+  01C9    118A    CLRB	0xA,3
+77:                   RF_WriteReg(RST_FSPI, 0x5A);	//Software Reset    			
+  01CA    305A    LDIA	0x5A
+  01CB    1283    CLRB	0x3,5
+  01CC    00D0    LD	0x50,A
+  01CD    3053    LDIA	0x53
+  01CE    2240    CALL	0x240
+  01CF    118A    CLRB	0xA,3
+78:                   RF_WriteReg(RST_FSPI, 0XA5);
+  01D0    30A5    LDIA	0xA5
+  01D1    00D0    LD	0x50,A
+  01D2    3053    LDIA	0x53
+  01D3    2240    CALL	0x240
+  01D4    118A    CLRB	0xA,3
+  01D5    30E1    LDIA	0xE1
+79:                   RF_WriteReg(FLUSH_TX, 0);			// CLEAR TXFIFO		    			 
+  01D6    01D0    CLR	0x50
+  01D7    2240    CALL	0x240
+  01D8    118A    CLRB	0xA,3
+  01D9    30E2    LDIA	0xE2
+80:                   RF_WriteReg(FLUSH_RX, 0);			// CLEAR  RXFIFO
+  01DA    01D0    CLR	0x50
+  01DB    2240    CALL	0x240
+  01DC    118A    CLRB	0xA,3
+81:                   RF_WriteReg(W_REGISTER + STATUS, 0x70);	// CLEAR  STATUS	
+  01DD    3070    LDIA	0x70
+  01DE    00D0    LD	0x50,A
+  01DF    3027    LDIA	0x27
+  01E0    2240    CALL	0x240
+  01E1    118A    CLRB	0xA,3
+  01E2    3022    LDIA	0x22
+82:                   RF_WriteReg(W_REGISTER + EN_RXADDR, 0x01);	// Enable Pipe0
+  01E3    01D0    CLR	0x50
+  01E4    0AD0    INCR	0x50
+  01E5    2240    CALL	0x240
+  01E6    118A    CLRB	0xA,3
+  01E7    3023    LDIA	0x23
+83:                   RF_WriteReg(W_REGISTER + SETUP_AW,  0x01);	// address witdth is 5 bytes
+  01E8    01D0    CLR	0x50
+  01E9    0AD0    INCR	0x50
+  01EA    2240    CALL	0x240
+  01EB    118A    CLRB	0xA,3
+84:                   RF_WriteReg(W_REGISTER + RF_CH, DEFAULT_CHANNEL); // 2478M HZ
+  01EC    301A    LDIA	0x1A
+  01ED    00D0    LD	0x50,A
+  01EE    3025    LDIA	0x25
+  01EF    2240    CALL	0x240
+  01F0    118A    CLRB	0xA,3
+85:                   RF_WriteReg(W_REGISTER + RX_PW_P0, PAYLOAD_WIDTH);// PAYLOAD_WIDTH bytes
+  01F1    3012    LDIA	0x12
+  01F2    00D0    LD	0x50,A
+  01F3    3031    LDIA	0x31
+  01F4    2240    CALL	0x240
+  01F5    118A    CLRB	0xA,3
+86:                   RF_Write_Buff(W_REGISTER + TX_ADDR, TX_ADDRESS_DEF, sizeof(TX_ADDRESS_DEF));	// Writes TX_Address to PN006
+  01F6    3078    LDIA	0x78
+  01F7    00D0    LD	0x50,A
+  01F8    3003    LDIA	0x3
+  01F9    00D1    LD	0x51,A
+  01FA    3030    LDIA	0x30
+  01FB    2248    CALL	0x248
+  01FC    118A    CLRB	0xA,3
+87:                   RF_Write_Buff(W_REGISTER + RX_ADDR_P0,RX_ADDRESS_DEF, sizeof(RX_ADDRESS_DEF));	// RX_Addr0 same as TX_Adr for Auto.Ack   
+  01FD    3075    LDIA	0x75
+  01FE    00D0    LD	0x50,A
+  01FF    3003    LDIA	0x3
+  0200    00D1    LD	0x51,A
+  0201    302A    LDIA	0x2A
+  0202    2248    CALL	0x248
+  0203    118A    CLRB	0xA,3
+88:                   RF_Write_Buff(W_REGISTER + BB_CAL,    BB_cal_data,  sizeof(BB_cal_data));
+  0204    3061    LDIA	0x61
+  0205    00D0    LD	0x50,A
+  0206    3005    LDIA	0x5
+  0207    00D1    LD	0x51,A
+  0208    303F    LDIA	0x3F
+  0209    2248    CALL	0x248
+  020A    118A    CLRB	0xA,3
+89:                   RF_Write_Buff(W_REGISTER + RF_CAL2,   RF_cal2_data, sizeof(RF_cal2_data));
+  020B    3056    LDIA	0x56
+  020C    00D0    LD	0x50,A
+  020D    3006    LDIA	0x6
+  020E    00D1    LD	0x51,A
+  020F    303A    LDIA	0x3A
+  0210    2248    CALL	0x248
+  0211    118A    CLRB	0xA,3
+90:                   RF_Write_Buff(W_REGISTER + DEM_CAL,   Dem_cal_data, sizeof(Dem_cal_data));
+  0212    307C    LDIA	0x7C
+  0213    00D0    LD	0x50,A
+  0214    3039    LDIA	0x39
+  0215    01D1    CLR	0x51
+  0216    0AD1    INCR	0x51
+  0217    2248    CALL	0x248
+  0218    118A    CLRB	0xA,3
+91:                   RF_Write_Buff(W_REGISTER + RF_CAL,    RF_cal_data,  sizeof(RF_cal_data));
+  0219    306F    LDIA	0x6F
+  021A    00D0    LD	0x50,A
+  021B    3003    LDIA	0x3
+  021C    00D1    LD	0x51,A
+  021D    303E    LDIA	0x3E
+  021E    2248    CALL	0x248
+  021F    118A    CLRB	0xA,3
+92:                   RF_Write_Buff(W_REGISTER + DEM_CAL2,  Dem_cal2_data,sizeof(Dem_cal2_data));
+  0220    306C    LDIA	0x6C
+  0221    00D0    LD	0x50,A
+  0222    3003    LDIA	0x3
+  0223    00D1    LD	0x51,A
+  0224    303B    LDIA	0x3B
+  0225    2248    CALL	0x248
+  0226    118A    CLRB	0xA,3
+  0227    303C    LDIA	0x3C
+93:                   RF_WriteReg(W_REGISTER + DYNPD, 0x00);					                            
+  0228    01D0    CLR	0x50
+  0229    2240    CALL	0x240
+  022A    118A    CLRB	0xA,3
+94:                   RF_WriteReg(W_REGISTER + RF_SETUP, RF_POWER);						// 		
+  022B    300E    LDIA	0xE
+  022C    00D0    LD	0x50,A
+  022D    3026    LDIA	0x26
+  022E    2240    CALL	0x240
+  022F    118A    CLRB	0xA,3
+95:                   RF_WriteReg(ACTIVATE, 0x73);
+  0230    3073    LDIA	0x73
+  0231    00D0    LD	0x50,A
+  0232    3050    LDIA	0x50
+  0233    2240    CALL	0x240
+  0234    118A    CLRB	0xA,3
+  0235    3024    LDIA	0x24
+96:                   
+97:               	#if(TRANSMIT_TYPE == TRANS_ENHANCE_MODE)      	//双向
+98:               		RF_WriteReg(W_REGISTER + SETUP_RETR,0x01);							//  1 retrans... 	
+99:               		RF_WriteReg(W_REGISTER + EN_AA,     0x01);							// Enable Auto.Ack:Pipe0  	
+100:              	#elif(TRANSMIT_TYPE == TRANS_BURST_MODE)        //单向                                                      
+101:              		RF_WriteReg(W_REGISTER + SETUP_RETR,0x00);							// Disable retrans... 	
+  0236    01D0    CLR	0x50
+  0237    2240    CALL	0x240
+  0238    118A    CLRB	0xA,3
+  0239    3021    LDIA	0x21
+102:              		RF_WriteReg(W_REGISTER + EN_AA,     0x00);							// Disable AutoAck 
+  023A    01D0    CLR	0x50
+  023B    2240    CALL	0x240
+  023C    118A    CLRB	0xA,3
+103:              	#endif
+104:              
+105:              	#if(EN_DYNPLOAD == 1)		//使能动态PAYLOAD长度
+106:              		feature |= 0x04;
+107:              		RF_WriteReg(W_REGISTER + DYNPD, 0x01);
+108:              	#endif
+109:              
+110:              	#if(EN_ACK_PAYLOAD == 1)	//使能ACK_PAYLOAD
+111:              		feature |= 0x02;
+112:              	#endif
+113:              	if(PAYLOAD_WIDTH >32){
+  023D    303D    LDIA	0x3D
+114:              		feature |= 0x18;
+115:              	}
+116:              	//feature |= 0x20 ; //ce order by mcu not pin
+117:              	RF_WriteReg(W_REGISTER + FEATURE, feature);
+  023E    01D0    CLR	0x50
+  023F    2A40    JP	0x240
+118:              }
+119:              
+120:              
+121:              /******************************************************************************/
+122:              //            RF_RxData普通模式下
+123:              //            读出接收到的数据：
+124:              //            参数：
+125:              //              1. payload_buff：存储读取到的数据的Buffer
+126:              //              2. length:    读取的数据长度
+127:              //              Return:
+128:              //              1. 0: 没有接收到数据
+129:              //              2. 1: 读取接收到的数据成功
+130:              //              note: Only use in Rx Mode
+131:              //              length 通常等于 PAYLOAD_WIDTH
+132:              /******************************************************************************/
+133:              unsigned char RF_RxData(unsigned char *payload_buff,unsigned char length)
+134:              { 
+  01A1    00D7    LD	0x57,A
+135:                  if(!(RF_GetStatus() & RX_DR_FLAG))
+  01A2    2279    CALL	0x279
+  01A3    118A    CLRB	0xA,3
+  01A4    00D6    LD	0x56,A
+  01A5    1F56    SNZB	0x56,6
+136:                  {
+137:                    return 0;                                                                 		
+  01A6    3400    RET	0x0
+138:                  }
+139:              	RF_Read_Buff(R_RX_PAYLOAD, payload_buff, length);
+  01A7    0857    LD	A,0x57
+  01A8    00D0    LD	0x50,A
+  01A9    0855    LD	A,0x55
+  01AA    00D1    LD	0x51,A
+  01AB    3061    LDIA	0x61
+  01AC    21B2    CALL	0x1B2
+  01AD    118A    CLRB	0xA,3
+140:              	
+141:              	RF_ClearFIFO();
+  01AE    227D    CALL	0x27D
+  01AF    118A    CLRB	0xA,3
+142:              	RF_ClearStatus();
+  01B0    228D    CALL	0x28D
+143:                  return 1;
+  01B1    3401    RET	0x1
+144:              }
+145:              
+146:              /******************************************************************************/
+147:              //            RF_ENHANCE_RxData增强模式下
+148:              //            读出接收到的数据：
+149:              //            参数：
+150:              //              1. payload_buff：存储读取到的数据的Buffer
+151:              //              2. length:    读取的数据长度
+152:              //              3. postback_buff :发送回传数据给发送端
+153:              //              Return:
+154:              //              1. 0: 没有接收到数据
+155:              //              2. 1: 读取接收到的数据成功
+156:              //              note: Only use in Rx Mode
+157:              //              length 通常等于 PAYLOAD_WIDTH
+158:              /******************************************************************************/
+159:              unsigned char RF_ENHANCE_RxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff)
+160:              { 
+161:                  if(!(RF_GetStatus() & RX_DR_FLAG))
+162:                  {
+163:                    return 0;                                                                 		
+164:                  }
+165:              	#if	(TRANSMIT_TYPE == TRANS_ENHANCE_MODE)			//ACK_PAYLOAD模式
+166:              	RF_Write_Buff(W_ACK_PAYLOAD, postback_buff, ACK_PAYLOAD_WIDTH);
+167:              	delay_ms(2);
+168:              	//读动态RX接收数据宽度 ，要使能动态功能1D 动态长度1C，要打开ACK   
+169:              	RF_Read_Buff(R_RX_PAYLOAD, payload_buff, length);  
+170:              	
+171:              	#else
+172:              	RF_Read_Buff(R_RX_PAYLOAD, payload_buff, length);
+173:              	#endif       //将接收到的数据读出到ucPayload，且清除rxfifo
+174:              	
+175:              	RF_ClearFIFO();
+176:              	RF_ClearStatus();
+177:                  return 1;
+178:              }
+179:              /******************************************************************************/
+180:              //           普通模式下 发送数据：
+181:              //            参数：
+182:              //              1. payload_buff：需要发送的数据首地址
+183:              //              2. length:  需要发送的数据长度
+184:              //              Return:
+185:              //              1. MAX_RT: TX Failure  (Enhance mode)
+186:              //              2. TX_DS:  TX Successful (Enhance mode)
+187:              //              note: Only use in Tx Mode
+188:              //              length 通常等于 PAYLOAD_WIDTH
+189:              //            发送结果
+190:              //            参数：只在增强模式下，使能ack带Payload有效
+191:              //                  1、ucAckPayload: AckPayload的首地址
+192:              //                  2、length：AckPayload的长度
+193:              /******************************************************************************/
+194:              void RF_TxData(unsigned char *payload_buff,unsigned char length)
+195:              {
+196:              	unsigned char ret;
+197:                  RF_Write_Buff(W_TX_PAYLOAD, payload_buff, length);                               		//write data to txfifo                                                                      		//rf entery tx mode start send data                                                                       		//rf entery stb3
+198:                  delay_ms(3);
+199:              	
+200:              	RF_ClearFIFO();
+201:              	RF_ClearStatus();
+202:              }
+203:              
+204:              /******************************************************************************/
+205:              //            增强模式下发送数据：
+206:              //            参数：
+207:              //              1. payload_buff：需要发送的数据首地址
+208:              //              2. length:  需要发送的数据长度
+209:              //              3. postback_buff：接收由接收端回传的数据
+210:              //              Return:
+211:              //              1. MAX_RT: TX Failure  (Enhance mode)
+212:              //              2. TX_DS:  TX Successful (Enhance mode)
+213:              //              note: Only use in Tx Mode
+214:              //              length 通常等于 PAYLOAD_WIDTH
+215:              //            发送结果
+216:              //            参数：只在增强模式下，使能ack带Payload有效
+217:              //                  1、ucAckPayload: AckPayload的首地址
+218:              //                  2、length：AckPayload的长度
+219:              /******************************************************************************/
+220:              void RF_ENHANCE_TxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff)
+221:              {
+222:              	unsigned char ret;
+223:                  RF_Write_Buff(W_TX_PAYLOAD, payload_buff, length);                               		//write data to txfifo                                                                      		//rf entery tx mode start send data                                                                       		//rf entery stb3
+224:                  delay_ms(2);
+225:              	#if	(TRANSMIT_TYPE == TRANS_ENHANCE_MODE)			//ACK_PAYLOAD模式
+226:              	ret = RF_GetStatus();
+227:              	if(RF_GetStatus() == RX_TX_FLAG)
+228:              	{
+229:              		RF_Read_Buff(R_RX_PAYLOAD,postback_buff,ACK_PAYLOAD_WIDTH);//payload_buff把接收到数据再发送过去 feedback_buff 
+230:              	}
+231:              	#endif       //将接收到的数据读出到ucPayload，且清除rxfifo
+232:              	
+233:              	RF_ClearFIFO();
+234:              	RF_ClearStatus();
+235:              }
+236:              
+237:              void RF_SetChannel(unsigned char Channel)
+238:              {    
+239:                  RF_WriteReg(W_REGISTER + RF_CH, Channel);
+240:              }
+241:              
+242:              void RF_ClearFIFO(void)
+243:              {
+  027D    30E1    LDIA	0xE1
+244:                  RF_WriteReg(FLUSH_TX, 0);			                                		//清除RF 的 TX FIFO		
+  027E    01D0    CLR	0x50
+  027F    2240    CALL	0x240
+  0280    118A    CLRB	0xA,3
+  0281    30E2    LDIA	0xE2
+245:                  RF_WriteReg(FLUSH_RX, 0);                                                   		//清除RF 的 RX FIFO	
+  0282    01D0    CLR	0x50
+  0283    2A40    JP	0x240
+246:              }
+247:              
+248:              void RF_ClearStatus(void)
+249:              {
+250:                  RF_WriteReg(W_REGISTER + STATUS,0x70);							//清除RF的IRQ标志 
+  028D    3070    LDIA	0x70
+  028E    00D0    LD	0x50,A
+  028F    3027    LDIA	0x27
+  0290    2A40    JP	0x240
+251:              }
+252:              
+253:              unsigned char RF_GetStatus(void)
+254:              {
+255:                  return RF_ReadReg(STATUS)&0x70;		//读取RF的状态 
+  0279    3007    LDIA	0x7
+  027A    2284    CALL	0x284
+  027B    3970    ANDIA	0x70
+  027C    0008    RET
+256:              }
+257:              
+258:              void RF_Set_TxMode(void)
+259:              {
+260:                  RF_WriteReg(W_REGISTER + CONFIG,  0X8E);							// 将RF设置成TX模式
+261:                  delay_ms(10);   
+262:                  CE_HIGH;	
+263:                  delay_ms(10);
+264:              }
+265:              
+266:              void RF_Set_RxMode(void)
+267:              {
+268:                  RF_WriteReg(W_REGISTER + CONFIG,  0X87);							// 将RF设置成TX模式
+  0013    3087    LDIA	0x87
+  0014    00D0    LD	0x50,A
+  0015    3020    LDIA	0x20
+  0016    2240    CALL	0x240
+  0017    118A    CLRB	0xA,3
+269:                  delay_ms(10);   
+  0018    300A    LDIA	0xA
+  0019    00CE    LD	0x4E,A
+  001A    01CF    CLR	0x4F
+  001B    2022    CALL	0x22
+  001C    118A    CLRB	0xA,3
+  001D    300A    LDIA	0xA
+270:                  CE_HIGH;	
+  001E    1785    SETB	0x5,7
+271:                  delay_ms(10);
+  001F    00CE    LD	0x4E,A
+  0020    01CF    CLR	0x4F
+  0021    2822    JP	0x22
+272:              }
+273:              
+274:              void RF_Read_Buff(unsigned char reg_addr, unsigned char *pBuff, unsigned char length)
+275:              {
+  01B2    00D3    LD	0x53,A
+276:                  unsigned char byte_ctr;
+277:                  CSN_LOW;                    		                               			
+  01B3    1109    CLRB	0x9,2
+278:                  SPI_RW(reg_addr);       		                                                		
+  01B4    225D    CALL	0x25D
+  01B5    118A    CLRB	0xA,3
+279:                  for(byte_ctr=0;byte_ctr<length;byte_ctr++){
+  01B6    01D4    CLR	0x54
+  01B7    0851    LD	A,0x51
+  01B8    0254    SUBA	0x54
+  01B9    1803    SZB	0x3,0
+  01BA    29C6    JP	0x1C6
+280:                  	pBuff[byte_ctr] = SPI_RW(0);         
+  01BB    0854    LD	A,0x54
+  01BC    0750    ADDA	0x50
+  01BD    00D2    LD	0x52,A
+  01BE    0084    LD	0x4,A
+  01BF    3000    LDIA	0x0
+  01C0    225D    CALL	0x25D
+  01C1    118A    CLRB	0xA,3
+  01C2    1383    CLRB	0x3,7
+  01C3    0080    LD	0x0,A
+  01C4    0AD4    INCR	0x54
+  01C5    29B7    JP	0x1B7
+281:              	}                                        		
+282:                  CSN_HIGH;                                                                   		
+  01C6    1509    SETB	0x9,2
+  01C7    0008    RET
+283:              }
+284:              
+285:              void RF_Write_Buff(unsigned char reg_addr,unsigned char *pBuff,unsigned char length)
+286:              {
+  0248    00D2    LD	0x52,A
+287:                  unsigned char i;
+288:                  CSN_LOW;
+  0249    1109    CLRB	0x9,2
+289:                  SPI_RW(reg_addr);
+  024A    225D    CALL	0x25D
+  024B    118A    CLRB	0xA,3
+290:                  for(i=0;i<length;i++)
+  024C    01D3    CLR	0x53
+  024D    0851    LD	A,0x51
+  024E    0253    SUBA	0x53
+  024F    1803    SZB	0x3,0
+  0250    2A5B    JP	0x25B
+291:                  {
+292:                      SPI_RW(pBuff[i]);
+  0251    0853    LD	A,0x53
+  0252    0750    ADDA	0x50
+  0253    0084    LD	0x4,A
+  0254    118A    CLRB	0xA,3
+  0255    230A    CALL	0x30A
+  0256    118A    CLRB	0xA,3
+  0257    225D    CALL	0x25D
+  0258    118A    CLRB	0xA,3
+  0259    0AD3    INCR	0x53
+  025A    2A4D    JP	0x24D
+293:                  }
+294:                  CSN_HIGH;
+  025B    1509    SETB	0x9,2
+  025C    0008    RET
+295:              }
+296:              
+297:              void RF_WriteReg(unsigned char reg_addr, unsigned char write_data)
+298:              {
+  0240    00D1    LD	0x51,A
+299:                  CSN_LOW;
+  0241    1109    CLRB	0x9,2
+300:                  SPI_RW(reg_addr);
+  0242    225D    CALL	0x25D
+  0243    118A    CLRB	0xA,3
+301:                  SPI_RW(write_data);
+  0244    0850    LD	A,0x50
+  0245    225D    CALL	0x25D
+302:                  CSN_HIGH;
+  0246    1509    SETB	0x9,2
+  0247    0008    RET
+303:              }
+304:              
+305:              unsigned char RF_ReadReg(unsigned char reg_addr)
+306:              {
+  0284    00D0    LD	0x50,A
+307:              	unsigned char tmp;
+308:                  CSN_LOW;
+  0285    1109    CLRB	0x9,2
+309:                  SPI_RW(reg_addr);
+  0286    225D    CALL	0x25D
+  0287    118A    CLRB	0xA,3
+310:                  tmp = SPI_RW(0);
+  0288    3000    LDIA	0x0
+  0289    225D    CALL	0x25D
+  028A    00D1    LD	0x51,A
+311:                  CSN_HIGH;
+  028B    1509    SETB	0x9,2
+312:                  return tmp;
+  028C    0008    RET
+313:              }
+314:              
+315:              static void SPI_init(void)
+316:              {
+317:              	
+318:              	SPI_CSN_IO =0;	
+  0272    1109    CLRB	0x9,2
+319:              	SPI_SCK_IO=0;	
+  0273    1089    CLRB	0x9,1
+320:              	SPI_MOSI_IO=0;	
+  0274    1285    CLRB	0x5,5
+321:              	SPI_CE_IO = 0;
+  0275    1385    CLRB	0x5,7
+322:              
+323:              	SPI_IRQ_IO = 1;
+  0276    1585    SETB	0x5,3
+324:              	SPI_MISO_IO=1;
+  0277    1605    SETB	0x5,4
+  0278    0008    RET
+325:              }
+326:              
+327:              /******************************************************************************
+328:              * SPI写入一个BYTE的同时，读出一个BYTE返回
+329:              ******************************************************************************/
+330:              static unsigned char SPI_RW(unsigned char read_reg_addr)
+331:              {
+  025D    00CE    LD	0x4E,A
+332:                  unsigned char i;
+333:                  for(i = 0; i < 8; i++)
+  025E    01CF    CLR	0x4F
+334:                  {
+335:                      SCK_LOW;
+  025F    1089    CLRB	0x9,1
+336:                      if(read_reg_addr & 0x80)
+  0260    1FCE    SNZB	0x4E,7
+  0261    2A64    JP	0x264
+337:                      {
+338:                          MOSI_HIGH;
+  0262    1685    SETB	0x5,5
+339:                      }
+  0263    2A65    JP	0x265
+340:                      else
+341:                      {
+342:                          MOSI_LOW;
+  0264    1285    CLRB	0x5,5
+343:                      }
+344:                      read_reg_addr = read_reg_addr << 1;
+  0265    1003    CLRB	0x3,0
+  0266    0DCE    RLCR	0x4E
+345:                      SCK_HIGH;
+  0267    1489    SETB	0x9,1
+346:                      if( MISO )
+  0268    1A05    SZB	0x5,4
+347:                      {
+348:                        read_reg_addr = read_reg_addr | 0x01;
+  0269    144E    SETB	0x4E,0
+  026A    3008    LDIA	0x8
+  026B    0ACF    INCR	0x4F
+  026C    024F    SUBA	0x4F
+349:                      }
+350:                  }
+351:                  SCK_LOW;
+  026D    1089    CLRB	0x9,1
+  026E    1C03    SNZB	0x3,0
+  026F    2A60    JP	0x260
+352:                  return read_reg_addr;
+  0270    084E    LD	A,0x4E
+  0271    0008    RET
+353:              }
+354:              
+355:              /******************************************************************************/
+356:              //            		进入RF休眠模式
+357:              /******************************************************************************/
+358:              void RF_Sleep()
+359:              {
+360:              	unsigned char reg_config;
+361:              	reg_config = RF_ReadReg(CONFIG);
+362:              	RF_WriteReg(W_REGISTER + CONFIG, reg_config & (~(0x02))); 
+363:              	CE_LOW;
+364:              }
+365:              
+366:              
+367:              /******************************************************************************/
+368:              //            		从RF休眠模式中唤醒
+369:              /******************************************************************************/
+370:              void RF_awaken()
+371:              {
+372:              	unsigned char reg_config;
+373:              	reg_config = RF_ReadReg(CONFIG);
+374:              	RF_WriteReg(W_REGISTER + CONFIG, reg_config | 0x02); 
+375:              	CE_HIGH;
+376:              	delay_ms(7);
+377:              }
+378:              
+379:              /******************************************************************************/
+380:              //            		进入载波模式
+381:              /******************************************************************************/
+382:              void RF_Carrier(unsigned char Channel)
+383:              {
+384:                  const unsigned char  BB_cal_data[]    = {0x0A,0x6D,0x67,0x9C,0x46};
+385:                  const unsigned char  RF_cal_data[]    = {0x16,0x33,0x27};                                       
+386:                  const unsigned char  RF_cal2_data[]   = {0x45,0x21,0x3F,0x2D,0x5C,0x40};
+387:                  const unsigned char  Dem_cal_data[]   = {0xE1};
+388:                  const unsigned char  Dem_cal2_data[]  = {0x0B,0xDF,0x02};
+389:                  CE_LOW;
+390:                  delay_ms(1);				 						                    //delay 500us
+391:                  RF_WriteReg(W_REGISTER + CONFIG, 0X8e);        					         	//tx mode 
+392:                  RF_WriteReg(W_REGISTER + RF_CH, Channel);						        //单载波频点	   
+393:                  RF_WriteReg(W_REGISTER + RF_SETUP, RF_POWER);      					     	//dbm
+394:                  RF_Write_Buff(W_REGISTER + BB_CAL,    BB_cal_data,  sizeof(BB_cal_data));
+395:                  RF_Write_Buff(W_REGISTER + RF_CAL2,   RF_cal2_data, sizeof(RF_cal2_data));
+396:                  RF_Write_Buff(W_REGISTER + DEM_CAL,   Dem_cal_data, sizeof(Dem_cal_data));
+397:                  RF_Write_Buff(W_REGISTER + RF_CAL,    RF_cal_data,  sizeof(RF_cal_data));
+398:                  RF_Write_Buff(W_REGISTER + DEM_CAL2,  Dem_cal2_data,sizeof(Dem_cal2_data));
+399:                  delay_ms(1);
+400:              }
+401:              
+402:              
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\delay.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "delay.h"
+3:                
+4:                void soft_delay_ms(unsigned int ms);
+5:                void Delay_us(unsigned int us);
+6:                
+7:                
+8:                
+9:                void soft_delay_ms(unsigned int ms)
+10:               {
+11:               //	8M主频
+12:               	volatile unsigned int i;
+13:               	volatile unsigned char j,k;
+14:               	for(i=0;i<ms;i++){
+  0022    01D0    CLR	0x50
+  0023    01D1    CLR	0x51
+  0024    084F    LD	A,0x4F
+  0025    0251    SUBA	0x51
+  0026    1D03    SNZB	0x3,2
+  0027    282A    JP	0x2A
+  0028    084E    LD	A,0x4E
+  0029    0250    SUBA	0x50
+  002A    1803    SZB	0x3,0
+  002B    0008    RET
+15:               		for(j=0;j<10;j++){
+  002C    01D2    CLR	0x52
+  002D    300A    LDIA	0xA
+  002E    0252    SUBA	0x52
+  002F    1803    SZB	0x3,0
+  0030    283A    JP	0x3A
+16:               			for(k=0;k<32;k++);
+  0031    01D3    CLR	0x53
+  0032    3020    LDIA	0x20
+  0033    0253    SUBA	0x53
+  0034    1803    SZB	0x3,0
+  0035    2838    JP	0x38
+  0036    0AD3    INCR	0x53
+  0037    2832    JP	0x32
+  0038    0AD2    INCR	0x52
+  0039    282D    JP	0x2D
+  003A    0AD0    INCR	0x50
+  003B    1903    SZB	0x3,2
+  003C    0AD1    INCR	0x51
+  003D    2824    JP	0x24
+17:               		}
+18:               	}
+19:               }
+20:               
+21:               /**填15us进去，实际延迟114us根据示波器调试，适用波特率9600**/
+22:               void Delay_us(unsigned int us)
+23:               {
+24:                  unsigned int i=0;
+25:                 i = us/2;
+  0184    084F    LD	A,0x4F
+  0185    00D1    LD	0x51,A
+  0186    084E    LD	A,0x4E
+  0187    00D0    LD	0x50,A
+  0188    3001    LDIA	0x1
+  0189    1003    CLRB	0x3,0
+  018A    0CD1    RRCR	0x51
+  018B    0CD0    RRCR	0x50
+26:                 i--;
+  018C    2291    CALL	0x291
+  018D    118A    CLRB	0xA,3
+  018E    0000    NOP
+27:                 asm("nop"); 
+28:                   for(;i!=0;i--)      
+  018F    1283    CLRB	0x3,5
+  0190    1303    CLRB	0x3,6
+  0191    0851    LD	A,0x51
+  0192    0450    ORA	0x50
+  0193    1903    SZB	0x3,2
+  0194    0008    RET
+  0195    0000    NOP
+  0196    0000    NOP
+  0197    0000    NOP
+  0198    0000    NOP
+  0199    0000    NOP
+  019A    0000    NOP
+  019B    3001    LDIA	0x1
+  019C    1283    CLRB	0x3,5
+  019D    1303    CLRB	0x3,6
+  019E    2291    CALL	0x291
+  019F    118A    CLRB	0xA,3
+  01A0    298F    JP	0x18F
+29:                   {
+30:                         asm("nop");     asm("nop");     asm("nop"); 
+31:               		  asm("nop");     asm("nop");     asm("nop");
+32:                   }
+33:                  
+34:               }
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\recive.c ----------------------------------------------------------------------
+1:                #include "recive.h"
+2:                #include "rf297L.h"
+3:                #include "e2prom.h"
+4:                #include "delay.h"
+5:                #include "key_scan.h"
+6:                #include "system.h"
+7:                #include "string.h"
+8:                const unsigned char crc_2_4G_lib[21]={0xc7 ,0x8d ,0xd2 ,0x57 ,0xa1 ,0x3d ,0xa7 ,0x66 ,0xb0 ,0x75 ,0x31 ,0x11 ,0x48 ,0x96 ,0x77 ,0xf8 ,0xe3 ,0x46 ,0xe9,0xab ,0xd0 };
+9:                const unsigned char crc_lab[16]={0x41,0x92,0x53,0x2A,0xFC,0xAB,0xCE,0x26,0x0D,0x1E,0x99,0x78,0x00,0x22,0x99,0xDE};
+10:               const unsigned char ble_crc_38[42]={
+11:               		0xD6, 0xC5, 0x44, 0x20, 0x59,
+12:               		0xDE, 0xE1, 0x8F, 0x1B, 0xA5,
+13:               		0xAF, 0x42, 0x7B, 0x4E, 0xCD,
+14:               		0x60, 0xEB, 0x62, 0x22, 0x90,
+15:               		0x2C, 0xEF, 0xF0, 0xC7, 0x8D,
+16:               		0xD2, 0x57, 0xA1, 0x3D, 0xA7,
+17:               		0x66, 0xB0, 0x75, 0x31, 0x11,
+18:               		0x48, 0x96, 0x77 ,0xF8, 0xE3,
+19:               		0x46, 0xE9
+20:               	};
+21:               const unsigned char AdvData_3[3]={0xAA ,0x55 ,0x11};/*使 MCU 端能顺利接收到数据，在APP遥控器端固定为 0x02、0x01；0x12为 Type 到 Crc 总长度*/
+22:               unsigned char AdvData_23[20]={0};
+23:               
+24:               uint8_t rf_buf[18] = {0};
+25:               
+26:               unsigned char sys_stute = RX_MSG;
+27:               uint16_t flag_5s_add=0;
+28:               //extern uint8_t control_id[12][6];
+29:               extern uint8_t channel_flag[3];
+30:               extern unsigned char key_long_flag;
+31:               extern channel_flag_stu KEY0;
+32:               extern channel_flag_stu KEY1;
+33:               extern channel_flag_stu KEY2;
+34:               uint8_t channel_delay[3]={0,0,0};
+35:               extern uint16_t flag_5min_add;
+36:               
+37:               extern unsigned char  KEY0_FLAG;
+38:               extern unsigned char  KEY1_FLAG;
+39:               extern unsigned char  KEY2_FLAG;
+40:               static uint8_t delay_flag=0;
+41:               
+42:               static signed long frame_count = -1;
+43:               
+44:               unsigned short UpdateCRC(unsigned char *CRC_input, unsigned int len)
+45:               {
+  0102    00D3    LD	0x53,A
+  0103    3055    LDIA	0x55
+46:                   unsigned char i,k = 0; 
+  0104    01D4    CLR	0x54
+47:                   unsigned short CRC_acc=0x5555;
+  0105    00D6    LD	0x56,A
+  0106    00D7    LD	0x57,A
+48:                   #define POLY_  0x1021
+49:                   while (len--)
+  0107    3001    LDIA	0x1
+  0108    02CE    SUBR	0x4E
+  0109    3000    LDIA	0x0
+  010A    1C03    SNZB	0x3,0
+  010B    03CF    DECR	0x4F
+  010C    02CF    SUBR	0x4F
+  010D    0A4E    INCA	0x4E
+  010E    1903    SZB	0x3,2
+  010F    0A4F    INCA	0x4F
+  0110    1903    SZB	0x3,2
+  0111    2935    JP	0x135
+50:                   {
+51:                       CRC_acc = CRC_acc ^ (CRC_input[k++] << 8);
+  0112    0854    LD	A,0x54
+  0113    0753    ADDA	0x53
+  0114    00D0    LD	0x50,A
+  0115    0084    LD	0x4,A
+  0116    1383    CLRB	0x3,7
+  0117    0800    LD	A,0x0
+  0118    00D1    LD	0x51,A
+  0119    01D2    CLR	0x52
+  011A    00D2    LD	0x52,A
+  011B    01D1    CLR	0x51
+  011C    0851    LD	A,0x51
+  011D    06D6    XORR	0x56
+  011E    0852    LD	A,0x52
+  011F    06D7    XORR	0x57
+  0120    0AD4    INCR	0x54
+52:                       
+53:                       for (i = 0; i < 8; i++)
+  0121    01D5    CLR	0x55
+54:                       {
+55:                           if ((CRC_acc & 0x8000) == 0x8000)
+  0122    1FD7    SNZB	0x57,7
+  0123    292C    JP	0x12C
+  0124    3021    LDIA	0x21
+56:                           {
+57:                               CRC_acc = CRC_acc << 1;
+  0125    1003    CLRB	0x3,0
+  0126    0DD6    RLCR	0x56
+  0127    0DD7    RLCR	0x57
+58:                               CRC_acc ^= POLY_;
+  0128    06D6    XORR	0x56
+  0129    3010    LDIA	0x10
+  012A    06D7    XORR	0x57
+59:                           }
+  012B    292F    JP	0x12F
+60:                           else
+61:                           {
+62:                               CRC_acc = CRC_acc << 1;
+  012C    1003    CLRB	0x3,0
+  012D    0DD6    RLCR	0x56
+  012E    0DD7    RLCR	0x57
+  012F    3008    LDIA	0x8
+  0130    0AD5    INCR	0x55
+  0131    0255    SUBA	0x55
+  0132    1803    SZB	0x3,0
+  0133    2907    JP	0x107
+  0134    2922    JP	0x122
+63:                           }
+64:                       }
+65:                   }
+66:                   return CRC_acc;
+  0135    0857    LD	A,0x57
+  0136    00CF    LD	0x4F,A
+  0137    0856    LD	A,0x56
+  0138    00CE    LD	0x4E,A
+  0139    0008    RET
+67:               }
+68:               
+69:               
+70:               
+71:               uint8_t rx_data(void)
+72:               {
+  0046    3012    LDIA	0x12
+73:                   uint8_t rx_flag=0;
+  0047    01E1    CLR	0x61
+74:                   uint8_t rand=0;
+75:                   uint8_t i=0;
+  0048    01E2    CLR	0x62
+76:                   uint16_t crc18=0; 
+  0049    01DF    CLR	0x5F
+  004A    01E0    CLR	0x60
+77:                   uint16_t crc16=0; 
+78:                   uint8_t diff_frame = 0;
+  004B    01DC    CLR	0x5C
+  004C    01DD    CLR	0x5D
+79:               
+80:                   if (RF_RxData(rf_buf,18))
+  004D    00D5    LD	0x55,A
+  004E    303C    LDIA	0x3C
+  004F    21A1    CALL	0x1A1
+  0050    118A    CLRB	0xA,3
+  0051    3A00    XORIA	0x0
+  0052    1903    SZB	0x3,2
+  0053    2900    JP	0x100
+81:                   {
+82:               
+83:               #if 1
+84:                       /**2.4G瑙ｅ瘑**/
+85:                       for(i = 0;i < 18; i++)
+  0054    01E2    CLR	0x62
+86:                       {
+87:                           rf_buf[i]=rf_buf[i]^crc_2_4G_lib[3+i]^ble_crc_38[21+i];
+  0055    0862    LD	A,0x62
+  0056    3E16    ADDIA	0x16
+  0057    0084    LD	0x4,A
+  0058    118A    CLRB	0xA,3
+  0059    230A    CALL	0x30A
+  005A    118A    CLRB	0xA,3
+  005B    00D8    LD	0x58,A
+  005C    0862    LD	A,0x62
+  005D    3E2E    ADDIA	0x2E
+  005E    0084    LD	0x4,A
+  005F    118A    CLRB	0xA,3
+  0060    230A    CALL	0x30A
+  0061    118A    CLRB	0xA,3
+  0062    00D9    LD	0x59,A
+  0063    0862    LD	A,0x62
+  0064    3E3C    ADDIA	0x3C
+  0065    0084    LD	0x4,A
+  0066    1383    CLRB	0x3,7
+  0067    0800    LD	A,0x0
+  0068    0659    XORA	0x59
+  0069    0658    XORA	0x58
+  006A    00DA    LD	0x5A,A
+  006B    0862    LD	A,0x62
+  006C    3E3C    ADDIA	0x3C
+  006D    0084    LD	0x4,A
+  006E    085A    LD	A,0x5A
+  006F    0080    LD	0x0,A
+  0070    3012    LDIA	0x12
+  0071    0AE2    INCR	0x62
+  0072    0262    SUBA	0x62
+  0073    1C03    SNZB	0x3,0
+  0074    2855    JP	0x55
+88:                       }
+89:               
+90:                       crc16 = rf_buf[16] + rf_buf[17] * 256;
+  0075    084D    LD	A,0x4D
+  0076    00D8    LD	0x58,A
+  0077    01D9    CLR	0x59
+  0078    00D9    LD	0x59,A
+  0079    01D8    CLR	0x58
+  007A    084C    LD	A,0x4C
+  007B    0758    ADDA	0x58
+  007C    00DC    LD	0x5C,A
+  007D    0859    LD	A,0x59
+  007E    1803    SZB	0x3,0
+  007F    0A59    INCA	0x59
+  0080    00DD    LD	0x5D,A
+91:                   
+92:                       /**table瑙ｅ瘑**/ 
+93:                       for (i = 0; i < 16; i++)
+  0081    01E2    CLR	0x62
+94:                       {
+95:                           rf_buf[i]=rf_buf[i]^crc_lab[i];
+  0082    0862    LD	A,0x62
+  0083    3E40    ADDIA	0x40
+  0084    0084    LD	0x4,A
+  0085    118A    CLRB	0xA,3
+  0086    230A    CALL	0x30A
+  0087    118A    CLRB	0xA,3
+  0088    00D8    LD	0x58,A
+  0089    0862    LD	A,0x62
+  008A    3E3C    ADDIA	0x3C
+  008B    0084    LD	0x4,A
+  008C    0800    LD	A,0x0
+  008D    0658    XORA	0x58
+  008E    00D9    LD	0x59,A
+  008F    0862    LD	A,0x62
+  0090    3E3C    ADDIA	0x3C
+  0091    0084    LD	0x4,A
+  0092    0859    LD	A,0x59
+  0093    0080    LD	0x0,A
+  0094    3010    LDIA	0x10
+  0095    0AE2    INCR	0x62
+  0096    0262    SUBA	0x62
+  0097    1C03    SNZB	0x3,0
+  0098    2882    JP	0x82
+96:                       }
+97:                
+98:                       /**rand瑙ｅ瘑**/    
+99:                       rand = rf_buf[0];
+  0099    083C    LD	A,0x3C
+  009A    00DE    LD	0x5E,A
+100:                      
+101:                      for (i = 1; i < 16; i++)
+  009B    01E2    CLR	0x62
+  009C    0AE2    INCR	0x62
+102:                      {
+103:                          rf_buf[i] ^= rand;
+  009D    0862    LD	A,0x62
+  009E    3E3C    ADDIA	0x3C
+  009F    0084    LD	0x4,A
+  00A0    085E    LD	A,0x5E
+  00A1    0680    XORR	0x0
+  00A2    3010    LDIA	0x10
+  00A3    0AE2    INCR	0x62
+  00A4    0262    SUBA	0x62
+  00A5    1C03    SNZB	0x3,0
+  00A6    289D    JP	0x9D
+104:                      }
+105:              
+106:                      if (crc16 != UpdateCRC(rf_buf, 16))
+  00A7    3010    LDIA	0x10
+  00A8    00CE    LD	0x4E,A
+  00A9    303C    LDIA	0x3C
+  00AA    01CF    CLR	0x4F
+  00AB    2102    CALL	0x102
+  00AC    118A    CLRB	0xA,3
+  00AD    085D    LD	A,0x5D
+  00AE    064F    XORA	0x4F
+  00AF    1D03    SNZB	0x3,2
+  00B0    28B3    JP	0xB3
+  00B1    085C    LD	A,0x5C
+  00B2    064E    XORA	0x4E
+  00B3    1D03    SNZB	0x3,2
+107:                      {
+108:                          rx_flag = 0;
+109:                          return rx_flag;
+  00B4    3400    RET	0x0
+110:                      }
+111:              
+112:                      if (frame_count != rf_buf[0])
+  00B5    083C    LD	A,0x3C
+  00B6    00D8    LD	0x58,A
+  00B7    01D9    CLR	0x59
+  00B8    01DA    CLR	0x5A
+  00B9    01DB    CLR	0x5B
+  00BA    0866    LD	A,0x66
+  00BB    065B    XORA	0x5B
+  00BC    1D03    SNZB	0x3,2
+  00BD    28C8    JP	0xC8
+  00BE    0865    LD	A,0x65
+  00BF    065A    XORA	0x5A
+  00C0    1D03    SNZB	0x3,2
+  00C1    28C8    JP	0xC8
+  00C2    0864    LD	A,0x64
+  00C3    0659    XORA	0x59
+  00C4    1D03    SNZB	0x3,2
+  00C5    28C8    JP	0xC8
+  00C6    0863    LD	A,0x63
+  00C7    0658    XORA	0x58
+  00C8    1903    SZB	0x3,2
+  00C9    28FF    JP	0xFF
+113:                      {
+114:                          frame_count = rf_buf[0];
+  00CA    083C    LD	A,0x3C
+  00CB    00E3    LD	0x63,A
+  00CC    3072    LDIA	0x72
+  00CD    01E4    CLR	0x64
+  00CE    01E5    CLR	0x65
+  00CF    01E6    CLR	0x66
+115:              
+116:                          rx_flag = 1;
+  00D0    01E1    CLR	0x61
+  00D1    0AE1    INCR	0x61
+117:              
+118:                          memcpy(AdvData_23, AdvData_3, 3);
+  00D2    00CE    LD	0x4E,A
+  00D3    3080    LDIA	0x80
+  00D4    00CF    LD	0x4F,A
+  00D5    3003    LDIA	0x3
+  00D6    00D0    LD	0x50,A
+  00D7    3028    LDIA	0x28
+  00D8    01D1    CLR	0x51
+  00D9    213A    CALL	0x13A
+  00DA    118A    CLRB	0xA,3
+119:                          memcpy(AdvData_23 + 3, &rf_buf[1], 15);
+  00DB    303D    LDIA	0x3D
+  00DC    00CE    LD	0x4E,A
+  00DD    300F    LDIA	0xF
+  00DE    01CF    CLR	0x4F
+  00DF    00D0    LD	0x50,A
+  00E0    302B    LDIA	0x2B
+  00E1    01D1    CLR	0x51
+  00E2    213A    CALL	0x13A
+  00E3    118A    CLRB	0xA,3
+120:                          
+121:                          crc18 = UpdateCRC(AdvData_23 + 2, 16);
+  00E4    3010    LDIA	0x10
+  00E5    00CE    LD	0x4E,A
+  00E6    302A    LDIA	0x2A
+  00E7    01CF    CLR	0x4F
+  00E8    2102    CALL	0x102
+  00E9    118A    CLRB	0xA,3
+  00EA    084F    LD	A,0x4F
+  00EB    00E0    LD	0x60,A
+  00EC    084E    LD	A,0x4E
+  00ED    00DF    LD	0x5F,A
+122:                          AdvData_23[18] = crc18 & 0xff;
+  00EE    00BA    LD	0x3A,A
+123:                          AdvData_23[19] = ((crc18 >> 8) & 0xff); //CRC18
+  00EF    0860    LD	A,0x60
+  00F0    00BB    LD	0x3B,A
+124:                          
+125:                          for (i=0; i < 20; i++)
+  00F1    01E2    CLR	0x62
+126:                          {
+127:                              send(AdvData_23[i]);
+  00F2    0862    LD	A,0x62
+  00F3    3E28    ADDIA	0x28
+  00F4    0084    LD	0x4,A
+  00F5    1383    CLRB	0x3,7
+  00F6    0800    LD	A,0x0
+  00F7    215E    CALL	0x15E
+  00F8    118A    CLRB	0xA,3
+  00F9    3014    LDIA	0x14
+  00FA    0AE2    INCR	0x62
+  00FB    0262    SUBA	0x62
+  00FC    1803    SZB	0x3,0
+  00FD    2900    JP	0x100
+  00FE    28F2    JP	0xF2
+128:                          }
+129:                      }
+130:                      else
+131:                      {
+132:                          rx_flag = 0;
+  00FF    01E1    CLR	0x61
+133:                      }
+134:              #else
+135:              
+136:                  for (i=0; i < 18; i++)
+137:                  {
+138:                      send(rf_buf[i]);
+139:                  }
+140:              
+141:              #endif
+142:              
+143:                      
+144:                  }
+145:                  return rx_flag;
+  0100    0861    LD	A,0x61
+  0101    0008    RET
+146:              }
+147:              
+148:              
+149:              
+150:              extern unsigned char match_channel_flag;
+151:              void recive_task(void)
+152:              {
+153:                  if (rx_data())
+  003E    2046    CALL	0x46
+  003F    118A    CLRB	0xA,3
+  0040    3A00    XORIA	0x0
+  0041    1903    SZB	0x3,2
+  0042    0008    RET
+154:                  {
+155:                      //soft_delay_ms(100);
+156:                  	RF_ClearFIFO();
+  0043    227D    CALL	0x27D
+  0044    118A    CLRB	0xA,3
+157:                  	RF_ClearStatus();
+  0045    2A8D    JP	0x28D
+158:                  }
+159:              }
+160:              
+161:              
+162:              void channel_set(uint8_t channel_num, uint8_t status)
+163:              {
+164:              	switch(channel_num)
+165:              		{
+166:              			case 0 :
+167:              					{
+168:              						if(status)
+169:              							{
+170:              								TRISB6=0;
+171:              								RB6=1;
+172:              							}
+173:              						else 
+174:              							{
+175:              								TRISB6=0;
+176:              								RB6=0;
+177:              							}
+178:              					}break;
+179:              			case 1:
+180:              					{
+181:              						if(status)
+182:              							{
+183:              							TRISB5=0;
+184:              							RB5=1;
+185:              							}
+186:              						else 
+187:              							{
+188:              							TRISB5=0;
+189:              							RB5=0;
+190:              							}
+191:              					}break;
+192:              			case 2: 
+193:              					{
+194:              						if(status)
+195:              							{
+196:              							TRISB4=0;
+197:              							RB4=1;
+198:              							}
+199:              						else 
+200:              							{
+201:              							TRISB4=0;
+202:              							RB4=0;
+203:              							}
+204:              					}break;
+205:              		}
+206:              }
+207:              
+208:              void delay_task(void)
+209:              {
+210:              
+211:              	if(channel_delay[0]!=0)
+212:              		{
+213:              			if(delay_flag==0)delay_flag=1;
+214:              			if(channel_delay[2]>0)
+215:              				{
+216:              					if(flag_5min_add>=30000)/*30000*/
+217:              						{
+218:              						flag_5min_add=0;
+219:              						channel_delay[2]--;
+220:              						}
+221:              				}
+222:              			else
+223:              				{
+224:              					switch(channel_delay[0])
+225:              						{
+226:              						case 1:
+227:              								{
+228:              									if(channel_delay[1]!=2)
+229:              										KEY0.channel_status=channel_delay[1];
+230:              									else 
+231:              										KEY0.channel_status^=1;
+232:              
+233:              									
+234:              									}break;
+235:              						case 2:
+236:              								{
+237:              									if(channel_delay[1]!=2)
+238:              										KEY1.channel_status=channel_delay[1];
+239:              									else 
+240:              										KEY1.channel_status^=1;
+241:              
+242:              									
+243:              									}break;
+244:              						case 4:
+245:              								{
+246:              									if(channel_delay[1]!=2)
+247:              										KEY2.channel_status=channel_delay[1];
+248:              									else 
+249:              										KEY2.channel_status^=1;
+250:              
+251:              									}break;
+252:              						case 3:
+253:              								{
+254:              									if(channel_delay[1]!=2)
+255:              										{
+256:              										KEY0.channel_status=channel_delay[1];
+257:              										KEY1.channel_status=channel_delay[1];
+258:              										}
+259:              									else 
+260:              										{
+261:              										KEY0.channel_status^=1;
+262:              										KEY1.channel_status^=1;
+263:              										}
+264:              									}break;
+265:              						case 5:
+266:              								{
+267:              									if(channel_delay[1]!=2)
+268:              										{
+269:              										KEY0.channel_status=channel_delay[1];
+270:              										KEY2.channel_status=channel_delay[1];
+271:              										}
+272:              									else 
+273:              										{
+274:              										KEY0.channel_status^=1;
+275:              										KEY2.channel_status^=1;
+276:              										}
+277:              									}break;
+278:              						case 6:
+279:              								{
+280:              									if(channel_delay[1]!=2)
+281:              										{
+282:              										KEY1.channel_status=channel_delay[1];
+283:              										KEY2.channel_status=channel_delay[1];
+284:              										}
+285:              									else 
+286:              										{
+287:              										KEY1.channel_status^=1;
+288:              										KEY2.channel_status^=1;
+289:              										}
+290:              									}break;
+291:              						case 7:
+292:              								{
+293:              									if(channel_delay[1]!=2)
+294:              										{
+295:              										KEY0.channel_status=channel_delay[1];
+296:              										KEY1.channel_status=channel_delay[1];
+297:              										KEY2.channel_status=channel_delay[1];
+298:              										}
+299:              									else 
+300:              										{
+301:              										KEY0.channel_status^=1;
+302:              										KEY1.channel_status^=1;
+303:              										KEY2.channel_status^=1;
+304:              										}
+305:              									}break;
+306:              						}
+307:              
+308:              
+309:              					channel_delay[0]=0;
+310:              					channel_delay[1]=0;
+311:              					channel_delay[2]=0;
+312:              					delay_flag=0;
+313:              				}
+314:              		}
+315:              }
+---- D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\memcpy.c ----------------------------------------------------------------------
+1:                #include	<string.h>
+2:                
+3:                #ifdef _PIC16
+4:                far void *
+5:                memcpy(far void * d1, const void * s1, register size_t n)
+6:                #else /*  _PIC16 */
+7:                void *
+8:                memcpy(void * d1, const void * s1, register size_t n)
+9:                #endif /* _PIC16 */
+10:               {
+  013A    00D3    LD	0x53,A
+  013B    084F    LD	A,0x4F
+  013C    00D5    LD	0x55,A
+  013D    084E    LD	A,0x4E
+  013E    00D4    LD	0x54,A
+  013F    0853    LD	A,0x53
+  0140    00D6    LD	0x56,A
+  0141    3001    LDIA	0x1
+  0142    02D0    SUBR	0x50
+  0143    3000    LDIA	0x0
+  0144    1C03    SNZB	0x3,0
+  0145    03D1    DECR	0x51
+  0146    02D1    SUBR	0x51
+  0147    0A50    INCA	0x50
+  0148    1903    SZB	0x3,2
+  0149    0A51    INCA	0x51
+  014A    1903    SZB	0x3,2
+  014B    0008    RET
+  014C    0855    LD	A,0x55
+  014D    00FF    LD	0x7F,A
+  014E    0854    LD	A,0x54
+  014F    0084    LD	0x4,A
+  0150    118A    CLRB	0xA,3
+  0151    2300    CALL	0x300
+  0152    118A    CLRB	0xA,3
+  0153    00D2    LD	0x52,A
+  0154    0856    LD	A,0x56
+  0155    0084    LD	0x4,A
+  0156    0852    LD	A,0x52
+  0157    1383    CLRB	0x3,7
+  0158    0080    LD	0x0,A
+  0159    0AD4    INCR	0x54
+  015A    1903    SZB	0x3,2
+  015B    0AD5    INCR	0x55
+  015C    0AD6    INCR	0x56
+  015D    2941    JP	0x141
+11:               
+12:               #ifdef _PIC16
+13:               	register far char *	d;
+14:               #else  /* _PIC16 */
+15:               	register char *		d;
+16:               #endif /* _PIC16 */
+17:               	register const char *	s;
+18:               
+19:               	s = s1;
+20:               	d = d1;
+21:               	while(n--)
+22:               		*d++ = *s++;
+23:               	return d1;
+24:               }
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\uart.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "uart.h"
+3:                #include "delay.h"
+4:                #include "system.h"
+5:                void send(unsigned char uContent)
+6:                {
+  015E    00D2    LD	0x52,A
+7:                	unsigned char i=0;
+8:                	unsigned char uSendContent =0xff;/*定义一个发送数据的变量*/
+9:                	uSendContent=uContent;			 /*将要发送的值赋给该变量*/
+  015F    00D3    LD	0x53,A
+10:               	IO7_OUT;     					 /*发送脚位设为输出模式*/
+  0160    1683    SETB	0x3,5
+  0161    1086    CLRB	0x6,1
+11:               	IO7_L;							 /*起始位，RB7作为发送端的引脚*/
+  0162    1283    CLRB	0x3,5
+  0163    300F    LDIA	0xF
+  0164    1086    CLRB	0x6,1
+12:               	Delay_us(15);					 /*延迟114us 波特率设为9600*/
+  0165    00CE    LD	0x4E,A
+  0166    01CF    CLR	0x4F
+  0167    2184    CALL	0x184
+  0168    118A    CLRB	0xA,3
+13:               	for(i=0;i<8;i++)
+  0169    01D4    CLR	0x54
+14:               	{
+15:               		IO7 =uSendContent&0x01;		 /*将所要发送的八位数据的最低位和0x01进行于运算，若最低位为1，相于后的结果为1，则RB7电平为高，否则为0*/
+  016A    1C53    SNZB	0x53,0
+  016B    2970    JP	0x170
+  016C    1283    CLRB	0x3,5
+  016D    1303    CLRB	0x3,6
+  016E    1486    SETB	0x6,1
+  016F    2973    JP	0x173
+  0170    1283    CLRB	0x3,5
+  0171    1303    CLRB	0x3,6
+  0172    1086    CLRB	0x6,1
+16:               		Delay_us(15);				 /*延迟114us*/
+  0173    300F    LDIA	0xF
+  0174    00CE    LD	0x4E,A
+  0175    01CF    CLR	0x4F
+  0176    2184    CALL	0x184
+  0177    118A    CLRB	0xA,3
+  0178    3008    LDIA	0x8
+17:               		uSendContent=uSendContent>>1;/*将第二位数据位移到最低位，重复进行七次移动*/
+  0179    1003    CLRB	0x3,0
+  017A    0CD3    RRCR	0x53
+  017B    0AD4    INCR	0x54
+  017C    0254    SUBA	0x54
+  017D    1C03    SNZB	0x3,0
+  017E    296A    JP	0x16A
+  017F    300F    LDIA	0xF
+18:               	}
+19:               	IO7_H;							 /*停止位*/
+  0180    1486    SETB	0x6,1
+20:               	Delay_us(15);
+  0181    00CE    LD	0x4E,A
+  0182    01CF    CLR	0x4F
+  0183    2984    JP	0x184
+21:               }
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\system.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "system.h"
+3:                #include "INT0.h"
+4:                #include "timer0.h"
+5:                #include "timer1.h"
+6:                #include "timer2.h"
+7:                #include "PWM.h"
+8:                #include "PORTB_interrupt.h"
+9:                #include "ADC.h"
+10:               #include "rf297L.h"
+11:               #include "string.h"
+12:               void system_set_CPU_frequency(CPU_FREQUENCY_e CPU_Frequency);
+13:               void clear_interrupt_flag(void);
+14:               void system_to_sleep(void);
+15:               void Enable_Interrupt(void);
+16:               void Disable_Interrupt(void);
+17:               
+18:               void system_set_CPU_frequency(CPU_FREQUENCY_e CPU_Frequency)
+19:               {
+  041D    00CE    LD	0x4E,A
+20:               	OSCCON = CPU_Frequency;
+  041E    1683    SETB	0x3,5
+  041F    008F    LD	0xF,A
+21:               	OSCTUNE = 0X00;
+  0420    0190    CLR	0x10
+  0421    0008    RET
+22:               }
+23:               
+24:               void clear_interrupt_flag(void)
+25:               {
+26:               	PIR1&= ~0x4f;		//bit0==TMR1IF bit1==TMR2IF bit2==CCP1IF bit3==SSPIF bit6==ADIF
+27:               	PIR2&= ~0x19;		//bit0==CCP2IF bit3==BCLIF bit4==EEIF
+28:               	INTCON&= ~0x07;	//bit0==RBIF bit1==INTF bit2==T0IF
+29:               }
+30:               
+31:               void system_to_sleep(void)
+32:               {
+33:               	asm("sleep");
+34:               	asm("nop");
+35:               }
+36:               
+37:               void Enable_Interrupt(void)
+38:               {
+39:               	INTCON |= 0x80;
+  0422    178B    SETB	0xB,7
+  0423    0008    RET
+40:               }
+41:               
+42:               void Disable_Interrupt(void)
+43:               {
+44:               	INTCON &= ~(0x80);
+45:               }
+46:               
+47:               void interrupt ISR(void)
+48:               {
+49:               	unsigned char inside_intterrupt_enable,peripheral_intterrupt_enable;
+50:               	unsigned char inside_intterrupt_touch,peripheral_intterrupt_touch;
+51:               	
+52:               	//读取中断标志	
+53:               	inside_intterrupt_enable = INTCON & 0x38;
+  03BF    1283    CLRB	0x3,5
+  03C0    080C    LD	A,0xC
+  03C1    00F4    LD	0x74,A
+  03C2    3043    LDIA	0x43
+  03C3    05F4    ANDR	0x74
+54:               	peripheral_intterrupt_enable = PIE1 & 0x43;
+55:               	inside_intterrupt_touch = INTCON & 0x07;
+56:               	peripheral_intterrupt_touch = PIR1 & 0x43;
+57:               	
+58:               	//跳转到中断函数	
+59:               //	if(inside_intterrupt_touch & PORTB_CHANGE_ISR_TOUCH) 	{		//RBIF
+60:               //			PORTB_CHANGE_ISR();
+61:               //	} 
+62:               		
+63:               //	if(inside_intterrupt_touch & INT0_ISR_TOUCH){							//INTF
+64:               //			INT0_ISR();
+65:               //	}
+66:               		
+67:               //	if(inside_intterrupt_touch & TIMER0_ISR_TOUCH) {						//T0IF	
+68:               //			TIMER0_ISR();			
+69:               //	}
+70:               	
+71:               	if(peripheral_intterrupt_touch & TIMER1_ISR_TOUCH) {				//TMR1IF
+  03C4    1C74    SNZB	0x74,0
+  03C5    2BC7    JP	0x3C7
+72:               			TIMER1_ISR();
+  03C6    23D2    CALL	0x3D2
+  03C7    0873    LD	A,0x73
+  03C8    00FF    LD	0x7F,A
+  03C9    0872    LD	A,0x72
+  03CA    008A    LD	0xA,A
+  03CB    0871    LD	A,0x71
+  03CC    0084    LD	0x4,A
+  03CD    0E70    SWAPA	0x70
+  03CE    0083    LD	0x3,A
+  03CF    0EFE    SWAPR	0x7E
+  03D0    0E7E    SWAPA	0x7E
+  03D1    0009    RETI
+73:               	}
+74:               		 
+75:               //	if(peripheral_intterrupt_touch & TIMER2_ISR_TOUCH) {				//TMR2IF
+76:               //			TIMER2_ISR();
+77:               //	}
+78:               	
+79:               //	if(peripheral_intterrupt_touch & ADC_ISR_TOUCH) {					//ADIF	
+80:               //			ADC_ISR();
+81:               //	}
+82:               }
+83:               
+84:               
+85:               void System_sleep_mode(void)
+86:               {
+87:               	RF_Sleep();
+88:               	asm("sleep");
+89:               	asm("nop");
+90:               }
+91:               
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\timer1.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "virtual_timer.h"
+3:                #include "timer1.h"
+4:                #include "key_scan.h"
+5:                #include "recive.h"
+6:                
+7:                
+8:                static volatile unsigned int Timer1_set_time;
+9:                extern unsigned int sleep_flag;
+10:               
+11:               
+12:               
+13:               extern uint16_t flag_time_key0_add;
+14:               extern uint16_t flag_time_key1_add;
+15:               extern uint16_t flag_time_key2_add;
+16:               extern uint16_t flag_5s_add;
+17:               uint16_t flag_5min_add=0;
+18:               
+19:               void Timer1_Init(TIMER1_DIVIDER_e TIMER1_DIVIDER);
+20:               void Timer1_start(unsigned int T_nums, unsigned char Timer1_ISR_execution_total_time);
+21:               void Timer1_stop(void);
+22:               void TIMER1_ISR(void);
+23:               
+24:               /**************************************************************************
+25:               *时钟源为F = Fosc
+26:               *最小定时时间 T = (1/F)*TIMER1_DIVIDER
+27:               **************************************************************************/
+28:               void Timer1_Init(TIMER1_DIVIDER_e TIMER1_DIVIDER)
+29:               {
+  040A    00CE    LD	0x4E,A
+30:               	T1CON = 0x00;	//TMR1GE = 0,Timer1由TMR1ON控制	TMR1CS = 0;选择内部时钟FOSC
+  040B    0190    CLR	0x10
+31:               	T1CON |= TIMER1_DIVIDER;	//分频设置	Bit5 Bit4 
+  040C    0490    ORR	0x10
+32:               	INTCON |= (0x40);	//PEIE = 1;		允许未被屏蔽的外部中断
+  040D    170B    SETB	0xB,6
+33:               	PIE1 |= 0x01;		//TMR1IE = 1;	开TMR1中断
+  040E    1683    SETB	0x3,5
+  040F    140C    SETB	0xC,0
+  0410    0008    RET
+34:               }
+35:               
+36:               /*************************************************************************************
+37:               *实际时间与定时时间有偏差,可通过Timer1_ISR_execution_total_time修正，
+38:               *Timer1_ISR_execution_total_time == （Timer1中断产生进入中断函数到退出中断函数执行时间）/TIMER1_DIVIDER,
+39:               *定时时间 == T_nums * T
+40:               *T = (1/F)*TIMER1_DIVIDER
+41:               *************************************************************************************/
+42:               void Timer1_start(unsigned int T_nums, unsigned char Timer1_ISR_execution_total_time)
+43:               {
+44:               	Timer1_set_time = 0xffff - T_nums + Timer1_ISR_execution_total_time;
+  03DA    0850    LD	A,0x50
+  03DB    00F5    LD	0x75,A
+  03DC    01F6    CLR	0x76
+  03DD    084F    LD	A,0x4F
+  03DE    00D2    LD	0x52,A
+  03DF    084E    LD	A,0x4E
+  03E0    00D1    LD	0x51,A
+  03E1    09D1    COMR	0x51
+  03E2    09D2    COMR	0x52
+  03E3    0851    LD	A,0x51
+  03E4    07F5    ADDR	0x75
+  03E5    1803    SZB	0x3,0
+  03E6    0AF6    INCR	0x76
+  03E7    0852    LD	A,0x52
+  03E8    07F6    ADDR	0x76
+45:               	TMR1L = (unsigned char)(Timer1_set_time);
+  03E9    0875    LD	A,0x75
+  03EA    008E    LD	0xE,A
+46:               	TMR1H = (unsigned char)(Timer1_set_time>>8);
+  03EB    0876    LD	A,0x76
+  03EC    008F    LD	0xF,A
+47:               	PIR1 &= ~(0x01);	// TMR1IF = 0;	
+  03ED    100C    CLRB	0xC,0
+48:               	T1CON |= 0x01;		// TMR1ON = 1;	Start Timer0
+  03EE    1410    SETB	0x10,0
+  03EF    0008    RET
+49:               }
+50:               
+51:               
+52:               void Timer1_stop(void)
+53:               {
+54:               	PIE1 &= ~(0x01);		//TMR1IE = 0;	关TMR1中断
+55:               	T1CON &= ~(0x01);	//TMR1ON = 0;	关定时器
+56:               	PIR1 &= ~(0x01);	// TMR1IF = 0;	
+57:               }
+58:               
+59:               void TIMER1_ISR(void)
+60:               {
+61:               	static unsigned int flag_1s_add=0;
+62:               	static unsigned int flag_1min_add=0;
+63:               	T1CON &= ~(0x01);	//TMR1ON = 0;	关定时器
+  03D2    1010    CLRB	0x10,0
+64:               	TMR1L = (unsigned char)(Timer1_set_time);
+  03D3    0875    LD	A,0x75
+  03D4    008E    LD	0xE,A
+65:               	TMR1H = (unsigned char)(Timer1_set_time>>8);
+66:               	//Do something
+67:               	flag_time_key0_add++;
+68:               	flag_time_key1_add++;
+69:               	flag_time_key2_add++;
+70:               	flag_5s_add++;
+71:               	flag_5min_add++;
+72:               	flag_1s_add++;
+  03D5    0876    LD	A,0x76
+  03D6    008F    LD	0xF,A
+73:               	///////////////////////////////////////////////////
+74:               	PIR1 &= ~(0x01);	// TMR1IF = 0;	
+  03D7    100C    CLRB	0xC,0
+75:               	T1CON |= 0x01;		//TMR1ON = 1;		打开时器
+  03D8    1410    SETB	0x10,0
+  03D9    0008    RET
+76:               }
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c ----------------------------------------------------------------------
+1:                #include "cms.h"
+2:                #include "key_scan.h"
+3:                #include "timer1.h"
+4:                #include "PORTB_interrupt.h"
+5:                #include "recive.h"
+6:                #include "delay.h"
+7:                #include "system.h"
+8:                
+9:                unsigned char  KEY0_FLAG=0;
+10:               unsigned char  KEY1_FLAG=0;
+11:               unsigned char  KEY2_FLAG=0;
+12:               
+13:               uint16_t flag_time_key0_add=0;
+14:               uint16_t flag_time_key1_add=0;
+15:               uint16_t flag_time_key2_add=0;
+16:               
+17:               channel_flag_stu KEY0 = 0;
+18:               channel_flag_stu KEY1 = 0;
+19:               channel_flag_stu KEY2 = 0;
+20:               
+21:               unsigned char key_long_flag=0;
+22:               
+23:               extern unsigned char sys_stute ;
+24:               unsigned char match_channel_flag=0;
+25:               unsigned char key_long_flag_add=0;
+26:               
+27:               void key_scan(void)/*KEY0,KEY1,KEY2按键按下初始化*/
+28:               {
+29:               	if(RB1==0)/*如果按键KEY0按下*/
+30:               		{
+31:               			soft_delay_ms(10);
+32:               			if(RB1==0)
+33:               			if((KEY0_FLAG&0x01)==0)
+34:               				{
+35:               					flag_time_key0_add=0;
+36:               					KEY0_FLAG|=0X01;
+37:               					if(key_long_flag_add==0)
+38:               						key_long_flag_add=1;
+39:               				}
+40:               		}
+41:               	else 
+42:               		{
+43:               			if(KEY0_FLAG&0x01)
+44:               				{
+45:               					KEY0_FLAG|=0X02;
+46:               					if(key_long_flag_add==1)key_long_flag_add=0;
+47:               				}
+48:               		}
+49:               
+50:               	if(RB2==0)/*如果按键KEY1按下*/
+51:               		{
+52:               			soft_delay_ms(10);
+53:               			if(RB2==0)
+54:               			if((KEY1_FLAG&0x01)==0)
+55:               				{
+56:               					flag_time_key1_add=0;
+57:               					KEY1_FLAG|=0X01;
+58:               					if(key_long_flag_add==0)
+59:               						key_long_flag_add=2;
+60:               				}
+61:               		
+62:               		}
+63:               	else 
+64:               		{
+65:               			if(KEY1_FLAG&0x01)
+66:               				{
+67:               					KEY1_FLAG|=0X02;
+68:               					if(key_long_flag_add==2)key_long_flag_add=0;
+69:               				}
+70:               		}
+71:               
+72:               
+73:               
+74:               	
+75:               
+76:               	if(RB3==0)/*如果按键KEY2按下*/
+77:               		{
+78:               			soft_delay_ms(10);
+79:               			if(RB3==0)
+80:               			if((KEY2_FLAG&0x01)==0)
+81:               				{
+82:               					flag_time_key2_add=0;
+83:               					KEY2_FLAG|=0X01;
+84:               					if(key_long_flag_add==0)
+85:               						key_long_flag_add=4;
+86:               				}
+87:               		}
+88:               	else
+89:               		{
+90:               			if(KEY2_FLAG&0x01)
+91:               				{
+92:               					KEY2_FLAG|=0X02;
+93:               					if(key_long_flag_add==4)key_long_flag_add=0;
+94:               				}
+95:               		}
+96:               
+97:               
+98:               	switch(key_long_flag_add)
+99:               		{
+100:              			case 0:
+101:              				{
+102:              					
+103:              				}break;
+104:              			case 1:
+105:              				{
+106:              					flag_time_key1_add=0;
+107:              					flag_time_key2_add=0;
+108:              				}break;
+109:              			case 2:
+110:              				{
+111:              					flag_time_key0_add=0;
+112:              					flag_time_key2_add=0;
+113:              				}break;
+114:              			case 4:
+115:              				{
+116:              					flag_time_key0_add=0;
+117:              					flag_time_key1_add=0;
+118:              				}break;
+119:              		}
+120:              }
+121:              
+122:              
+123:              
+124:              
+125:              void key_value_read(void)/*按键配对和清码*/
+126:              {
+127:              	key_scan();/*KEY0,KEY1,KEY2按键按下初始化*/
+128:              	if(KEY0_FLAG==0x01)
+129:              		{
+130:              			 	
+131:              				if(flag_time_key0_add>=500)
+132:              						{
+133:              							if(key_long_flag==0x01)
+134:              								{
+135:              									key_long_flag=0x10;
+136:              									LED_ON;
+137:              									soft_delay_ms(100);
+138:              									LED_OFF;
+139:              									soft_delay_ms(100);
+140:              									LED_ON;
+141:              									soft_delay_ms(100);
+142:              									LED_OFF;
+143:              								}
+144:              						}
+145:              					else if(flag_time_key0_add>=300)
+146:              						{
+147:              							if(key_long_flag==0)
+148:              								{
+149:              									key_long_flag=0x01;
+150:              									LED_ON;
+151:              									soft_delay_ms(100);
+152:              									LED_OFF;
+153:              								}
+154:              						}
+155:              					
+156:              
+157:              		}
+158:              	else if(KEY0_FLAG==0x03)
+159:              		{
+160:              			KEY0_FLAG=0;
+161:              			
+162:              			if((flag_time_key0_add<300))
+163:              				{
+164:              					KEY0.channel_status^=1;
+165:              				}
+166:              
+167:              				else  if(flag_time_key0_add<500)
+168:              					{
+169:              						if(key_long_flag==0x01)
+170:              							{
+171:              								KEY0.key_flag_3s=1;
+172:              								key_long_flag=0x11;
+173:              								sys_stute=MATCH_MSG;
+174:              								flag_time_key1_add=0;
+175:              									flag_time_key2_add=0;
+176:              							}
+177:              					}
+178:              				else
+179:              					{
+180:              						if(key_long_flag==0x10)
+181:              							{
+182:              								KEY0.key_flag_5s=1;
+183:              								key_long_flag=0x11;
+184:              								sys_stute=CLEAN_MSG;
+185:              								flag_time_key1_add=0;
+186:              									flag_time_key2_add=0;
+187:              							}
+188:              					}
+189:              				
+190:              		}
+191:              	
+192:              
+193:              	if(KEY1_FLAG==0x01)
+194:              		{
+195:              				
+196:              				if(flag_time_key1_add>=500)
+197:              					{
+198:              						if(key_long_flag==0x02)
+199:              							{
+200:              								key_long_flag=0x20;
+201:              								LED_ON;
+202:              								soft_delay_ms(100);
+203:              								LED_OFF;
+204:              								soft_delay_ms(100);
+205:              								LED_ON;
+206:              								soft_delay_ms(100);
+207:              								LED_OFF;
+208:              							}
+209:              					}
+210:              				else if(flag_time_key1_add>=300)
+211:              					{
+212:              						if(key_long_flag==0)
+213:              							{
+214:              								key_long_flag=0x02;
+215:              								LED_ON;
+216:              								soft_delay_ms(100);
+217:              								LED_OFF;
+218:              							}
+219:              					}
+220:              			
+221:              		}
+222:              	else if(KEY1_FLAG==0x03)
+223:              		{
+224:              			KEY1_FLAG=0;
+225:              			if((flag_time_key1_add<300))
+226:              				{
+227:              					KEY1.channel_status^=1;
+228:              				}
+229:              			
+230:              				else if(flag_time_key1_add<500)
+231:              					{
+232:              						if(key_long_flag==0x02)
+233:              							{
+234:              								KEY1.key_flag_3s=1;
+235:              								key_long_flag=0x21;
+236:              								sys_stute=MATCH_MSG;
+237:              								flag_time_key2_add=0;
+238:              									flag_time_key0_add=0;
+239:              							}
+240:              					}
+241:              				else
+242:              					{
+243:              						if(key_long_flag==0x20)
+244:              							{
+245:              								KEY1.key_flag_5s=1;
+246:              								key_long_flag=0x21;
+247:              								sys_stute=CLEAN_MSG;
+248:              								flag_time_key2_add=0;
+249:              									flag_time_key0_add=0;
+250:              							}
+251:              					}
+252:              				
+253:              			
+254:              		}
+255:              
+256:              
+257:              		if(KEY2_FLAG==0x01)
+258:              				{
+259:              
+260:              					
+261:              							if(flag_time_key2_add>=500)
+262:              								{
+263:              									if(key_long_flag==0x04)
+264:              									{
+265:              										key_long_flag=0x40;
+266:              										LED_ON;
+267:              										soft_delay_ms(100);
+268:              										LED_OFF;
+269:              										soft_delay_ms(100);
+270:              										LED_ON;
+271:              										soft_delay_ms(100);
+272:              										LED_OFF;
+273:              										
+274:              									}
+275:              								}
+276:              							else if(flag_time_key2_add>=300)
+277:              								{
+278:              									if(key_long_flag==0)
+279:              									{
+280:              										key_long_flag=0x04;
+281:              										LED_ON;
+282:              										soft_delay_ms(100);
+283:              										LED_OFF;
+284:              									}
+285:              								}
+286:              						
+287:              				}
+288:              			else if(KEY2_FLAG==0x03)
+289:              				{
+290:              					KEY2_FLAG=0;
+291:              					if((flag_time_key2_add<300))
+292:              						{
+293:              							KEY2.channel_status^=1;
+294:              						}
+295:              
+296:              						
+297:              						else if(flag_time_key2_add<500)
+298:              							{
+299:              								if(key_long_flag==0x04)
+300:              								{
+301:              									KEY2.key_flag_3s=1;
+302:              									key_long_flag=0x41;
+303:              									sys_stute=MATCH_MSG;
+304:              									flag_time_key1_add=0;
+305:              									flag_time_key0_add=0;
+306:              									
+307:              								}
+308:              							}
+309:              						else
+310:              							{
+311:              								if(key_long_flag==0x40)
+312:              								{
+313:              									KEY2.key_flag_5s=1;
+314:              									key_long_flag=0x41;
+315:              									sys_stute=CLEAN_MSG;
+316:              									flag_time_key1_add=0;
+317:              									flag_time_key0_add=0;
+318:              								}
+319:              							}
+320:              						
+321:              				}
+322:              
+323:              }
+324:              
+325:              
+326:              
+327:              /************************************************
+328:              *按键初始化
+329:              *PAN2416通常采用PORTB口做按键
+330:              *************************************************/
+331:              void key_Init(void)
+332:              {
+333:              	OPTION_REG &= ~0x80;
+  0411    1683    SETB	0x3,5
+  0412    1381    CLRB	0x1,7
+334:              	TRISB|=0x0e;
+  0413    300E    LDIA	0xE
+  0414    0486    ORR	0x6
+335:              	WPUB|=0x0e;
+  0415    0495    ORR	0x15
+  0416    0008    RET
+336:              }
+---- D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\iic.c ----------------------------------------------------------------------
+1:                #include "iic.h"
+2:                #include "cms.h"
+3:                
+4:                
+5:                void iic_delay_us(unsigned char delay)
+6:                {
+7:                	while(delay--);
+8:                }
+9:                
+10:               void IIC_Init(void)
+11:               {
+12:               	OPTION_REG &= ~0x80;
+  0417    1683    SETB	0x3,5
+  0418    1381    CLRB	0x1,7
+13:               //	TRISC&=~(3<<1);
+14:               	SDA_H;
+  0419    1283    CLRB	0x3,5
+  041A    1487    SETB	0x7,1
+15:               	SCL_H;
+  041B    1507    SETB	0x7,2
+  041C    0008    RET
+16:               }
+17:               
+18:               
+19:               void IIC_START(void)
+20:               {
+21:                   SDA_OUT;
+22:                   SDA_H;
+23:                   SCL_H;
+24:                   iic_delay_us(1);
+25:                   SDA_L; //START:when CLK is high,SDA change from hig to low
+26:                   iic_delay_us(1);
+27:                   SCL_L; //Ready Transmit or Receive
+28:               }
+29:               
+30:               
+31:               void IIC_STOP(void)
+32:               {
+33:                   SDA_OUT;
+34:                   SDA_L;
+35:                   SCL_H; 
+36:                   iic_delay_us(1);
+37:                   SDA_H; //STOP:when CLK is low,SDA change from low to high
+38:               }
+39:               
+40:               
+41:               unsigned char IIC_Wait_ACK(void)
+42:               {
+43:                   unsigned char RE = 0;
+44:               	SDA_OUT;
+45:               	SDA_H;
+46:               	SDA_IN;
+47:               	
+48:               	SCL_L;  
+49:                   iic_delay_us(1);
+50:               	SCL_H;
+51:               	iic_delay_us(1);   
+52:                   
+53:                  if(IIC_SDA)
+54:                  	{
+55:                  		RE=1;
+56:                  	}
+57:                  else
+58:                  	{
+59:               		RE=0;
+60:                  	}
+61:                   SCL_L; //时钟输出0
+62:                   return RE;
+63:               
+64:               }
+65:               
+66:               void IIC_ACK(void)
+67:               {
+68:                   SDA_OUT;
+69:                   SDA_L;
+70:                   iic_delay_us(1);
+71:                   SCL_H;
+72:                   iic_delay_us(1);
+73:                   SCL_L;
+74:                   SDA_H;
+75:               }
+76:               
+77:               void IIC_NACK(void)
+78:               {
+79:               	SDA_H;	/* CPU?y?ˉSDA = 1 */
+80:               	iic_delay_us(1);
+81:               	SCL_H;	/* CPU2úéú1??ê±?ó */
+82:               	iic_delay_us(1);
+83:               	SCL_L;
+84:               	iic_delay_us(1);	
+85:               }
+86:               
+87:               
+88:               
+89:               
+90:               void I2C_SendByte(unsigned char Data)
+91:               {
+92:                 unsigned char cnt;
+93:                 SDA_OUT;
+94:                 for(cnt=0; cnt<8; cnt++)
+95:                 {
+96:               
+97:                
+98:                   if(Data & 0x80)
+99:                   {
+100:                    SDA_H;                         
+101:                  }
+102:                  else
+103:                  {
+104:                    SDA_L;                         
+105:                  }
+106:                  Data <<= 1;
+107:                  SCL_H;                              
+108:                  iic_delay_us(1);
+109:                  SCL_L;                              
+110:                  iic_delay_us(1);
+111:              //    if(cnt==7)SDA_H; 
+112:                }
+113:              }
+114:              
+115:              
+116:              unsigned int I2C_ReadByte(unsigned char ack)
+117:              {
+118:                unsigned char cnt;
+119:                unsigned int data;
+120:                SDA_IN;	
+121:              	
+122:                for(cnt=0; cnt<8; cnt++)
+123:                {
+124:                  SCL_L;                                
+125:                  iic_delay_us(1);
+126:              		
+127:                  SCL_H;                             
+128:                  data <<= 1;
+129:                  if(IIC_SDA)
+130:                  {
+131:                    data |= 0x01;                              
+132:                  }
+133:                   iic_delay_us(1);
+134:                }
+135:                if(ack == 0)
+136:                {
+137:                   IIC_NACK();
+138:                }
+139:                else
+140:                {
+141:                   IIC_ACK();
+142:                }
+143:                return data;                                  
+144:              }
+145:              
+146:              
+147:              
+148:              
+149:              
+150:              
+151:              
+---- stringtab ------------------------------------------------------------------
+  0300    1BFF    SZB	0x7F,7
+  0301    2B0A    JP	0x30A
+  0302    1383    CLRB	0x3,7
+  0303    187F    SZB	0x7F,0
+  0304    1783    SETB	0x3,7
+  0305    0800    LD	A,0x0
+  0306    0A84    INCR	0x4
+  0307    1903    SZB	0x3,2
+  0308    0AFF    INCR	0x7F
+  0309    0008    RET
+  030A    3003    LDIA	0x3
+  030B    008A    LD	0xA,A
+  030C    0804    LD	A,0x4
+  030D    0A84    INCR	0x4
+  030E    0782    ADDR	0x2
+  030F    3400    RET	0x0
+  0310    34D6    RET	0xD6
+  0311    34C5    RET	0xC5
+  0312    3444    RET	0x44
+  0313    3420    RET	0x20
+  0314    3459    RET	0x59
+  0315    34DE    RET	0xDE
+  0316    34E1    RET	0xE1
+  0317    348F    RET	0x8F
+  0318    341B    RET	0x1B
+  0319    34A5    RET	0xA5
+  031A    34AF    RET	0xAF
+  031B    3442    RET	0x42
+  031C    347B    RET	0x7B
+  031D    344E    RET	0x4E
+  031E    34CD    RET	0xCD
+  031F    3460    RET	0x60
+  0320    34EB    RET	0xEB
+  0321    3462    RET	0x62
+  0322    3422    RET	0x22
+  0323    3490    RET	0x90
+  0324    342C    RET	0x2C
+  0325    34EF    RET	0xEF
+  0326    34F0    RET	0xF0
+  0327    34C7    RET	0xC7
+  0328    348D    RET	0x8D
+  0329    34D2    RET	0xD2
+  032A    3457    RET	0x57
+  032B    34A1    RET	0xA1
+  032C    343D    RET	0x3D
+  032D    34A7    RET	0xA7
+  032E    3466    RET	0x66
+  032F    34B0    RET	0xB0
+  0330    3475    RET	0x75
+  0331    3431    RET	0x31
+  0332    3411    RET	0x11
+  0333    3448    RET	0x48
+  0334    3496    RET	0x96
+  0335    3477    RET	0x77
+  0336    34F8    RET	0xF8
+  0337    34E3    RET	0xE3
+  0338    3446    RET	0x46
+  0339    34E9    RET	0xE9
+  033A    34C7    RET	0xC7
+  033B    348D    RET	0x8D
+  033C    34D2    RET	0xD2
+  033D    3457    RET	0x57
+  033E    34A1    RET	0xA1
+  033F    343D    RET	0x3D
+  0340    34A7    RET	0xA7
+  0341    3466    RET	0x66
+  0342    34B0    RET	0xB0
+  0343    3475    RET	0x75
+  0344    3431    RET	0x31
+  0345    3411    RET	0x11
+  0346    3448    RET	0x48
+  0347    3496    RET	0x96
+  0348    3477    RET	0x77
+  0349    34F8    RET	0xF8
+  034A    34E3    RET	0xE3
+  034B    3446    RET	0x46
+  034C    34E9    RET	0xE9
+  034D    34AB    RET	0xAB
+  034E    34D0    RET	0xD0
+  034F    3441    RET	0x41
+  0350    3492    RET	0x92
+  0351    3453    RET	0x53
+  0352    342A    RET	0x2A
+  0353    34FC    RET	0xFC
+  0354    34AB    RET	0xAB
+  0355    34CE    RET	0xCE
+  0356    3426    RET	0x26
+  0357    340D    RET	0xD
+  0358    341E    RET	0x1E
+  0359    3499    RET	0x99
+  035A    3478    RET	0x78
+  035B    3400    RET	0x0
+  035C    3422    RET	0x22
+  035D    3499    RET	0x99
+  035E    34DE    RET	0xDE
+  035F    3445    RET	0x45
+  0360    3421    RET	0x21
+  0361    343F    RET	0x3F
+  0362    342D    RET	0x2D
+  0363    345C    RET	0x5C
+  0364    3440    RET	0x40
+  0365    3445    RET	0x45
+  0366    3421    RET	0x21
+  0367    343F    RET	0x3F
+  0368    342D    RET	0x2D
+  0369    345C    RET	0x5C
+  036A    3440    RET	0x40
+  036B    340A    RET	0xA
+  036C    346D    RET	0x6D
+  036D    3467    RET	0x67
+  036E    349C    RET	0x9C
+  036F    3446    RET	0x46
+  0370    340A    RET	0xA
+  0371    346D    RET	0x6D
+  0372    3467    RET	0x67
+  0373    349C    RET	0x9C
+  0374    3446    RET	0x46
+  0375    340B    RET	0xB
+  0376    34DF    RET	0xDF
+  0377    3402    RET	0x2
+  0378    3416    RET	0x16
+  0379    3433    RET	0x33
+  037A    3427    RET	0x27
+  037B    340B    RET	0xB
+  037C    34DF    RET	0xDF
+  037D    3402    RET	0x2
+  037E    3416    RET	0x16
+  037F    3433    RET	0x33
+  0380    3427    RET	0x27
+  0381    34AA    RET	0xAA
+  0382    3455    RET	0x55
+  0383    3411    RET	0x11
+  0384    342D    RET	0x2D
+  0385    34D7    RET	0xD7
+  0386    34B9    RET	0xB9
+  0387    34CC    RET	0xCC
+  0388    34CC    RET	0xCC
+  0389    34CC    RET	0xCC
+  038A    34E1    RET	0xE1
+  038B    3401    RET	0x1
+---- reset_enter ------------------------------------------------------------------
+  0000    118A    CLRB	0xA,3
+  0001    2811    JP	0x11
+  0011    118A    CLRB	0xA,3
+  0012    2BF0    JP	0x3F0
+---- start_initialization ------------------------------------------------------------------
+  03F0    3020    LDIA	0x20
+  03F1    01F5    CLR	0x75
+  03F2    01F6    CLR	0x76
+  03F3    01F7    CLR	0x77
+  03F4    01F8    CLR	0x78
+  03F5    1383    CLRB	0x3,7
+  03F6    0084    LD	0x4,A
+  03F7    304E    LDIA	0x4E
+  03F8    118A    CLRB	0xA,3
+  03F9    2402    CALL	0x402
+  03FA    30FF    LDIA	0xFF
+  03FB    00E3    LD	0x63,A
+  03FC    00E4    LD	0x64,A
+  03FD    00E5    LD	0x65,A
+  03FE    00E6    LD	0x66,A
+  03FF    0183    CLR	0x3
+  0400    118A    CLRB	0xA,3
+  0401    2B8C    JP	0x38C
+  0402    0064    CLRWDT
+  0403    0180    CLR	0x0
+  0404    0A84    INCR	0x4
+  0405    0604    XORA	0x4
+  0406    1903    SZB	0x3,2
+  0407    3400    RET	0x0
+  0408    0604    XORA	0x4
+  0409    2C03    JP	0x403
+---- interrupt_function_enter ----------------------------------------------------------
+  0004    00FE    LD	0x7E,A
+  0005    0E03    SWAPA	0x3
+  0006    00F0    LD	0x70,A
+  0007    0804    LD	A,0x4
+  0008    00F1    LD	0x71,A
+  0009    080A    LD	A,0xA
+  000A    00F2    LD	0x72,A
+  000B    1283    CLRB	0x3,5
+  000C    1303    CLRB	0x3,6
+  000D    087F    LD	A,0x7F
+  000E    00F3    LD	0x73,A
+  000F    118A    CLRB	0xA,3
+  0010    2BBF    JP	0x3BF
+---- common_function ------------------------------------------------------------------
+  0291    02D0    SUBR	0x50
+  0292    3000    LDIA	0x0
+  0293    1C03    SNZB	0x3,0
+  0294    03D1    DECR	0x51
+  0295    02D1    SUBR	0x51
+  0296    0008    RET

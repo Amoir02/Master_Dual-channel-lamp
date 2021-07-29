@@ -1,0 +1,1996 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"18 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INDF `Vuc  1 e@0 ]
+"19 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR0 `Vuc  1 e@1 ]
+"20 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PCL `Vuc  1 e@2 ]
+"21 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _STATUS `Vuc  1 e@3 ]
+"22 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _FSR `Vuc  1 e@4 ]
+"23 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PORTA `Vuc  1 e@5 ]
+"24 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PORTB `Vuc  1 e@6 ]
+"25 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PORTC `Vuc  1 e@7 ]
+"27 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PORTE `Vuc  1 e@9 ]
+"28 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PCLATH `Vuc  1 e@10 ]
+"29 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INTCON `Vuc  1 e@11 ]
+"30 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PIR1 `Vuc  1 e@12 ]
+"31 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PIR2 `Vuc  1 e@13 ]
+"32 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1L `Vuc  1 e@14 ]
+"33 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1H `Vuc  1 e@15 ]
+"34 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1CON `Vuc  1 e@16 ]
+"35 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR2 `Vuc  1 e@17 ]
+"36 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T2CON `Vuc  1 e@18 ]
+"37 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPBUF `Vuc  1 e@19 ]
+"38 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPCON `Vuc  1 e@20 ]
+"39 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCPR1L `Vuc  1 e@21 ]
+"40 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCPR1H `Vuc  1 e@22 ]
+"41 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1CON `Vuc  1 e@23 ]
+"47 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCPR2L `Vuc  1 e@27 ]
+"48 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCPR2H `Vuc  1 e@28 ]
+"49 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2CON `Vuc  1 e@29 ]
+"50 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADRESH `Vuc  1 e@30 ]
+"51 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADCON0 `Vuc  1 e@31 ]
+"52 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OPTION_REG `Vuc  1 e@129 ]
+"53 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA `Vuc  1 e@133 ]
+"54 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB `Vuc  1 e@134 ]
+"55 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC `Vuc  1 e@135 ]
+"56 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE `Vuc  1 e@137 ]
+"57 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PIE1 `Vuc  1 e@140 ]
+"58 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PIE2 `Vuc  1 e@141 ]
+"60 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OSCCON `Vuc  1 e@143 ]
+"61 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OSCTUNE `Vuc  1 e@144 ]
+"62 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPCON2 `Vuc  1 e@145 ]
+"63 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PR2 `Vuc  1 e@146 ]
+"64 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPADD `Vuc  1 e@147 ]
+"65 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPSTAT `Vuc  1 e@148 ]
+"66 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB `Vuc  1 e@149 ]
+"67 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB `Vuc  1 e@150 ]
+"74 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADRESL `Vuc  1 e@158 ]
+"75 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADCON1 `Vuc  1 e@159 ]
+"76 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WDTCON `Vuc  1 e@261 ]
+"81 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEDAT `Vuc  1 e@268 ]
+"82 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEDATA `Vuc  1 e@268 ]
+"83 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEADR `Vuc  1 e@269 ]
+"84 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEADRL `Vuc  1 e@269 ]
+"85 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEDATH `Vuc  1 e@270 ]
+"86 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEADRH `Vuc  1 e@271 ]
+"88 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TABLE_SPH `Vuc  1 e@272 ]
+"89 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TABLE_SPL `Vuc  1 e@273 ]
+"90 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TABLE_DATAH `Vuc  1 e@274 ]
+"99 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE `Vuc  1 e@282 ]
+"100 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OPA0CON `Vuc  1 e@284 ]
+"101 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OPA0ADJ `Vuc  1 e@285 ]
+"105 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANSEL `Vuc  1 e@392 ]
+"106 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANSELH `Vuc  1 e@393 ]
+"108 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EECON1 `Vuc  1 e@396 ]
+"109 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EECON2 `Vuc  1 e@397 ]
+"110 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA `Vuc  1 e@398 ]
+"111 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC `Vuc  1 e@399 ]
+"113 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LEDCON0 `Vuc  1 e@400 ]
+"114 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LEDCON1 `Vuc  1 e@401 ]
+"115 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LEDADD `Vuc  1 e@402 ]
+"116 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LEDDATA `Vuc  1 e@403 ]
+"117 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LCDCON0 `Vuc  1 e@400 ]
+"118 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LCDCON1 `Vuc  1 e@401 ]
+"119 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LCDADD `Vuc  1 e@402 ]
+"120 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LCDDATA `Vuc  1 e@403 ]
+"121 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SEGEN2 `Vuc  1 e@404 ]
+"122 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SEGEN1 `Vuc  1 e@405 ]
+"123 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SEGEN0 `Vuc  1 e@406 ]
+"124 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _COMEN `Vuc  1 e@407 ]
+"128 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CARRY `Vb  1 e@24 ]
+"129 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC `Vb  1 e@25 ]
+"130 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ZERO `Vb  1 e@26 ]
+"131 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PD `Vb  1 e@27 ]
+"132 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TO `Vb  1 e@28 ]
+"133 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IRP `Vb  1 e@31 ]
+"136 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA0 `Vb  1 e@40 ]
+"137 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA1 `Vb  1 e@41 ]
+"138 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA2 `Vb  1 e@42 ]
+"139 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA3 `Vb  1 e@43 ]
+"140 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA4 `Vb  1 e@44 ]
+"141 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA5 `Vb  1 e@45 ]
+"142 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA6 `Vb  1 e@46 ]
+"143 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA7 `Vb  1 e@47 ]
+"146 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB0 `Vb  1 e@48 ]
+"147 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB1 `Vb  1 e@49 ]
+"148 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB2 `Vb  1 e@50 ]
+"149 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB3 `Vb  1 e@51 ]
+"150 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB4 `Vb  1 e@52 ]
+"151 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB5 `Vb  1 e@53 ]
+"152 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB6 `Vb  1 e@54 ]
+"153 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB7 `Vb  1 e@55 ]
+"156 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC0 `Vb  1 e@56 ]
+"157 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC1 `Vb  1 e@57 ]
+"158 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC2 `Vb  1 e@58 ]
+"159 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC3 `Vb  1 e@59 ]
+"160 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC4 `Vb  1 e@60 ]
+"161 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC5 `Vb  1 e@61 ]
+"162 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC6 `Vb  1 e@62 ]
+"163 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC7 `Vb  1 e@63 ]
+"166 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RE0 `Vb  1 e@72 ]
+"167 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RE1 `Vb  1 e@73 ]
+"168 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RE2 `Vb  1 e@74 ]
+"169 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RE3 `Vb  1 e@75 ]
+"172 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RBIF `Vb  1 e@88 ]
+"174 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RABIF `Vb  1 e@88 ]
+"175 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INTF `Vb  1 e@89 ]
+"176 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T0IF `Vb  1 e@90 ]
+"177 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RBIE `Vb  1 e@91 ]
+"179 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RABIE `Vb  1 e@91 ]
+"180 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INTE `Vb  1 e@92 ]
+"181 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T0IE `Vb  1 e@93 ]
+"182 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PEIE `Vb  1 e@94 ]
+"183 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _GIE `Vb  1 e@95 ]
+"186 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1IF `Vb  1 e@96 ]
+"187 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR2IF `Vb  1 e@97 ]
+"188 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1IF `Vb  1 e@98 ]
+"189 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPIF `Vb  1 e@99 ]
+"190 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TXIF `Vb  1 e@100 ]
+"191 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RCIF `Vb  1 e@101 ]
+"192 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADIF `Vb  1 e@102 ]
+"195 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2IF `Vb  1 e@104 ]
+"196 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _BCLIF `Vb  1 e@107 ]
+"197 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEIF `Vb  1 e@108 ]
+"198 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _C1IF `Vb  1 e@109 ]
+"199 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _C2IF `Vb  1 e@110 ]
+"202 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1ON `Vb  1 e@128 ]
+"203 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1CS `Vb  1 e@129 ]
+"204 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1SYNC `Vb  1 e@130 ]
+"205 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1OSCEN `Vb  1 e@131 ]
+"206 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1CKPS0 `Vb  1 e@132 ]
+"207 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1CKPS1 `Vb  1 e@133 ]
+"208 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1GE `Vb  1 e@134 ]
+"209 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1GINV `Vb  1 e@135 ]
+"212 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T2CKPS0 `Vb  1 e@144 ]
+"213 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T2CKPS1 `Vb  1 e@145 ]
+"214 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR2ON `Vb  1 e@146 ]
+"215 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TOUTPS0 `Vb  1 e@147 ]
+"216 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TOUTPS1 `Vb  1 e@148 ]
+"217 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TOUTPS2 `Vb  1 e@149 ]
+"218 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TOUTPS3 `Vb  1 e@150 ]
+"221 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPM0 `Vb  1 e@160 ]
+"222 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPM1 `Vb  1 e@161 ]
+"223 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPM2 `Vb  1 e@162 ]
+"224 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPM3 `Vb  1 e@163 ]
+"225 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CKP `Vb  1 e@164 ]
+"226 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPEN `Vb  1 e@165 ]
+"227 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPOV `Vb  1 e@166 ]
+"228 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WCOL `Vb  1 e@167 ]
+"231 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1M0 `Vb  1 e@184 ]
+"232 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1M1 `Vb  1 e@185 ]
+"233 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1M2 `Vb  1 e@186 ]
+"234 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1M3 `Vb  1 e@187 ]
+"235 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC1B0 `Vb  1 e@188 ]
+"236 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC1B1 `Vb  1 e@189 ]
+"237 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _P1M0 `Vb  1 e@190 ]
+"238 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _P1M1 `Vb  1 e@191 ]
+"251 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2M0 `Vb  1 e@232 ]
+"252 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2M1 `Vb  1 e@233 ]
+"253 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2M2 `Vb  1 e@234 ]
+"254 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2M3 `Vb  1 e@235 ]
+"255 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC2B0 `Vb  1 e@236 ]
+"256 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC2B1 `Vb  1 e@237 ]
+"257 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2IN0 `Vb  1 e@238 ]
+"258 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2IN1 `Vb  1 e@239 ]
+"261 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADON `Vb  1 e@248 ]
+"262 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _GODONE `Vb  1 e@249 ]
+"263 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CHS0 `Vb  1 e@250 ]
+"264 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CHS1 `Vb  1 e@251 ]
+"265 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CHS2 `Vb  1 e@252 ]
+"266 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CHS3 `Vb  1 e@253 ]
+"267 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADCS0 `Vb  1 e@254 ]
+"268 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADCS1 `Vb  1 e@255 ]
+"271 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PS0 `Vb  1 e@1032 ]
+"272 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PS1 `Vb  1 e@1033 ]
+"273 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PS2 `Vb  1 e@1034 ]
+"274 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PSA `Vb  1 e@1035 ]
+"275 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T0SE `Vb  1 e@1036 ]
+"276 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T0CS `Vb  1 e@1037 ]
+"277 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INTEDG `Vb  1 e@1038 ]
+"278 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RBPU `Vb  1 e@1039 ]
+"280 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RABPU `Vb  1 e@1039 ]
+"283 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA0 `Vb  1 e@1064 ]
+"284 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA1 `Vb  1 e@1065 ]
+"285 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA2 `Vb  1 e@1066 ]
+"286 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA3 `Vb  1 e@1067 ]
+"287 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA4 `Vb  1 e@1068 ]
+"288 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA5 `Vb  1 e@1069 ]
+"289 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA6 `Vb  1 e@1070 ]
+"290 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA7 `Vb  1 e@1071 ]
+"293 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB0 `Vb  1 e@1072 ]
+"294 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB1 `Vb  1 e@1073 ]
+"295 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB2 `Vb  1 e@1074 ]
+"296 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB3 `Vb  1 e@1075 ]
+"297 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB4 `Vb  1 e@1076 ]
+"298 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB5 `Vb  1 e@1077 ]
+"299 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB6 `Vb  1 e@1078 ]
+"300 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB7 `Vb  1 e@1079 ]
+"303 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC0 `Vb  1 e@1080 ]
+"304 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC1 `Vb  1 e@1081 ]
+"305 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC2 `Vb  1 e@1082 ]
+"306 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC3 `Vb  1 e@1083 ]
+"307 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC4 `Vb  1 e@1084 ]
+"308 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC5 `Vb  1 e@1085 ]
+"309 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC6 `Vb  1 e@1086 ]
+"310 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC7 `Vb  1 e@1087 ]
+"314 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE0 `Vb  1 e@1096 ]
+"315 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE1 `Vb  1 e@1097 ]
+"316 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE2 `Vb  1 e@1098 ]
+"317 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE3 `Vb  1 e@1099 ]
+"320 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1IE `Vb  1 e@1120 ]
+"321 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR2IE `Vb  1 e@1121 ]
+"322 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1IE `Vb  1 e@1122 ]
+"323 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPIE `Vb  1 e@1123 ]
+"324 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TXIE `Vb  1 e@1124 ]
+"325 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RCIE `Vb  1 e@1125 ]
+"326 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADIE `Vb  1 e@1126 ]
+"329 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2IE `Vb  1 e@1128 ]
+"330 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _BCLIE `Vb  1 e@1131 ]
+"331 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEIE `Vb  1 e@1132 ]
+"332 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _C1IE `Vb  1 e@1133 ]
+"333 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _C2IE `Vb  1 e@1134 ]
+"337 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SCS `Vb  1 e@1144 ]
+"338 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IRCF0 `Vb  1 e@1148 ]
+"339 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IRCF1 `Vb  1 e@1149 ]
+"340 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IRCF2 `Vb  1 e@1150 ]
+"343 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN0 `Vb  1 e@1152 ]
+"344 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN1 `Vb  1 e@1153 ]
+"345 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN2 `Vb  1 e@1154 ]
+"346 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN3 `Vb  1 e@1155 ]
+"347 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN4 `Vb  1 e@1156 ]
+"350 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SEN `Vb  1 e@1160 ]
+"351 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RSEN `Vb  1 e@1161 ]
+"352 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PEN `Vb  1 e@1162 ]
+"353 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RCEN `Vb  1 e@1163 ]
+"354 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ACKEN `Vb  1 e@1164 ]
+"355 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ACKDT `Vb  1 e@1165 ]
+"356 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ACKSTAT `Vb  1 e@1166 ]
+"357 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _GCEN `Vb  1 e@1167 ]
+"360 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _BF `Vb  1 e@1184 ]
+"361 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _UA `Vb  1 e@1185 ]
+"362 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RW `Vb  1 e@1186 ]
+"363 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _START `Vb  1 e@1187 ]
+"364 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _STOP `Vb  1 e@1188 ]
+"365 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DA `Vb  1 e@1189 ]
+"366 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CKE `Vb  1 e@1190 ]
+"367 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SMP `Vb  1 e@1191 ]
+"370 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA0 `Vb  1 e@3184 ]
+"371 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA1 `Vb  1 e@3185 ]
+"372 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA2 `Vb  1 e@3186 ]
+"373 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA3 `Vb  1 e@3187 ]
+"374 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA4 `Vb  1 e@3188 ]
+"375 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA5 `Vb  1 e@3189 ]
+"376 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA6 `Vb  1 e@3190 ]
+"377 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA7 `Vb  1 e@3191 ]
+"380 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB0 `Vb  1 e@1192 ]
+"381 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB1 `Vb  1 e@1193 ]
+"382 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB2 `Vb  1 e@1194 ]
+"383 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB3 `Vb  1 e@1195 ]
+"384 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB4 `Vb  1 e@1196 ]
+"385 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB5 `Vb  1 e@1197 ]
+"386 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB6 `Vb  1 e@1198 ]
+"387 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB7 `Vb  1 e@1199 ]
+"390 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC0 `Vb  1 e@3192 ]
+"391 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC1 `Vb  1 e@3193 ]
+"392 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC2 `Vb  1 e@3194 ]
+"393 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC3 `Vb  1 e@3195 ]
+"394 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC4 `Vb  1 e@3196 ]
+"395 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC5 `Vb  1 e@3197 ]
+"396 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC6 `Vb  1 e@3198 ]
+"397 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC7 `Vb  1 e@3199 ]
+"400 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE0 `Vb  1 e@2256 ]
+"401 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE1 `Vb  1 e@2257 ]
+"402 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE2 `Vb  1 e@2258 ]
+"403 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE3 `Vb  1 e@2259 ]
+"406 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB0 `Vb  1 e@1200 ]
+"407 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB1 `Vb  1 e@1201 ]
+"408 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB2 `Vb  1 e@1202 ]
+"409 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB3 `Vb  1 e@1203 ]
+"410 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB4 `Vb  1 e@1204 ]
+"411 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB5 `Vb  1 e@1205 ]
+"412 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB6 `Vb  1 e@1206 ]
+"413 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB7 `Vb  1 e@1207 ]
+"429 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADFM `Vb  1 e@1279 ]
+"432 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SWDTEN `Vb  1 e@2088 ]
+"436 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS0 `Vb  1 e@3136 ]
+"437 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS1 `Vb  1 e@3137 ]
+"438 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS2 `Vb  1 e@3138 ]
+"439 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS3 `Vb  1 e@3139 ]
+"440 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS4 `Vb  1 e@3140 ]
+"441 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS5 `Vb  1 e@3141 ]
+"442 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS6 `Vb  1 e@3142 ]
+"443 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS7 `Vb  1 e@3143 ]
+"446 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS8 `Vb  1 e@3144 ]
+"447 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS9 `Vb  1 e@3145 ]
+"448 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS10 `Vb  1 e@3146 ]
+"449 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS11 `Vb  1 e@3147 ]
+"450 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS12 `Vb  1 e@3148 ]
+"451 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS13 `Vb  1 e@3149 ]
+"454 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RD `Vb  1 e@3168 ]
+"455 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WR `Vb  1 e@3169 ]
+"456 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WREN `Vb  1 e@3170 ]
+"457 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WRERR `Vb  1 e@3171 ]
+"458 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEPGD `Vb  1 e@3175 ]
+"9 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _KEY0_FLAG `uc  1 e ]
+"10 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _KEY1_FLAG `uc  1 e ]
+"11 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _KEY2_FLAG `uc  1 e ]
+"13 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _flag_time_key0_add `ui  1 e ]
+"14 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _flag_time_key1_add `ui  1 e ]
+"15 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _flag_time_key2_add `ui  1 e ]
+[s S1 `uc 1 `uc 1 `uc 1 ]
+[n S1 . channel_status key_flag_3s key_flag_5s ]
+"17 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _KEY0 `S1  1 e ]
+"18 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _KEY1 `S1  1 e ]
+"19 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _KEY2 `S1  1 e ]
+"21 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _key_long_flag `uc  1 e ]
+"24 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _match_channel_flag `uc  1 e ]
+"25 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _key_long_flag_add `uc  1 e ]
+"7 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\delay.h
+[v _soft_delay_ms `(v  0 ef1`ui ]
+"23 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[v _sys_stute `uc  0 e ]
+[; ;cms89f228.h: 18: volatile unsigned char INDF @ 0x000;
+[; ;cms89f228.h: 19: volatile unsigned char TMR0 @ 0x001;
+[; ;cms89f228.h: 20: volatile unsigned char PCL @ 0x002;
+[; ;cms89f228.h: 21: volatile unsigned char STATUS @ 0x003;
+[; ;cms89f228.h: 22: volatile unsigned char FSR @ 0x004;
+[; ;cms89f228.h: 23: volatile unsigned char PORTA @ 0x005;
+[; ;cms89f228.h: 24: volatile unsigned char PORTB @ 0x006;
+[; ;cms89f228.h: 25: volatile unsigned char PORTC @ 0x007;
+[; ;cms89f228.h: 27: volatile unsigned char PORTE @ 0x009;
+[; ;cms89f228.h: 28: volatile unsigned char PCLATH @ 0x00A;
+[; ;cms89f228.h: 29: volatile unsigned char INTCON @ 0x00B;
+[; ;cms89f228.h: 30: volatile unsigned char PIR1 @ 0x00C;
+[; ;cms89f228.h: 31: volatile unsigned char PIR2 @ 0x00D;
+[; ;cms89f228.h: 32: volatile unsigned char TMR1L @ 0x00E;
+[; ;cms89f228.h: 33: volatile unsigned char TMR1H @ 0x00F;
+[; ;cms89f228.h: 34: volatile unsigned char T1CON @ 0x010;
+[; ;cms89f228.h: 35: volatile unsigned char TMR2 @ 0x011;
+[; ;cms89f228.h: 36: volatile unsigned char T2CON @ 0x012;
+[; ;cms89f228.h: 37: volatile unsigned char SSPBUF @ 0x013;
+[; ;cms89f228.h: 38: volatile unsigned char SSPCON @ 0x014;
+[; ;cms89f228.h: 39: volatile unsigned char CCPR1L @ 0x015;
+[; ;cms89f228.h: 40: volatile unsigned char CCPR1H @ 0x016;
+[; ;cms89f228.h: 41: volatile unsigned char CCP1CON @ 0x017;
+[; ;cms89f228.h: 47: volatile unsigned char CCPR2L @ 0x01B;
+[; ;cms89f228.h: 48: volatile unsigned char CCPR2H @ 0x01C;
+[; ;cms89f228.h: 49: volatile unsigned char CCP2CON @ 0x01D;
+[; ;cms89f228.h: 50: volatile unsigned char ADRESH @ 0x01E;
+[; ;cms89f228.h: 51: volatile unsigned char ADCON0 @ 0x01F;
+[; ;cms89f228.h: 52: volatile unsigned char OPTION_REG @ 0x081;
+[; ;cms89f228.h: 53: volatile unsigned char TRISA @ 0x085;
+[; ;cms89f228.h: 54: volatile unsigned char TRISB @ 0x086;
+[; ;cms89f228.h: 55: volatile unsigned char TRISC @ 0x087;
+[; ;cms89f228.h: 56: volatile unsigned char TRISE @ 0x089;
+[; ;cms89f228.h: 57: volatile unsigned char PIE1 @ 0x08C;
+[; ;cms89f228.h: 58: volatile unsigned char PIE2 @ 0x08D;
+[; ;cms89f228.h: 60: volatile unsigned char OSCCON @ 0x08F;
+[; ;cms89f228.h: 61: volatile unsigned char OSCTUNE @ 0x090;
+[; ;cms89f228.h: 62: volatile unsigned char SSPCON2 @ 0x091;
+[; ;cms89f228.h: 63: volatile unsigned char PR2 @ 0x092;
+[; ;cms89f228.h: 64: volatile unsigned char SSPADD @ 0x093;
+[; ;cms89f228.h: 65: volatile unsigned char SSPSTAT @ 0x094;
+[; ;cms89f228.h: 66: volatile unsigned char WPUB @ 0x095;
+[; ;cms89f228.h: 67: volatile unsigned char IOCB @ 0x096;
+[; ;cms89f228.h: 74: volatile unsigned char ADRESL @ 0x09E;
+[; ;cms89f228.h: 75: volatile unsigned char ADCON1 @ 0x09F;
+[; ;cms89f228.h: 76: volatile unsigned char WDTCON @ 0x105;
+[; ;cms89f228.h: 81: volatile unsigned char EEDAT @ 0x10C;
+[; ;cms89f228.h: 82: volatile unsigned char EEDATA @ 0x10C;
+[; ;cms89f228.h: 83: volatile unsigned char EEADR @ 0x10D;
+[; ;cms89f228.h: 84: volatile unsigned char EEADRL @ 0x10D;
+[; ;cms89f228.h: 85: volatile unsigned char EEDATH @ 0x10E;
+[; ;cms89f228.h: 86: volatile unsigned char EEADRH @ 0x10F;
+[; ;cms89f228.h: 88: volatile unsigned char TABLE_SPH @ 0x110;
+[; ;cms89f228.h: 89: volatile unsigned char TABLE_SPL @ 0x111;
+[; ;cms89f228.h: 90: volatile unsigned char TABLE_DATAH @ 0x112;
+[; ;cms89f228.h: 99: volatile unsigned char WPUE @ 0x11A;
+[; ;cms89f228.h: 100: volatile unsigned char OPA0CON @ 0x11C;
+[; ;cms89f228.h: 101: volatile unsigned char OPA0ADJ @ 0x11D;
+[; ;cms89f228.h: 105: volatile unsigned char ANSEL @ 0x188;
+[; ;cms89f228.h: 106: volatile unsigned char ANSELH @ 0x189;
+[; ;cms89f228.h: 108: volatile unsigned char EECON1 @ 0x18C;
+[; ;cms89f228.h: 109: volatile unsigned char EECON2 @ 0x18D;
+[; ;cms89f228.h: 110: volatile unsigned char WPUA @ 0x18E;
+[; ;cms89f228.h: 111: volatile unsigned char WPUC @ 0x18F;
+[; ;cms89f228.h: 113: volatile unsigned char LEDCON0 @ 0x190;
+[; ;cms89f228.h: 114: volatile unsigned char LEDCON1 @ 0x191;
+[; ;cms89f228.h: 115: volatile unsigned char LEDADD @ 0x192;
+[; ;cms89f228.h: 116: volatile unsigned char LEDDATA @ 0x193;
+[; ;cms89f228.h: 117: volatile unsigned char LCDCON0 @ 0x190;
+[; ;cms89f228.h: 118: volatile unsigned char LCDCON1 @ 0x191;
+[; ;cms89f228.h: 119: volatile unsigned char LCDADD @ 0x192;
+[; ;cms89f228.h: 120: volatile unsigned char LCDDATA @ 0x193;
+[; ;cms89f228.h: 121: volatile unsigned char SEGEN2 @ 0x194;
+[; ;cms89f228.h: 122: volatile unsigned char SEGEN1 @ 0x195;
+[; ;cms89f228.h: 123: volatile unsigned char SEGEN0 @ 0x196;
+[; ;cms89f228.h: 124: volatile unsigned char COMEN @ 0x197;
+[; ;cms89f228.h: 128: volatile bit CARRY @ ((unsigned)&STATUS*8)+0;
+[; ;cms89f228.h: 129: volatile bit DC @ ((unsigned)&STATUS*8)+1;
+[; ;cms89f228.h: 130: volatile bit ZERO @ ((unsigned)&STATUS*8)+2;
+[; ;cms89f228.h: 131: volatile bit PD @ ((unsigned)&STATUS*8)+3;
+[; ;cms89f228.h: 132: volatile bit TO @ ((unsigned)&STATUS*8)+4;
+[; ;cms89f228.h: 133: volatile bit IRP @ ((unsigned)&STATUS*8)+7;
+[; ;cms89f228.h: 136: volatile bit RA0 @ ((unsigned)&PORTA*8)+0;
+[; ;cms89f228.h: 137: volatile bit RA1 @ ((unsigned)&PORTA*8)+1;
+[; ;cms89f228.h: 138: volatile bit RA2 @ ((unsigned)&PORTA*8)+2;
+[; ;cms89f228.h: 139: volatile bit RA3 @ ((unsigned)&PORTA*8)+3;
+[; ;cms89f228.h: 140: volatile bit RA4 @ ((unsigned)&PORTA*8)+4;
+[; ;cms89f228.h: 141: volatile bit RA5 @ ((unsigned)&PORTA*8)+5;
+[; ;cms89f228.h: 142: volatile bit RA6 @ ((unsigned)&PORTA*8)+6;
+[; ;cms89f228.h: 143: volatile bit RA7 @ ((unsigned)&PORTA*8)+7;
+[; ;cms89f228.h: 146: volatile bit RB0 @ ((unsigned)&PORTB*8)+0;
+[; ;cms89f228.h: 147: volatile bit RB1 @ ((unsigned)&PORTB*8)+1;
+[; ;cms89f228.h: 148: volatile bit RB2 @ ((unsigned)&PORTB*8)+2;
+[; ;cms89f228.h: 149: volatile bit RB3 @ ((unsigned)&PORTB*8)+3;
+[; ;cms89f228.h: 150: volatile bit RB4 @ ((unsigned)&PORTB*8)+4;
+[; ;cms89f228.h: 151: volatile bit RB5 @ ((unsigned)&PORTB*8)+5;
+[; ;cms89f228.h: 152: volatile bit RB6 @ ((unsigned)&PORTB*8)+6;
+[; ;cms89f228.h: 153: volatile bit RB7 @ ((unsigned)&PORTB*8)+7;
+[; ;cms89f228.h: 156: volatile bit RC0 @ ((unsigned)&PORTC*8)+0;
+[; ;cms89f228.h: 157: volatile bit RC1 @ ((unsigned)&PORTC*8)+1;
+[; ;cms89f228.h: 158: volatile bit RC2 @ ((unsigned)&PORTC*8)+2;
+[; ;cms89f228.h: 159: volatile bit RC3 @ ((unsigned)&PORTC*8)+3;
+[; ;cms89f228.h: 160: volatile bit RC4 @ ((unsigned)&PORTC*8)+4;
+[; ;cms89f228.h: 161: volatile bit RC5 @ ((unsigned)&PORTC*8)+5;
+[; ;cms89f228.h: 162: volatile bit RC6 @ ((unsigned)&PORTC*8)+6;
+[; ;cms89f228.h: 163: volatile bit RC7 @ ((unsigned)&PORTC*8)+7;
+[; ;cms89f228.h: 166: volatile bit RE0 @ ((unsigned)&PORTE*8)+0;
+[; ;cms89f228.h: 167: volatile bit RE1 @ ((unsigned)&PORTE*8)+1;
+[; ;cms89f228.h: 168: volatile bit RE2 @ ((unsigned)&PORTE*8)+2;
+[; ;cms89f228.h: 169: volatile bit RE3 @ ((unsigned)&PORTE*8)+3;
+[; ;cms89f228.h: 172: volatile bit RBIF @ ((unsigned)&INTCON*8)+0;
+[; ;cms89f228.h: 174: volatile bit RABIF @ ((unsigned)&INTCON*8)+0;
+[; ;cms89f228.h: 175: volatile bit INTF @ ((unsigned)&INTCON*8)+1;
+[; ;cms89f228.h: 176: volatile bit T0IF @ ((unsigned)&INTCON*8)+2;
+[; ;cms89f228.h: 177: volatile bit RBIE @ ((unsigned)&INTCON*8)+3;
+[; ;cms89f228.h: 179: volatile bit RABIE @ ((unsigned)&INTCON*8)+3;
+[; ;cms89f228.h: 180: volatile bit INTE @ ((unsigned)&INTCON*8)+4;
+[; ;cms89f228.h: 181: volatile bit T0IE @ ((unsigned)&INTCON*8)+5;
+[; ;cms89f228.h: 182: volatile bit PEIE @ ((unsigned)&INTCON*8)+6;
+[; ;cms89f228.h: 183: volatile bit GIE @ ((unsigned)&INTCON*8)+7;
+[; ;cms89f228.h: 186: volatile bit TMR1IF @ ((unsigned)&PIR1*8)+0;
+[; ;cms89f228.h: 187: volatile bit TMR2IF @ ((unsigned)&PIR1*8)+1;
+[; ;cms89f228.h: 188: volatile bit CCP1IF @ ((unsigned)&PIR1*8)+2;
+[; ;cms89f228.h: 189: volatile bit SSPIF @ ((unsigned)&PIR1*8)+3;
+[; ;cms89f228.h: 190: volatile bit TXIF @ ((unsigned)&PIR1*8)+4;
+[; ;cms89f228.h: 191: volatile bit RCIF @ ((unsigned)&PIR1*8)+5;
+[; ;cms89f228.h: 192: volatile bit ADIF @ ((unsigned)&PIR1*8)+6;
+[; ;cms89f228.h: 195: volatile bit CCP2IF @ ((unsigned)&PIR2*8)+0;
+[; ;cms89f228.h: 196: volatile bit BCLIF @ ((unsigned)&PIR2*8)+3;
+[; ;cms89f228.h: 197: volatile bit EEIF @ ((unsigned)&PIR2*8)+4;
+[; ;cms89f228.h: 198: volatile bit C1IF @ ((unsigned)&PIR2*8)+5;
+[; ;cms89f228.h: 199: volatile bit C2IF @ ((unsigned)&PIR2*8)+6;
+[; ;cms89f228.h: 202: volatile bit TMR1ON @ ((unsigned)&T1CON*8)+0;
+[; ;cms89f228.h: 203: volatile bit TMR1CS @ ((unsigned)&T1CON*8)+1;
+[; ;cms89f228.h: 204: volatile bit T1SYNC @ ((unsigned)&T1CON*8)+2;
+[; ;cms89f228.h: 205: volatile bit T1OSCEN @ ((unsigned)&T1CON*8)+3;
+[; ;cms89f228.h: 206: volatile bit T1CKPS0 @ ((unsigned)&T1CON*8)+4;
+[; ;cms89f228.h: 207: volatile bit T1CKPS1 @ ((unsigned)&T1CON*8)+5;
+[; ;cms89f228.h: 208: volatile bit TMR1GE @ ((unsigned)&T1CON*8)+6;
+[; ;cms89f228.h: 209: volatile bit T1GINV @ ((unsigned)&T1CON*8)+7;
+[; ;cms89f228.h: 212: volatile bit T2CKPS0 @ ((unsigned)&T2CON*8)+0;
+[; ;cms89f228.h: 213: volatile bit T2CKPS1 @ ((unsigned)&T2CON*8)+1;
+[; ;cms89f228.h: 214: volatile bit TMR2ON @ ((unsigned)&T2CON*8)+2;
+[; ;cms89f228.h: 215: volatile bit TOUTPS0 @ ((unsigned)&T2CON*8)+3;
+[; ;cms89f228.h: 216: volatile bit TOUTPS1 @ ((unsigned)&T2CON*8)+4;
+[; ;cms89f228.h: 217: volatile bit TOUTPS2 @ ((unsigned)&T2CON*8)+5;
+[; ;cms89f228.h: 218: volatile bit TOUTPS3 @ ((unsigned)&T2CON*8)+6;
+[; ;cms89f228.h: 221: volatile bit SSPM0 @ ((unsigned)&SSPCON*8)+0;
+[; ;cms89f228.h: 222: volatile bit SSPM1 @ ((unsigned)&SSPCON*8)+1;
+[; ;cms89f228.h: 223: volatile bit SSPM2 @ ((unsigned)&SSPCON*8)+2;
+[; ;cms89f228.h: 224: volatile bit SSPM3 @ ((unsigned)&SSPCON*8)+3;
+[; ;cms89f228.h: 225: volatile bit CKP @ ((unsigned)&SSPCON*8)+4;
+[; ;cms89f228.h: 226: volatile bit SSPEN @ ((unsigned)&SSPCON*8)+5;
+[; ;cms89f228.h: 227: volatile bit SSPOV @ ((unsigned)&SSPCON*8)+6;
+[; ;cms89f228.h: 228: volatile bit WCOL @ ((unsigned)&SSPCON*8)+7;
+[; ;cms89f228.h: 231: volatile bit CCP1M0 @ ((unsigned)&CCP1CON*8)+0;
+[; ;cms89f228.h: 232: volatile bit CCP1M1 @ ((unsigned)&CCP1CON*8)+1;
+[; ;cms89f228.h: 233: volatile bit CCP1M2 @ ((unsigned)&CCP1CON*8)+2;
+[; ;cms89f228.h: 234: volatile bit CCP1M3 @ ((unsigned)&CCP1CON*8)+3;
+[; ;cms89f228.h: 235: volatile bit DC1B0 @ ((unsigned)&CCP1CON*8)+4;
+[; ;cms89f228.h: 236: volatile bit DC1B1 @ ((unsigned)&CCP1CON*8)+5;
+[; ;cms89f228.h: 237: volatile bit P1M0 @ ((unsigned)&CCP1CON*8)+6;
+[; ;cms89f228.h: 238: volatile bit P1M1 @ ((unsigned)&CCP1CON*8)+7;
+[; ;cms89f228.h: 251: volatile bit CCP2M0 @ ((unsigned)&CCP2CON*8)+0;
+[; ;cms89f228.h: 252: volatile bit CCP2M1 @ ((unsigned)&CCP2CON*8)+1;
+[; ;cms89f228.h: 253: volatile bit CCP2M2 @ ((unsigned)&CCP2CON*8)+2;
+[; ;cms89f228.h: 254: volatile bit CCP2M3 @ ((unsigned)&CCP2CON*8)+3;
+[; ;cms89f228.h: 255: volatile bit DC2B0 @ ((unsigned)&CCP2CON*8)+4;
+[; ;cms89f228.h: 256: volatile bit DC2B1 @ ((unsigned)&CCP2CON*8)+5;
+[; ;cms89f228.h: 257: volatile bit CCP2IN0 @ ((unsigned)&CCP2CON*8)+6;
+[; ;cms89f228.h: 258: volatile bit CCP2IN1 @ ((unsigned)&CCP2CON*8)+7;
+[; ;cms89f228.h: 261: volatile bit ADON @ ((unsigned)&ADCON0*8)+0;
+[; ;cms89f228.h: 262: volatile bit GODONE @ ((unsigned)&ADCON0*8)+1;
+[; ;cms89f228.h: 263: volatile bit CHS0 @ ((unsigned)&ADCON0*8)+2;
+[; ;cms89f228.h: 264: volatile bit CHS1 @ ((unsigned)&ADCON0*8)+3;
+[; ;cms89f228.h: 265: volatile bit CHS2 @ ((unsigned)&ADCON0*8)+4;
+[; ;cms89f228.h: 266: volatile bit CHS3 @ ((unsigned)&ADCON0*8)+5;
+[; ;cms89f228.h: 267: volatile bit ADCS0 @ ((unsigned)&ADCON0*8)+6;
+[; ;cms89f228.h: 268: volatile bit ADCS1 @ ((unsigned)&ADCON0*8)+7;
+[; ;cms89f228.h: 271: volatile bit PS0 @ ((unsigned)&OPTION_REG*8)+0;
+[; ;cms89f228.h: 272: volatile bit PS1 @ ((unsigned)&OPTION_REG*8)+1;
+[; ;cms89f228.h: 273: volatile bit PS2 @ ((unsigned)&OPTION_REG*8)+2;
+[; ;cms89f228.h: 274: volatile bit PSA @ ((unsigned)&OPTION_REG*8)+3;
+[; ;cms89f228.h: 275: volatile bit T0SE @ ((unsigned)&OPTION_REG*8)+4;
+[; ;cms89f228.h: 276: volatile bit T0CS @ ((unsigned)&OPTION_REG*8)+5;
+[; ;cms89f228.h: 277: volatile bit INTEDG @ ((unsigned)&OPTION_REG*8)+6;
+[; ;cms89f228.h: 278: volatile bit RBPU @ ((unsigned)&OPTION_REG*8)+7;
+[; ;cms89f228.h: 280: volatile bit RABPU @ ((unsigned)&OPTION_REG*8)+7;
+[; ;cms89f228.h: 283: volatile bit TRISA0 @ ((unsigned)&TRISA*8)+0;
+[; ;cms89f228.h: 284: volatile bit TRISA1 @ ((unsigned)&TRISA*8)+1;
+[; ;cms89f228.h: 285: volatile bit TRISA2 @ ((unsigned)&TRISA*8)+2;
+[; ;cms89f228.h: 286: volatile bit TRISA3 @ ((unsigned)&TRISA*8)+3;
+[; ;cms89f228.h: 287: volatile bit TRISA4 @ ((unsigned)&TRISA*8)+4;
+[; ;cms89f228.h: 288: volatile bit TRISA5 @ ((unsigned)&TRISA*8)+5;
+[; ;cms89f228.h: 289: volatile bit TRISA6 @ ((unsigned)&TRISA*8)+6;
+[; ;cms89f228.h: 290: volatile bit TRISA7 @ ((unsigned)&TRISA*8)+7;
+[; ;cms89f228.h: 293: volatile bit TRISB0 @ ((unsigned)&TRISB*8)+0;
+[; ;cms89f228.h: 294: volatile bit TRISB1 @ ((unsigned)&TRISB*8)+1;
+[; ;cms89f228.h: 295: volatile bit TRISB2 @ ((unsigned)&TRISB*8)+2;
+[; ;cms89f228.h: 296: volatile bit TRISB3 @ ((unsigned)&TRISB*8)+3;
+[; ;cms89f228.h: 297: volatile bit TRISB4 @ ((unsigned)&TRISB*8)+4;
+[; ;cms89f228.h: 298: volatile bit TRISB5 @ ((unsigned)&TRISB*8)+5;
+[; ;cms89f228.h: 299: volatile bit TRISB6 @ ((unsigned)&TRISB*8)+6;
+[; ;cms89f228.h: 300: volatile bit TRISB7 @ ((unsigned)&TRISB*8)+7;
+[; ;cms89f228.h: 303: volatile bit TRISC0 @ ((unsigned)&TRISC*8)+0;
+[; ;cms89f228.h: 304: volatile bit TRISC1 @ ((unsigned)&TRISC*8)+1;
+[; ;cms89f228.h: 305: volatile bit TRISC2 @ ((unsigned)&TRISC*8)+2;
+[; ;cms89f228.h: 306: volatile bit TRISC3 @ ((unsigned)&TRISC*8)+3;
+[; ;cms89f228.h: 307: volatile bit TRISC4 @ ((unsigned)&TRISC*8)+4;
+[; ;cms89f228.h: 308: volatile bit TRISC5 @ ((unsigned)&TRISC*8)+5;
+[; ;cms89f228.h: 309: volatile bit TRISC6 @ ((unsigned)&TRISC*8)+6;
+[; ;cms89f228.h: 310: volatile bit TRISC7 @ ((unsigned)&TRISC*8)+7;
+[; ;cms89f228.h: 314: volatile bit TRISE0 @ ((unsigned)&TRISE*8)+0;
+[; ;cms89f228.h: 315: volatile bit TRISE1 @ ((unsigned)&TRISE*8)+1;
+[; ;cms89f228.h: 316: volatile bit TRISE2 @ ((unsigned)&TRISE*8)+2;
+[; ;cms89f228.h: 317: volatile bit TRISE3 @ ((unsigned)&TRISE*8)+3;
+[; ;cms89f228.h: 320: volatile bit TMR1IE @ ((unsigned)&PIE1*8)+0;
+[; ;cms89f228.h: 321: volatile bit TMR2IE @ ((unsigned)&PIE1*8)+1;
+[; ;cms89f228.h: 322: volatile bit CCP1IE @ ((unsigned)&PIE1*8)+2;
+[; ;cms89f228.h: 323: volatile bit SSPIE @ ((unsigned)&PIE1*8)+3;
+[; ;cms89f228.h: 324: volatile bit TXIE @ ((unsigned)&PIE1*8)+4;
+[; ;cms89f228.h: 325: volatile bit RCIE @ ((unsigned)&PIE1*8)+5;
+[; ;cms89f228.h: 326: volatile bit ADIE @ ((unsigned)&PIE1*8)+6;
+[; ;cms89f228.h: 329: volatile bit CCP2IE @ ((unsigned)&PIE2*8)+0;
+[; ;cms89f228.h: 330: volatile bit BCLIE @ ((unsigned)&PIE2*8)+3;
+[; ;cms89f228.h: 331: volatile bit EEIE @ ((unsigned)&PIE2*8)+4;
+[; ;cms89f228.h: 332: volatile bit C1IE @ ((unsigned)&PIE2*8)+5;
+[; ;cms89f228.h: 333: volatile bit C2IE @ ((unsigned)&PIE2*8)+6;
+[; ;cms89f228.h: 337: volatile bit SCS @ ((unsigned)&OSCCON*8)+0;
+[; ;cms89f228.h: 338: volatile bit IRCF0 @ ((unsigned)&OSCCON*8)+4;
+[; ;cms89f228.h: 339: volatile bit IRCF1 @ ((unsigned)&OSCCON*8)+5;
+[; ;cms89f228.h: 340: volatile bit IRCF2 @ ((unsigned)&OSCCON*8)+6;
+[; ;cms89f228.h: 343: volatile bit TUN0 @ ((unsigned)&OSCTUNE*8)+0;
+[; ;cms89f228.h: 344: volatile bit TUN1 @ ((unsigned)&OSCTUNE*8)+1;
+[; ;cms89f228.h: 345: volatile bit TUN2 @ ((unsigned)&OSCTUNE*8)+2;
+[; ;cms89f228.h: 346: volatile bit TUN3 @ ((unsigned)&OSCTUNE*8)+3;
+[; ;cms89f228.h: 347: volatile bit TUN4 @ ((unsigned)&OSCTUNE*8)+4;
+[; ;cms89f228.h: 350: volatile bit SEN @ ((unsigned)&SSPCON2*8)+0;
+[; ;cms89f228.h: 351: volatile bit RSEN @ ((unsigned)&SSPCON2*8)+1;
+[; ;cms89f228.h: 352: volatile bit PEN @ ((unsigned)&SSPCON2*8)+2;
+[; ;cms89f228.h: 353: volatile bit RCEN @ ((unsigned)&SSPCON2*8)+3;
+[; ;cms89f228.h: 354: volatile bit ACKEN @ ((unsigned)&SSPCON2*8)+4;
+[; ;cms89f228.h: 355: volatile bit ACKDT @ ((unsigned)&SSPCON2*8)+5;
+[; ;cms89f228.h: 356: volatile bit ACKSTAT @ ((unsigned)&SSPCON2*8)+6;
+[; ;cms89f228.h: 357: volatile bit GCEN @ ((unsigned)&SSPCON2*8)+7;
+[; ;cms89f228.h: 360: volatile bit BF @ ((unsigned)&SSPSTAT*8)+0;
+[; ;cms89f228.h: 361: volatile bit UA @ ((unsigned)&SSPSTAT*8)+1;
+[; ;cms89f228.h: 362: volatile bit RW @ ((unsigned)&SSPSTAT*8)+2;
+[; ;cms89f228.h: 363: volatile bit START @ ((unsigned)&SSPSTAT*8)+3;
+[; ;cms89f228.h: 364: volatile bit STOP @ ((unsigned)&SSPSTAT*8)+4;
+[; ;cms89f228.h: 365: volatile bit DA @ ((unsigned)&SSPSTAT*8)+5;
+[; ;cms89f228.h: 366: volatile bit CKE @ ((unsigned)&SSPSTAT*8)+6;
+[; ;cms89f228.h: 367: volatile bit SMP @ ((unsigned)&SSPSTAT*8)+7;
+[; ;cms89f228.h: 370: volatile bit WPUA0 @ ((unsigned)&WPUA*8)+0;
+[; ;cms89f228.h: 371: volatile bit WPUA1 @ ((unsigned)&WPUA*8)+1;
+[; ;cms89f228.h: 372: volatile bit WPUA2 @ ((unsigned)&WPUA*8)+2;
+[; ;cms89f228.h: 373: volatile bit WPUA3 @ ((unsigned)&WPUA*8)+3;
+[; ;cms89f228.h: 374: volatile bit WPUA4 @ ((unsigned)&WPUA*8)+4;
+[; ;cms89f228.h: 375: volatile bit WPUA5 @ ((unsigned)&WPUA*8)+5;
+[; ;cms89f228.h: 376: volatile bit WPUA6 @ ((unsigned)&WPUA*8)+6;
+[; ;cms89f228.h: 377: volatile bit WPUA7 @ ((unsigned)&WPUA*8)+7;
+[; ;cms89f228.h: 380: volatile bit WPUB0 @ ((unsigned)&WPUB*8)+0;
+[; ;cms89f228.h: 381: volatile bit WPUB1 @ ((unsigned)&WPUB*8)+1;
+[; ;cms89f228.h: 382: volatile bit WPUB2 @ ((unsigned)&WPUB*8)+2;
+[; ;cms89f228.h: 383: volatile bit WPUB3 @ ((unsigned)&WPUB*8)+3;
+[; ;cms89f228.h: 384: volatile bit WPUB4 @ ((unsigned)&WPUB*8)+4;
+[; ;cms89f228.h: 385: volatile bit WPUB5 @ ((unsigned)&WPUB*8)+5;
+[; ;cms89f228.h: 386: volatile bit WPUB6 @ ((unsigned)&WPUB*8)+6;
+[; ;cms89f228.h: 387: volatile bit WPUB7 @ ((unsigned)&WPUB*8)+7;
+[; ;cms89f228.h: 390: volatile bit WPUC0 @ ((unsigned)&WPUC*8)+0;
+[; ;cms89f228.h: 391: volatile bit WPUC1 @ ((unsigned)&WPUC*8)+1;
+[; ;cms89f228.h: 392: volatile bit WPUC2 @ ((unsigned)&WPUC*8)+2;
+[; ;cms89f228.h: 393: volatile bit WPUC3 @ ((unsigned)&WPUC*8)+3;
+[; ;cms89f228.h: 394: volatile bit WPUC4 @ ((unsigned)&WPUC*8)+4;
+[; ;cms89f228.h: 395: volatile bit WPUC5 @ ((unsigned)&WPUC*8)+5;
+[; ;cms89f228.h: 396: volatile bit WPUC6 @ ((unsigned)&WPUC*8)+6;
+[; ;cms89f228.h: 397: volatile bit WPUC7 @ ((unsigned)&WPUC*8)+7;
+[; ;cms89f228.h: 400: volatile bit WPUE0 @ ((unsigned)&WPUE*8)+0;
+[; ;cms89f228.h: 401: volatile bit WPUE1 @ ((unsigned)&WPUE*8)+1;
+[; ;cms89f228.h: 402: volatile bit WPUE2 @ ((unsigned)&WPUE*8)+2;
+[; ;cms89f228.h: 403: volatile bit WPUE3 @ ((unsigned)&WPUE*8)+3;
+[; ;cms89f228.h: 406: volatile bit IOCB0 @ ((unsigned)&IOCB*8)+0;
+[; ;cms89f228.h: 407: volatile bit IOCB1 @ ((unsigned)&IOCB*8)+1;
+[; ;cms89f228.h: 408: volatile bit IOCB2 @ ((unsigned)&IOCB*8)+2;
+[; ;cms89f228.h: 409: volatile bit IOCB3 @ ((unsigned)&IOCB*8)+3;
+[; ;cms89f228.h: 410: volatile bit IOCB4 @ ((unsigned)&IOCB*8)+4;
+[; ;cms89f228.h: 411: volatile bit IOCB5 @ ((unsigned)&IOCB*8)+5;
+[; ;cms89f228.h: 412: volatile bit IOCB6 @ ((unsigned)&IOCB*8)+6;
+[; ;cms89f228.h: 413: volatile bit IOCB7 @ ((unsigned)&IOCB*8)+7;
+[; ;cms89f228.h: 429: volatile bit ADFM @ ((unsigned)&ADCON1*8)+7;
+[; ;cms89f228.h: 432: volatile bit SWDTEN @ ((unsigned)&WDTCON*8)+0;
+[; ;cms89f228.h: 436: volatile bit ANS0 @ ((unsigned)&ANSEL*8)+0;
+[; ;cms89f228.h: 437: volatile bit ANS1 @ ((unsigned)&ANSEL*8)+1;
+[; ;cms89f228.h: 438: volatile bit ANS2 @ ((unsigned)&ANSEL*8)+2;
+[; ;cms89f228.h: 439: volatile bit ANS3 @ ((unsigned)&ANSEL*8)+3;
+[; ;cms89f228.h: 440: volatile bit ANS4 @ ((unsigned)&ANSEL*8)+4;
+[; ;cms89f228.h: 441: volatile bit ANS5 @ ((unsigned)&ANSEL*8)+5;
+[; ;cms89f228.h: 442: volatile bit ANS6 @ ((unsigned)&ANSEL*8)+6;
+[; ;cms89f228.h: 443: volatile bit ANS7 @ ((unsigned)&ANSEL*8)+7;
+[; ;cms89f228.h: 446: volatile bit ANS8 @ ((unsigned)&ANSELH*8)+0;
+[; ;cms89f228.h: 447: volatile bit ANS9 @ ((unsigned)&ANSELH*8)+1;
+[; ;cms89f228.h: 448: volatile bit ANS10 @ ((unsigned)&ANSELH*8)+2;
+[; ;cms89f228.h: 449: volatile bit ANS11 @ ((unsigned)&ANSELH*8)+3;
+[; ;cms89f228.h: 450: volatile bit ANS12 @ ((unsigned)&ANSELH*8)+4;
+[; ;cms89f228.h: 451: volatile bit ANS13 @ ((unsigned)&ANSELH*8)+5;
+[; ;cms89f228.h: 454: volatile bit RD @ ((unsigned)&EECON1*8)+0;
+[; ;cms89f228.h: 455: volatile bit WR @ ((unsigned)&EECON1*8)+1;
+[; ;cms89f228.h: 456: volatile bit WREN @ ((unsigned)&EECON1*8)+2;
+[; ;cms89f228.h: 457: volatile bit WRERR @ ((unsigned)&EECON1*8)+3;
+[; ;cms89f228.h: 458: volatile bit EEPGD @ ((unsigned)&EECON1*8)+7;
+[; ;cms.h: 118: extern void _nop(void);
+[; ;cms.h: 144: extern unsigned int flash_read(unsigned short addr);
+[; ;eeprom_routines.h: 41: extern unsigned char eeprom_write(unsigned char addr, unsigned char value);
+[; ;eeprom_routines.h: 42: extern unsigned char eeprom_read(unsigned char addr);
+[; ;eeprom_routines.h: 43: extern void eecpymem(volatile unsigned char *to, eeprom unsigned char *from, unsigned char size);
+[; ;eeprom_routines.h: 44: extern void memcpyee(eeprom unsigned char *to, const unsigned char *from, unsigned char size);
+[; ;cms.h: 218: extern void _delay(unsigned long);
+[; ;key_scan.h: 8: typedef struct
+[; ;key_scan.h: 9: {
+[; ;key_scan.h: 10: unsigned char channel_status;
+[; ;key_scan.h: 12: unsigned char key_flag_3s;
+[; ;key_scan.h: 14: unsigned char key_flag_5s;
+[; ;key_scan.h: 16: }channel_flag_stu;
+[; ;key_scan.h: 20: extern void key_Init(void);
+[; ;key_scan.h: 21: extern void key_scan(void);
+[; ;key_scan.h: 22: void key_value_read(void);
+[; ;timer1.h: 9: typedef enum{
+[; ;timer1.h: 10: TIMER1_DIV_1 = 0x00,
+[; ;timer1.h: 11: TIMER1_DIV_2 = 0x10,
+[; ;timer1.h: 12: TIMER1_DIV_4 = 0x20,
+[; ;timer1.h: 13: TIMER1_DIV_8 = 0x30,
+[; ;timer1.h: 14: }TIMER1_DIVIDER_e;
+[; ;timer1.h: 20: extern void Timer1_Init(TIMER1_DIVIDER_e TIMER_DIVIDER);
+[; ;timer1.h: 28: extern void Timer1_start(unsigned int T_nums, unsigned char Timer1_ISR_execution_total_time);
+[; ;timer1.h: 30: extern void Timer1_stop(void);
+[; ;timer1.h: 31: extern void TIMER1_ISR(void);
+[; ;PORTB_interrupt.h: 7: extern void PORTB_INT_Init(unsigned char icob_value);
+[; ;PORTB_interrupt.h: 12: extern void PORTB_INT_Disable(unsigned char icob_value);
+[; ;PORTB_interrupt.h: 15: extern void PORTB_CHANGE_ISR(void);
+[; ;recive.h: 15: unsigned short UpdateCRC(unsigned char *CRC_input, unsigned int len);
+[; ;recive.h: 16: unsigned char rx_data(void);
+[; ;recive.h: 17: void channel_set(unsigned char channel_num, unsigned char status);
+[; ;recive.h: 18: void recive_task(void);
+[; ;recive.h: 19: void delay_task(void);
+[; ;delay.h: 7: extern void soft_delay_ms(unsigned int ms);
+[; ;system.h: 9: typedef enum{
+[; ;system.h: 10: CPU_FREQUENCY_EXTERNAL = 0x00,
+[; ;system.h: 11: CPU_FREQUENCY_31K = 0x01,
+[; ;system.h: 12: CPU_FREQUENCY_125K = 0x11,
+[; ;system.h: 13: CPU_FREQUENCY_250K = 0x21,
+[; ;system.h: 14: CPU_FREQUENCY_500K = 0x31,
+[; ;system.h: 15: CPU_FREQUENCY_1M = 0x41,
+[; ;system.h: 16: CPU_FREQUENCY_2M = 0x51,
+[; ;system.h: 17: CPU_FREQUENCY_4M = 0x61,
+[; ;system.h: 18: CPU_FREQUENCY_8M = 0x71
+[; ;system.h: 19: }CPU_FREQUENCY_e;
+[; ;system.h: 21: typedef enum{
+[; ;system.h: 22: PORTB_CHANGE_ISR_ENABLE = 0x80,
+[; ;system.h: 23: INT0_ISR_ENABLE = 0x10,
+[; ;system.h: 24: TIMER0_ISR_ENABLE = 0x20,
+[; ;system.h: 25: TIMER1_ISR_ENABLE = 0x01,
+[; ;system.h: 26: TIMER2_ISR_ENABLE = 0x02,
+[; ;system.h: 27: ADC_ISR_ENABLE = 0x40,
+[; ;system.h: 28: }INT_ENABLE_FLAG_e;
+[; ;system.h: 30: typedef enum{
+[; ;system.h: 31: PORTB_CHANGE_ISR_TOUCH = 0x01,
+[; ;system.h: 32: INT0_ISR_TOUCH = 0x02,
+[; ;system.h: 33: TIMER0_ISR_TOUCH = 0x04,
+[; ;system.h: 34: TIMER1_ISR_TOUCH = 0x01,
+[; ;system.h: 35: TIMER2_ISR_TOUCH = 0x02,
+[; ;system.h: 36: ADC_ISR_TOUCH = 0x40,
+[; ;system.h: 37: }INT_TOUCH_FLAG_e;
+[; ;system.h: 39: extern void Interrupt_init(void);
+[; ;system.h: 40: extern void soft_delay_ms(unsigned int ms);
+[; ;system.h: 41: extern void system_set_CPU_frequency(CPU_FREQUENCY_e CPU_Frequency);
+[; ;system.h: 42: extern void clear_interrupt_flag(void);
+[; ;system.h: 43: extern void system_to_sleep(void);
+[; ;system.h: 44: extern void Enable_Interrupt(void);
+[; ;system.h: 45: extern void Disable_Interrupt(void);
+[; ;system.h: 46: extern void System_sleep_mode(void);
+[; ;system.h: 47: extern void Delay_us(unsigned int us);
+[; ;system.h: 48: extern void send(unsigned char uContent);
+"9 D:\Work\project\PAV03-master\FWTRX-PAVTR-SERIALTR-PAN2416AV\src\key_scan.c
+[i _KEY0_FLAG
+-> -> 0 `i `uc
+]
+[; ;key_scan.c: 9: unsigned char KEY0_FLAG=0;
+"10
+[i _KEY1_FLAG
+-> -> 0 `i `uc
+]
+[; ;key_scan.c: 10: unsigned char KEY1_FLAG=0;
+"11
+[i _KEY2_FLAG
+-> -> 0 `i `uc
+]
+[; ;key_scan.c: 11: unsigned char KEY2_FLAG=0;
+"13
+[i _flag_time_key0_add
+-> -> 0 `i `ui
+]
+[; ;key_scan.c: 13: unsigned int flag_time_key0_add=0;
+"14
+[i _flag_time_key1_add
+-> -> 0 `i `ui
+]
+[; ;key_scan.c: 14: unsigned int flag_time_key1_add=0;
+"15
+[i _flag_time_key2_add
+-> -> 0 `i `ui
+]
+[; ;key_scan.c: 15: unsigned int flag_time_key2_add=0;
+"17
+[i _KEY0
+:U ..
+:U ..
+-> -> 0 `i `uc
+..
+..
+]
+[; ;key_scan.c: 17: channel_flag_stu KEY0 = 0;
+"18
+[i _KEY1
+:U ..
+:U ..
+-> -> 0 `i `uc
+..
+..
+]
+[; ;key_scan.c: 18: channel_flag_stu KEY1 = 0;
+"19
+[i _KEY2
+:U ..
+:U ..
+-> -> 0 `i `uc
+..
+..
+]
+[; ;key_scan.c: 19: channel_flag_stu KEY2 = 0;
+"21
+[i _key_long_flag
+-> -> 0 `i `uc
+]
+[; ;key_scan.c: 21: unsigned char key_long_flag=0;
+[; ;key_scan.c: 23: extern unsigned char sys_stute ;
+"24
+[i _match_channel_flag
+-> -> 0 `i `uc
+]
+[; ;key_scan.c: 24: unsigned char match_channel_flag=0;
+"25
+[i _key_long_flag_add
+-> -> 0 `i `uc
+]
+[; ;key_scan.c: 25: unsigned char key_long_flag_add=0;
+"28
+[v _key_scan `(v  1 ef ]
+{
+[; ;key_scan.c: 27: void key_scan(void)
+[; ;key_scan.c: 28: {
+[e :U _key_scan ]
+[f ]
+[; ;key_scan.c: 29: if(RB1==0)
+"29
+[e $ ! == -> _RB1 `i -> 0 `i 3  ]
+[; ;key_scan.c: 30: {
+"30
+{
+[; ;key_scan.c: 31: soft_delay_ms(10);
+"31
+[e ( _soft_delay_ms (1 -> -> 10 `i `ui ]
+[; ;key_scan.c: 32: if(RB1==0)
+"32
+[e $ ! == -> _RB1 `i -> 0 `i 4  ]
+[; ;key_scan.c: 33: if((KEY0_FLAG&0x01)==0)
+"33
+[e $ ! == & -> _KEY0_FLAG `i -> 1 `i -> 0 `i 5  ]
+[; ;key_scan.c: 34: {
+"34
+{
+[; ;key_scan.c: 35: flag_time_key0_add=0;
+"35
+[e = _flag_time_key0_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 36: KEY0_FLAG|=0X01;
+"36
+[e =| _KEY0_FLAG -> -> 1 `i `uc ]
+[; ;key_scan.c: 37: if(key_long_flag_add==0)
+"37
+[e $ ! == -> _key_long_flag_add `i -> 0 `i 6  ]
+[; ;key_scan.c: 38: key_long_flag_add=1;
+"38
+[e = _key_long_flag_add -> -> 1 `i `uc ]
+[e :U 6 ]
+"39
+}
+[e :U 5 ]
+"40
+[e :U 4 ]
+}
+[; ;key_scan.c: 39: }
+[; ;key_scan.c: 40: }
+[e $U 7  ]
+"41
+[e :U 3 ]
+[; ;key_scan.c: 41: else
+[; ;key_scan.c: 42: {
+"42
+{
+[; ;key_scan.c: 43: if(KEY0_FLAG&0x01)
+"43
+[e $ ! != & -> _KEY0_FLAG `i -> 1 `i -> 0 `i 8  ]
+[; ;key_scan.c: 44: {
+"44
+{
+[; ;key_scan.c: 45: KEY0_FLAG|=0X02;
+"45
+[e =| _KEY0_FLAG -> -> 2 `i `uc ]
+[; ;key_scan.c: 46: if(key_long_flag_add==1)key_long_flag_add=0;
+"46
+[e $ ! == -> _key_long_flag_add `i -> 1 `i 9  ]
+[e = _key_long_flag_add -> -> 0 `i `uc ]
+[e :U 9 ]
+"47
+}
+[e :U 8 ]
+"48
+}
+[e :U 7 ]
+[; ;key_scan.c: 47: }
+[; ;key_scan.c: 48: }
+[; ;key_scan.c: 50: if(RB2==0)
+"50
+[e $ ! == -> _RB2 `i -> 0 `i 10  ]
+[; ;key_scan.c: 51: {
+"51
+{
+[; ;key_scan.c: 52: soft_delay_ms(10);
+"52
+[e ( _soft_delay_ms (1 -> -> 10 `i `ui ]
+[; ;key_scan.c: 53: if(RB2==0)
+"53
+[e $ ! == -> _RB2 `i -> 0 `i 11  ]
+[; ;key_scan.c: 54: if((KEY1_FLAG&0x01)==0)
+"54
+[e $ ! == & -> _KEY1_FLAG `i -> 1 `i -> 0 `i 12  ]
+[; ;key_scan.c: 55: {
+"55
+{
+[; ;key_scan.c: 56: flag_time_key1_add=0;
+"56
+[e = _flag_time_key1_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 57: KEY1_FLAG|=0X01;
+"57
+[e =| _KEY1_FLAG -> -> 1 `i `uc ]
+[; ;key_scan.c: 58: if(key_long_flag_add==0)
+"58
+[e $ ! == -> _key_long_flag_add `i -> 0 `i 13  ]
+[; ;key_scan.c: 59: key_long_flag_add=2;
+"59
+[e = _key_long_flag_add -> -> 2 `i `uc ]
+[e :U 13 ]
+"60
+}
+[e :U 12 ]
+"62
+[e :U 11 ]
+}
+[; ;key_scan.c: 60: }
+[; ;key_scan.c: 62: }
+[e $U 14  ]
+"63
+[e :U 10 ]
+[; ;key_scan.c: 63: else
+[; ;key_scan.c: 64: {
+"64
+{
+[; ;key_scan.c: 65: if(KEY1_FLAG&0x01)
+"65
+[e $ ! != & -> _KEY1_FLAG `i -> 1 `i -> 0 `i 15  ]
+[; ;key_scan.c: 66: {
+"66
+{
+[; ;key_scan.c: 67: KEY1_FLAG|=0X02;
+"67
+[e =| _KEY1_FLAG -> -> 2 `i `uc ]
+[; ;key_scan.c: 68: if(key_long_flag_add==2)key_long_flag_add=0;
+"68
+[e $ ! == -> _key_long_flag_add `i -> 2 `i 16  ]
+[e = _key_long_flag_add -> -> 0 `i `uc ]
+[e :U 16 ]
+"69
+}
+[e :U 15 ]
+"70
+}
+[e :U 14 ]
+[; ;key_scan.c: 69: }
+[; ;key_scan.c: 70: }
+[; ;key_scan.c: 76: if(RB3==0)
+"76
+[e $ ! == -> _RB3 `i -> 0 `i 17  ]
+[; ;key_scan.c: 77: {
+"77
+{
+[; ;key_scan.c: 78: soft_delay_ms(10);
+"78
+[e ( _soft_delay_ms (1 -> -> 10 `i `ui ]
+[; ;key_scan.c: 79: if(RB3==0)
+"79
+[e $ ! == -> _RB3 `i -> 0 `i 18  ]
+[; ;key_scan.c: 80: if((KEY2_FLAG&0x01)==0)
+"80
+[e $ ! == & -> _KEY2_FLAG `i -> 1 `i -> 0 `i 19  ]
+[; ;key_scan.c: 81: {
+"81
+{
+[; ;key_scan.c: 82: flag_time_key2_add=0;
+"82
+[e = _flag_time_key2_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 83: KEY2_FLAG|=0X01;
+"83
+[e =| _KEY2_FLAG -> -> 1 `i `uc ]
+[; ;key_scan.c: 84: if(key_long_flag_add==0)
+"84
+[e $ ! == -> _key_long_flag_add `i -> 0 `i 20  ]
+[; ;key_scan.c: 85: key_long_flag_add=4;
+"85
+[e = _key_long_flag_add -> -> 4 `i `uc ]
+[e :U 20 ]
+"86
+}
+[e :U 19 ]
+"87
+[e :U 18 ]
+}
+[; ;key_scan.c: 86: }
+[; ;key_scan.c: 87: }
+[e $U 21  ]
+"88
+[e :U 17 ]
+[; ;key_scan.c: 88: else
+[; ;key_scan.c: 89: {
+"89
+{
+[; ;key_scan.c: 90: if(KEY2_FLAG&0x01)
+"90
+[e $ ! != & -> _KEY2_FLAG `i -> 1 `i -> 0 `i 22  ]
+[; ;key_scan.c: 91: {
+"91
+{
+[; ;key_scan.c: 92: KEY2_FLAG|=0X02;
+"92
+[e =| _KEY2_FLAG -> -> 2 `i `uc ]
+[; ;key_scan.c: 93: if(key_long_flag_add==4)key_long_flag_add=0;
+"93
+[e $ ! == -> _key_long_flag_add `i -> 4 `i 23  ]
+[e = _key_long_flag_add -> -> 0 `i `uc ]
+[e :U 23 ]
+"94
+}
+[e :U 22 ]
+"95
+}
+[e :U 21 ]
+[; ;key_scan.c: 94: }
+[; ;key_scan.c: 95: }
+[; ;key_scan.c: 98: switch(key_long_flag_add)
+"98
+[e $U 25  ]
+[; ;key_scan.c: 99: {
+"99
+{
+[; ;key_scan.c: 100: case 0:
+"100
+[e :U 26 ]
+[; ;key_scan.c: 101: {
+"101
+{
+"103
+}
+[; ;key_scan.c: 103: }break;
+[e $U 24  ]
+[; ;key_scan.c: 104: case 1:
+"104
+[e :U 27 ]
+[; ;key_scan.c: 105: {
+"105
+{
+[; ;key_scan.c: 106: flag_time_key1_add=0;
+"106
+[e = _flag_time_key1_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 107: flag_time_key2_add=0;
+"107
+[e = _flag_time_key2_add -> -> 0 `i `ui ]
+"108
+}
+[; ;key_scan.c: 108: }break;
+[e $U 24  ]
+[; ;key_scan.c: 109: case 2:
+"109
+[e :U 28 ]
+[; ;key_scan.c: 110: {
+"110
+{
+[; ;key_scan.c: 111: flag_time_key0_add=0;
+"111
+[e = _flag_time_key0_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 112: flag_time_key2_add=0;
+"112
+[e = _flag_time_key2_add -> -> 0 `i `ui ]
+"113
+}
+[; ;key_scan.c: 113: }break;
+[e $U 24  ]
+[; ;key_scan.c: 114: case 4:
+"114
+[e :U 29 ]
+[; ;key_scan.c: 115: {
+"115
+{
+[; ;key_scan.c: 116: flag_time_key0_add=0;
+"116
+[e = _flag_time_key0_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 117: flag_time_key1_add=0;
+"117
+[e = _flag_time_key1_add -> -> 0 `i `ui ]
+"118
+}
+[; ;key_scan.c: 118: }break;
+[e $U 24  ]
+"119
+}
+[; ;key_scan.c: 119: }
+[e $U 24  ]
+"98
+[e :U 25 ]
+[e [\ _key_long_flag_add , $ -> -> 0 `i `uc 26
+ , $ -> -> 1 `i `uc 27
+ , $ -> -> 2 `i `uc 28
+ , $ -> -> 4 `i `uc 29
+ 24 ]
+"119
+[e :U 24 ]
+[; ;key_scan.c: 120: }
+"120
+[e :UE 2 ]
+}
+"126
+[v _key_value_read `(v  1 ef ]
+{
+[; ;key_scan.c: 125: void key_value_read(void)
+[; ;key_scan.c: 126: {
+[e :U _key_value_read ]
+[f ]
+[; ;key_scan.c: 127: key_scan();
+"127
+[e ( _key_scan ..  ]
+[; ;key_scan.c: 128: if(KEY0_FLAG==0x01)
+"128
+[e $ ! == -> _KEY0_FLAG `i -> 1 `i 31  ]
+[; ;key_scan.c: 129: {
+"129
+{
+[; ;key_scan.c: 131: if(flag_time_key0_add>=500)
+"131
+[e $ ! >= _flag_time_key0_add -> -> 500 `i `ui 32  ]
+[; ;key_scan.c: 132: {
+"132
+{
+[; ;key_scan.c: 133: if(key_long_flag==0x01)
+"133
+[e $ ! == -> _key_long_flag `i -> 1 `i 33  ]
+[; ;key_scan.c: 134: {
+"134
+{
+[; ;key_scan.c: 135: key_long_flag=0x10;
+"135
+[e = _key_long_flag -> -> 16 `i `uc ]
+[; ;key_scan.c: 136: (TRISC0=0,RC0=0);
+"136
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 137: soft_delay_ms(100);
+"137
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 138: (TRISC0=0,RC0=1);
+"138
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+[; ;key_scan.c: 139: soft_delay_ms(100);
+"139
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 140: (TRISC0=0,RC0=0);
+"140
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 141: soft_delay_ms(100);
+"141
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 142: (TRISC0=0,RC0=1);
+"142
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+"143
+}
+[e :U 33 ]
+"144
+}
+[; ;key_scan.c: 143: }
+[; ;key_scan.c: 144: }
+[e $U 34  ]
+"145
+[e :U 32 ]
+[; ;key_scan.c: 145: else if(flag_time_key0_add>=300)
+[e $ ! >= _flag_time_key0_add -> -> 300 `i `ui 35  ]
+[; ;key_scan.c: 146: {
+"146
+{
+[; ;key_scan.c: 147: if(key_long_flag==0)
+"147
+[e $ ! == -> _key_long_flag `i -> 0 `i 36  ]
+[; ;key_scan.c: 148: {
+"148
+{
+[; ;key_scan.c: 149: key_long_flag=0x01;
+"149
+[e = _key_long_flag -> -> 1 `i `uc ]
+[; ;key_scan.c: 150: (TRISC0=0,RC0=0);
+"150
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 151: soft_delay_ms(100);
+"151
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 152: (TRISC0=0,RC0=1);
+"152
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+"153
+}
+[e :U 36 ]
+"154
+}
+[e :U 35 ]
+"157
+[e :U 34 ]
+}
+[; ;key_scan.c: 153: }
+[; ;key_scan.c: 154: }
+[; ;key_scan.c: 157: }
+[e $U 37  ]
+"158
+[e :U 31 ]
+[; ;key_scan.c: 158: else if(KEY0_FLAG==0x03)
+[e $ ! == -> _KEY0_FLAG `i -> 3 `i 38  ]
+[; ;key_scan.c: 159: {
+"159
+{
+[; ;key_scan.c: 160: KEY0_FLAG=0;
+"160
+[e = _KEY0_FLAG -> -> 0 `i `uc ]
+[; ;key_scan.c: 162: if((flag_time_key0_add<300))
+"162
+[e $ ! < _flag_time_key0_add -> -> 300 `i `ui 39  ]
+[; ;key_scan.c: 163: {
+"163
+{
+[; ;key_scan.c: 164: KEY0.channel_status^=1;
+"164
+[e =^ . _KEY0 0 -> -> 1 `i `uc ]
+"165
+}
+[; ;key_scan.c: 165: }
+[e $U 40  ]
+"167
+[e :U 39 ]
+[; ;key_scan.c: 167: else if(flag_time_key0_add<500)
+[e $ ! < _flag_time_key0_add -> -> 500 `i `ui 41  ]
+[; ;key_scan.c: 168: {
+"168
+{
+[; ;key_scan.c: 169: if(key_long_flag==0x01)
+"169
+[e $ ! == -> _key_long_flag `i -> 1 `i 42  ]
+[; ;key_scan.c: 170: {
+"170
+{
+[; ;key_scan.c: 171: KEY0.key_flag_3s=1;
+"171
+[e = . _KEY0 1 -> -> 1 `i `uc ]
+[; ;key_scan.c: 172: key_long_flag=0x11;
+"172
+[e = _key_long_flag -> -> 17 `i `uc ]
+[; ;key_scan.c: 173: sys_stute=2;
+"173
+[e = _sys_stute -> -> 2 `i `uc ]
+[; ;key_scan.c: 174: flag_time_key1_add=0;
+"174
+[e = _flag_time_key1_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 175: flag_time_key2_add=0;
+"175
+[e = _flag_time_key2_add -> -> 0 `i `ui ]
+"176
+}
+[e :U 42 ]
+"177
+}
+[; ;key_scan.c: 176: }
+[; ;key_scan.c: 177: }
+[e $U 43  ]
+"178
+[e :U 41 ]
+[; ;key_scan.c: 178: else
+[; ;key_scan.c: 179: {
+"179
+{
+[; ;key_scan.c: 180: if(key_long_flag==0x10)
+"180
+[e $ ! == -> _key_long_flag `i -> 16 `i 44  ]
+[; ;key_scan.c: 181: {
+"181
+{
+[; ;key_scan.c: 182: KEY0.key_flag_5s=1;
+"182
+[e = . _KEY0 2 -> -> 1 `i `uc ]
+[; ;key_scan.c: 183: key_long_flag=0x11;
+"183
+[e = _key_long_flag -> -> 17 `i `uc ]
+[; ;key_scan.c: 184: sys_stute=3;
+"184
+[e = _sys_stute -> -> 3 `i `uc ]
+[; ;key_scan.c: 185: flag_time_key1_add=0;
+"185
+[e = _flag_time_key1_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 186: flag_time_key2_add=0;
+"186
+[e = _flag_time_key2_add -> -> 0 `i `ui ]
+"187
+}
+[e :U 44 ]
+"188
+}
+[e :U 43 ]
+[e :U 40 ]
+"190
+}
+[e :U 38 ]
+"193
+[e :U 37 ]
+[; ;key_scan.c: 187: }
+[; ;key_scan.c: 188: }
+[; ;key_scan.c: 190: }
+[; ;key_scan.c: 193: if(KEY1_FLAG==0x01)
+[e $ ! == -> _KEY1_FLAG `i -> 1 `i 45  ]
+[; ;key_scan.c: 194: {
+"194
+{
+[; ;key_scan.c: 196: if(flag_time_key1_add>=500)
+"196
+[e $ ! >= _flag_time_key1_add -> -> 500 `i `ui 46  ]
+[; ;key_scan.c: 197: {
+"197
+{
+[; ;key_scan.c: 198: if(key_long_flag==0x02)
+"198
+[e $ ! == -> _key_long_flag `i -> 2 `i 47  ]
+[; ;key_scan.c: 199: {
+"199
+{
+[; ;key_scan.c: 200: key_long_flag=0x20;
+"200
+[e = _key_long_flag -> -> 32 `i `uc ]
+[; ;key_scan.c: 201: (TRISC0=0,RC0=0);
+"201
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 202: soft_delay_ms(100);
+"202
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 203: (TRISC0=0,RC0=1);
+"203
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+[; ;key_scan.c: 204: soft_delay_ms(100);
+"204
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 205: (TRISC0=0,RC0=0);
+"205
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 206: soft_delay_ms(100);
+"206
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 207: (TRISC0=0,RC0=1);
+"207
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+"208
+}
+[e :U 47 ]
+"209
+}
+[; ;key_scan.c: 208: }
+[; ;key_scan.c: 209: }
+[e $U 48  ]
+"210
+[e :U 46 ]
+[; ;key_scan.c: 210: else if(flag_time_key1_add>=300)
+[e $ ! >= _flag_time_key1_add -> -> 300 `i `ui 49  ]
+[; ;key_scan.c: 211: {
+"211
+{
+[; ;key_scan.c: 212: if(key_long_flag==0)
+"212
+[e $ ! == -> _key_long_flag `i -> 0 `i 50  ]
+[; ;key_scan.c: 213: {
+"213
+{
+[; ;key_scan.c: 214: key_long_flag=0x02;
+"214
+[e = _key_long_flag -> -> 2 `i `uc ]
+[; ;key_scan.c: 215: (TRISC0=0,RC0=0);
+"215
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 216: soft_delay_ms(100);
+"216
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 217: (TRISC0=0,RC0=1);
+"217
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+"218
+}
+[e :U 50 ]
+"219
+}
+[e :U 49 ]
+"221
+[e :U 48 ]
+}
+[; ;key_scan.c: 218: }
+[; ;key_scan.c: 219: }
+[; ;key_scan.c: 221: }
+[e $U 51  ]
+"222
+[e :U 45 ]
+[; ;key_scan.c: 222: else if(KEY1_FLAG==0x03)
+[e $ ! == -> _KEY1_FLAG `i -> 3 `i 52  ]
+[; ;key_scan.c: 223: {
+"223
+{
+[; ;key_scan.c: 224: KEY1_FLAG=0;
+"224
+[e = _KEY1_FLAG -> -> 0 `i `uc ]
+[; ;key_scan.c: 225: if((flag_time_key1_add<300))
+"225
+[e $ ! < _flag_time_key1_add -> -> 300 `i `ui 53  ]
+[; ;key_scan.c: 226: {
+"226
+{
+[; ;key_scan.c: 227: KEY1.channel_status^=1;
+"227
+[e =^ . _KEY1 0 -> -> 1 `i `uc ]
+"228
+}
+[; ;key_scan.c: 228: }
+[e $U 54  ]
+"230
+[e :U 53 ]
+[; ;key_scan.c: 230: else if(flag_time_key1_add<500)
+[e $ ! < _flag_time_key1_add -> -> 500 `i `ui 55  ]
+[; ;key_scan.c: 231: {
+"231
+{
+[; ;key_scan.c: 232: if(key_long_flag==0x02)
+"232
+[e $ ! == -> _key_long_flag `i -> 2 `i 56  ]
+[; ;key_scan.c: 233: {
+"233
+{
+[; ;key_scan.c: 234: KEY1.key_flag_3s=1;
+"234
+[e = . _KEY1 1 -> -> 1 `i `uc ]
+[; ;key_scan.c: 235: key_long_flag=0x21;
+"235
+[e = _key_long_flag -> -> 33 `i `uc ]
+[; ;key_scan.c: 236: sys_stute=2;
+"236
+[e = _sys_stute -> -> 2 `i `uc ]
+[; ;key_scan.c: 237: flag_time_key2_add=0;
+"237
+[e = _flag_time_key2_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 238: flag_time_key0_add=0;
+"238
+[e = _flag_time_key0_add -> -> 0 `i `ui ]
+"239
+}
+[e :U 56 ]
+"240
+}
+[; ;key_scan.c: 239: }
+[; ;key_scan.c: 240: }
+[e $U 57  ]
+"241
+[e :U 55 ]
+[; ;key_scan.c: 241: else
+[; ;key_scan.c: 242: {
+"242
+{
+[; ;key_scan.c: 243: if(key_long_flag==0x20)
+"243
+[e $ ! == -> _key_long_flag `i -> 32 `i 58  ]
+[; ;key_scan.c: 244: {
+"244
+{
+[; ;key_scan.c: 245: KEY1.key_flag_5s=1;
+"245
+[e = . _KEY1 2 -> -> 1 `i `uc ]
+[; ;key_scan.c: 246: key_long_flag=0x21;
+"246
+[e = _key_long_flag -> -> 33 `i `uc ]
+[; ;key_scan.c: 247: sys_stute=3;
+"247
+[e = _sys_stute -> -> 3 `i `uc ]
+[; ;key_scan.c: 248: flag_time_key2_add=0;
+"248
+[e = _flag_time_key2_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 249: flag_time_key0_add=0;
+"249
+[e = _flag_time_key0_add -> -> 0 `i `ui ]
+"250
+}
+[e :U 58 ]
+"251
+}
+[e :U 57 ]
+[e :U 54 ]
+"254
+}
+[e :U 52 ]
+"257
+[e :U 51 ]
+[; ;key_scan.c: 250: }
+[; ;key_scan.c: 251: }
+[; ;key_scan.c: 254: }
+[; ;key_scan.c: 257: if(KEY2_FLAG==0x01)
+[e $ ! == -> _KEY2_FLAG `i -> 1 `i 59  ]
+[; ;key_scan.c: 258: {
+"258
+{
+[; ;key_scan.c: 261: if(flag_time_key2_add>=500)
+"261
+[e $ ! >= _flag_time_key2_add -> -> 500 `i `ui 60  ]
+[; ;key_scan.c: 262: {
+"262
+{
+[; ;key_scan.c: 263: if(key_long_flag==0x04)
+"263
+[e $ ! == -> _key_long_flag `i -> 4 `i 61  ]
+[; ;key_scan.c: 264: {
+"264
+{
+[; ;key_scan.c: 265: key_long_flag=0x40;
+"265
+[e = _key_long_flag -> -> 64 `i `uc ]
+[; ;key_scan.c: 266: (TRISC0=0,RC0=0);
+"266
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 267: soft_delay_ms(100);
+"267
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 268: (TRISC0=0,RC0=1);
+"268
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+[; ;key_scan.c: 269: soft_delay_ms(100);
+"269
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 270: (TRISC0=0,RC0=0);
+"270
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 271: soft_delay_ms(100);
+"271
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 272: (TRISC0=0,RC0=1);
+"272
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+"274
+}
+[e :U 61 ]
+"275
+}
+[; ;key_scan.c: 274: }
+[; ;key_scan.c: 275: }
+[e $U 62  ]
+"276
+[e :U 60 ]
+[; ;key_scan.c: 276: else if(flag_time_key2_add>=300)
+[e $ ! >= _flag_time_key2_add -> -> 300 `i `ui 63  ]
+[; ;key_scan.c: 277: {
+"277
+{
+[; ;key_scan.c: 278: if(key_long_flag==0)
+"278
+[e $ ! == -> _key_long_flag `i -> 0 `i 64  ]
+[; ;key_scan.c: 279: {
+"279
+{
+[; ;key_scan.c: 280: key_long_flag=0x04;
+"280
+[e = _key_long_flag -> -> 4 `i `uc ]
+[; ;key_scan.c: 281: (TRISC0=0,RC0=0);
+"281
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 0 `i `b `i ]
+[; ;key_scan.c: 282: soft_delay_ms(100);
+"282
+[e ( _soft_delay_ms (1 -> -> 100 `i `ui ]
+[; ;key_scan.c: 283: (TRISC0=0,RC0=1);
+"283
+[e ; -> = _TRISC0 -> -> 0 `i `b `i -> = _RC0 -> -> 1 `i `b `i ]
+"284
+}
+[e :U 64 ]
+"285
+}
+[e :U 63 ]
+"287
+[e :U 62 ]
+}
+[; ;key_scan.c: 284: }
+[; ;key_scan.c: 285: }
+[; ;key_scan.c: 287: }
+[e $U 65  ]
+"288
+[e :U 59 ]
+[; ;key_scan.c: 288: else if(KEY2_FLAG==0x03)
+[e $ ! == -> _KEY2_FLAG `i -> 3 `i 66  ]
+[; ;key_scan.c: 289: {
+"289
+{
+[; ;key_scan.c: 290: KEY2_FLAG=0;
+"290
+[e = _KEY2_FLAG -> -> 0 `i `uc ]
+[; ;key_scan.c: 291: if((flag_time_key2_add<300))
+"291
+[e $ ! < _flag_time_key2_add -> -> 300 `i `ui 67  ]
+[; ;key_scan.c: 292: {
+"292
+{
+[; ;key_scan.c: 293: KEY2.channel_status^=1;
+"293
+[e =^ . _KEY2 0 -> -> 1 `i `uc ]
+"294
+}
+[; ;key_scan.c: 294: }
+[e $U 68  ]
+"297
+[e :U 67 ]
+[; ;key_scan.c: 297: else if(flag_time_key2_add<500)
+[e $ ! < _flag_time_key2_add -> -> 500 `i `ui 69  ]
+[; ;key_scan.c: 298: {
+"298
+{
+[; ;key_scan.c: 299: if(key_long_flag==0x04)
+"299
+[e $ ! == -> _key_long_flag `i -> 4 `i 70  ]
+[; ;key_scan.c: 300: {
+"300
+{
+[; ;key_scan.c: 301: KEY2.key_flag_3s=1;
+"301
+[e = . _KEY2 1 -> -> 1 `i `uc ]
+[; ;key_scan.c: 302: key_long_flag=0x41;
+"302
+[e = _key_long_flag -> -> 65 `i `uc ]
+[; ;key_scan.c: 303: sys_stute=2;
+"303
+[e = _sys_stute -> -> 2 `i `uc ]
+[; ;key_scan.c: 304: flag_time_key1_add=0;
+"304
+[e = _flag_time_key1_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 305: flag_time_key0_add=0;
+"305
+[e = _flag_time_key0_add -> -> 0 `i `ui ]
+"307
+}
+[e :U 70 ]
+"308
+}
+[; ;key_scan.c: 307: }
+[; ;key_scan.c: 308: }
+[e $U 71  ]
+"309
+[e :U 69 ]
+[; ;key_scan.c: 309: else
+[; ;key_scan.c: 310: {
+"310
+{
+[; ;key_scan.c: 311: if(key_long_flag==0x40)
+"311
+[e $ ! == -> _key_long_flag `i -> 64 `i 72  ]
+[; ;key_scan.c: 312: {
+"312
+{
+[; ;key_scan.c: 313: KEY2.key_flag_5s=1;
+"313
+[e = . _KEY2 2 -> -> 1 `i `uc ]
+[; ;key_scan.c: 314: key_long_flag=0x41;
+"314
+[e = _key_long_flag -> -> 65 `i `uc ]
+[; ;key_scan.c: 315: sys_stute=3;
+"315
+[e = _sys_stute -> -> 3 `i `uc ]
+[; ;key_scan.c: 316: flag_time_key1_add=0;
+"316
+[e = _flag_time_key1_add -> -> 0 `i `ui ]
+[; ;key_scan.c: 317: flag_time_key0_add=0;
+"317
+[e = _flag_time_key0_add -> -> 0 `i `ui ]
+"318
+}
+[e :U 72 ]
+"319
+}
+[e :U 71 ]
+[e :U 68 ]
+"321
+}
+[e :U 66 ]
+"323
+[e :U 65 ]
+[; ;key_scan.c: 318: }
+[; ;key_scan.c: 319: }
+[; ;key_scan.c: 321: }
+[; ;key_scan.c: 323: }
+[e :UE 30 ]
+}
+"332
+[v _key_Init `(v  1 ef ]
+{
+[; ;key_scan.c: 331: void key_Init(void)
+[; ;key_scan.c: 332: {
+[e :U _key_Init ]
+[f ]
+[; ;key_scan.c: 333: OPTION_REG &= ~0x80;
+"333
+[e =& _OPTION_REG -> ~ -> 128 `i `uc ]
+[; ;key_scan.c: 334: TRISB|=0x0e;
+"334
+[e =| _TRISB -> -> 14 `i `uc ]
+[; ;key_scan.c: 335: WPUB|=0x0e;
+"335
+[e =| _WPUB -> -> 14 `i `uc ]
+[; ;key_scan.c: 336: }
+"336
+[e :UE 73 ]
+}
