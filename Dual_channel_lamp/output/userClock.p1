@@ -1,0 +1,83 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"5 D:\Work\project\遥控+接收主程序\双信道接收2\src\userClock.c
+[v _clk_flag `uc  1 e ]
+"6 D:\Work\project\遥控+接收主程序\双信道接收2\src\userClock.c
+[v _dClkCnt0 `uc  1 s ]
+"7 D:\Work\project\遥控+接收主程序\双信道接收2\src\userClock.c
+[v _clk_count `Vuc  0 e ]
+[; ;system.h: 17: typedef enum{
+[; ;system.h: 18: CPU_FREQUENCY_EXTERNAL = 0x00,
+[; ;system.h: 19: CPU_FREQUENCY_31K = 0x01,
+[; ;system.h: 20: CPU_FREQUENCY_125K = 0x11,
+[; ;system.h: 21: CPU_FREQUENCY_250K = 0x21,
+[; ;system.h: 22: CPU_FREQUENCY_500K = 0x31,
+[; ;system.h: 23: CPU_FREQUENCY_1M = 0x41,
+[; ;system.h: 24: CPU_FREQUENCY_2M = 0x51,
+[; ;system.h: 25: CPU_FREQUENCY_4M = 0x61,
+[; ;system.h: 26: CPU_FREQUENCY_8M = 0x71
+[; ;system.h: 27: }CPU_FREQUENCY_e;
+[; ;system.h: 29: typedef enum{
+[; ;system.h: 30: PORTB_CHANGE_ISR_ENABLE = 0x80,
+[; ;system.h: 31: INT0_ISR_ENABLE = 0x10,
+[; ;system.h: 32: TIMER0_ISR_ENABLE = 0x20,
+[; ;system.h: 33: TIMER1_ISR_ENABLE = 0x01,
+[; ;system.h: 34: TIMER2_ISR_ENABLE = 0x02,
+[; ;system.h: 35: ADC_ISR_ENABLE = 0x40,
+[; ;system.h: 36: }INT_ENABLE_FLAG_e;
+[; ;system.h: 38: typedef enum{
+[; ;system.h: 39: PORTB_CHANGE_ISR_TOUCH = 0x01,
+[; ;system.h: 40: INT0_ISR_TOUCH = 0x02,
+[; ;system.h: 41: TIMER0_ISR_TOUCH = 0x04,
+[; ;system.h: 42: TIMER1_ISR_TOUCH = 0x01,
+[; ;system.h: 43: TIMER2_ISR_TOUCH = 0x02,
+[; ;system.h: 44: ADC_ISR_TOUCH = 0x40,
+[; ;system.h: 45: }INT_TOUCH_FLAG_e;
+[; ;system.h: 47: extern void Interrupt_init(void);
+[; ;system.h: 48: extern void soft_delay_ms(unsigned int ms);
+[; ;system.h: 49: extern void system_set_CPU_frequency(CPU_FREQUENCY_e CPU_Frequency);
+[; ;system.h: 50: extern void clear_interrupt_flag(void);
+[; ;system.h: 51: extern void system_to_sleep(void);
+[; ;system.h: 52: extern void Enable_Interrupt(void);
+[; ;system.h: 53: extern void Disable_Interrupt(void);
+[; ;userClock.h: 7: extern unsigned char clk_flag;
+[; ;userClock.h: 32: void getClock(void);
+[; ;userClock.c: 5: unsigned char clk_flag;
+[; ;userClock.c: 6: static unsigned char dClkCnt0;
+[; ;userClock.c: 7: extern volatile unsigned char clk_count;
+"13 D:\Work\project\遥控+接收主程序\双信道接收2\src\userClock.c
+[v _getClock `(v  1 ef ]
+{
+[; ;userClock.c: 12: void getClock(void)
+[; ;userClock.c: 13: {
+[e :U _getClock ]
+[f ]
+"14
+[v _temp `uc  1 a ]
+[; ;userClock.c: 14: unsigned char temp = 0;
+[e = _temp -> -> 0 `i `uc ]
+[; ;userClock.c: 15: clk_flag = 0;
+"15
+[e = _clk_flag -> -> 0 `i `uc ]
+[; ;userClock.c: 17: if(clk_count >= 1)
+"17
+[e $ ! >= -> _clk_count `i -> 1 `i 2  ]
+[; ;userClock.c: 18: {
+"18
+{
+[; ;userClock.c: 19: clk_count -= 1;
+"19
+[e =- _clk_count -> -> 1 `i `uc ]
+[; ;userClock.c: 20: temp = dClkCnt0;
+"20
+[e = _temp _dClkCnt0 ]
+[; ;userClock.c: 21: clk_flag = temp ^ (++dClkCnt0);
+"21
+[e = _clk_flag -> ^ -> _temp `i -> =+ _dClkCnt0 -> -> 1 `i `uc `i `uc ]
+"22
+}
+[e :U 2 ]
+[; ;userClock.c: 22: }
+[; ;userClock.c: 23: }
+"23
+[e :UE 1 ]
+}

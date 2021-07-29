@@ -1,0 +1,57 @@
+Warning[1390]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.h	第46行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[359]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c	第170行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[1390]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\timer0.h	第8行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.h	第46行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.h	第46行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.c	第14行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.c	第36行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[359]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c	第147行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[359]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c	第148行	illegal conversion between pointer types
+pointer to const unsigned char -> pointer to unsigned char
+Warning[1390]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.h	第46行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[1390]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.h	第46行	identifier specifies insignificant characters beyond maximum identifier length
+Warning[339]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第33行	initializer in extern declaration
+Warning[339]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第34行	initializer in extern declaration
+Warning[339]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第35行	initializer in extern declaration
+Warning[339]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第36行	initializer in extern declaration
+Warning[339]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第37行	initializer in extern declaration
+Warning[339]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第38行	initializer in extern declaration
+Warning[343]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第165行	implicit return at end of non-void function
+Warning[350]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第345行	unused label "Mark" (from line 269)
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c	第12行	variable "_ACK_Payload_length" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第82行	variable "_CLRRF_AddCnt" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第30行	variable "_Chg_B" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第21行	variable "_Chg_En" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第29行	variable "_Chg_G" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第28行	variable "_Chg_R" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第23行	variable "_Chg_Time" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第22行	variable "_Chg_Type" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c	第27行	variable "_RF_RxMark" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第26行	variable "_S7_Cnt" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第25行	variable "_S7_En" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第31行	variable "_Stp" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第19行	variable "_colour_En" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\system.c	第48行	variable "_inside_intterrupt_enable" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\system.c	第48行	variable "_peripheral_intterrupt_enable" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\system.c	第49行	variable "_inside_intterrupt_touch" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c	第296行	variable "_k" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c	第304行	variable "_k" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c	第49行	variable "_k" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c	第73行	variable "_k" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c	第162行	variable "_k" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第262行	variable "_i" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第263行	variable "_match_flag" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第264行	variable "_flag" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c	第265行	variable "_tmp_brightness" is not used
+Warning[1090]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c	第83行	variable "_CLRRF_AddTimEn" is not used
+Warning[1257]:	D:\Work\project\遥控+接收主程序\双信道接收2\src\iic.c	第128行	local variable "_data" is used but never given a value
+
+Memory Summary:
+    Program space        used   FFEh (  4094) of  1000h words   (100.0%)
+    Data space           used    A3h (   163) of    B0h bytes   ( 92.6%)
+    EEPROM space         None available
+    Configuration bits   used     0h (     0) of     2h words   (  0.0%)
+    ID Location space    used     0h (     0) of     4h bytes   (  0.0%)
+

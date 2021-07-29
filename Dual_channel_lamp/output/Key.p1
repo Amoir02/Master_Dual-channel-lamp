@@ -1,0 +1,2645 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"18 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INDF `Vuc  1 e@0 ]
+"19 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR0 `Vuc  1 e@1 ]
+"20 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PCL `Vuc  1 e@2 ]
+"21 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _STATUS `Vuc  1 e@3 ]
+"22 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _FSR `Vuc  1 e@4 ]
+"23 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PORTA `Vuc  1 e@5 ]
+"24 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PORTB `Vuc  1 e@6 ]
+"25 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PORTC `Vuc  1 e@7 ]
+"27 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PORTE `Vuc  1 e@9 ]
+"28 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PCLATH `Vuc  1 e@10 ]
+"29 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INTCON `Vuc  1 e@11 ]
+"30 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PIR1 `Vuc  1 e@12 ]
+"31 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PIR2 `Vuc  1 e@13 ]
+"32 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1L `Vuc  1 e@14 ]
+"33 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1H `Vuc  1 e@15 ]
+"34 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1CON `Vuc  1 e@16 ]
+"35 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR2 `Vuc  1 e@17 ]
+"36 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T2CON `Vuc  1 e@18 ]
+"37 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPBUF `Vuc  1 e@19 ]
+"38 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPCON `Vuc  1 e@20 ]
+"39 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCPR1L `Vuc  1 e@21 ]
+"40 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCPR1H `Vuc  1 e@22 ]
+"41 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1CON `Vuc  1 e@23 ]
+"47 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCPR2L `Vuc  1 e@27 ]
+"48 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCPR2H `Vuc  1 e@28 ]
+"49 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2CON `Vuc  1 e@29 ]
+"50 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADRESH `Vuc  1 e@30 ]
+"51 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADCON0 `Vuc  1 e@31 ]
+"52 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OPTION_REG `Vuc  1 e@129 ]
+"53 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA `Vuc  1 e@133 ]
+"54 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB `Vuc  1 e@134 ]
+"55 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC `Vuc  1 e@135 ]
+"56 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE `Vuc  1 e@137 ]
+"57 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PIE1 `Vuc  1 e@140 ]
+"58 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PIE2 `Vuc  1 e@141 ]
+"60 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OSCCON `Vuc  1 e@143 ]
+"61 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OSCTUNE `Vuc  1 e@144 ]
+"62 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPCON2 `Vuc  1 e@145 ]
+"63 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PR2 `Vuc  1 e@146 ]
+"64 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPADD `Vuc  1 e@147 ]
+"65 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPSTAT `Vuc  1 e@148 ]
+"66 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB `Vuc  1 e@149 ]
+"67 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB `Vuc  1 e@150 ]
+"74 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADRESL `Vuc  1 e@158 ]
+"75 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADCON1 `Vuc  1 e@159 ]
+"76 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WDTCON `Vuc  1 e@261 ]
+"81 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEDAT `Vuc  1 e@268 ]
+"82 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEDATA `Vuc  1 e@268 ]
+"83 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEADR `Vuc  1 e@269 ]
+"84 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEADRL `Vuc  1 e@269 ]
+"85 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEDATH `Vuc  1 e@270 ]
+"86 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEADRH `Vuc  1 e@271 ]
+"88 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TABLE_SPH `Vuc  1 e@272 ]
+"89 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TABLE_SPL `Vuc  1 e@273 ]
+"90 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TABLE_DATAH `Vuc  1 e@274 ]
+"99 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE `Vuc  1 e@282 ]
+"100 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OPA0CON `Vuc  1 e@284 ]
+"101 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _OPA0ADJ `Vuc  1 e@285 ]
+"105 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANSEL `Vuc  1 e@392 ]
+"106 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANSELH `Vuc  1 e@393 ]
+"108 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EECON1 `Vuc  1 e@396 ]
+"109 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EECON2 `Vuc  1 e@397 ]
+"110 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA `Vuc  1 e@398 ]
+"111 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC `Vuc  1 e@399 ]
+"113 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LEDCON0 `Vuc  1 e@400 ]
+"114 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LEDCON1 `Vuc  1 e@401 ]
+"115 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LEDADD `Vuc  1 e@402 ]
+"116 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LEDDATA `Vuc  1 e@403 ]
+"117 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LCDCON0 `Vuc  1 e@400 ]
+"118 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LCDCON1 `Vuc  1 e@401 ]
+"119 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LCDADD `Vuc  1 e@402 ]
+"120 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _LCDDATA `Vuc  1 e@403 ]
+"121 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SEGEN2 `Vuc  1 e@404 ]
+"122 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SEGEN1 `Vuc  1 e@405 ]
+"123 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SEGEN0 `Vuc  1 e@406 ]
+"124 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _COMEN `Vuc  1 e@407 ]
+"128 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CARRY `Vb  1 e@24 ]
+"129 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC `Vb  1 e@25 ]
+"130 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ZERO `Vb  1 e@26 ]
+"131 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PD `Vb  1 e@27 ]
+"132 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TO `Vb  1 e@28 ]
+"133 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IRP `Vb  1 e@31 ]
+"136 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA0 `Vb  1 e@40 ]
+"137 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA1 `Vb  1 e@41 ]
+"138 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA2 `Vb  1 e@42 ]
+"139 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA3 `Vb  1 e@43 ]
+"140 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA4 `Vb  1 e@44 ]
+"141 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA5 `Vb  1 e@45 ]
+"142 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA6 `Vb  1 e@46 ]
+"143 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RA7 `Vb  1 e@47 ]
+"146 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB0 `Vb  1 e@48 ]
+"147 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB1 `Vb  1 e@49 ]
+"148 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB2 `Vb  1 e@50 ]
+"149 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB3 `Vb  1 e@51 ]
+"150 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB4 `Vb  1 e@52 ]
+"151 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB5 `Vb  1 e@53 ]
+"152 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB6 `Vb  1 e@54 ]
+"153 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RB7 `Vb  1 e@55 ]
+"156 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC0 `Vb  1 e@56 ]
+"157 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC1 `Vb  1 e@57 ]
+"158 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC2 `Vb  1 e@58 ]
+"159 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC3 `Vb  1 e@59 ]
+"160 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC4 `Vb  1 e@60 ]
+"161 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC5 `Vb  1 e@61 ]
+"162 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC6 `Vb  1 e@62 ]
+"163 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RC7 `Vb  1 e@63 ]
+"166 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RE0 `Vb  1 e@72 ]
+"167 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RE1 `Vb  1 e@73 ]
+"168 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RE2 `Vb  1 e@74 ]
+"169 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RE3 `Vb  1 e@75 ]
+"172 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RBIF `Vb  1 e@88 ]
+"174 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RABIF `Vb  1 e@88 ]
+"175 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INTF `Vb  1 e@89 ]
+"176 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T0IF `Vb  1 e@90 ]
+"177 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RBIE `Vb  1 e@91 ]
+"179 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RABIE `Vb  1 e@91 ]
+"180 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INTE `Vb  1 e@92 ]
+"181 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T0IE `Vb  1 e@93 ]
+"182 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PEIE `Vb  1 e@94 ]
+"183 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _GIE `Vb  1 e@95 ]
+"186 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1IF `Vb  1 e@96 ]
+"187 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR2IF `Vb  1 e@97 ]
+"188 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1IF `Vb  1 e@98 ]
+"189 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPIF `Vb  1 e@99 ]
+"190 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TXIF `Vb  1 e@100 ]
+"191 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RCIF `Vb  1 e@101 ]
+"192 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADIF `Vb  1 e@102 ]
+"195 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2IF `Vb  1 e@104 ]
+"196 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _BCLIF `Vb  1 e@107 ]
+"197 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEIF `Vb  1 e@108 ]
+"198 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _C1IF `Vb  1 e@109 ]
+"199 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _C2IF `Vb  1 e@110 ]
+"202 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1ON `Vb  1 e@128 ]
+"203 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1CS `Vb  1 e@129 ]
+"204 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1SYNC `Vb  1 e@130 ]
+"205 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1OSCEN `Vb  1 e@131 ]
+"206 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1CKPS0 `Vb  1 e@132 ]
+"207 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1CKPS1 `Vb  1 e@133 ]
+"208 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1GE `Vb  1 e@134 ]
+"209 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T1GINV `Vb  1 e@135 ]
+"212 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T2CKPS0 `Vb  1 e@144 ]
+"213 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T2CKPS1 `Vb  1 e@145 ]
+"214 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR2ON `Vb  1 e@146 ]
+"215 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TOUTPS0 `Vb  1 e@147 ]
+"216 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TOUTPS1 `Vb  1 e@148 ]
+"217 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TOUTPS2 `Vb  1 e@149 ]
+"218 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TOUTPS3 `Vb  1 e@150 ]
+"221 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPM0 `Vb  1 e@160 ]
+"222 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPM1 `Vb  1 e@161 ]
+"223 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPM2 `Vb  1 e@162 ]
+"224 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPM3 `Vb  1 e@163 ]
+"225 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CKP `Vb  1 e@164 ]
+"226 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPEN `Vb  1 e@165 ]
+"227 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPOV `Vb  1 e@166 ]
+"228 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WCOL `Vb  1 e@167 ]
+"231 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1M0 `Vb  1 e@184 ]
+"232 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1M1 `Vb  1 e@185 ]
+"233 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1M2 `Vb  1 e@186 ]
+"234 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1M3 `Vb  1 e@187 ]
+"235 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC1B0 `Vb  1 e@188 ]
+"236 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC1B1 `Vb  1 e@189 ]
+"237 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _P1M0 `Vb  1 e@190 ]
+"238 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _P1M1 `Vb  1 e@191 ]
+"251 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2M0 `Vb  1 e@232 ]
+"252 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2M1 `Vb  1 e@233 ]
+"253 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2M2 `Vb  1 e@234 ]
+"254 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2M3 `Vb  1 e@235 ]
+"255 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC2B0 `Vb  1 e@236 ]
+"256 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DC2B1 `Vb  1 e@237 ]
+"257 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2IN0 `Vb  1 e@238 ]
+"258 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2IN1 `Vb  1 e@239 ]
+"261 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADON `Vb  1 e@248 ]
+"262 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _GODONE `Vb  1 e@249 ]
+"263 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CHS0 `Vb  1 e@250 ]
+"264 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CHS1 `Vb  1 e@251 ]
+"265 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CHS2 `Vb  1 e@252 ]
+"266 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CHS3 `Vb  1 e@253 ]
+"267 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADCS0 `Vb  1 e@254 ]
+"268 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADCS1 `Vb  1 e@255 ]
+"271 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PS0 `Vb  1 e@1032 ]
+"272 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PS1 `Vb  1 e@1033 ]
+"273 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PS2 `Vb  1 e@1034 ]
+"274 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PSA `Vb  1 e@1035 ]
+"275 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T0SE `Vb  1 e@1036 ]
+"276 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _T0CS `Vb  1 e@1037 ]
+"277 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INTEDG `Vb  1 e@1038 ]
+"278 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RBPU `Vb  1 e@1039 ]
+"280 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RABPU `Vb  1 e@1039 ]
+"283 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA0 `Vb  1 e@1064 ]
+"284 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA1 `Vb  1 e@1065 ]
+"285 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA2 `Vb  1 e@1066 ]
+"286 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA3 `Vb  1 e@1067 ]
+"287 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA4 `Vb  1 e@1068 ]
+"288 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA5 `Vb  1 e@1069 ]
+"289 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA6 `Vb  1 e@1070 ]
+"290 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISA7 `Vb  1 e@1071 ]
+"293 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB0 `Vb  1 e@1072 ]
+"294 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB1 `Vb  1 e@1073 ]
+"295 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB2 `Vb  1 e@1074 ]
+"296 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB3 `Vb  1 e@1075 ]
+"297 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB4 `Vb  1 e@1076 ]
+"298 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB5 `Vb  1 e@1077 ]
+"299 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB6 `Vb  1 e@1078 ]
+"300 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISB7 `Vb  1 e@1079 ]
+"303 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC0 `Vb  1 e@1080 ]
+"304 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC1 `Vb  1 e@1081 ]
+"305 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC2 `Vb  1 e@1082 ]
+"306 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC3 `Vb  1 e@1083 ]
+"307 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC4 `Vb  1 e@1084 ]
+"308 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC5 `Vb  1 e@1085 ]
+"309 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC6 `Vb  1 e@1086 ]
+"310 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISC7 `Vb  1 e@1087 ]
+"314 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE0 `Vb  1 e@1096 ]
+"315 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE1 `Vb  1 e@1097 ]
+"316 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE2 `Vb  1 e@1098 ]
+"317 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TRISE3 `Vb  1 e@1099 ]
+"320 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR1IE `Vb  1 e@1120 ]
+"321 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TMR2IE `Vb  1 e@1121 ]
+"322 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP1IE `Vb  1 e@1122 ]
+"323 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SSPIE `Vb  1 e@1123 ]
+"324 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TXIE `Vb  1 e@1124 ]
+"325 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RCIE `Vb  1 e@1125 ]
+"326 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADIE `Vb  1 e@1126 ]
+"329 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CCP2IE `Vb  1 e@1128 ]
+"330 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _BCLIE `Vb  1 e@1131 ]
+"331 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEIE `Vb  1 e@1132 ]
+"332 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _C1IE `Vb  1 e@1133 ]
+"333 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _C2IE `Vb  1 e@1134 ]
+"337 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SCS `Vb  1 e@1144 ]
+"338 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IRCF0 `Vb  1 e@1148 ]
+"339 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IRCF1 `Vb  1 e@1149 ]
+"340 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IRCF2 `Vb  1 e@1150 ]
+"343 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN0 `Vb  1 e@1152 ]
+"344 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN1 `Vb  1 e@1153 ]
+"345 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN2 `Vb  1 e@1154 ]
+"346 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN3 `Vb  1 e@1155 ]
+"347 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _TUN4 `Vb  1 e@1156 ]
+"350 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SEN `Vb  1 e@1160 ]
+"351 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RSEN `Vb  1 e@1161 ]
+"352 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _PEN `Vb  1 e@1162 ]
+"353 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RCEN `Vb  1 e@1163 ]
+"354 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ACKEN `Vb  1 e@1164 ]
+"355 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ACKDT `Vb  1 e@1165 ]
+"356 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ACKSTAT `Vb  1 e@1166 ]
+"357 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _GCEN `Vb  1 e@1167 ]
+"360 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _BF `Vb  1 e@1184 ]
+"361 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _UA `Vb  1 e@1185 ]
+"362 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RW `Vb  1 e@1186 ]
+"363 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _START `Vb  1 e@1187 ]
+"364 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _STOP `Vb  1 e@1188 ]
+"365 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _DA `Vb  1 e@1189 ]
+"366 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _CKE `Vb  1 e@1190 ]
+"367 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SMP `Vb  1 e@1191 ]
+"370 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA0 `Vb  1 e@3184 ]
+"371 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA1 `Vb  1 e@3185 ]
+"372 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA2 `Vb  1 e@3186 ]
+"373 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA3 `Vb  1 e@3187 ]
+"374 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA4 `Vb  1 e@3188 ]
+"375 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA5 `Vb  1 e@3189 ]
+"376 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA6 `Vb  1 e@3190 ]
+"377 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUA7 `Vb  1 e@3191 ]
+"380 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB0 `Vb  1 e@1192 ]
+"381 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB1 `Vb  1 e@1193 ]
+"382 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB2 `Vb  1 e@1194 ]
+"383 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB3 `Vb  1 e@1195 ]
+"384 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB4 `Vb  1 e@1196 ]
+"385 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB5 `Vb  1 e@1197 ]
+"386 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB6 `Vb  1 e@1198 ]
+"387 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUB7 `Vb  1 e@1199 ]
+"390 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC0 `Vb  1 e@3192 ]
+"391 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC1 `Vb  1 e@3193 ]
+"392 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC2 `Vb  1 e@3194 ]
+"393 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC3 `Vb  1 e@3195 ]
+"394 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC4 `Vb  1 e@3196 ]
+"395 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC5 `Vb  1 e@3197 ]
+"396 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC6 `Vb  1 e@3198 ]
+"397 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUC7 `Vb  1 e@3199 ]
+"400 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE0 `Vb  1 e@2256 ]
+"401 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE1 `Vb  1 e@2257 ]
+"402 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE2 `Vb  1 e@2258 ]
+"403 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WPUE3 `Vb  1 e@2259 ]
+"406 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB0 `Vb  1 e@1200 ]
+"407 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB1 `Vb  1 e@1201 ]
+"408 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB2 `Vb  1 e@1202 ]
+"409 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB3 `Vb  1 e@1203 ]
+"410 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB4 `Vb  1 e@1204 ]
+"411 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB5 `Vb  1 e@1205 ]
+"412 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB6 `Vb  1 e@1206 ]
+"413 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _IOCB7 `Vb  1 e@1207 ]
+"429 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ADFM `Vb  1 e@1279 ]
+"432 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _SWDTEN `Vb  1 e@2088 ]
+"436 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS0 `Vb  1 e@3136 ]
+"437 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS1 `Vb  1 e@3137 ]
+"438 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS2 `Vb  1 e@3138 ]
+"439 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS3 `Vb  1 e@3139 ]
+"440 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS4 `Vb  1 e@3140 ]
+"441 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS5 `Vb  1 e@3141 ]
+"442 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS6 `Vb  1 e@3142 ]
+"443 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS7 `Vb  1 e@3143 ]
+"446 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS8 `Vb  1 e@3144 ]
+"447 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS9 `Vb  1 e@3145 ]
+"448 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS10 `Vb  1 e@3146 ]
+"449 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS11 `Vb  1 e@3147 ]
+"450 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS12 `Vb  1 e@3148 ]
+"451 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _ANS13 `Vb  1 e@3149 ]
+"454 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _RD `Vb  1 e@3168 ]
+"455 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WR `Vb  1 e@3169 ]
+"456 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WREN `Vb  1 e@3170 ]
+"457 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _WRERR `Vb  1 e@3171 ]
+"458 D:\Work\file\PAN\PAN2416\±àÒëÆ÷\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _EEPGD `Vb  1 e@3175 ]
+"19 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _colour_En `uc  1 s ]
+"21 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _Chg_En `uc  1 s ]
+"22 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _Chg_Type `uc  1 s ]
+"23 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _Chg_Time `uc  1 s ]
+"25 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _S7_En `uc  1 s ]
+"26 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _S7_Cnt `uc  1 s ]
+"28 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _Chg_R `uc  1 s ]
+"29 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _Chg_G `uc  1 s ]
+"30 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _Chg_B `uc  1 s ]
+"31 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _Stp `uc  1 s ]
+"36 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _LED_ON_Sat `uc  1 e ]
+"37 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _LED_Chg_Cnt `uc  1 e ]
+"31 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\PWM.h
+[v _CCP1_set_duty_cycle `(v  0 ef1`ui ]
+"39 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\PWM.h
+[v _CCP2_set_duty_cycle `(v  0 ef1`ui ]
+"48 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\system.h
+[v _soft_delay_ms `(v  0 ef1`ui ]
+"17 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\WDT.h
+[v _WDT_clear `(v  0 ef ]
+"40 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _LEDR1_Vol `uc  0 e ]
+"41 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _LEDR2_Vol `uc  0 e ]
+"48 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _PWM_LED1 `(v  0 ef1`uc ]
+"49 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _PWM_LED2 `(v  0 ef1`uc ]
+"70 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Buffer.H
+[v _SetRunEn `(v  0 ef3`uc`uc`i ]
+"82 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _CLRRF_AddCnt `uc  1 s ]
+"83 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _CLRRF_AddTimEn `uc  1 s ]
+"84 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _CLRRF_AddTimeSV `us  1 s ]
+"88 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _SysDingShiOne `uc  1 s ]
+"89 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _SysDingShiCnt `uc  1 s ]
+"90 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _SysDingShiSTEP `uc  1 s ]
+"55 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Buffer.H
+[v _BufRuning `(v  0 ef ]
+"44 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _SysDingShiEn `uc  0 e ]
+"154 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _ChgLV_ZX `Cuc  -> 6 `i e ]
+"155 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _ChgLV_FW `Cuc  -> 7 `i e ]
+"175 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _KeyVol `ui  1 s ]
+"176 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _KeyVolSV `ui  1 s ]
+"181 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _KEYKeepAddMark_1 `uc  1 s ]
+"182 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _KEYKeepAddMark_2 `uc  1 s ]
+"184 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _KEYKeepSunMark_1 `uc  1 s ]
+"185 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _KEYKeepSunMark_2 `uc  1 s ]
+"39 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _Time1s_cot `ui  0 e ]
+"172 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _SysRunTime_3S `uc  0 e ]
+"15 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\24lc02.h
+[v _EP_SetRFAdd `(v  0 ef1`*uc ]
+"14 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\24lc02.h
+[v _EP_GetRFAdd `(v  0 ef1`*uc ]
+"171 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _RF_ADDRESS `uc  -> 0 `x e ]
+"102 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\rf297L.h
+[v _RF_ADDSSet `(v  0 ef1`*uc ]
+"20 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\24lc02.h
+[v _EP_SetADDCfg `(uc  0 ef1`uc ]
+"173 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _TX_ADDRESS_DEF `uc  -> 0 `x e ]
+"43 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[v _SysRunTimeCnt `us  0 e ]
+"63 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Buffer.H
+[v _BufSetRun `(v  0 ef4`uc`uc`uc`uc ]
+"73 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Buffer.H
+[v _GerBuff_RunSAT `(uc  0 ef1`uc ]
+[; ;cms89f228.h: 18: volatile unsigned char INDF @ 0x000;
+[; ;cms89f228.h: 19: volatile unsigned char TMR0 @ 0x001;
+[; ;cms89f228.h: 20: volatile unsigned char PCL @ 0x002;
+[; ;cms89f228.h: 21: volatile unsigned char STATUS @ 0x003;
+[; ;cms89f228.h: 22: volatile unsigned char FSR @ 0x004;
+[; ;cms89f228.h: 23: volatile unsigned char PORTA @ 0x005;
+[; ;cms89f228.h: 24: volatile unsigned char PORTB @ 0x006;
+[; ;cms89f228.h: 25: volatile unsigned char PORTC @ 0x007;
+[; ;cms89f228.h: 27: volatile unsigned char PORTE @ 0x009;
+[; ;cms89f228.h: 28: volatile unsigned char PCLATH @ 0x00A;
+[; ;cms89f228.h: 29: volatile unsigned char INTCON @ 0x00B;
+[; ;cms89f228.h: 30: volatile unsigned char PIR1 @ 0x00C;
+[; ;cms89f228.h: 31: volatile unsigned char PIR2 @ 0x00D;
+[; ;cms89f228.h: 32: volatile unsigned char TMR1L @ 0x00E;
+[; ;cms89f228.h: 33: volatile unsigned char TMR1H @ 0x00F;
+[; ;cms89f228.h: 34: volatile unsigned char T1CON @ 0x010;
+[; ;cms89f228.h: 35: volatile unsigned char TMR2 @ 0x011;
+[; ;cms89f228.h: 36: volatile unsigned char T2CON @ 0x012;
+[; ;cms89f228.h: 37: volatile unsigned char SSPBUF @ 0x013;
+[; ;cms89f228.h: 38: volatile unsigned char SSPCON @ 0x014;
+[; ;cms89f228.h: 39: volatile unsigned char CCPR1L @ 0x015;
+[; ;cms89f228.h: 40: volatile unsigned char CCPR1H @ 0x016;
+[; ;cms89f228.h: 41: volatile unsigned char CCP1CON @ 0x017;
+[; ;cms89f228.h: 47: volatile unsigned char CCPR2L @ 0x01B;
+[; ;cms89f228.h: 48: volatile unsigned char CCPR2H @ 0x01C;
+[; ;cms89f228.h: 49: volatile unsigned char CCP2CON @ 0x01D;
+[; ;cms89f228.h: 50: volatile unsigned char ADRESH @ 0x01E;
+[; ;cms89f228.h: 51: volatile unsigned char ADCON0 @ 0x01F;
+[; ;cms89f228.h: 52: volatile unsigned char OPTION_REG @ 0x081;
+[; ;cms89f228.h: 53: volatile unsigned char TRISA @ 0x085;
+[; ;cms89f228.h: 54: volatile unsigned char TRISB @ 0x086;
+[; ;cms89f228.h: 55: volatile unsigned char TRISC @ 0x087;
+[; ;cms89f228.h: 56: volatile unsigned char TRISE @ 0x089;
+[; ;cms89f228.h: 57: volatile unsigned char PIE1 @ 0x08C;
+[; ;cms89f228.h: 58: volatile unsigned char PIE2 @ 0x08D;
+[; ;cms89f228.h: 60: volatile unsigned char OSCCON @ 0x08F;
+[; ;cms89f228.h: 61: volatile unsigned char OSCTUNE @ 0x090;
+[; ;cms89f228.h: 62: volatile unsigned char SSPCON2 @ 0x091;
+[; ;cms89f228.h: 63: volatile unsigned char PR2 @ 0x092;
+[; ;cms89f228.h: 64: volatile unsigned char SSPADD @ 0x093;
+[; ;cms89f228.h: 65: volatile unsigned char SSPSTAT @ 0x094;
+[; ;cms89f228.h: 66: volatile unsigned char WPUB @ 0x095;
+[; ;cms89f228.h: 67: volatile unsigned char IOCB @ 0x096;
+[; ;cms89f228.h: 74: volatile unsigned char ADRESL @ 0x09E;
+[; ;cms89f228.h: 75: volatile unsigned char ADCON1 @ 0x09F;
+[; ;cms89f228.h: 76: volatile unsigned char WDTCON @ 0x105;
+[; ;cms89f228.h: 81: volatile unsigned char EEDAT @ 0x10C;
+[; ;cms89f228.h: 82: volatile unsigned char EEDATA @ 0x10C;
+[; ;cms89f228.h: 83: volatile unsigned char EEADR @ 0x10D;
+[; ;cms89f228.h: 84: volatile unsigned char EEADRL @ 0x10D;
+[; ;cms89f228.h: 85: volatile unsigned char EEDATH @ 0x10E;
+[; ;cms89f228.h: 86: volatile unsigned char EEADRH @ 0x10F;
+[; ;cms89f228.h: 88: volatile unsigned char TABLE_SPH @ 0x110;
+[; ;cms89f228.h: 89: volatile unsigned char TABLE_SPL @ 0x111;
+[; ;cms89f228.h: 90: volatile unsigned char TABLE_DATAH @ 0x112;
+[; ;cms89f228.h: 99: volatile unsigned char WPUE @ 0x11A;
+[; ;cms89f228.h: 100: volatile unsigned char OPA0CON @ 0x11C;
+[; ;cms89f228.h: 101: volatile unsigned char OPA0ADJ @ 0x11D;
+[; ;cms89f228.h: 105: volatile unsigned char ANSEL @ 0x188;
+[; ;cms89f228.h: 106: volatile unsigned char ANSELH @ 0x189;
+[; ;cms89f228.h: 108: volatile unsigned char EECON1 @ 0x18C;
+[; ;cms89f228.h: 109: volatile unsigned char EECON2 @ 0x18D;
+[; ;cms89f228.h: 110: volatile unsigned char WPUA @ 0x18E;
+[; ;cms89f228.h: 111: volatile unsigned char WPUC @ 0x18F;
+[; ;cms89f228.h: 113: volatile unsigned char LEDCON0 @ 0x190;
+[; ;cms89f228.h: 114: volatile unsigned char LEDCON1 @ 0x191;
+[; ;cms89f228.h: 115: volatile unsigned char LEDADD @ 0x192;
+[; ;cms89f228.h: 116: volatile unsigned char LEDDATA @ 0x193;
+[; ;cms89f228.h: 117: volatile unsigned char LCDCON0 @ 0x190;
+[; ;cms89f228.h: 118: volatile unsigned char LCDCON1 @ 0x191;
+[; ;cms89f228.h: 119: volatile unsigned char LCDADD @ 0x192;
+[; ;cms89f228.h: 120: volatile unsigned char LCDDATA @ 0x193;
+[; ;cms89f228.h: 121: volatile unsigned char SEGEN2 @ 0x194;
+[; ;cms89f228.h: 122: volatile unsigned char SEGEN1 @ 0x195;
+[; ;cms89f228.h: 123: volatile unsigned char SEGEN0 @ 0x196;
+[; ;cms89f228.h: 124: volatile unsigned char COMEN @ 0x197;
+[; ;cms89f228.h: 128: volatile bit CARRY @ ((unsigned)&STATUS*8)+0;
+[; ;cms89f228.h: 129: volatile bit DC @ ((unsigned)&STATUS*8)+1;
+[; ;cms89f228.h: 130: volatile bit ZERO @ ((unsigned)&STATUS*8)+2;
+[; ;cms89f228.h: 131: volatile bit PD @ ((unsigned)&STATUS*8)+3;
+[; ;cms89f228.h: 132: volatile bit TO @ ((unsigned)&STATUS*8)+4;
+[; ;cms89f228.h: 133: volatile bit IRP @ ((unsigned)&STATUS*8)+7;
+[; ;cms89f228.h: 136: volatile bit RA0 @ ((unsigned)&PORTA*8)+0;
+[; ;cms89f228.h: 137: volatile bit RA1 @ ((unsigned)&PORTA*8)+1;
+[; ;cms89f228.h: 138: volatile bit RA2 @ ((unsigned)&PORTA*8)+2;
+[; ;cms89f228.h: 139: volatile bit RA3 @ ((unsigned)&PORTA*8)+3;
+[; ;cms89f228.h: 140: volatile bit RA4 @ ((unsigned)&PORTA*8)+4;
+[; ;cms89f228.h: 141: volatile bit RA5 @ ((unsigned)&PORTA*8)+5;
+[; ;cms89f228.h: 142: volatile bit RA6 @ ((unsigned)&PORTA*8)+6;
+[; ;cms89f228.h: 143: volatile bit RA7 @ ((unsigned)&PORTA*8)+7;
+[; ;cms89f228.h: 146: volatile bit RB0 @ ((unsigned)&PORTB*8)+0;
+[; ;cms89f228.h: 147: volatile bit RB1 @ ((unsigned)&PORTB*8)+1;
+[; ;cms89f228.h: 148: volatile bit RB2 @ ((unsigned)&PORTB*8)+2;
+[; ;cms89f228.h: 149: volatile bit RB3 @ ((unsigned)&PORTB*8)+3;
+[; ;cms89f228.h: 150: volatile bit RB4 @ ((unsigned)&PORTB*8)+4;
+[; ;cms89f228.h: 151: volatile bit RB5 @ ((unsigned)&PORTB*8)+5;
+[; ;cms89f228.h: 152: volatile bit RB6 @ ((unsigned)&PORTB*8)+6;
+[; ;cms89f228.h: 153: volatile bit RB7 @ ((unsigned)&PORTB*8)+7;
+[; ;cms89f228.h: 156: volatile bit RC0 @ ((unsigned)&PORTC*8)+0;
+[; ;cms89f228.h: 157: volatile bit RC1 @ ((unsigned)&PORTC*8)+1;
+[; ;cms89f228.h: 158: volatile bit RC2 @ ((unsigned)&PORTC*8)+2;
+[; ;cms89f228.h: 159: volatile bit RC3 @ ((unsigned)&PORTC*8)+3;
+[; ;cms89f228.h: 160: volatile bit RC4 @ ((unsigned)&PORTC*8)+4;
+[; ;cms89f228.h: 161: volatile bit RC5 @ ((unsigned)&PORTC*8)+5;
+[; ;cms89f228.h: 162: volatile bit RC6 @ ((unsigned)&PORTC*8)+6;
+[; ;cms89f228.h: 163: volatile bit RC7 @ ((unsigned)&PORTC*8)+7;
+[; ;cms89f228.h: 166: volatile bit RE0 @ ((unsigned)&PORTE*8)+0;
+[; ;cms89f228.h: 167: volatile bit RE1 @ ((unsigned)&PORTE*8)+1;
+[; ;cms89f228.h: 168: volatile bit RE2 @ ((unsigned)&PORTE*8)+2;
+[; ;cms89f228.h: 169: volatile bit RE3 @ ((unsigned)&PORTE*8)+3;
+[; ;cms89f228.h: 172: volatile bit RBIF @ ((unsigned)&INTCON*8)+0;
+[; ;cms89f228.h: 174: volatile bit RABIF @ ((unsigned)&INTCON*8)+0;
+[; ;cms89f228.h: 175: volatile bit INTF @ ((unsigned)&INTCON*8)+1;
+[; ;cms89f228.h: 176: volatile bit T0IF @ ((unsigned)&INTCON*8)+2;
+[; ;cms89f228.h: 177: volatile bit RBIE @ ((unsigned)&INTCON*8)+3;
+[; ;cms89f228.h: 179: volatile bit RABIE @ ((unsigned)&INTCON*8)+3;
+[; ;cms89f228.h: 180: volatile bit INTE @ ((unsigned)&INTCON*8)+4;
+[; ;cms89f228.h: 181: volatile bit T0IE @ ((unsigned)&INTCON*8)+5;
+[; ;cms89f228.h: 182: volatile bit PEIE @ ((unsigned)&INTCON*8)+6;
+[; ;cms89f228.h: 183: volatile bit GIE @ ((unsigned)&INTCON*8)+7;
+[; ;cms89f228.h: 186: volatile bit TMR1IF @ ((unsigned)&PIR1*8)+0;
+[; ;cms89f228.h: 187: volatile bit TMR2IF @ ((unsigned)&PIR1*8)+1;
+[; ;cms89f228.h: 188: volatile bit CCP1IF @ ((unsigned)&PIR1*8)+2;
+[; ;cms89f228.h: 189: volatile bit SSPIF @ ((unsigned)&PIR1*8)+3;
+[; ;cms89f228.h: 190: volatile bit TXIF @ ((unsigned)&PIR1*8)+4;
+[; ;cms89f228.h: 191: volatile bit RCIF @ ((unsigned)&PIR1*8)+5;
+[; ;cms89f228.h: 192: volatile bit ADIF @ ((unsigned)&PIR1*8)+6;
+[; ;cms89f228.h: 195: volatile bit CCP2IF @ ((unsigned)&PIR2*8)+0;
+[; ;cms89f228.h: 196: volatile bit BCLIF @ ((unsigned)&PIR2*8)+3;
+[; ;cms89f228.h: 197: volatile bit EEIF @ ((unsigned)&PIR2*8)+4;
+[; ;cms89f228.h: 198: volatile bit C1IF @ ((unsigned)&PIR2*8)+5;
+[; ;cms89f228.h: 199: volatile bit C2IF @ ((unsigned)&PIR2*8)+6;
+[; ;cms89f228.h: 202: volatile bit TMR1ON @ ((unsigned)&T1CON*8)+0;
+[; ;cms89f228.h: 203: volatile bit TMR1CS @ ((unsigned)&T1CON*8)+1;
+[; ;cms89f228.h: 204: volatile bit T1SYNC @ ((unsigned)&T1CON*8)+2;
+[; ;cms89f228.h: 205: volatile bit T1OSCEN @ ((unsigned)&T1CON*8)+3;
+[; ;cms89f228.h: 206: volatile bit T1CKPS0 @ ((unsigned)&T1CON*8)+4;
+[; ;cms89f228.h: 207: volatile bit T1CKPS1 @ ((unsigned)&T1CON*8)+5;
+[; ;cms89f228.h: 208: volatile bit TMR1GE @ ((unsigned)&T1CON*8)+6;
+[; ;cms89f228.h: 209: volatile bit T1GINV @ ((unsigned)&T1CON*8)+7;
+[; ;cms89f228.h: 212: volatile bit T2CKPS0 @ ((unsigned)&T2CON*8)+0;
+[; ;cms89f228.h: 213: volatile bit T2CKPS1 @ ((unsigned)&T2CON*8)+1;
+[; ;cms89f228.h: 214: volatile bit TMR2ON @ ((unsigned)&T2CON*8)+2;
+[; ;cms89f228.h: 215: volatile bit TOUTPS0 @ ((unsigned)&T2CON*8)+3;
+[; ;cms89f228.h: 216: volatile bit TOUTPS1 @ ((unsigned)&T2CON*8)+4;
+[; ;cms89f228.h: 217: volatile bit TOUTPS2 @ ((unsigned)&T2CON*8)+5;
+[; ;cms89f228.h: 218: volatile bit TOUTPS3 @ ((unsigned)&T2CON*8)+6;
+[; ;cms89f228.h: 221: volatile bit SSPM0 @ ((unsigned)&SSPCON*8)+0;
+[; ;cms89f228.h: 222: volatile bit SSPM1 @ ((unsigned)&SSPCON*8)+1;
+[; ;cms89f228.h: 223: volatile bit SSPM2 @ ((unsigned)&SSPCON*8)+2;
+[; ;cms89f228.h: 224: volatile bit SSPM3 @ ((unsigned)&SSPCON*8)+3;
+[; ;cms89f228.h: 225: volatile bit CKP @ ((unsigned)&SSPCON*8)+4;
+[; ;cms89f228.h: 226: volatile bit SSPEN @ ((unsigned)&SSPCON*8)+5;
+[; ;cms89f228.h: 227: volatile bit SSPOV @ ((unsigned)&SSPCON*8)+6;
+[; ;cms89f228.h: 228: volatile bit WCOL @ ((unsigned)&SSPCON*8)+7;
+[; ;cms89f228.h: 231: volatile bit CCP1M0 @ ((unsigned)&CCP1CON*8)+0;
+[; ;cms89f228.h: 232: volatile bit CCP1M1 @ ((unsigned)&CCP1CON*8)+1;
+[; ;cms89f228.h: 233: volatile bit CCP1M2 @ ((unsigned)&CCP1CON*8)+2;
+[; ;cms89f228.h: 234: volatile bit CCP1M3 @ ((unsigned)&CCP1CON*8)+3;
+[; ;cms89f228.h: 235: volatile bit DC1B0 @ ((unsigned)&CCP1CON*8)+4;
+[; ;cms89f228.h: 236: volatile bit DC1B1 @ ((unsigned)&CCP1CON*8)+5;
+[; ;cms89f228.h: 237: volatile bit P1M0 @ ((unsigned)&CCP1CON*8)+6;
+[; ;cms89f228.h: 238: volatile bit P1M1 @ ((unsigned)&CCP1CON*8)+7;
+[; ;cms89f228.h: 251: volatile bit CCP2M0 @ ((unsigned)&CCP2CON*8)+0;
+[; ;cms89f228.h: 252: volatile bit CCP2M1 @ ((unsigned)&CCP2CON*8)+1;
+[; ;cms89f228.h: 253: volatile bit CCP2M2 @ ((unsigned)&CCP2CON*8)+2;
+[; ;cms89f228.h: 254: volatile bit CCP2M3 @ ((unsigned)&CCP2CON*8)+3;
+[; ;cms89f228.h: 255: volatile bit DC2B0 @ ((unsigned)&CCP2CON*8)+4;
+[; ;cms89f228.h: 256: volatile bit DC2B1 @ ((unsigned)&CCP2CON*8)+5;
+[; ;cms89f228.h: 257: volatile bit CCP2IN0 @ ((unsigned)&CCP2CON*8)+6;
+[; ;cms89f228.h: 258: volatile bit CCP2IN1 @ ((unsigned)&CCP2CON*8)+7;
+[; ;cms89f228.h: 261: volatile bit ADON @ ((unsigned)&ADCON0*8)+0;
+[; ;cms89f228.h: 262: volatile bit GODONE @ ((unsigned)&ADCON0*8)+1;
+[; ;cms89f228.h: 263: volatile bit CHS0 @ ((unsigned)&ADCON0*8)+2;
+[; ;cms89f228.h: 264: volatile bit CHS1 @ ((unsigned)&ADCON0*8)+3;
+[; ;cms89f228.h: 265: volatile bit CHS2 @ ((unsigned)&ADCON0*8)+4;
+[; ;cms89f228.h: 266: volatile bit CHS3 @ ((unsigned)&ADCON0*8)+5;
+[; ;cms89f228.h: 267: volatile bit ADCS0 @ ((unsigned)&ADCON0*8)+6;
+[; ;cms89f228.h: 268: volatile bit ADCS1 @ ((unsigned)&ADCON0*8)+7;
+[; ;cms89f228.h: 271: volatile bit PS0 @ ((unsigned)&OPTION_REG*8)+0;
+[; ;cms89f228.h: 272: volatile bit PS1 @ ((unsigned)&OPTION_REG*8)+1;
+[; ;cms89f228.h: 273: volatile bit PS2 @ ((unsigned)&OPTION_REG*8)+2;
+[; ;cms89f228.h: 274: volatile bit PSA @ ((unsigned)&OPTION_REG*8)+3;
+[; ;cms89f228.h: 275: volatile bit T0SE @ ((unsigned)&OPTION_REG*8)+4;
+[; ;cms89f228.h: 276: volatile bit T0CS @ ((unsigned)&OPTION_REG*8)+5;
+[; ;cms89f228.h: 277: volatile bit INTEDG @ ((unsigned)&OPTION_REG*8)+6;
+[; ;cms89f228.h: 278: volatile bit RBPU @ ((unsigned)&OPTION_REG*8)+7;
+[; ;cms89f228.h: 280: volatile bit RABPU @ ((unsigned)&OPTION_REG*8)+7;
+[; ;cms89f228.h: 283: volatile bit TRISA0 @ ((unsigned)&TRISA*8)+0;
+[; ;cms89f228.h: 284: volatile bit TRISA1 @ ((unsigned)&TRISA*8)+1;
+[; ;cms89f228.h: 285: volatile bit TRISA2 @ ((unsigned)&TRISA*8)+2;
+[; ;cms89f228.h: 286: volatile bit TRISA3 @ ((unsigned)&TRISA*8)+3;
+[; ;cms89f228.h: 287: volatile bit TRISA4 @ ((unsigned)&TRISA*8)+4;
+[; ;cms89f228.h: 288: volatile bit TRISA5 @ ((unsigned)&TRISA*8)+5;
+[; ;cms89f228.h: 289: volatile bit TRISA6 @ ((unsigned)&TRISA*8)+6;
+[; ;cms89f228.h: 290: volatile bit TRISA7 @ ((unsigned)&TRISA*8)+7;
+[; ;cms89f228.h: 293: volatile bit TRISB0 @ ((unsigned)&TRISB*8)+0;
+[; ;cms89f228.h: 294: volatile bit TRISB1 @ ((unsigned)&TRISB*8)+1;
+[; ;cms89f228.h: 295: volatile bit TRISB2 @ ((unsigned)&TRISB*8)+2;
+[; ;cms89f228.h: 296: volatile bit TRISB3 @ ((unsigned)&TRISB*8)+3;
+[; ;cms89f228.h: 297: volatile bit TRISB4 @ ((unsigned)&TRISB*8)+4;
+[; ;cms89f228.h: 298: volatile bit TRISB5 @ ((unsigned)&TRISB*8)+5;
+[; ;cms89f228.h: 299: volatile bit TRISB6 @ ((unsigned)&TRISB*8)+6;
+[; ;cms89f228.h: 300: volatile bit TRISB7 @ ((unsigned)&TRISB*8)+7;
+[; ;cms89f228.h: 303: volatile bit TRISC0 @ ((unsigned)&TRISC*8)+0;
+[; ;cms89f228.h: 304: volatile bit TRISC1 @ ((unsigned)&TRISC*8)+1;
+[; ;cms89f228.h: 305: volatile bit TRISC2 @ ((unsigned)&TRISC*8)+2;
+[; ;cms89f228.h: 306: volatile bit TRISC3 @ ((unsigned)&TRISC*8)+3;
+[; ;cms89f228.h: 307: volatile bit TRISC4 @ ((unsigned)&TRISC*8)+4;
+[; ;cms89f228.h: 308: volatile bit TRISC5 @ ((unsigned)&TRISC*8)+5;
+[; ;cms89f228.h: 309: volatile bit TRISC6 @ ((unsigned)&TRISC*8)+6;
+[; ;cms89f228.h: 310: volatile bit TRISC7 @ ((unsigned)&TRISC*8)+7;
+[; ;cms89f228.h: 314: volatile bit TRISE0 @ ((unsigned)&TRISE*8)+0;
+[; ;cms89f228.h: 315: volatile bit TRISE1 @ ((unsigned)&TRISE*8)+1;
+[; ;cms89f228.h: 316: volatile bit TRISE2 @ ((unsigned)&TRISE*8)+2;
+[; ;cms89f228.h: 317: volatile bit TRISE3 @ ((unsigned)&TRISE*8)+3;
+[; ;cms89f228.h: 320: volatile bit TMR1IE @ ((unsigned)&PIE1*8)+0;
+[; ;cms89f228.h: 321: volatile bit TMR2IE @ ((unsigned)&PIE1*8)+1;
+[; ;cms89f228.h: 322: volatile bit CCP1IE @ ((unsigned)&PIE1*8)+2;
+[; ;cms89f228.h: 323: volatile bit SSPIE @ ((unsigned)&PIE1*8)+3;
+[; ;cms89f228.h: 324: volatile bit TXIE @ ((unsigned)&PIE1*8)+4;
+[; ;cms89f228.h: 325: volatile bit RCIE @ ((unsigned)&PIE1*8)+5;
+[; ;cms89f228.h: 326: volatile bit ADIE @ ((unsigned)&PIE1*8)+6;
+[; ;cms89f228.h: 329: volatile bit CCP2IE @ ((unsigned)&PIE2*8)+0;
+[; ;cms89f228.h: 330: volatile bit BCLIE @ ((unsigned)&PIE2*8)+3;
+[; ;cms89f228.h: 331: volatile bit EEIE @ ((unsigned)&PIE2*8)+4;
+[; ;cms89f228.h: 332: volatile bit C1IE @ ((unsigned)&PIE2*8)+5;
+[; ;cms89f228.h: 333: volatile bit C2IE @ ((unsigned)&PIE2*8)+6;
+[; ;cms89f228.h: 337: volatile bit SCS @ ((unsigned)&OSCCON*8)+0;
+[; ;cms89f228.h: 338: volatile bit IRCF0 @ ((unsigned)&OSCCON*8)+4;
+[; ;cms89f228.h: 339: volatile bit IRCF1 @ ((unsigned)&OSCCON*8)+5;
+[; ;cms89f228.h: 340: volatile bit IRCF2 @ ((unsigned)&OSCCON*8)+6;
+[; ;cms89f228.h: 343: volatile bit TUN0 @ ((unsigned)&OSCTUNE*8)+0;
+[; ;cms89f228.h: 344: volatile bit TUN1 @ ((unsigned)&OSCTUNE*8)+1;
+[; ;cms89f228.h: 345: volatile bit TUN2 @ ((unsigned)&OSCTUNE*8)+2;
+[; ;cms89f228.h: 346: volatile bit TUN3 @ ((unsigned)&OSCTUNE*8)+3;
+[; ;cms89f228.h: 347: volatile bit TUN4 @ ((unsigned)&OSCTUNE*8)+4;
+[; ;cms89f228.h: 350: volatile bit SEN @ ((unsigned)&SSPCON2*8)+0;
+[; ;cms89f228.h: 351: volatile bit RSEN @ ((unsigned)&SSPCON2*8)+1;
+[; ;cms89f228.h: 352: volatile bit PEN @ ((unsigned)&SSPCON2*8)+2;
+[; ;cms89f228.h: 353: volatile bit RCEN @ ((unsigned)&SSPCON2*8)+3;
+[; ;cms89f228.h: 354: volatile bit ACKEN @ ((unsigned)&SSPCON2*8)+4;
+[; ;cms89f228.h: 355: volatile bit ACKDT @ ((unsigned)&SSPCON2*8)+5;
+[; ;cms89f228.h: 356: volatile bit ACKSTAT @ ((unsigned)&SSPCON2*8)+6;
+[; ;cms89f228.h: 357: volatile bit GCEN @ ((unsigned)&SSPCON2*8)+7;
+[; ;cms89f228.h: 360: volatile bit BF @ ((unsigned)&SSPSTAT*8)+0;
+[; ;cms89f228.h: 361: volatile bit UA @ ((unsigned)&SSPSTAT*8)+1;
+[; ;cms89f228.h: 362: volatile bit RW @ ((unsigned)&SSPSTAT*8)+2;
+[; ;cms89f228.h: 363: volatile bit START @ ((unsigned)&SSPSTAT*8)+3;
+[; ;cms89f228.h: 364: volatile bit STOP @ ((unsigned)&SSPSTAT*8)+4;
+[; ;cms89f228.h: 365: volatile bit DA @ ((unsigned)&SSPSTAT*8)+5;
+[; ;cms89f228.h: 366: volatile bit CKE @ ((unsigned)&SSPSTAT*8)+6;
+[; ;cms89f228.h: 367: volatile bit SMP @ ((unsigned)&SSPSTAT*8)+7;
+[; ;cms89f228.h: 370: volatile bit WPUA0 @ ((unsigned)&WPUA*8)+0;
+[; ;cms89f228.h: 371: volatile bit WPUA1 @ ((unsigned)&WPUA*8)+1;
+[; ;cms89f228.h: 372: volatile bit WPUA2 @ ((unsigned)&WPUA*8)+2;
+[; ;cms89f228.h: 373: volatile bit WPUA3 @ ((unsigned)&WPUA*8)+3;
+[; ;cms89f228.h: 374: volatile bit WPUA4 @ ((unsigned)&WPUA*8)+4;
+[; ;cms89f228.h: 375: volatile bit WPUA5 @ ((unsigned)&WPUA*8)+5;
+[; ;cms89f228.h: 376: volatile bit WPUA6 @ ((unsigned)&WPUA*8)+6;
+[; ;cms89f228.h: 377: volatile bit WPUA7 @ ((unsigned)&WPUA*8)+7;
+[; ;cms89f228.h: 380: volatile bit WPUB0 @ ((unsigned)&WPUB*8)+0;
+[; ;cms89f228.h: 381: volatile bit WPUB1 @ ((unsigned)&WPUB*8)+1;
+[; ;cms89f228.h: 382: volatile bit WPUB2 @ ((unsigned)&WPUB*8)+2;
+[; ;cms89f228.h: 383: volatile bit WPUB3 @ ((unsigned)&WPUB*8)+3;
+[; ;cms89f228.h: 384: volatile bit WPUB4 @ ((unsigned)&WPUB*8)+4;
+[; ;cms89f228.h: 385: volatile bit WPUB5 @ ((unsigned)&WPUB*8)+5;
+[; ;cms89f228.h: 386: volatile bit WPUB6 @ ((unsigned)&WPUB*8)+6;
+[; ;cms89f228.h: 387: volatile bit WPUB7 @ ((unsigned)&WPUB*8)+7;
+[; ;cms89f228.h: 390: volatile bit WPUC0 @ ((unsigned)&WPUC*8)+0;
+[; ;cms89f228.h: 391: volatile bit WPUC1 @ ((unsigned)&WPUC*8)+1;
+[; ;cms89f228.h: 392: volatile bit WPUC2 @ ((unsigned)&WPUC*8)+2;
+[; ;cms89f228.h: 393: volatile bit WPUC3 @ ((unsigned)&WPUC*8)+3;
+[; ;cms89f228.h: 394: volatile bit WPUC4 @ ((unsigned)&WPUC*8)+4;
+[; ;cms89f228.h: 395: volatile bit WPUC5 @ ((unsigned)&WPUC*8)+5;
+[; ;cms89f228.h: 396: volatile bit WPUC6 @ ((unsigned)&WPUC*8)+6;
+[; ;cms89f228.h: 397: volatile bit WPUC7 @ ((unsigned)&WPUC*8)+7;
+[; ;cms89f228.h: 400: volatile bit WPUE0 @ ((unsigned)&WPUE*8)+0;
+[; ;cms89f228.h: 401: volatile bit WPUE1 @ ((unsigned)&WPUE*8)+1;
+[; ;cms89f228.h: 402: volatile bit WPUE2 @ ((unsigned)&WPUE*8)+2;
+[; ;cms89f228.h: 403: volatile bit WPUE3 @ ((unsigned)&WPUE*8)+3;
+[; ;cms89f228.h: 406: volatile bit IOCB0 @ ((unsigned)&IOCB*8)+0;
+[; ;cms89f228.h: 407: volatile bit IOCB1 @ ((unsigned)&IOCB*8)+1;
+[; ;cms89f228.h: 408: volatile bit IOCB2 @ ((unsigned)&IOCB*8)+2;
+[; ;cms89f228.h: 409: volatile bit IOCB3 @ ((unsigned)&IOCB*8)+3;
+[; ;cms89f228.h: 410: volatile bit IOCB4 @ ((unsigned)&IOCB*8)+4;
+[; ;cms89f228.h: 411: volatile bit IOCB5 @ ((unsigned)&IOCB*8)+5;
+[; ;cms89f228.h: 412: volatile bit IOCB6 @ ((unsigned)&IOCB*8)+6;
+[; ;cms89f228.h: 413: volatile bit IOCB7 @ ((unsigned)&IOCB*8)+7;
+[; ;cms89f228.h: 429: volatile bit ADFM @ ((unsigned)&ADCON1*8)+7;
+[; ;cms89f228.h: 432: volatile bit SWDTEN @ ((unsigned)&WDTCON*8)+0;
+[; ;cms89f228.h: 436: volatile bit ANS0 @ ((unsigned)&ANSEL*8)+0;
+[; ;cms89f228.h: 437: volatile bit ANS1 @ ((unsigned)&ANSEL*8)+1;
+[; ;cms89f228.h: 438: volatile bit ANS2 @ ((unsigned)&ANSEL*8)+2;
+[; ;cms89f228.h: 439: volatile bit ANS3 @ ((unsigned)&ANSEL*8)+3;
+[; ;cms89f228.h: 440: volatile bit ANS4 @ ((unsigned)&ANSEL*8)+4;
+[; ;cms89f228.h: 441: volatile bit ANS5 @ ((unsigned)&ANSEL*8)+5;
+[; ;cms89f228.h: 442: volatile bit ANS6 @ ((unsigned)&ANSEL*8)+6;
+[; ;cms89f228.h: 443: volatile bit ANS7 @ ((unsigned)&ANSEL*8)+7;
+[; ;cms89f228.h: 446: volatile bit ANS8 @ ((unsigned)&ANSELH*8)+0;
+[; ;cms89f228.h: 447: volatile bit ANS9 @ ((unsigned)&ANSELH*8)+1;
+[; ;cms89f228.h: 448: volatile bit ANS10 @ ((unsigned)&ANSELH*8)+2;
+[; ;cms89f228.h: 449: volatile bit ANS11 @ ((unsigned)&ANSELH*8)+3;
+[; ;cms89f228.h: 450: volatile bit ANS12 @ ((unsigned)&ANSELH*8)+4;
+[; ;cms89f228.h: 451: volatile bit ANS13 @ ((unsigned)&ANSELH*8)+5;
+[; ;cms89f228.h: 454: volatile bit RD @ ((unsigned)&EECON1*8)+0;
+[; ;cms89f228.h: 455: volatile bit WR @ ((unsigned)&EECON1*8)+1;
+[; ;cms89f228.h: 456: volatile bit WREN @ ((unsigned)&EECON1*8)+2;
+[; ;cms89f228.h: 457: volatile bit WRERR @ ((unsigned)&EECON1*8)+3;
+[; ;cms89f228.h: 458: volatile bit EEPGD @ ((unsigned)&EECON1*8)+7;
+[; ;cms.h: 118: extern void _nop(void);
+[; ;cms.h: 144: extern unsigned int flash_read(unsigned short addr);
+[; ;cms.h: 218: extern void _delay(unsigned long);
+[; ;system.h: 17: typedef enum{
+[; ;system.h: 18: CPU_FREQUENCY_EXTERNAL = 0x00,
+[; ;system.h: 19: CPU_FREQUENCY_31K = 0x01,
+[; ;system.h: 20: CPU_FREQUENCY_125K = 0x11,
+[; ;system.h: 21: CPU_FREQUENCY_250K = 0x21,
+[; ;system.h: 22: CPU_FREQUENCY_500K = 0x31,
+[; ;system.h: 23: CPU_FREQUENCY_1M = 0x41,
+[; ;system.h: 24: CPU_FREQUENCY_2M = 0x51,
+[; ;system.h: 25: CPU_FREQUENCY_4M = 0x61,
+[; ;system.h: 26: CPU_FREQUENCY_8M = 0x71
+[; ;system.h: 27: }CPU_FREQUENCY_e;
+[; ;system.h: 29: typedef enum{
+[; ;system.h: 30: PORTB_CHANGE_ISR_ENABLE = 0x80,
+[; ;system.h: 31: INT0_ISR_ENABLE = 0x10,
+[; ;system.h: 32: TIMER0_ISR_ENABLE = 0x20,
+[; ;system.h: 33: TIMER1_ISR_ENABLE = 0x01,
+[; ;system.h: 34: TIMER2_ISR_ENABLE = 0x02,
+[; ;system.h: 35: ADC_ISR_ENABLE = 0x40,
+[; ;system.h: 36: }INT_ENABLE_FLAG_e;
+[; ;system.h: 38: typedef enum{
+[; ;system.h: 39: PORTB_CHANGE_ISR_TOUCH = 0x01,
+[; ;system.h: 40: INT0_ISR_TOUCH = 0x02,
+[; ;system.h: 41: TIMER0_ISR_TOUCH = 0x04,
+[; ;system.h: 42: TIMER1_ISR_TOUCH = 0x01,
+[; ;system.h: 43: TIMER2_ISR_TOUCH = 0x02,
+[; ;system.h: 44: ADC_ISR_TOUCH = 0x40,
+[; ;system.h: 45: }INT_TOUCH_FLAG_e;
+[; ;system.h: 47: extern void Interrupt_init(void);
+[; ;system.h: 48: extern void soft_delay_ms(unsigned int ms);
+[; ;system.h: 49: extern void system_set_CPU_frequency(CPU_FREQUENCY_e CPU_Frequency);
+[; ;system.h: 50: extern void clear_interrupt_flag(void);
+[; ;system.h: 51: extern void system_to_sleep(void);
+[; ;system.h: 52: extern void Enable_Interrupt(void);
+[; ;system.h: 53: extern void Disable_Interrupt(void);
+[; ;WDT.h: 4: typedef enum{
+[; ;WDT.h: 5: WDT_DIVIDE_RATIO_1 = 8+0,
+[; ;WDT.h: 6: WDT_DIVIDE_RATIO_2 = 8+1,
+[; ;WDT.h: 7: WDT_DIVIDE_RATIO_4 = 8+2,
+[; ;WDT.h: 8: WDT_DIVIDE_RATIO_8 = 8+3,
+[; ;WDT.h: 9: WDT_DIVIDE_RATIO_16 = 8+4,
+[; ;WDT.h: 10: WDT_DIVIDE_RATIO_32 = 8+5,
+[; ;WDT.h: 11: WDT_DIVIDE_RATIO_64 = 8+6,
+[; ;WDT.h: 12: WDT_DIVIDE_RATIO_128 = 8+7,
+[; ;WDT.h: 13: }WDT_DIVIDE_RATIO_e;
+[; ;WDT.h: 16: extern void WDT_enable(WDT_DIVIDE_RATIO_e WDT_DIVIDE_RATIO);
+[; ;WDT.h: 17: extern void WDT_clear(void);
+[; ;WDT.h: 18: extern void WDT_disable(void);
+[; ;rf297L.h: 79: typedef enum{
+[; ;rf297L.h: 80: UNKNOW_STATUS,
+[; ;rf297L.h: 81: SENT_SUCCESS,
+[; ;rf297L.h: 82: ACK_PAYLOAD_SENT_SUCCESS,
+[; ;rf297L.h: 83: SENT_FAILURE,
+[; ;rf297L.h: 84: }TX_RESULT_e;
+[; ;rf297L.h: 86: extern unsigned char RF_ReadReg(unsigned char reg_addr);
+[; ;rf297L.h: 87: extern void RF_WriteReg(unsigned char reg_addr, unsigned char write_data);
+[; ;rf297L.h: 88: extern void RF_Write_Buff(unsigned char reg_addr,unsigned char *pBuff,unsigned char length);
+[; ;rf297L.h: 89: extern void RF_Read_Buff(unsigned char reg_addr, unsigned char *pBuff, unsigned char length);
+[; ;rf297L.h: 90: extern void RF_Set_RxMode(void);
+[; ;rf297L.h: 91: extern unsigned char RF_GetStatus(void);
+[; ;rf297L.h: 92: extern void RF_ClearStatus(void);
+[; ;rf297L.h: 93: extern void RF_ClearFIFO(void);
+[; ;rf297L.h: 94: extern void RF_SetChannel(unsigned char Channel);
+[; ;rf297L.h: 95: extern void RF_TxData(unsigned char *payload_buff,unsigned char length);
+[; ;rf297L.h: 96: extern unsigned char RF_ENHANCE_TxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff);
+[; ;rf297L.h: 97: extern unsigned char RF_RxData(unsigned char *payload_buff,unsigned char length);
+[; ;rf297L.h: 98: extern unsigned char RF_ENHANCE_RxData(unsigned char *payload_buff,unsigned char length,unsigned char *postback_buff);
+[; ;rf297L.h: 100: extern void RF_Init(void);
+[; ;rf297L.h: 101: extern TX_RESULT_e RF_get_TX_result(void);
+[; ;rf297L.h: 102: void RF_ADDSSet(unsigned char *Buf);
+[; ;rf297L.h: 104: void RF_Init3(void);
+[; ;rf297L.h: 105: void RF_Init4(void);
+[; ;rf297L.h: 106: void RF_Set_RxMode1(void);
+[; ;PORTB_interrupt.h: 7: extern void PORTB_INT_Init(unsigned char icob_value);
+[; ;PORTB_interrupt.h: 12: extern void PORTB_INT_Disable(unsigned char icob_value);
+[; ;PORTB_interrupt.h: 15: extern void PORTB_CHANGE_ISR(void);
+[; ;cUART.h: 7: void cUARTInit(void);
+[; ;cUART.h: 8: void delay_UA(unsigned char DT);
+[; ;cUART.h: 9: void UARTSend(unsigned char SD);
+[; ;24lc02.h: 9: unsigned char EEPROM_Init(unsigned char SPD_I2C);
+[; ;24lc02.h: 10: unsigned char EEPROM_SendByte(unsigned char REGadds,unsigned char Wdat);
+[; ;24lc02.h: 11: unsigned char EEPROM_ReceByte(unsigned char REGadds,unsigned char *Rdat);
+[; ;24lc02.h: 13: unsigned char EEPROM_CheckBusy(void);
+[; ;24lc02.h: 14: void EP_GetRFAdd(unsigned char * OutP);
+[; ;24lc02.h: 15: void EP_SetRFAdd(unsigned char * InP);
+[; ;24lc02.h: 17: unsigned char EP_GetONOFFStep(void);
+[; ;24lc02.h: 18: void EP_SetONOFFStep(unsigned char D);
+[; ;24lc02.h: 19: unsigned char EP_IsADDCfg(void);
+[; ;24lc02.h: 20: unsigned char EP_SetADDCfg(unsigned char ID);
+[; ;24lc02.h: 21: void AT24C02_Write_Msg(unsigned char addr ,unsigned char *data,unsigned char len);
+[; ;24lc02.h: 22: void AT24C02_Read_Msg(unsigned char addr,unsigned char *data,unsigned char len);
+[; ;timer1.h: 27: typedef enum{
+[; ;timer1.h: 28: TIMER1_DIV_1 = 0x00,
+[; ;timer1.h: 29: TIMER1_DIV_2 = 0x10,
+[; ;timer1.h: 30: TIMER1_DIV_4 = 0x20,
+[; ;timer1.h: 31: TIMER1_DIV_8 = 0x30,
+[; ;timer1.h: 32: }TIMER1_DIVIDER_e;
+[; ;timer1.h: 38: extern void Timer1_Init(TIMER1_DIVIDER_e TIMER_DIVIDER);
+[; ;timer1.h: 46: extern void Timer1_start(unsigned int T_nums, unsigned char Timer1_ISR_execution_total_time);
+[; ;timer1.h: 48: extern void Timer1_stop(void);
+[; ;timer1.h: 49: extern void TIMER1_ISR(void);
+[; ;Key.h: 58: void Chg_Init(void);
+[; ;Key.h: 59: void Chg_Running(void);
+[; ;Key.h: 60: void Key_Handle(unsigned char *buf);
+[; ;Key.h: 61: void Key_HandRunning(void);
+[; ;Key.h: 62: void LED_ALLOFF(void);
+[; ;Key.h: 63: void Pair_LED(void);
+[; ;Buffer.H: 37: struct RunParam
+[; ;Buffer.H: 38: {
+[; ;Buffer.H: 39: unsigned char GoalVal [2];
+[; ;Buffer.H: 40: unsigned char GoalValing [2];
+[; ;Buffer.H: 41: unsigned char GapTime [2];
+[; ;Buffer.H: 42: unsigned char TallyTimeing [2];
+[; ;Buffer.H: 43: unsigned char pixel [2];
+[; ;Buffer.H: 44: unsigned char RunSAT [2];
+[; ;Buffer.H: 45: unsigned char RunEN [2];
+[; ;Buffer.H: 46: unsigned char RunFinish [2];
+[; ;Buffer.H: 47: };
+[; ;Buffer.H: 55: void BufRuning(void);
+[; ;Buffer.H: 63: void BufSetRun(unsigned char BufNo,unsigned char Deg ,unsigned char SPD,unsigned char PIX);
+[; ;Buffer.H: 70: void SetRunEn(unsigned char BufNo,unsigned char RunEn,int MID);
+[; ;Buffer.H: 72: void SetRunONOFF(unsigned char BufNo,unsigned char RunEn);
+[; ;Buffer.H: 73: unsigned char GerBuff_RunSAT (unsigned char BufNo);
+[; ;PWM.h: 11: typedef enum{
+[; ;PWM.h: 12: PWM_DIV_1 = 0x00,
+[; ;PWM.h: 13: PWM_DIV_4 = 0x01,
+[; ;PWM.h: 14: PWM_DIV_16 = 0x02,
+[; ;PWM.h: 15: }PWM_DIV_e;
+[; ;PWM.h: 23: extern void CCPX_Init(PWM_DIV_e PWM_DIV,unsigned char T_nums);
+[; ;PWM.h: 31: extern void CCP1_set_duty_cycle(unsigned int duty_cycle);
+[; ;PWM.h: 39: extern void CCP2_set_duty_cycle(unsigned int duty_cycle);
+[; ;userClock.h: 7: extern unsigned char clk_flag;
+[; ;userClock.h: 32: void getClock(void);
+"19 D:\Work\project\Ò£¿Ø+½ÓÊÕÖ÷³ÌÐò\Ë«ÐÅµÀ½ÓÊÕ2\src\Key.c
+[i _colour_En
+-> -> 0 `i `uc
+]
+[; ;Key.c: 19: static unsigned char colour_En=0;
+"21
+[i _Chg_En
+-> -> 0 `i `uc
+]
+[; ;Key.c: 21: static unsigned char Chg_En=0;
+"22
+[i _Chg_Type
+-> -> 0 `i `uc
+]
+[; ;Key.c: 22: static unsigned char Chg_Type=0;
+"23
+[i _Chg_Time
+-> -> 0 `i `uc
+]
+[; ;Key.c: 23: static unsigned char Chg_Time=0;
+"25
+[i _S7_En
+-> -> 0 `i `uc
+]
+[; ;Key.c: 25: static unsigned char S7_En=0;
+"26
+[i _S7_Cnt
+-> -> 0 `i `uc
+]
+[; ;Key.c: 26: static unsigned char S7_Cnt=0;
+"28
+[i _Chg_R
+-> -> 0 `i `uc
+]
+[; ;Key.c: 28: static unsigned char Chg_R=0;
+"29
+[i _Chg_G
+-> -> 0 `i `uc
+]
+[; ;Key.c: 29: static unsigned char Chg_G=0;
+"30
+[i _Chg_B
+-> -> 0 `i `uc
+]
+[; ;Key.c: 30: static unsigned char Chg_B=0;
+"31
+[i _Stp
+-> -> 0 `i `uc
+]
+[; ;Key.c: 31: static unsigned char Stp=0;
+"36
+[i _LED_ON_Sat
+-> -> 1 `i `uc
+]
+[; ;Key.c: 36: unsigned char LED_ON_Sat=1;
+"37
+[i _LED_Chg_Cnt
+-> -> 0 `i `uc
+]
+[; ;Key.c: 37: unsigned char LED_Chg_Cnt=0;
+[; ;Key.c: 39: extern unsigned int Time1s_cot;
+[; ;Key.c: 40: extern unsigned char LEDR1_Vol;
+[; ;Key.c: 41: extern unsigned char LEDR2_Vol;
+[; ;Key.c: 43: extern unsigned short int SysRunTimeCnt;
+[; ;Key.c: 44: extern unsigned char SysDingShiEn;
+[; ;Key.c: 48: extern void PWM_LED1(unsigned char PWM);
+[; ;Key.c: 49: extern void PWM_LED2(unsigned char PWM);
+"52
+[v _Pair_LED `(v  1 ef ]
+{
+[; ;Key.c: 51: void Pair_LED(void)
+[; ;Key.c: 52: {
+[e :U _Pair_LED ]
+[f ]
+"53
+[v _k `uc  1 a ]
+[; ;Key.c: 53: unsigned char k;
+[; ;Key.c: 54: for(unsigned char i=0;i<4;i++)
+"54
+{
+[v _i `uc  1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 3  ]
+[e $U 4  ]
+"55
+[e :U 3 ]
+[; ;Key.c: 55: {
+{
+[; ;Key.c: 56: CCP1_set_duty_cycle(250); CCP2_set_duty_cycle(250);
+"56
+[e ( _CCP1_set_duty_cycle (1 -> -> 250 `i `ui ]
+[e ( _CCP2_set_duty_cycle (1 -> -> 250 `i `ui ]
+[; ;Key.c: 57: for(k=0;k<120;k++){ soft_delay_ms(1); WDT_clear();};
+"57
+{
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 120 `i 6  ]
+[e $U 7  ]
+[e :U 6 ]
+{
+[e ( _soft_delay_ms (1 -> -> 1 `i `ui ]
+[e ( _WDT_clear ..  ]
+}
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 120 `i 6  ]
+[e :U 7 ]
+}
+[; ;Key.c: 58: CCP1_set_duty_cycle(0); CCP2_set_duty_cycle(0);
+"58
+[e ( _CCP1_set_duty_cycle (1 -> -> 0 `i `ui ]
+[e ( _CCP2_set_duty_cycle (1 -> -> 0 `i `ui ]
+[; ;Key.c: 59: for(k=0;k<120;k++){ soft_delay_ms(1); WDT_clear();};
+"59
+{
+[e = _k -> -> 0 `i `uc ]
+[e $ < -> _k `i -> 120 `i 9  ]
+[e $U 10  ]
+[e :U 9 ]
+{
+[e ( _soft_delay_ms (1 -> -> 1 `i `ui ]
+[e ( _WDT_clear ..  ]
+}
+[e ++ _k -> -> 1 `i `uc ]
+[e $ < -> _k `i -> 120 `i 9  ]
+[e :U 10 ]
+}
+"60
+}
+"54
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 3  ]
+[e :U 4 ]
+"60
+}
+[; ;Key.c: 60: }
+[; ;Key.c: 61: }
+"61
+[e :UE 2 ]
+}
+"65
+[v _LEDCon_Chg `(v  1 ef ]
+{
+[; ;Key.c: 64: void LEDCon_Chg(void)
+[; ;Key.c: 65: {
+[e :U _LEDCon_Chg ]
+[f ]
+[; ;Key.c: 66: switch(LED_Chg_Cnt)
+"66
+[e $U 14  ]
+[; ;Key.c: 67: {
+"67
+{
+[; ;Key.c: 68: case 0: LEDR1_Vol=250; LEDR2_Vol=0; break;
+"68
+[e :U 15 ]
+[e = _LEDR1_Vol -> -> 250 `i `uc ]
+[e = _LEDR2_Vol -> -> 0 `i `uc ]
+[e $U 13  ]
+[; ;Key.c: 69: case 1: LEDR1_Vol=0; LEDR2_Vol=250; break;
+"69
+[e :U 16 ]
+[e = _LEDR1_Vol -> -> 0 `i `uc ]
+[e = _LEDR2_Vol -> -> 250 `i `uc ]
+[e $U 13  ]
+[; ;Key.c: 70: case 2: LEDR1_Vol=250; LEDR2_Vol=250; break;
+"70
+[e :U 17 ]
+[e = _LEDR1_Vol -> -> 250 `i `uc ]
+[e = _LEDR2_Vol -> -> 250 `i `uc ]
+[e $U 13  ]
+[; ;Key.c: 71: case 3: LEDR1_Vol=2; LEDR2_Vol=2; break;
+"71
+[e :U 18 ]
+[e = _LEDR1_Vol -> -> 2 `i `uc ]
+[e = _LEDR2_Vol -> -> 2 `i `uc ]
+[e $U 13  ]
+[; ;Key.c: 73: case 4: LEDR1_Vol=2; LEDR2_Vol=0; break;
+"73
+[e :U 19 ]
+[e = _LEDR1_Vol -> -> 2 `i `uc ]
+[e = _LEDR2_Vol -> -> 0 `i `uc ]
+[e $U 13  ]
+[; ;Key.c: 74: case 5: LEDR1_Vol=0; LEDR2_Vol=2; break;
+"74
+[e :U 20 ]
+[e = _LEDR1_Vol -> -> 0 `i `uc ]
+[e = _LEDR2_Vol -> -> 2 `i `uc ]
+[e $U 13  ]
+"76
+}
+[; ;Key.c: 76: }
+[e $U 13  ]
+"66
+[e :U 14 ]
+[e [\ _LED_Chg_Cnt , $ -> -> 0 `i `uc 15
+ , $ -> -> 1 `i `uc 16
+ , $ -> -> 2 `i `uc 17
+ , $ -> -> 3 `i `uc 18
+ , $ -> -> 4 `i `uc 19
+ , $ -> -> 5 `i `uc 20
+ 13 ]
+"76
+[e :U 13 ]
+[; ;Key.c: 77: PWM_LED1(LEDR1_Vol); PWM_LED2(LEDR2_Vol);
+"77
+[e ( _PWM_LED1 (1 _LEDR1_Vol ]
+[e ( _PWM_LED2 (1 _LEDR2_Vol ]
+[; ;Key.c: 78: SetRunEn(0,1,LEDR1_Vol);
+"78
+[e ( _SetRunEn (3 , , -> -> 0 `i `uc -> -> 1 `i `uc -> _LEDR1_Vol `i ]
+[; ;Key.c: 79: SetRunEn(1,1,LEDR2_Vol);
+"79
+[e ( _SetRunEn (3 , , -> -> 1 `i `uc -> -> 1 `i `uc -> _LEDR2_Vol `i ]
+[; ;Key.c: 80: }
+"80
+[e :UE 12 ]
+}
+"82
+[i _CLRRF_AddCnt
+-> -> 0 `i `uc
+]
+[; ;Key.c: 82: static unsigned char CLRRF_AddCnt=0;
+"83
+[i _CLRRF_AddTimEn
+-> -> 0 `i `uc
+]
+[; ;Key.c: 83: static unsigned char CLRRF_AddTimEn=0;
+"84
+[i _CLRRF_AddTimeSV
+-> -> 0 `i `us
+]
+[; ;Key.c: 84: static unsigned short int CLRRF_AddTimeSV=0;
+"88
+[i _SysDingShiOne
+-> -> 0 `i `uc
+]
+[; ;Key.c: 88: static unsigned char SysDingShiOne=0;
+"89
+[i _SysDingShiCnt
+-> -> 0 `i `uc
+]
+[; ;Key.c: 89: static unsigned char SysDingShiCnt=0;
+"90
+[i _SysDingShiSTEP
+-> -> 0 `i `uc
+]
+[; ;Key.c: 90: static unsigned char SysDingShiSTEP=0;
+"94
+[v _Key_HandRunning `(v  1 ef ]
+{
+[; ;Key.c: 93: void Key_HandRunning(void)
+[; ;Key.c: 94: {
+[e :U _Key_HandRunning ]
+[f ]
+"95
+[v F805 `uc  1 s Cnt ]
+[i F805
+-> -> 0 `i `uc
+]
+"96
+[v F806 `uc  1 s Cnt2 ]
+[i F806
+-> -> 0 `i `uc
+]
+[; ;Key.c: 95: static unsigned char Cnt=0;
+[; ;Key.c: 96: static unsigned char Cnt2=0;
+[; ;Key.c: 108: if(Cnt2++>4)
+"108
+[e $ ! > -> ++ F806 -> -> 1 `i `uc `i -> 4 `i 22  ]
+[; ;Key.c: 109: {
+"109
+{
+[; ;Key.c: 110: Cnt2=0;
+"110
+[e = F806 -> -> 0 `i `uc ]
+[; ;Key.c: 111: BufRuning();
+"111
+[e ( _BufRuning ..  ]
+[; ;Key.c: 114: if(SysDingShiEn)
+"114
+[e $ ! != -> _SysDingShiEn `i -> -> -> 0 `i `uc `i 23  ]
+[; ;Key.c: 115: {
+"115
+{
+[; ;Key.c: 116: if(SysDingShiOne==0)
+"116
+[e $ ! == -> _SysDingShiOne `i -> 0 `i 24  ]
+[; ;Key.c: 117: {
+"117
+{
+[; ;Key.c: 119: if(SysDingShiEn==2)
+"119
+[e $ ! == -> _SysDingShiEn `i -> 2 `i 25  ]
+[; ;Key.c: 120: {
+"120
+{
+[; ;Key.c: 121: if(++SysDingShiCnt>16)
+"121
+[e $ ! > -> =+ _SysDingShiCnt -> -> 1 `i `uc `i -> 16 `i 26  ]
+[; ;Key.c: 122: {
+"122
+{
+[; ;Key.c: 123: SysDingShiCnt=0;
+"123
+[e = _SysDingShiCnt -> -> 0 `i `uc ]
+[; ;Key.c: 125: switch(SysDingShiSTEP)
+"125
+[e $U 28  ]
+[; ;Key.c: 126: {
+"126
+{
+[; ;Key.c: 127: case 0:PWM_LED1(0); PWM_LED2(0); SysDingShiSTEP++; break;
+"127
+[e :U 29 ]
+[e ( _PWM_LED1 (1 -> -> 0 `i `uc ]
+[e ( _PWM_LED2 (1 -> -> 0 `i `uc ]
+[e ++ _SysDingShiSTEP -> -> 1 `i `uc ]
+[e $U 27  ]
+[; ;Key.c: 128: case 1:PWM_LED1(LEDR1_Vol); PWM_LED2(LEDR2_Vol); SysDingShiSTEP++;break;
+"128
+[e :U 30 ]
+[e ( _PWM_LED1 (1 _LEDR1_Vol ]
+[e ( _PWM_LED2 (1 _LEDR2_Vol ]
+[e ++ _SysDingShiSTEP -> -> 1 `i `uc ]
+[e $U 27  ]
+[; ;Key.c: 129: case 2:PWM_LED1(0); PWM_LED2(0); SysDingShiSTEP++; break;
+"129
+[e :U 31 ]
+[e ( _PWM_LED1 (1 -> -> 0 `i `uc ]
+[e ( _PWM_LED2 (1 -> -> 0 `i `uc ]
+[e ++ _SysDingShiSTEP -> -> 1 `i `uc ]
+[e $U 27  ]
+[; ;Key.c: 130: case 3:PWM_LED1(LEDR1_Vol); PWM_LED2(LEDR2_Vol);
+"130
+[e :U 32 ]
+[e ( _PWM_LED1 (1 _LEDR1_Vol ]
+[e ( _PWM_LED2 (1 _LEDR2_Vol ]
+[; ;Key.c: 131: SysDingShiOne=1;
+"131
+[e = _SysDingShiOne -> -> 1 `i `uc ]
+[; ;Key.c: 132: SysDingShiSTEP=0;
+"132
+[e = _SysDingShiSTEP -> -> 0 `i `uc ]
+[; ;Key.c: 133: break;
+"133
+[e $U 27  ]
+"135
+}
+[; ;Key.c: 135: }
+[e $U 27  ]
+"125
+[e :U 28 ]
+[e [\ _SysDingShiSTEP , $ -> -> 0 `i `uc 29
+ , $ -> -> 1 `i `uc 30
+ , $ -> -> 2 `i `uc 31
+ , $ -> -> 3 `i `uc 32
+ 27 ]
+"135
+[e :U 27 ]
+"136
+}
+[e :U 26 ]
+"137
+}
+[e :U 25 ]
+"138
+}
+[e :U 24 ]
+"139
+}
+[e :U 23 ]
+"142
+}
+[e :U 22 ]
+[; ;Key.c: 136: }
+[; ;Key.c: 137: }
+[; ;Key.c: 138: }
+[; ;Key.c: 139: }
+[; ;Key.c: 142: }
+[; ;Key.c: 144: if(CLRRF_AddTimEn)
+"144
+[e $ ! != -> _CLRRF_AddTimEn `i -> -> -> 0 `i `uc `i 33  ]
+[; ;Key.c: 145: {
+"145
+{
+[; ;Key.c: 146: CLRRF_AddTimeSV++;
+"146
+[e ++ _CLRRF_AddTimeSV -> -> 1 `i `us ]
+[; ;Key.c: 147: if(CLRRF_AddTimeSV>0xfff0) CLRRF_AddTimeSV=0xfff0;
+"147
+[e $ ! > -> _CLRRF_AddTimeSV `ui -> 65520 `ui 34  ]
+[e = _CLRRF_AddTimeSV -> -> 65520 `ui `us ]
+[e :U 34 ]
+"149
+}
+[e :U 33 ]
+[; ;Key.c: 149: }
+[; ;Key.c: 151: }
+"151
+[e :UE 21 ]
+}
+"154
+[i _ChgLV_ZX
+:U ..
+-> -> 250 `i `uc
+-> -> 100 `i `uc
+-> -> 50 `i `uc
+-> -> 16 `i `uc
+-> -> 7 `i `uc
+-> -> 2 `i `uc
+..
+]
+[; ;Key.c: 154: const unsigned char ChgLV_ZX[6]={ 250, 100, 50, 16, 7, 2 };
+"155
+[i _ChgLV_FW
+:U ..
+-> -> 254 `i `uc
+-> -> 175 `i `uc
+-> -> 75 `i `uc
+-> -> 34 `i `uc
+-> -> 13 `i `uc
+-> -> 5 `i `uc
+-> -> 0 `i `uc
+..
+]
+[; ;Key.c: 155: const unsigned char ChgLV_FW[7]={254, 175, 75, 34, 13, 5, 0};
+"158
+[v _GetChgLV `(uc  1 ef1`uc ]
+{
+[; ;Key.c: 157: unsigned char GetChgLV(unsigned char vol)
+[; ;Key.c: 158: {
+[e :U _GetChgLV ]
+[v _vol `uc  1 r1 ]
+[f ]
+"159
+[v _i `uc  1 a ]
+[; ;Key.c: 159: unsigned char i=0;
+[e = _i -> -> 0 `i `uc ]
+[; ;Key.c: 160: for(i=0;i<5;i++)
+"160
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 5 `i 36  ]
+[e $U 37  ]
+"161
+[e :U 36 ]
+[; ;Key.c: 161: {
+{
+[; ;Key.c: 162: if(vol>ChgLV_FW[1+i]) return i;
+"162
+[e $ ! > -> _vol `i -> *U + &U _ChgLV_FW * -> -> + -> 1 `i -> _i `i `ui `ux -> -> # *U &U _ChgLV_FW `ui `ux `i 39  ]
+[e ) _i ]
+[e $UE 35  ]
+[e :U 39 ]
+"163
+}
+"160
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 5 `i 36  ]
+[e :U 37 ]
+"163
+}
+[; ;Key.c: 163: }
+[; ;Key.c: 165: return 5;
+"165
+[e ) -> -> 5 `i `uc ]
+[e $UE 35  ]
+[; ;Key.c: 166: }
+"166
+[e :UE 35 ]
+}
+[; ;Key.c: 171: extern unsigned char RF_ADDRESS[5];
+[; ;Key.c: 172: extern unsigned char SysRunTime_3S;
+[; ;Key.c: 173: extern unsigned char TX_ADDRESS_DEF[5];
+"175
+[i _KeyVol
+-> -> 0 `i `ui
+]
+[; ;Key.c: 175: static unsigned int KeyVol=0;
+"176
+[i _KeyVolSV
+-> 65535 `ui
+]
+[; ;Key.c: 176: static unsigned int KeyVolSV=0xffff;
+"181
+[i _KEYKeepAddMark_1
+-> -> 0 `i `uc
+]
+[; ;Key.c: 181: static unsigned char KEYKeepAddMark_1=0;
+"182
+[i _KEYKeepAddMark_2
+-> -> 0 `i `uc
+]
+[; ;Key.c: 182: static unsigned char KEYKeepAddMark_2=0;
+"184
+[i _KEYKeepSunMark_1
+-> -> 0 `i `uc
+]
+[; ;Key.c: 184: static unsigned char KEYKeepSunMark_1=0;
+"185
+[i _KEYKeepSunMark_2
+-> -> 0 `i `uc
+]
+[; ;Key.c: 185: static unsigned char KEYKeepSunMark_2=0;
+"190
+[v _LED_ALLOFF `(v  1 ef ]
+{
+[; ;Key.c: 189: void LED_ALLOFF(void)
+[; ;Key.c: 190: {
+[e :U _LED_ALLOFF ]
+[f ]
+[; ;Key.c: 191: LED_ON_Sat=0;
+"191
+[e = _LED_ON_Sat -> -> 0 `i `uc ]
+[; ;Key.c: 192: colour_En=0;
+"192
+[e = _colour_En -> -> 0 `i `uc ]
+[; ;Key.c: 193: S7_En=0;
+"193
+[e = _S7_En -> -> 0 `i `uc ]
+[; ;Key.c: 194: Chg_En=0;
+"194
+[e = _Chg_En -> -> 0 `i `uc ]
+[; ;Key.c: 195: S7_Cnt=0;
+"195
+[e = _S7_Cnt -> -> 0 `i `uc ]
+[; ;Key.c: 196: Chg_Type=0;
+"196
+[e = _Chg_Type -> -> 0 `i `uc ]
+[; ;Key.c: 197: SetRunEn(0,0,0);
+"197
+[e ( _SetRunEn (3 , , -> -> 0 `i `uc -> -> 0 `i `uc -> 0 `i ]
+[; ;Key.c: 198: SetRunEn(1,0,0);
+"198
+[e ( _SetRunEn (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> 0 `i ]
+[; ;Key.c: 200: PWM_LED1(0);
+"200
+[e ( _PWM_LED1 (1 -> -> 0 `i `uc ]
+[; ;Key.c: 201: PWM_LED2(0);
+"201
+[e ( _PWM_LED2 (1 -> -> 0 `i `uc ]
+[; ;Key.c: 206: }
+"206
+[e :UE 40 ]
+}
+"211
+[v _Key_Handle `(v  1 ef1`*uc ]
+{
+[; ;Key.c: 210: void Key_Handle(unsigned char *buf)
+[; ;Key.c: 211: {
+[e :U _Key_Handle ]
+[v _buf `*uc  1 r1 ]
+[f ]
+"212
+[v _i `uc  1 a ]
+[; ;Key.c: 212: unsigned char i=0;
+[e = _i -> -> 0 `i `uc ]
+"213
+[v _k `us  1 a ]
+[; ;Key.c: 213: unsigned short int k=0;
+[e = _k -> -> 0 `i `us ]
+"214
+[v _n `uc  1 a ]
+[; ;Key.c: 214: unsigned char n=0;
+[e = _n -> -> 0 `i `uc ]
+[; ;Key.c: 216: if(buf[0]!=0x8C) return;
+"216
+[e $ ! != -> *U + _buf * -> -> 0 `i `x -> -> # *U _buf `i `x `i -> 140 `i 42  ]
+[e $UE 41  ]
+[e :U 42 ]
+[; ;Key.c: 218: Time1s_cot = 1000;
+"218
+[e = _Time1s_cot -> -> 1000 `i `ui ]
+[; ;Key.c: 220: KeyVol=((unsigned short int)buf[1]<<8);
+"220
+[e = _KeyVol << -> -> *U + _buf * -> -> 1 `i `x -> -> # *U _buf `i `x `us `ui -> 8 `i ]
+[; ;Key.c: 221: KeyVol+=buf[2];
+"221
+[e =+ _KeyVol -> *U + _buf * -> -> 2 `i `x -> -> # *U _buf `i `x `ui ]
+[; ;Key.c: 223: if(KeyVolSV!=KeyVol)
+"223
+[e $ ! != _KeyVolSV _KeyVol 43  ]
+[; ;Key.c: 224: {
+"224
+{
+[; ;Key.c: 225: KeyVolSV=KeyVol;
+"225
+[e = _KeyVolSV _KeyVol ]
+[; ;Key.c: 227: if(SysRunTime_3S==0)
+"227
+[e $ ! == -> _SysRunTime_3S `i -> 0 `i 44  ]
+[; ;Key.c: 228: {
+"228
+{
+[; ;Key.c: 231: if((KeyVol==0x0001)||(KeyVol==0x4000))
+"231
+[e $ ! || == _KeyVol -> -> 1 `i `ui == _KeyVol -> -> 16384 `i `ui 45  ]
+[; ;Key.c: 232: {
+"232
+{
+[; ;Key.c: 234: EP_SetRFAdd(&buf[3]);
+"234
+[e ( _EP_SetRFAdd (1 &U *U + _buf * -> -> 3 `i `x -> -> # *U _buf `i `x ]
+[; ;Key.c: 235: soft_delay_ms(10);
+"235
+[e ( _soft_delay_ms (1 -> -> 10 `i `ui ]
+[; ;Key.c: 236: EP_GetRFAdd(RF_ADDRESS);
+"236
+[e ( _EP_GetRFAdd (1 &U _RF_ADDRESS ]
+[; ;Key.c: 238: for(i=0;i<5;i++)
+"238
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 5 `i 46  ]
+[e $U 47  ]
+"239
+[e :U 46 ]
+[; ;Key.c: 239: {
+{
+[; ;Key.c: 240: if(RF_ADDRESS[i]!=buf[i+3]) break;
+"240
+[e $ ! != -> *U + &U _RF_ADDRESS * -> _i `ux -> -> # *U &U _RF_ADDRESS `ui `ux `i -> *U + _buf * -> + -> _i `i -> 3 `i `x -> -> # *U _buf `i `x `i 49  ]
+[e $U 47  ]
+[e :U 49 ]
+"241
+}
+"238
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 5 `i 46  ]
+[e :U 47 ]
+"241
+}
+[; ;Key.c: 241: }
+[; ;Key.c: 242: if(i==5)
+"242
+[e $ ! == -> _i `i -> 5 `i 50  ]
+[; ;Key.c: 243: {
+"243
+{
+[; ;Key.c: 244: soft_delay_ms(5);
+"244
+[e ( _soft_delay_ms (1 -> -> 5 `i `ui ]
+[; ;Key.c: 245: RF_ADDSSet(RF_ADDRESS);
+"245
+[e ( _RF_ADDSSet (1 &U _RF_ADDRESS ]
+[; ;Key.c: 246: soft_delay_ms(5);
+"246
+[e ( _soft_delay_ms (1 -> -> 5 `i `ui ]
+[; ;Key.c: 247: EP_SetADDCfg(1);
+"247
+[e ( _EP_SetADDCfg (1 -> -> 1 `i `uc ]
+[; ;Key.c: 249: Pair_LED();
+"249
+[e ( _Pair_LED ..  ]
+[; ;Key.c: 251: LED_ALLOFF();
+"251
+[e ( _LED_ALLOFF ..  ]
+[; ;Key.c: 252: LEDR1_Vol=0; LEDR2_Vol=250;
+"252
+[e = _LEDR1_Vol -> -> 0 `i `uc ]
+[e = _LEDR2_Vol -> -> 250 `i `uc ]
+[; ;Key.c: 253: PWM_LED1(LEDR1_Vol);
+"253
+[e ( _PWM_LED1 (1 _LEDR1_Vol ]
+[; ;Key.c: 254: PWM_LED2(LEDR2_Vol);
+"254
+[e ( _PWM_LED2 (1 _LEDR2_Vol ]
+[; ;Key.c: 255: SysRunTime_3S=1;
+"255
+[e = _SysRunTime_3S -> -> 1 `i `uc ]
+"258
+}
+[e :U 50 ]
+[; ;Key.c: 258: }
+[; ;Key.c: 260: return;
+"260
+[e $UE 41  ]
+"261
+}
+[e :U 45 ]
+[; ;Key.c: 261: }
+[; ;Key.c: 265: if((KeyVol==0x0010)||(KeyVol==0x0040))
+"265
+[e $ ! || == _KeyVol -> -> 16 `i `ui == _KeyVol -> -> 64 `i `ui 51  ]
+[; ;Key.c: 266: {
+"266
+{
+[; ;Key.c: 267: EP_SetADDCfg(0);
+"267
+[e ( _EP_SetADDCfg (1 -> -> 0 `i `uc ]
+[; ;Key.c: 268: soft_delay_ms(5);
+"268
+[e ( _soft_delay_ms (1 -> -> 5 `i `ui ]
+[; ;Key.c: 269: RF_ADDSSet(TX_ADDRESS_DEF);
+"269
+[e ( _RF_ADDSSet (1 &U _TX_ADDRESS_DEF ]
+[; ;Key.c: 270: soft_delay_ms(5);
+"270
+[e ( _soft_delay_ms (1 -> -> 5 `i `ui ]
+[; ;Key.c: 272: LED_ALLOFF();
+"272
+[e ( _LED_ALLOFF ..  ]
+[; ;Key.c: 273: LEDR1_Vol=0; LEDR2_Vol=250;
+"273
+[e = _LEDR1_Vol -> -> 0 `i `uc ]
+[e = _LEDR2_Vol -> -> 250 `i `uc ]
+[; ;Key.c: 274: PWM_LED1(LEDR1_Vol);
+"274
+[e ( _PWM_LED1 (1 _LEDR1_Vol ]
+[; ;Key.c: 275: PWM_LED2(LEDR2_Vol);
+"275
+[e ( _PWM_LED2 (1 _LEDR2_Vol ]
+[; ;Key.c: 276: SysRunTime_3S=1;
+"276
+[e = _SysRunTime_3S -> -> 1 `i `uc ]
+[; ;Key.c: 277: return;
+"277
+[e $UE 41  ]
+"278
+}
+[e :U 51 ]
+"279
+}
+[e :U 44 ]
+[; ;Key.c: 278: }
+[; ;Key.c: 279: }
+[; ;Key.c: 283: switch(KeyVol)
+"283
+[e $U 53  ]
+[; ;Key.c: 284: {
+"284
+{
+[; ;Key.c: 285: case 0x8000:
+"285
+[e :U 54 ]
+[; ;Key.c: 286: if(LED_ON_Sat)
+"286
+[e $ ! != -> _LED_ON_Sat `i -> -> -> 0 `i `uc `i 55  ]
+[; ;Key.c: 287: {
+"287
+{
+[; ;Key.c: 288: SysDingShiEn=1;
+"288
+[e = _SysDingShiEn -> -> 1 `i `uc ]
+[; ;Key.c: 289: SysRunTimeCnt=18000;
+"289
+[e = _SysRunTimeCnt -> -> 18000 `i `us ]
+[; ;Key.c: 292: CCP1_set_duty_cycle(0);
+"292
+[e ( _CCP1_set_duty_cycle (1 -> -> 0 `i `ui ]
+[; ;Key.c: 293: CCP2_set_duty_cycle(0);
+"293
+[e ( _CCP2_set_duty_cycle (1 -> -> 0 `i `ui ]
+[; ;Key.c: 294: for(k=0;k<120;k++){ soft_delay_ms(1); WDT_clear();};
+"294
+{
+[e = _k -> -> 0 `i `us ]
+[e $ < -> _k `ui -> -> 120 `i `ui 56  ]
+[e $U 57  ]
+[e :U 56 ]
+{
+[e ( _soft_delay_ms (1 -> -> 1 `i `ui ]
+[e ( _WDT_clear ..  ]
+}
+[e ++ _k -> -> 1 `i `us ]
+[e $ < -> _k `ui -> -> 120 `i `ui 56  ]
+[e :U 57 ]
+}
+[; ;Key.c: 295: PWM_LED1(LEDR1_Vol); PWM_LED2(LEDR2_Vol);
+"295
+[e ( _PWM_LED1 (1 _LEDR1_Vol ]
+[e ( _PWM_LED2 (1 _LEDR2_Vol ]
+"297
+}
+[e :U 55 ]
+[; ;Key.c: 297: }
+[; ;Key.c: 299: break;
+"299
+[e $U 52  ]
+[; ;Key.c: 302: case 0x0080:
+"302
+[e :U 59 ]
+[; ;Key.c: 304: if(LED_ON_Sat)
+"304
+[e $ ! != -> _LED_ON_Sat `i -> -> -> 0 `i `uc `i 60  ]
+[; ;Key.c: 305: {
+"305
+{
+[; ;Key.c: 306: SysDingShiEn=2;
+"306
+[e = _SysDingShiEn -> -> 2 `i `uc ]
+[; ;Key.c: 307: SysRunTimeCnt=36000;
+"307
+[e = _SysRunTimeCnt -> -> 36000 `l `us ]
+[; ;Key.c: 309: SysDingShiOne=0;
+"309
+[e = _SysDingShiOne -> -> 0 `i `uc ]
+[; ;Key.c: 310: SysDingShiCnt=100;
+"310
+[e = _SysDingShiCnt -> -> 100 `i `uc ]
+[; ;Key.c: 311: SysDingShiSTEP=0;
+"311
+[e = _SysDingShiSTEP -> -> 0 `i `uc ]
+"313
+}
+[e :U 60 ]
+[; ;Key.c: 313: }
+[; ;Key.c: 315: break;
+"315
+[e $U 52  ]
+[; ;Key.c: 318: case 0x0002:
+"318
+[e :U 61 ]
+[; ;Key.c: 319: if(LED_ON_Sat)
+"319
+[e $ ! != -> _LED_ON_Sat `i -> -> -> 0 `i `uc `i 62  ]
+[; ;Key.c: 320: {
+"320
+{
+[; ;Key.c: 321: if(LEDR1_Vol!=0)
+"321
+[e $ ! != -> _LEDR1_Vol `i -> 0 `i 63  ]
+[; ;Key.c: 322: {
+"322
+{
+[; ;Key.c: 323: KEYKeepAddMark_1=0;
+"323
+[e = _KEYKeepAddMark_1 -> -> 0 `i `uc ]
+[; ;Key.c: 324: SetRunEn(0,1,LEDR1_Vol);
+"324
+[e ( _SetRunEn (3 , , -> -> 0 `i `uc -> -> 1 `i `uc -> _LEDR1_Vol `i ]
+[; ;Key.c: 328: i=GetChgLV(LEDR1_Vol);
+"328
+[e = _i ( _GetChgLV (1 _LEDR1_Vol ]
+[; ;Key.c: 330: n=1; if(i==0||i==1) n=4; if(i==2) n=3; if(i==3) n=2;
+"330
+[e = _n -> -> 1 `i `uc ]
+[e $ ! || == -> _i `i -> 0 `i == -> _i `i -> 1 `i 64  ]
+[e = _n -> -> 4 `i `uc ]
+[e :U 64 ]
+[e $ ! == -> _i `i -> 2 `i 65  ]
+[e = _n -> -> 3 `i `uc ]
+[e :U 65 ]
+[e $ ! == -> _i `i -> 3 `i 66  ]
+[e = _n -> -> 2 `i `uc ]
+[e :U 66 ]
+[; ;Key.c: 332: i = (i==0)?(ChgLV_ZX[i]):(ChgLV_ZX[i-1]);
+"332
+[e = _i -> ? == -> _i `i -> 0 `i : -> *U + &U _ChgLV_ZX * -> _i `ux -> -> # *U &U _ChgLV_ZX `ui `ux `i -> *U + &U _ChgLV_ZX * -> -> - -> _i `i -> 1 `i `ui `ux -> -> # *U &U _ChgLV_ZX `ui `ux `i `uc ]
+[; ;Key.c: 333: BufSetRun(0,i,1,n);
+"333
+[e ( _BufSetRun (4 , , , -> -> 0 `i `uc _i -> -> 1 `i `uc _n ]
+"334
+}
+[e :U 63 ]
+[; ;Key.c: 334: }
+[; ;Key.c: 336: if(LEDR2_Vol!=0)
+"336
+[e $ ! != -> _LEDR2_Vol `i -> 0 `i 67  ]
+[; ;Key.c: 337: {
+"337
+{
+[; ;Key.c: 338: KEYKeepAddMark_2=0;
+"338
+[e = _KEYKeepAddMark_2 -> -> 0 `i `uc ]
+[; ;Key.c: 339: SetRunEn(1,1,LEDR2_Vol);
+"339
+[e ( _SetRunEn (3 , , -> -> 1 `i `uc -> -> 1 `i `uc -> _LEDR2_Vol `i ]
+[; ;Key.c: 341: i=GetChgLV(LEDR2_Vol);
+"341
+[e = _i ( _GetChgLV (1 _LEDR2_Vol ]
+[; ;Key.c: 342: n=1; if(i==0||i==1) n=4; if(i==2) n=3; if(i==3) n=2;
+"342
+[e = _n -> -> 1 `i `uc ]
+[e $ ! || == -> _i `i -> 0 `i == -> _i `i -> 1 `i 68  ]
+[e = _n -> -> 4 `i `uc ]
+[e :U 68 ]
+[e $ ! == -> _i `i -> 2 `i 69  ]
+[e = _n -> -> 3 `i `uc ]
+[e :U 69 ]
+[e $ ! == -> _i `i -> 3 `i 70  ]
+[e = _n -> -> 2 `i `uc ]
+[e :U 70 ]
+[; ;Key.c: 344: i = (i==0)?(ChgLV_ZX[i]):(ChgLV_ZX[i-1]);
+"344
+[e = _i -> ? == -> _i `i -> 0 `i : -> *U + &U _ChgLV_ZX * -> _i `ux -> -> # *U &U _ChgLV_ZX `ui `ux `i -> *U + &U _ChgLV_ZX * -> -> - -> _i `i -> 1 `i `ui `ux -> -> # *U &U _ChgLV_ZX `ui `ux `i `uc ]
+[; ;Key.c: 345: BufSetRun(1,i,1,n);
+"345
+[e ( _BufSetRun (4 , , , -> -> 1 `i `uc _i -> -> 1 `i `uc _n ]
+"346
+}
+[e :U 67 ]
+"348
+}
+[e :U 62 ]
+[; ;Key.c: 346: }
+[; ;Key.c: 348: }
+[; ;Key.c: 349: SysDingShiEn=0;
+"349
+[e = _SysDingShiEn -> -> 0 `i `uc ]
+[; ;Key.c: 350: break;
+"350
+[e $U 52  ]
+[; ;Key.c: 352: case 0x0020:
+"352
+[e :U 71 ]
+[; ;Key.c: 353: if(LED_ON_Sat)
+"353
+[e $ ! != -> _LED_ON_Sat `i -> -> -> 0 `i `uc `i 72  ]
+[; ;Key.c: 354: {
+"354
+{
+[; ;Key.c: 356: if(LEDR1_Vol!=0)
+"356
+[e $ ! != -> _LEDR1_Vol `i -> 0 `i 73  ]
+[; ;Key.c: 357: {
+"357
+{
+[; ;Key.c: 358: KEYKeepSunMark_1=0;
+"358
+[e = _KEYKeepSunMark_1 -> -> 0 `i `uc ]
+[; ;Key.c: 359: SetRunEn(0,1,LEDR1_Vol);
+"359
+[e ( _SetRunEn (3 , , -> -> 0 `i `uc -> -> 1 `i `uc -> _LEDR1_Vol `i ]
+[; ;Key.c: 361: i=GetChgLV(LEDR1_Vol);
+"361
+[e = _i ( _GetChgLV (1 _LEDR1_Vol ]
+[; ;Key.c: 362: n=1; if(i==0||i==1) n=4; if(i==2) n=3; if(i==3) n=2;
+"362
+[e = _n -> -> 1 `i `uc ]
+[e $ ! || == -> _i `i -> 0 `i == -> _i `i -> 1 `i 74  ]
+[e = _n -> -> 4 `i `uc ]
+[e :U 74 ]
+[e $ ! == -> _i `i -> 2 `i 75  ]
+[e = _n -> -> 3 `i `uc ]
+[e :U 75 ]
+[e $ ! == -> _i `i -> 3 `i 76  ]
+[e = _n -> -> 2 `i `uc ]
+[e :U 76 ]
+[; ;Key.c: 363: i = (i==5)?(ChgLV_ZX[i]):(ChgLV_ZX[i+1]);
+"363
+[e = _i -> ? == -> _i `i -> 5 `i : -> *U + &U _ChgLV_ZX * -> _i `ux -> -> # *U &U _ChgLV_ZX `ui `ux `i -> *U + &U _ChgLV_ZX * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _ChgLV_ZX `ui `ux `i `uc ]
+[; ;Key.c: 365: BufSetRun(0,i,1,n);
+"365
+[e ( _BufSetRun (4 , , , -> -> 0 `i `uc _i -> -> 1 `i `uc _n ]
+"366
+}
+[e :U 73 ]
+[; ;Key.c: 366: }
+[; ;Key.c: 368: if(LEDR2_Vol!=0)
+"368
+[e $ ! != -> _LEDR2_Vol `i -> 0 `i 77  ]
+[; ;Key.c: 369: {
+"369
+{
+[; ;Key.c: 370: KEYKeepSunMark_2=0;
+"370
+[e = _KEYKeepSunMark_2 -> -> 0 `i `uc ]
+[; ;Key.c: 371: SetRunEn(1,1,LEDR2_Vol);
+"371
+[e ( _SetRunEn (3 , , -> -> 1 `i `uc -> -> 1 `i `uc -> _LEDR2_Vol `i ]
+[; ;Key.c: 372: i=GetChgLV(LEDR2_Vol);
+"372
+[e = _i ( _GetChgLV (1 _LEDR2_Vol ]
+[; ;Key.c: 373: n=1; if(i==0||i==1) n=4; if(i==2) n=3; if(i==3) n=2;
+"373
+[e = _n -> -> 1 `i `uc ]
+[e $ ! || == -> _i `i -> 0 `i == -> _i `i -> 1 `i 78  ]
+[e = _n -> -> 4 `i `uc ]
+[e :U 78 ]
+[e $ ! == -> _i `i -> 2 `i 79  ]
+[e = _n -> -> 3 `i `uc ]
+[e :U 79 ]
+[e $ ! == -> _i `i -> 3 `i 80  ]
+[e = _n -> -> 2 `i `uc ]
+[e :U 80 ]
+[; ;Key.c: 374: i = (i==5)?(ChgLV_ZX[i]):(ChgLV_ZX[i+1]);
+"374
+[e = _i -> ? == -> _i `i -> 5 `i : -> *U + &U _ChgLV_ZX * -> _i `ux -> -> # *U &U _ChgLV_ZX `ui `ux `i -> *U + &U _ChgLV_ZX * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _ChgLV_ZX `ui `ux `i `uc ]
+[; ;Key.c: 375: BufSetRun(1,i,1,n);
+"375
+[e ( _BufSetRun (4 , , , -> -> 1 `i `uc _i -> -> 1 `i `uc _n ]
+"376
+}
+[e :U 77 ]
+"378
+}
+[e :U 72 ]
+[; ;Key.c: 376: }
+[; ;Key.c: 378: }
+[; ;Key.c: 379: SysDingShiEn=0;
+"379
+[e = _SysDingShiEn -> -> 0 `i `uc ]
+[; ;Key.c: 380: break;
+"380
+[e $U 52  ]
+[; ;Key.c: 383: case 0x2000:
+"383
+[e :U 81 ]
+[; ;Key.c: 384: if(LED_ON_Sat)
+"384
+[e $ ! != -> _LED_ON_Sat `i -> -> -> 0 `i `uc `i 82  ]
+[; ;Key.c: 385: {
+"385
+{
+[; ;Key.c: 387: if((LEDR1_Vol)&&(LEDR2_Vol))
+"387
+[e $ ! && != -> _LEDR1_Vol `i -> -> -> 0 `i `uc `i != -> _LEDR2_Vol `i -> -> -> 0 `i `uc `i 83  ]
+[; ;Key.c: 388: {
+"388
+{
+[; ;Key.c: 389: k=(unsigned short int)LEDR1_Vol+(unsigned short int)LEDR2_Vol;
+"389
+[e = _k -> + -> -> _LEDR1_Vol `us `ui -> -> _LEDR2_Vol `us `ui `us ]
+[; ;Key.c: 390: if(k>(unsigned short int)250) k=250;
+"390
+[e $ ! > -> _k `ui -> -> -> 250 `i `us `ui 84  ]
+[e = _k -> -> 250 `i `us ]
+[e :U 84 ]
+[; ;Key.c: 392: SetRunEn(0,1,LEDR1_Vol); BufSetRun(0,k,1,3);
+"392
+[e ( _SetRunEn (3 , , -> -> 0 `i `uc -> -> 1 `i `uc -> _LEDR1_Vol `i ]
+[e ( _BufSetRun (4 , , , -> -> 0 `i `uc -> _k `uc -> -> 1 `i `uc -> -> 3 `i `uc ]
+[; ;Key.c: 393: SetRunEn(1,1,LEDR2_Vol); BufSetRun(1,0,1,3);
+"393
+[e ( _SetRunEn (3 , , -> -> 1 `i `uc -> -> 1 `i `uc -> _LEDR2_Vol `i ]
+[e ( _BufSetRun (4 , , , -> -> 1 `i `uc -> -> 0 `i `uc -> -> 1 `i `uc -> -> 3 `i `uc ]
+"394
+}
+[e :U 83 ]
+[; ;Key.c: 394: }
+[; ;Key.c: 396: if((LEDR1_Vol==0)&&(LEDR2_Vol))
+"396
+[e $ ! && == -> _LEDR1_Vol `i -> 0 `i != -> _LEDR2_Vol `i -> -> -> 0 `i `uc `i 85  ]
+[; ;Key.c: 397: {
+"397
+{
+[; ;Key.c: 398: i=LEDR2_Vol/2;
+"398
+[e = _i -> / -> _LEDR2_Vol `i -> 2 `i `uc ]
+[; ;Key.c: 400: SetRunEn(0,1,LEDR1_Vol); BufSetRun(0,i,1,3);
+"400
+[e ( _SetRunEn (3 , , -> -> 0 `i `uc -> -> 1 `i `uc -> _LEDR1_Vol `i ]
+[e ( _BufSetRun (4 , , , -> -> 0 `i `uc _i -> -> 1 `i `uc -> -> 3 `i `uc ]
+[; ;Key.c: 401: SetRunEn(1,1,LEDR2_Vol); BufSetRun(1,i,1,3);
+"401
+[e ( _SetRunEn (3 , , -> -> 1 `i `uc -> -> 1 `i `uc -> _LEDR2_Vol `i ]
+[e ( _BufSetRun (4 , , , -> -> 1 `i `uc _i -> -> 1 `i `uc -> -> 3 `i `uc ]
+"402
+}
+[e :U 85 ]
+"403
+}
+[e :U 82 ]
+[; ;Key.c: 402: }
+[; ;Key.c: 403: }
+[; ;Key.c: 404: break;
+"404
+[e $U 52  ]
+[; ;Key.c: 407: case 0x0200:
+"407
+[e :U 86 ]
+[; ;Key.c: 408: if(LED_ON_Sat)
+"408
+[e $ ! != -> _LED_ON_Sat `i -> -> -> 0 `i `uc `i 87  ]
+[; ;Key.c: 409: {
+"409
+{
+[; ;Key.c: 410: if((LEDR1_Vol)&&(LEDR2_Vol))
+"410
+[e $ ! && != -> _LEDR1_Vol `i -> -> -> 0 `i `uc `i != -> _LEDR2_Vol `i -> -> -> 0 `i `uc `i 88  ]
+[; ;Key.c: 411: {
+"411
+{
+[; ;Key.c: 412: k=(unsigned short int)LEDR1_Vol+(unsigned short int)LEDR2_Vol;
+"412
+[e = _k -> + -> -> _LEDR1_Vol `us `ui -> -> _LEDR2_Vol `us `ui `us ]
+[; ;Key.c: 413: if(k>(unsigned short int)250) k=250;
+"413
+[e $ ! > -> _k `ui -> -> -> 250 `i `us `ui 89  ]
+[e = _k -> -> 250 `i `us ]
+[e :U 89 ]
+[; ;Key.c: 415: SetRunEn(0,1,LEDR1_Vol); BufSetRun(0,0,1,3);
+"415
+[e ( _SetRunEn (3 , , -> -> 0 `i `uc -> -> 1 `i `uc -> _LEDR1_Vol `i ]
+[e ( _BufSetRun (4 , , , -> -> 0 `i `uc -> -> 0 `i `uc -> -> 1 `i `uc -> -> 3 `i `uc ]
+[; ;Key.c: 416: SetRunEn(1,1,LEDR2_Vol); BufSetRun(1,k,1,3);
+"416
+[e ( _SetRunEn (3 , , -> -> 1 `i `uc -> -> 1 `i `uc -> _LEDR2_Vol `i ]
+[e ( _BufSetRun (4 , , , -> -> 1 `i `uc -> _k `uc -> -> 1 `i `uc -> -> 3 `i `uc ]
+"417
+}
+[e :U 88 ]
+[; ;Key.c: 417: }
+[; ;Key.c: 419: if((LEDR1_Vol)&&(LEDR2_Vol==0))
+"419
+[e $ ! && != -> _LEDR1_Vol `i -> -> -> 0 `i `uc `i == -> _LEDR2_Vol `i -> 0 `i 90  ]
+[; ;Key.c: 420: {
+"420
+{
+[; ;Key.c: 422: i=LEDR1_Vol/2;
+"422
+[e = _i -> / -> _LEDR1_Vol `i -> 2 `i `uc ]
+[; ;Key.c: 423: SetRunEn(0,1,LEDR1_Vol); BufSetRun(0,i,1,3);
+"423
+[e ( _SetRunEn (3 , , -> -> 0 `i `uc -> -> 1 `i `uc -> _LEDR1_Vol `i ]
+[e ( _BufSetRun (4 , , , -> -> 0 `i `uc _i -> -> 1 `i `uc -> -> 3 `i `uc ]
+[; ;Key.c: 424: SetRunEn(1,1,LEDR2_Vol); BufSetRun(1,i,1,3);
+"424
+[e ( _SetRunEn (3 , , -> -> 1 `i `uc -> -> 1 `i `uc -> _LEDR2_Vol `i ]
+[e ( _BufSetRun (4 , , , -> -> 1 `i `uc _i -> -> 1 `i `uc -> -> 3 `i `uc ]
+"428
+}
+[e :U 90 ]
+"429
+}
+[e :U 87 ]
+[; ;Key.c: 428: }
+[; ;Key.c: 429: }
+[; ;Key.c: 430: break;
+"430
+[e $U 52  ]
+[; ;Key.c: 434: case 0x0001:
+"434
+[e :U 91 ]
+"435
+[e :U 92 ]
+[; ;Key.c: 435: case 0x4000:
+[; ;Key.c: 437: if(LED_ON_Sat==0)
+"437
+[e $ ! == -> _LED_ON_Sat `i -> 0 `i 93  ]
+[; ;Key.c: 438: {
+"438
+{
+[; ;Key.c: 439: LED_ON_Sat=1;
+"439
+[e = _LED_ON_Sat -> -> 1 `i `uc ]
+[; ;Key.c: 441: PWM_LED1(LEDR1_Vol); PWM_LED2(LEDR2_Vol);
+"441
+[e ( _PWM_LED1 (1 _LEDR1_Vol ]
+[e ( _PWM_LED2 (1 _LEDR2_Vol ]
+"442
+}
+[; ;Key.c: 442: }
+[e $U 94  ]
+"443
+[e :U 93 ]
+[; ;Key.c: 443: else
+[; ;Key.c: 444: {
+"444
+{
+[; ;Key.c: 445: LEDCon_Chg();
+"445
+[e ( _LEDCon_Chg ..  ]
+[; ;Key.c: 446: if(++LED_Chg_Cnt>=6) LED_Chg_Cnt=0;
+"446
+[e $ ! >= -> =+ _LED_Chg_Cnt -> -> 1 `i `uc `i -> 6 `i 95  ]
+[e = _LED_Chg_Cnt -> -> 0 `i `uc ]
+[e :U 95 ]
+"447
+}
+[e :U 94 ]
+[; ;Key.c: 447: }
+[; ;Key.c: 448: SysDingShiEn=0;
+"448
+[e = _SysDingShiEn -> -> 0 `i `uc ]
+[; ;Key.c: 449: break;
+"449
+[e $U 52  ]
+[; ;Key.c: 452: case 0x0010:
+"452
+[e :U 96 ]
+"453
+[e :U 97 ]
+[; ;Key.c: 453: case 0x0040:
+[; ;Key.c: 455: LED_ALLOFF();
+"455
+[e ( _LED_ALLOFF ..  ]
+[; ;Key.c: 456: SysDingShiEn=0;
+"456
+[e = _SysDingShiEn -> -> 0 `i `uc ]
+[; ;Key.c: 457: break;
+"457
+[e $U 52  ]
+"458
+}
+[; ;Key.c: 458: }
+[e $U 52  ]
+"283
+[e :U 53 ]
+[e [\ _KeyVol , $ -> 32768 `ui 54
+ , $ -> -> 128 `i `ui 59
+ , $ -> -> 2 `i `ui 61
+ , $ -> -> 32 `i `ui 71
+ , $ -> -> 8192 `i `ui 81
+ , $ -> -> 512 `i `ui 86
+ , $ -> -> 1 `i `ui 91
+ , $ -> -> 16384 `i `ui 92
+ , $ -> -> 16 `i `ui 96
+ , $ -> -> 64 `i `ui 97
+ 52 ]
+"458
+[e :U 52 ]
+"459
+}
+[; ;Key.c: 459: }
+[e $U 98  ]
+"460
+[e :U 43 ]
+[; ;Key.c: 460: else
+[; ;Key.c: 461: {
+"461
+{
+[; ;Key.c: 462: switch(KeyVol)
+"462
+[e $U 100  ]
+[; ;Key.c: 463: {
+"463
+{
+[; ;Key.c: 464: case 0x0002:
+"464
+[e :U 101 ]
+[; ;Key.c: 465: if(LED_ON_Sat)
+"465
+[e $ ! != -> _LED_ON_Sat `i -> -> -> 0 `i `uc `i 102  ]
+[; ;Key.c: 466: {
+"466
+{
+[; ;Key.c: 467: if(LEDR1_Vol!=0)
+"467
+[e $ ! != -> _LEDR1_Vol `i -> 0 `i 103  ]
+[; ;Key.c: 468: {
+"468
+{
+[; ;Key.c: 469: if(KEYKeepAddMark_1==0) i=!GerBuff_RunSAT(0); else i=1;
+"469
+[e $ ! == -> _KEYKeepAddMark_1 `i -> 0 `i 104  ]
+[e = _i -> -> ! != -> ( _GerBuff_RunSAT (1 -> -> 0 `i `uc `i -> -> -> 0 `i `uc `i `i `uc ]
+[e $U 105  ]
+[e :U 104 ]
+[e = _i -> -> 1 `i `uc ]
+[e :U 105 ]
+[; ;Key.c: 470: if(i)
+"470
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 106  ]
+[; ;Key.c: 471: {
+"471
+{
+[; ;Key.c: 472: KEYKeepAddMark_1=1;
+"472
+[e = _KEYKeepAddMark_1 -> -> 1 `i `uc ]
+[; ;Key.c: 474: if((unsigned short int)LEDR1_Vol+(unsigned short int)20>=(unsigned short int)250) i=250; else i=LEDR1_Vol+20;
+"474
+[e $ ! >= + -> -> _LEDR1_Vol `us `ui -> -> -> 20 `i `us `ui -> -> -> 250 `i `us `ui 107  ]
+[e = _i -> -> 250 `i `uc ]
+[e $U 108  ]
+[e :U 107 ]
+[e = _i -> + -> _LEDR1_Vol `i -> 20 `i `uc ]
+[e :U 108 ]
+[; ;Key.c: 475: BufSetRun(0,i,1,1);
+"475
+[e ( _BufSetRun (4 , , , -> -> 0 `i `uc _i -> -> 1 `i `uc -> -> 1 `i `uc ]
+"476
+}
+[e :U 106 ]
+"477
+}
+[e :U 103 ]
+[; ;Key.c: 476: }
+[; ;Key.c: 477: }
+[; ;Key.c: 479: if(LEDR2_Vol!=0)
+"479
+[e $ ! != -> _LEDR2_Vol `i -> 0 `i 109  ]
+[; ;Key.c: 480: {
+"480
+{
+[; ;Key.c: 481: if(KEYKeepAddMark_2==0) i=!GerBuff_RunSAT(1); else i=1;
+"481
+[e $ ! == -> _KEYKeepAddMark_2 `i -> 0 `i 110  ]
+[e = _i -> -> ! != -> ( _GerBuff_RunSAT (1 -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i `i `uc ]
+[e $U 111  ]
+[e :U 110 ]
+[e = _i -> -> 1 `i `uc ]
+[e :U 111 ]
+[; ;Key.c: 482: if(i)
+"482
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 112  ]
+[; ;Key.c: 483: {
+"483
+{
+[; ;Key.c: 484: KEYKeepAddMark_2=1;
+"484
+[e = _KEYKeepAddMark_2 -> -> 1 `i `uc ]
+[; ;Key.c: 486: if((unsigned short int)LEDR2_Vol+(unsigned short int)20>=(unsigned short int)250) i=250; else i=LEDR2_Vol+20;
+"486
+[e $ ! >= + -> -> _LEDR2_Vol `us `ui -> -> -> 20 `i `us `ui -> -> -> 250 `i `us `ui 113  ]
+[e = _i -> -> 250 `i `uc ]
+[e $U 114  ]
+[e :U 113 ]
+[e = _i -> + -> _LEDR2_Vol `i -> 20 `i `uc ]
+[e :U 114 ]
+[; ;Key.c: 487: BufSetRun(1,i,1,1);
+"487
+[e ( _BufSetRun (4 , , , -> -> 1 `i `uc _i -> -> 1 `i `uc -> -> 1 `i `uc ]
+"488
+}
+[e :U 112 ]
+"489
+}
+[e :U 109 ]
+"490
+}
+[e :U 102 ]
+[; ;Key.c: 488: }
+[; ;Key.c: 489: }
+[; ;Key.c: 490: }
+[; ;Key.c: 491: break;
+"491
+[e $U 99  ]
+[; ;Key.c: 495: case 0x0020:
+"495
+[e :U 115 ]
+[; ;Key.c: 496: if(LED_ON_Sat)
+"496
+[e $ ! != -> _LED_ON_Sat `i -> -> -> 0 `i `uc `i 116  ]
+[; ;Key.c: 497: {
+"497
+{
+[; ;Key.c: 499: if(LEDR1_Vol!=0)
+"499
+[e $ ! != -> _LEDR1_Vol `i -> 0 `i 117  ]
+[; ;Key.c: 500: {
+"500
+{
+[; ;Key.c: 501: if(KEYKeepSunMark_1==0) i=!GerBuff_RunSAT(0); else i=1;
+"501
+[e $ ! == -> _KEYKeepSunMark_1 `i -> 0 `i 118  ]
+[e = _i -> -> ! != -> ( _GerBuff_RunSAT (1 -> -> 0 `i `uc `i -> -> -> 0 `i `uc `i `i `uc ]
+[e $U 119  ]
+[e :U 118 ]
+[e = _i -> -> 1 `i `uc ]
+[e :U 119 ]
+[; ;Key.c: 502: if(i)
+"502
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 120  ]
+[; ;Key.c: 503: {
+"503
+{
+[; ;Key.c: 504: KEYKeepSunMark_1=1;
+"504
+[e = _KEYKeepSunMark_1 -> -> 1 `i `uc ]
+[; ;Key.c: 506: if((unsigned short int)LEDR1_Vol>=((unsigned short int)2+(unsigned short int)20)) i=LEDR1_Vol-20; else i=2;
+"506
+[e $ ! >= -> -> _LEDR1_Vol `us `ui + -> -> -> 2 `i `us `ui -> -> -> 20 `i `us `ui 121  ]
+[e = _i -> - -> _LEDR1_Vol `i -> 20 `i `uc ]
+[e $U 122  ]
+[e :U 121 ]
+[e = _i -> -> 2 `i `uc ]
+[e :U 122 ]
+[; ;Key.c: 507: BufSetRun(0,i,1,1);
+"507
+[e ( _BufSetRun (4 , , , -> -> 0 `i `uc _i -> -> 1 `i `uc -> -> 1 `i `uc ]
+"508
+}
+[e :U 120 ]
+"509
+}
+[e :U 117 ]
+[; ;Key.c: 508: }
+[; ;Key.c: 509: }
+[; ;Key.c: 511: if(LEDR2_Vol!=0)
+"511
+[e $ ! != -> _LEDR2_Vol `i -> 0 `i 123  ]
+[; ;Key.c: 512: {
+"512
+{
+[; ;Key.c: 513: if(KEYKeepSunMark_2==0) i=!GerBuff_RunSAT(1); else i=1;
+"513
+[e $ ! == -> _KEYKeepSunMark_2 `i -> 0 `i 124  ]
+[e = _i -> -> ! != -> ( _GerBuff_RunSAT (1 -> -> 1 `i `uc `i -> -> -> 0 `i `uc `i `i `uc ]
+[e $U 125  ]
+[e :U 124 ]
+[e = _i -> -> 1 `i `uc ]
+[e :U 125 ]
+[; ;Key.c: 514: if(i)
+"514
+[e $ ! != -> _i `i -> -> -> 0 `i `uc `i 126  ]
+[; ;Key.c: 515: {
+"515
+{
+[; ;Key.c: 516: KEYKeepSunMark_2=1;
+"516
+[e = _KEYKeepSunMark_2 -> -> 1 `i `uc ]
+[; ;Key.c: 518: if((unsigned short int)LEDR2_Vol>=(unsigned short int)2+(unsigned short int)20) i=LEDR2_Vol-20; else i=2;
+"518
+[e $ ! >= -> -> _LEDR2_Vol `us `ui + -> -> -> 2 `i `us `ui -> -> -> 20 `i `us `ui 127  ]
+[e = _i -> - -> _LEDR2_Vol `i -> 20 `i `uc ]
+[e $U 128  ]
+[e :U 127 ]
+[e = _i -> -> 2 `i `uc ]
+[e :U 128 ]
+[; ;Key.c: 519: BufSetRun(1,i,1,1);
+"519
+[e ( _BufSetRun (4 , , , -> -> 1 `i `uc _i -> -> 1 `i `uc -> -> 1 `i `uc ]
+"520
+}
+[e :U 126 ]
+"521
+}
+[e :U 123 ]
+"523
+}
+[e :U 116 ]
+[; ;Key.c: 520: }
+[; ;Key.c: 521: }
+[; ;Key.c: 523: }
+[; ;Key.c: 524: break;
+"524
+[e $U 99  ]
+"526
+}
+[; ;Key.c: 526: }
+[e $U 99  ]
+"462
+[e :U 100 ]
+[e [\ _KeyVol , $ -> -> 2 `i `ui 101
+ , $ -> -> 32 `i `ui 115
+ 99 ]
+"526
+[e :U 99 ]
+"527
+}
+[e :U 98 ]
+[; ;Key.c: 527: }
+[; ;Key.c: 528: }
+"528
+[e :UE 41 ]
+}
+"548
+[v _Buffer_VaryFun `(v  1 ef2`uc`i ]
+{
+[; ;Key.c: 547: void Buffer_VaryFun(unsigned char n,int dat)
+[; ;Key.c: 548: {
+[e :U _Buffer_VaryFun ]
+[v _n `uc  1 r1 ]
+[v _dat `i  1 r2 ]
+[f ]
+[; ;Key.c: 549: if(n==0)
+"549
+[e $ ! == -> _n `i -> 0 `i 130  ]
+[; ;Key.c: 550: {
+"550
+{
+[; ;Key.c: 551: LEDR1_Vol=dat;
+"551
+[e = _LEDR1_Vol -> _dat `uc ]
+[; ;Key.c: 552: PWM_LED1(LEDR1_Vol);
+"552
+[e ( _PWM_LED1 (1 _LEDR1_Vol ]
+"553
+}
+[; ;Key.c: 553: }
+[e $U 131  ]
+"554
+[e :U 130 ]
+[; ;Key.c: 554: else
+[; ;Key.c: 555: {
+"555
+{
+[; ;Key.c: 556: LEDR2_Vol=dat;
+"556
+[e = _LEDR2_Vol -> _dat `uc ]
+[; ;Key.c: 557: PWM_LED2(LEDR2_Vol);
+"557
+[e ( _PWM_LED2 (1 _LEDR2_Vol ]
+"558
+}
+[e :U 131 ]
+[; ;Key.c: 558: }
+[; ;Key.c: 559: }
+"559
+[e :UE 129 ]
+}

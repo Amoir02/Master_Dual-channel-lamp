@@ -1,0 +1,1855 @@
+[p PRO_MODE GLOBOPT AUTOSTATIC PIC14 PICREGULAR PICMID SPACEOPT ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip PAN2416AV ]
+"45 D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c
+[e E551 . `uc
+CPU_FREQUENCY_EXTERNAL 0
+CPU_FREQUENCY_31K 1
+CPU_FREQUENCY_125K 17
+CPU_FREQUENCY_250K 33
+CPU_FREQUENCY_500K 49
+CPU_FREQUENCY_1M 65
+CPU_FREQUENCY_2M 81
+CPU_FREQUENCY_4M 97
+CPU_FREQUENCY_8M 113
+]
+"48 D:\Work\project\遥控+接收主程序\双信道接收2\src\system.h
+[e E757 . `uc
+PWM_DIV_1 0
+PWM_DIV_4 1
+PWM_DIV_16 2
+]
+"52
+[e E663 . `uc
+TIMER1_DIV_1 0
+TIMER1_DIV_2 16
+TIMER1_DIV_4 32
+TIMER1_DIV_8 48
+]
+"47 D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c
+[e E592 . `uc
+WDT_DIVIDE_RATIO_1 8
+WDT_DIVIDE_RATIO_2 9
+WDT_DIVIDE_RATIO_4 10
+WDT_DIVIDE_RATIO_8 11
+WDT_DIVIDE_RATIO_16 12
+WDT_DIVIDE_RATIO_32 13
+WDT_DIVIDE_RATIO_64 14
+WDT_DIVIDE_RATIO_128 15
+]
+"16 D:\Work\project\遥控+接收主程序\双信道接收2\src\WDT.h
+[s S469 BriCoTem 2 `uc 1 Brightness 1 0 `uc 1 ColorTemp 1 1 ]
+"458 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[e E551 . `uc
+CPU_FREQUENCY_EXTERNAL 0
+CPU_FREQUENCY_31K 1
+CPU_FREQUENCY_125K 17
+CPU_FREQUENCY_250K 33
+CPU_FREQUENCY_500K 49
+CPU_FREQUENCY_1M 65
+CPU_FREQUENCY_2M 81
+CPU_FREQUENCY_4M 97
+CPU_FREQUENCY_8M 113
+]
+[e E570 . `uc
+PORTB_CHANGE_ISR_TOUCH 1
+INT0_ISR_TOUCH 2
+TIMER0_ISR_TOUCH 4
+TIMER1_ISR_TOUCH 1
+TIMER2_ISR_TOUCH 2
+ADC_ISR_TOUCH 64
+]
+"47 D:\Work\project\遥控+接收主程序\双信道接收2\src\system.c
+[v F703 `(v  1 t 0 ]
+"11 D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.c
+[e E560 . `uc
+TIMER1_DIV_1 0
+TIMER1_DIV_2 16
+TIMER1_DIV_4 32
+TIMER1_DIV_8 48
+]
+"458 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[e E551 . `uc
+WDT_DIVIDE_RATIO_1 8
+WDT_DIVIDE_RATIO_2 9
+WDT_DIVIDE_RATIO_4 10
+WDT_DIVIDE_RATIO_8 11
+WDT_DIVIDE_RATIO_16 12
+WDT_DIVIDE_RATIO_32 13
+WDT_DIVIDE_RATIO_64 14
+WDT_DIVIDE_RATIO_128 15
+]
+"12 D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c
+[e E553 . `uc
+UNKNOW_STATUS 0
+SENT_SUCCESS 1
+ACK_PAYLOAD_SENT_SUCCESS 2
+SENT_FAILURE 3
+]
+"458 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[s S3733 RunParam 16 `[2]uc 1 GoalVal 2 0 `[2]uc 1 GoalValing 2 2 `[2]uc 1 GapTime 2 4 `[2]uc 1 TallyTimeing 2 6 `[2]uc 1 pixel 2 8 `[2]uc 1 RunSAT 2 10 `[2]uc 1 RunEN 2 12 `[2]uc 1 RunFinish 2 14 ]
+[e E551 . `uc
+PWM_DIV_1 0
+PWM_DIV_4 1
+PWM_DIV_16 2
+]
+[s S4404 BriCoTem 2 `uc 1 Brightness 1 0 `uc 1 ColorTemp 1 1 ]
+"3 bmul.c
+[v ___bmul `(uc  1 e 1 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\abdiv.c
+[v ___abdiv `(c  1 e 1 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\abmod.c
+[v ___abmod `(c  1 e 1 0 ]
+"34 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\abtoft.c
+[v ___abtoft `(f  1 e 3 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\aldiv.c
+[v ___aldiv `(l  1 e 4 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\almod.c
+[v ___almod `(l  1 e 4 0 ]
+"43 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\altoft.c
+[v ___altoft `(f  1 e 3 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\atdiv.c
+[v ___atdiv `(m  1 e 3 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\atmod.c
+[v ___atmod `(m  1 e 3 0 ]
+"38 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\attoft.c
+[v ___attoft `(f  1 e 3 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\awdiv.c
+[v ___awdiv `(i  1 e 2 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\awmod.c
+[v ___awmod `(i  1 e 2 0 ]
+"33 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\awtoft.c
+[v ___awtoft `(f  1 e 3 0 ]
+"63 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\float.c
+[v ___ftpack `(f  1 e 3 0 ]
+"87 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\ftadd.c
+[v ___ftadd `(f  1 e 3 0 ]
+"50 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\ftdiv.c
+[v ___ftdiv `(f  1 e 3 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\ftge.c
+[v ___ftge `(b  1 e 0 0 ]
+"52 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\ftmul.c
+[v ___ftmul `(f  1 e 3 0 ]
+"16 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\ftneg.c
+[v ___ftneg `(f  1 e 3 0 ]
+"17 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\ftsub.c
+[v ___ftsub `(f  1 e 3 0 ]
+"45 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\fttol.c
+[v ___fttol `(l  1 e 4 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lbdiv.c
+[v ___lbdiv `(uc  1 e 1 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lbmod.c
+[v ___lbmod `(uc  1 e 1 0 ]
+"28 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lbtoft.c
+[v ___lbtoft `(f  1 e 3 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lldiv.c
+[v ___lldiv `(ul  1 e 4 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\llmod.c
+[v ___llmod `(ul  1 e 4 0 ]
+"36 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lltoft.c
+[v ___lltoft `(f  1 e 3 0 ]
+"3 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lmul.c
+[v ___lmul `(ul  1 e 4 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\ltdiv.c
+[v ___ltdiv `(um  1 e 3 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\ltmod.c
+[v ___ltmod `(um  1 e 3 0 ]
+"31 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lttoft.c
+[v ___lttoft `(f  1 e 3 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lwdiv.c
+[v ___lwdiv `(ui  1 e 2 0 ]
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lwmod.c
+[v ___lwmod `(ui  1 e 2 0 ]
+"29 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lwtoft.c
+[v ___lwtoft `(f  1 e 3 0 ]
+"3 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\tmul.c
+[v ___tmul `(um  1 e 3 0 ]
+"3 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\wmul.c
+[v ___wmul `(ui  1 e 2 0 ]
+"33 D:\Work\project\遥控+接收主程序\双信道接收2\src\24lc02.c
+[v _EEPROM_CheckBusy `(uc  1 e 1 0 ]
+"39
+[v _EEPROM_SendByte `(uc  1 e 1 0 ]
+"54
+[v _EEPROM_ReceByte `(uc  1 e 1 0 ]
+"71
+[v _EEPROM_Init `(uc  1 e 1 0 ]
+"93
+[v _EP_IsADDCfg `(uc  1 e 1 0 ]
+"104
+[v _EP_SetADDCfg `(uc  1 e 1 0 ]
+"116
+[v _EP_GetONOFFStep `(uc  1 e 1 0 ]
+"123
+[v _EP_SetONOFFStep `(v  1 e 0 0 ]
+"132
+[v _EP_GetRFAdd `(v  1 e 0 0 ]
+"146
+[v _EP_SetRFAdd `(v  1 e 0 0 ]
+"157
+[v _AT24C02_Write_Byte1 `(v  1 e 0 0 ]
+"169
+[v _AT24C02_Read_Byte1 `(uc  1 e 1 0 ]
+"190
+[v _AT24C02_Write_Msg `(v  1 e 0 0 ]
+"204
+[v _AT24C02_Read_Msg `(v  1 e 0 0 ]
+"12 D:\Work\project\遥控+接收主程序\双信道接收2\src\Buffer.C
+[v _BufferRun `(uc  1 e 1 0 ]
+"37
+[v _BufRuning `(v  1 e 0 0 ]
+"68
+[v _BufSetRun `(v  1 e 0 0 ]
+"89
+[v _SetRunEn `(v  1 e 0 0 ]
+"98
+[v _SetRunONOFF `(v  1 e 0 0 ]
+"107
+[v _GerBuff_RunSAT `(uc  1 e 1 0 ]
+"10 D:\Work\project\遥控+接收主程序\双信道接收2\src\delay.c
+[v _soft_delay_ms `(v  1 e 0 0 ]
+"14 D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c
+[v _IIC_delay `(i  1 e 2 0 ]
+"26
+[v _IIC_Init `(v  1 e 0 0 ]
+"48
+[v _IIC_start `(uc  1 e 1 0 ]
+"72
+[v _IIC_stop `(uc  1 e 1 0 ]
+"97
+[v _IIC_RACK `(uc  1 e 1 0 ]
+"128
+[v _IIC_WACK `(uc  1 e 1 0 ]
+"160
+[v _IIC_Wbyte `(uc  1 e 1 0 ]
+"193
+[v _IIC_Rbyte `(uc  1 e 1 0 ]
+"243
+[v _IIC_ReceByte `(uc  1 e 1 0 ]
+"291
+[v _IIC_ReceString `(uc  1 e 1 0 ]
+"336
+[v _IIC_SendByte `(uc  1 e 1 0 ]
+"371
+[v _IIC_SendString `(uc  1 e 1 0 ]
+"413
+[v _IIC_CheckBusy `(uc  1 e 1 0 ]
+"6 D:\Work\project\遥控+接收主程序\双信道接收2\src\iic.c
+[v _iic_delay_us `(v  1 e 0 0 ]
+"11
+[v _IIC_Init1 `(v  1 e 0 0 ]
+"20
+[v _IIC_START1 `(v  1 e 0 0 ]
+"32
+[v _IIC_STOP1 `(v  1 e 0 0 ]
+"42
+[v _IIC_Wait_ACK1 `(uc  1 e 1 0 ]
+"67
+[v _IIC_ACK1 `(v  1 e 0 0 ]
+"78
+[v _IIC_NACK1 `(v  1 e 0 0 ]
+"91
+[v _I2C_SendByte1 `(v  1 e 0 0 ]
+"117
+[v _I2C_ReadByte1 `(ui  1 e 2 0 ]
+"52 D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c
+[v _Pair_LED `(v  1 e 0 0 ]
+"65
+[v _LEDCon_Chg `(v  1 e 0 0 ]
+"94
+[v _Key_HandRunning `(v  1 e 0 0 ]
+"158
+[v _GetChgLV `(uc  1 e 1 0 ]
+"190
+[v _LED_ALLOFF `(v  1 e 0 0 ]
+"211
+[v _Key_Handle `(v  1 e 0 0 ]
+"548
+[v _Buffer_VaryFun `(v  1 e 0 0 ]
+"56 D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c
+[v _main `(v  1 e 0 0 ]
+"223
+[v _PWM_LED1 `(v  1 e 0 0 ]
+"229
+[v _PWM_LED2 `(v  1 e 0 0 ]
+"235
+[v _PWM_12SetVol `(v  1 e 0 0 ]
+"15 D:\Work\project\遥控+接收主程序\双信道接收2\src\PWM.c
+[v _CCPX_Init `(v  1 e 0 0 ]
+"52
+[v _CCP1_set_duty_cycle `(v  1 e 0 0 ]
+"67
+[v _CCP2_set_duty_cycle `(v  1 e 0 0 ]
+"53 D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c
+[v _UpdateCRC `(us  1 e 2 0 ]
+"80
+[v _rx_data `(uc  1 e 1 0 ]
+"121
+[v _Write_Remote_Addr `(v  1 e 0 0 ]
+"138
+[v _Data_Check `(uc  1 e 1 0 ]
+"168
+[v _Delete_One_RemoteAddr `(v  1 e 0 0 ]
+"187
+[v _brightnessConvert `(uc  1 e 1 0 ]
+"195
+[v _Convert_Duty_Cycle1 `(ui  1 e 2 0 ]
+"213
+[v _Convert_Duty_Cycle2 `(ui  1 e 2 0 ]
+"231
+[v _LED_Dimming `(v  1 e 0 0 ]
+"244
+[v _Remote_Pairing `(v  1 e 0 0 ]
+"261
+[v _recive_task `(v  1 e 0 0 ]
+"33 D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c
+[v _RF_get_TX_result `(E553  1 e 1 0 ]
+"49
+[v _RF_ADDSSet `(v  1 e 0 0 ]
+"58
+[v _RF_Init `(v  1 e 0 0 ]
+"135
+[v _RF_Init3 `(v  1 e 0 0 ]
+"143
+[v _RF_Init4 `(v  1 e 0 0 ]
+"166
+[v _RF_RxData `(uc  1 e 1 0 ]
+"192
+[v _RF_ENHANCE_RxData `(uc  1 e 1 0 ]
+"220
+[v _RF_TxData `(v  1 e 0 0 ]
+"250
+[v _RF_ENHANCE_TxData `(uc  1 e 1 0 ]
+"273
+[v _RF_SetChannel `(v  1 e 0 0 ]
+"278
+[v _RF_ClearFIFO `(v  1 e 0 0 ]
+"284
+[v _RF_ClearStatus `(v  1 e 0 0 ]
+"289
+[v _RF_GetStatus `(uc  1 e 1 0 ]
+"295
+[v _RF_Set_RxMode `(v  1 e 0 0 ]
+"303
+[v _RF_Set_RxMode1 `(v  1 e 0 0 ]
+"313
+[v _RF_Read_Buff `(v  1 e 0 0 ]
+"324
+[v _RF_Write_Buff `(v  1 e 0 0 ]
+"336
+[v _RF_WriteReg `(v  1 e 0 0 ]
+"344
+[v _RF_ReadReg `(uc  1 e 1 0 ]
+"354
+[v _SPI_init `(v  1 s 0 SPI_init ]
+"369
+[v _SPI_RW `(uc  1 s 1 SPI_RW ]
+"18 D:\Work\project\遥控+接收主程序\双信道接收2\src\system.c
+[v _system_set_CPU_frequency `(v  1 e 0 0 ]
+"24
+[v _clear_interrupt_flag `(v  1 e 0 0 ]
+"31
+[v _system_to_sleep `(v  1 e 0 0 ]
+"37
+[v _Enable_Interrupt `(v  1 e 0 0 ]
+"42
+[v _Disable_Interrupt `(v  1 e 0 0 ]
+"47
+[v _ISR `I(v  1 e 0 0 ]
+"23 D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.c
+[v _Timer1_Init `(v  1 e 0 0 ]
+"37
+[v _Timer1_start `(v  1 e 0 0 ]
+"47
+[v _Timer1_stop `(v  1 e 0 0 ]
+"58
+[v _TIMER1_ISR `(v  1 e 0 0 ]
+"13 D:\Work\project\遥控+接收主程序\双信道接收2\src\userClock.c
+[v _getClock `(v  1 e 0 0 ]
+"11 D:\Work\project\遥控+接收主程序\双信道接收2\src\WDT.c
+[v _WDT_enable `(v  1 e 0 0 ]
+"19
+[v _WDT_clear `(v  1 e 0 0 ]
+"24
+[v _WDT_disable `(v  1 e 0 0 ]
+"18 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\include\cms89f228.h
+[v _INDF `VEuc  1 e 1 @0 ]
+"19
+[v _TMR0 `VEuc  1 e 1 @1 ]
+"20
+[v _PCL `VEuc  1 e 1 @2 ]
+"21
+[v _STATUS `VEuc  1 e 1 @3 ]
+"22
+[v _FSR `VEuc  1 e 1 @4 ]
+"23
+[v _PORTA `VEuc  1 e 1 @5 ]
+"24
+[v _PORTB `VEuc  1 e 1 @6 ]
+"25
+[v _PORTC `VEuc  1 e 1 @7 ]
+"27
+[v _PORTE `VEuc  1 e 1 @9 ]
+"28
+[v _PCLATH `VEuc  1 e 1 @10 ]
+"29
+[v _INTCON `VEuc  1 e 1 @11 ]
+"30
+[v _PIR1 `VEuc  1 e 1 @12 ]
+"31
+[v _PIR2 `VEuc  1 e 1 @13 ]
+"32
+[v _TMR1L `VEuc  1 e 1 @14 ]
+"33
+[v _TMR1H `VEuc  1 e 1 @15 ]
+"34
+[v _T1CON `VEuc  1 e 1 @16 ]
+"35
+[v _TMR2 `VEuc  1 e 1 @17 ]
+"36
+[v _T2CON `VEuc  1 e 1 @18 ]
+"37
+[v _SSPBUF `VEuc  1 e 1 @19 ]
+"38
+[v _SSPCON `VEuc  1 e 1 @20 ]
+"39
+[v _CCPR1L `VEuc  1 e 1 @21 ]
+"40
+[v _CCPR1H `VEuc  1 e 1 @22 ]
+"41
+[v _CCP1CON `VEuc  1 e 1 @23 ]
+"47
+[v _CCPR2L `VEuc  1 e 1 @27 ]
+"48
+[v _CCPR2H `VEuc  1 e 1 @28 ]
+"49
+[v _CCP2CON `VEuc  1 e 1 @29 ]
+"50
+[v _ADRESH `VEuc  1 e 1 @30 ]
+"51
+[v _ADCON0 `VEuc  1 e 1 @31 ]
+"52
+[v _OPTION_REG `VEuc  1 e 1 @129 ]
+"53
+[v _TRISA `VEuc  1 e 1 @133 ]
+"54
+[v _TRISB `VEuc  1 e 1 @134 ]
+"55
+[v _TRISC `VEuc  1 e 1 @135 ]
+"56
+[v _TRISE `VEuc  1 e 1 @137 ]
+"57
+[v _PIE1 `VEuc  1 e 1 @140 ]
+"58
+[v _PIE2 `VEuc  1 e 1 @141 ]
+"60
+[v _OSCCON `VEuc  1 e 1 @143 ]
+"61
+[v _OSCTUNE `VEuc  1 e 1 @144 ]
+"62
+[v _SSPCON2 `VEuc  1 e 1 @145 ]
+"63
+[v _PR2 `VEuc  1 e 1 @146 ]
+"64
+[v _SSPADD `VEuc  1 e 1 @147 ]
+"65
+[v _SSPSTAT `VEuc  1 e 1 @148 ]
+"66
+[v _WPUB `VEuc  1 e 1 @149 ]
+"67
+[v _IOCB `VEuc  1 e 1 @150 ]
+"74
+[v _ADRESL `VEuc  1 e 1 @158 ]
+"75
+[v _ADCON1 `VEuc  1 e 1 @159 ]
+"76
+[v _WDTCON `VEuc  1 e 1 @261 ]
+"81
+[v _EEDAT `VEuc  1 e 1 @268 ]
+"82
+[v _EEDATA `VEuc  1 e 1 @268 ]
+"83
+[v _EEADR `VEuc  1 e 1 @269 ]
+"84
+[v _EEADRL `VEuc  1 e 1 @269 ]
+"85
+[v _EEDATH `VEuc  1 e 1 @270 ]
+"86
+[v _EEADRH `VEuc  1 e 1 @271 ]
+"88
+[v _TABLE_SPH `VEuc  1 e 1 @272 ]
+"89
+[v _TABLE_SPL `VEuc  1 e 1 @273 ]
+"90
+[v _TABLE_DATAH `VEuc  1 e 1 @274 ]
+"99
+[v _WPUE `VEuc  1 e 1 @282 ]
+"100
+[v _OPA0CON `VEuc  1 e 1 @284 ]
+"101
+[v _OPA0ADJ `VEuc  1 e 1 @285 ]
+"105
+[v _ANSEL `VEuc  1 e 1 @392 ]
+"106
+[v _ANSELH `VEuc  1 e 1 @393 ]
+"108
+[v _EECON1 `VEuc  1 e 1 @396 ]
+"109
+[v _EECON2 `VEuc  1 e 1 @397 ]
+"110
+[v _WPUA `VEuc  1 e 1 @398 ]
+"111
+[v _WPUC `VEuc  1 e 1 @399 ]
+"113
+[v _LEDCON0 `VEuc  1 e 1 @400 ]
+"114
+[v _LEDCON1 `VEuc  1 e 1 @401 ]
+"115
+[v _LEDADD `VEuc  1 e 1 @402 ]
+"116
+[v _LEDDATA `VEuc  1 e 1 @403 ]
+"117
+[v _LCDCON0 `VEuc  1 e 1 @400 ]
+"118
+[v _LCDCON1 `VEuc  1 e 1 @401 ]
+"119
+[v _LCDADD `VEuc  1 e 1 @402 ]
+"120
+[v _LCDDATA `VEuc  1 e 1 @403 ]
+"121
+[v _SEGEN2 `VEuc  1 e 1 @404 ]
+"122
+[v _SEGEN1 `VEuc  1 e 1 @405 ]
+"123
+[v _SEGEN0 `VEuc  1 e 1 @406 ]
+"124
+[v _COMEN `VEuc  1 e 1 @407 ]
+"128
+[v _CARRY `VEb  1 e 0 @24 ]
+"129
+[v _DC `VEb  1 e 0 @25 ]
+"130
+[v _ZERO `VEb  1 e 0 @26 ]
+"131
+[v _PD `VEb  1 e 0 @27 ]
+"132
+[v _TO `VEb  1 e 0 @28 ]
+"133
+[v _IRP `VEb  1 e 0 @31 ]
+"136
+[v _RA0 `VEb  1 e 0 @40 ]
+"137
+[v _RA1 `VEb  1 e 0 @41 ]
+"138
+[v _RA2 `VEb  1 e 0 @42 ]
+"139
+[v _RA3 `VEb  1 e 0 @43 ]
+"140
+[v _RA4 `VEb  1 e 0 @44 ]
+"141
+[v _RA5 `VEb  1 e 0 @45 ]
+"142
+[v _RA6 `VEb  1 e 0 @46 ]
+"143
+[v _RA7 `VEb  1 e 0 @47 ]
+"146
+[v _RB0 `VEb  1 e 0 @48 ]
+"147
+[v _RB1 `VEb  1 e 0 @49 ]
+"148
+[v _RB2 `VEb  1 e 0 @50 ]
+"149
+[v _RB3 `VEb  1 e 0 @51 ]
+"150
+[v _RB4 `VEb  1 e 0 @52 ]
+"151
+[v _RB5 `VEb  1 e 0 @53 ]
+"152
+[v _RB6 `VEb  1 e 0 @54 ]
+"153
+[v _RB7 `VEb  1 e 0 @55 ]
+"156
+[v _RC0 `VEb  1 e 0 @56 ]
+"157
+[v _RC1 `VEb  1 e 0 @57 ]
+"158
+[v _RC2 `VEb  1 e 0 @58 ]
+"159
+[v _RC3 `VEb  1 e 0 @59 ]
+"160
+[v _RC4 `VEb  1 e 0 @60 ]
+"161
+[v _RC5 `VEb  1 e 0 @61 ]
+"162
+[v _RC6 `VEb  1 e 0 @62 ]
+"163
+[v _RC7 `VEb  1 e 0 @63 ]
+"166
+[v _RE0 `VEb  1 e 0 @72 ]
+"167
+[v _RE1 `VEb  1 e 0 @73 ]
+"168
+[v _RE2 `VEb  1 e 0 @74 ]
+"169
+[v _RE3 `VEb  1 e 0 @75 ]
+"172
+[v _RBIF `VEb  1 e 0 @88 ]
+"174
+[v _RABIF `VEb  1 e 0 @88 ]
+"175
+[v _INTF `VEb  1 e 0 @89 ]
+"176
+[v _T0IF `VEb  1 e 0 @90 ]
+"177
+[v _RBIE `VEb  1 e 0 @91 ]
+"179
+[v _RABIE `VEb  1 e 0 @91 ]
+"180
+[v _INTE `VEb  1 e 0 @92 ]
+"181
+[v _T0IE `VEb  1 e 0 @93 ]
+"182
+[v _PEIE `VEb  1 e 0 @94 ]
+"183
+[v _GIE `VEb  1 e 0 @95 ]
+"186
+[v _TMR1IF `VEb  1 e 0 @96 ]
+"187
+[v _TMR2IF `VEb  1 e 0 @97 ]
+"188
+[v _CCP1IF `VEb  1 e 0 @98 ]
+"189
+[v _SSPIF `VEb  1 e 0 @99 ]
+"190
+[v _TXIF `VEb  1 e 0 @100 ]
+"191
+[v _RCIF `VEb  1 e 0 @101 ]
+"192
+[v _ADIF `VEb  1 e 0 @102 ]
+"195
+[v _CCP2IF `VEb  1 e 0 @104 ]
+"196
+[v _BCLIF `VEb  1 e 0 @107 ]
+"197
+[v _EEIF `VEb  1 e 0 @108 ]
+"198
+[v _C1IF `VEb  1 e 0 @109 ]
+"199
+[v _C2IF `VEb  1 e 0 @110 ]
+"202
+[v _TMR1ON `VEb  1 e 0 @128 ]
+"203
+[v _TMR1CS `VEb  1 e 0 @129 ]
+"204
+[v _T1SYNC `VEb  1 e 0 @130 ]
+"205
+[v _T1OSCEN `VEb  1 e 0 @131 ]
+"206
+[v _T1CKPS0 `VEb  1 e 0 @132 ]
+"207
+[v _T1CKPS1 `VEb  1 e 0 @133 ]
+"208
+[v _TMR1GE `VEb  1 e 0 @134 ]
+"209
+[v _T1GINV `VEb  1 e 0 @135 ]
+"212
+[v _T2CKPS0 `VEb  1 e 0 @144 ]
+"213
+[v _T2CKPS1 `VEb  1 e 0 @145 ]
+"214
+[v _TMR2ON `VEb  1 e 0 @146 ]
+"215
+[v _TOUTPS0 `VEb  1 e 0 @147 ]
+"216
+[v _TOUTPS1 `VEb  1 e 0 @148 ]
+"217
+[v _TOUTPS2 `VEb  1 e 0 @149 ]
+"218
+[v _TOUTPS3 `VEb  1 e 0 @150 ]
+"221
+[v _SSPM0 `VEb  1 e 0 @160 ]
+"222
+[v _SSPM1 `VEb  1 e 0 @161 ]
+"223
+[v _SSPM2 `VEb  1 e 0 @162 ]
+"224
+[v _SSPM3 `VEb  1 e 0 @163 ]
+"225
+[v _CKP `VEb  1 e 0 @164 ]
+"226
+[v _SSPEN `VEb  1 e 0 @165 ]
+"227
+[v _SSPOV `VEb  1 e 0 @166 ]
+"228
+[v _WCOL `VEb  1 e 0 @167 ]
+"231
+[v _CCP1M0 `VEb  1 e 0 @184 ]
+"232
+[v _CCP1M1 `VEb  1 e 0 @185 ]
+"233
+[v _CCP1M2 `VEb  1 e 0 @186 ]
+"234
+[v _CCP1M3 `VEb  1 e 0 @187 ]
+"235
+[v _DC1B0 `VEb  1 e 0 @188 ]
+"236
+[v _DC1B1 `VEb  1 e 0 @189 ]
+"237
+[v _P1M0 `VEb  1 e 0 @190 ]
+"238
+[v _P1M1 `VEb  1 e 0 @191 ]
+"251
+[v _CCP2M0 `VEb  1 e 0 @232 ]
+"252
+[v _CCP2M1 `VEb  1 e 0 @233 ]
+"253
+[v _CCP2M2 `VEb  1 e 0 @234 ]
+"254
+[v _CCP2M3 `VEb  1 e 0 @235 ]
+"255
+[v _DC2B0 `VEb  1 e 0 @236 ]
+"256
+[v _DC2B1 `VEb  1 e 0 @237 ]
+"257
+[v _CCP2IN0 `VEb  1 e 0 @238 ]
+"258
+[v _CCP2IN1 `VEb  1 e 0 @239 ]
+"261
+[v _ADON `VEb  1 e 0 @248 ]
+"262
+[v _GODONE `VEb  1 e 0 @249 ]
+"263
+[v _CHS0 `VEb  1 e 0 @250 ]
+"264
+[v _CHS1 `VEb  1 e 0 @251 ]
+"265
+[v _CHS2 `VEb  1 e 0 @252 ]
+"266
+[v _CHS3 `VEb  1 e 0 @253 ]
+"267
+[v _ADCS0 `VEb  1 e 0 @254 ]
+"268
+[v _ADCS1 `VEb  1 e 0 @255 ]
+"271
+[v _PS0 `VEb  1 e 0 @1032 ]
+"272
+[v _PS1 `VEb  1 e 0 @1033 ]
+"273
+[v _PS2 `VEb  1 e 0 @1034 ]
+"274
+[v _PSA `VEb  1 e 0 @1035 ]
+"275
+[v _T0SE `VEb  1 e 0 @1036 ]
+"276
+[v _T0CS `VEb  1 e 0 @1037 ]
+"277
+[v _INTEDG `VEb  1 e 0 @1038 ]
+"278
+[v _RBPU `VEb  1 e 0 @1039 ]
+"280
+[v _RABPU `VEb  1 e 0 @1039 ]
+"283
+[v _TRISA0 `VEb  1 e 0 @1064 ]
+"284
+[v _TRISA1 `VEb  1 e 0 @1065 ]
+"285
+[v _TRISA2 `VEb  1 e 0 @1066 ]
+"286
+[v _TRISA3 `VEb  1 e 0 @1067 ]
+"287
+[v _TRISA4 `VEb  1 e 0 @1068 ]
+"288
+[v _TRISA5 `VEb  1 e 0 @1069 ]
+"289
+[v _TRISA6 `VEb  1 e 0 @1070 ]
+"290
+[v _TRISA7 `VEb  1 e 0 @1071 ]
+"293
+[v _TRISB0 `VEb  1 e 0 @1072 ]
+"294
+[v _TRISB1 `VEb  1 e 0 @1073 ]
+"295
+[v _TRISB2 `VEb  1 e 0 @1074 ]
+"296
+[v _TRISB3 `VEb  1 e 0 @1075 ]
+"297
+[v _TRISB4 `VEb  1 e 0 @1076 ]
+"298
+[v _TRISB5 `VEb  1 e 0 @1077 ]
+"299
+[v _TRISB6 `VEb  1 e 0 @1078 ]
+"300
+[v _TRISB7 `VEb  1 e 0 @1079 ]
+"303
+[v _TRISC0 `VEb  1 e 0 @1080 ]
+"304
+[v _TRISC1 `VEb  1 e 0 @1081 ]
+"305
+[v _TRISC2 `VEb  1 e 0 @1082 ]
+"306
+[v _TRISC3 `VEb  1 e 0 @1083 ]
+"307
+[v _TRISC4 `VEb  1 e 0 @1084 ]
+"308
+[v _TRISC5 `VEb  1 e 0 @1085 ]
+"309
+[v _TRISC6 `VEb  1 e 0 @1086 ]
+"310
+[v _TRISC7 `VEb  1 e 0 @1087 ]
+"314
+[v _TRISE0 `VEb  1 e 0 @1096 ]
+"315
+[v _TRISE1 `VEb  1 e 0 @1097 ]
+"316
+[v _TRISE2 `VEb  1 e 0 @1098 ]
+"317
+[v _TRISE3 `VEb  1 e 0 @1099 ]
+"320
+[v _TMR1IE `VEb  1 e 0 @1120 ]
+"321
+[v _TMR2IE `VEb  1 e 0 @1121 ]
+"322
+[v _CCP1IE `VEb  1 e 0 @1122 ]
+"323
+[v _SSPIE `VEb  1 e 0 @1123 ]
+"324
+[v _TXIE `VEb  1 e 0 @1124 ]
+"325
+[v _RCIE `VEb  1 e 0 @1125 ]
+"326
+[v _ADIE `VEb  1 e 0 @1126 ]
+"329
+[v _CCP2IE `VEb  1 e 0 @1128 ]
+"330
+[v _BCLIE `VEb  1 e 0 @1131 ]
+"331
+[v _EEIE `VEb  1 e 0 @1132 ]
+"332
+[v _C1IE `VEb  1 e 0 @1133 ]
+"333
+[v _C2IE `VEb  1 e 0 @1134 ]
+"337
+[v _SCS `VEb  1 e 0 @1144 ]
+"338
+[v _IRCF0 `VEb  1 e 0 @1148 ]
+"339
+[v _IRCF1 `VEb  1 e 0 @1149 ]
+"340
+[v _IRCF2 `VEb  1 e 0 @1150 ]
+"343
+[v _TUN0 `VEb  1 e 0 @1152 ]
+"344
+[v _TUN1 `VEb  1 e 0 @1153 ]
+"345
+[v _TUN2 `VEb  1 e 0 @1154 ]
+"346
+[v _TUN3 `VEb  1 e 0 @1155 ]
+"347
+[v _TUN4 `VEb  1 e 0 @1156 ]
+"350
+[v _SEN `VEb  1 e 0 @1160 ]
+"351
+[v _RSEN `VEb  1 e 0 @1161 ]
+"352
+[v _PEN `VEb  1 e 0 @1162 ]
+"353
+[v _RCEN `VEb  1 e 0 @1163 ]
+"354
+[v _ACKEN `VEb  1 e 0 @1164 ]
+"355
+[v _ACKDT `VEb  1 e 0 @1165 ]
+"356
+[v _ACKSTAT `VEb  1 e 0 @1166 ]
+"357
+[v _GCEN `VEb  1 e 0 @1167 ]
+"360
+[v _BF `VEb  1 e 0 @1184 ]
+"361
+[v _UA `VEb  1 e 0 @1185 ]
+"362
+[v _RW `VEb  1 e 0 @1186 ]
+"363
+[v _START `VEb  1 e 0 @1187 ]
+"364
+[v _STOP `VEb  1 e 0 @1188 ]
+"365
+[v _DA `VEb  1 e 0 @1189 ]
+"366
+[v _CKE `VEb  1 e 0 @1190 ]
+"367
+[v _SMP `VEb  1 e 0 @1191 ]
+"370
+[v _WPUA0 `VEb  1 e 0 @3184 ]
+"371
+[v _WPUA1 `VEb  1 e 0 @3185 ]
+"372
+[v _WPUA2 `VEb  1 e 0 @3186 ]
+"373
+[v _WPUA3 `VEb  1 e 0 @3187 ]
+"374
+[v _WPUA4 `VEb  1 e 0 @3188 ]
+"375
+[v _WPUA5 `VEb  1 e 0 @3189 ]
+"376
+[v _WPUA6 `VEb  1 e 0 @3190 ]
+"377
+[v _WPUA7 `VEb  1 e 0 @3191 ]
+"380
+[v _WPUB0 `VEb  1 e 0 @1192 ]
+"381
+[v _WPUB1 `VEb  1 e 0 @1193 ]
+"382
+[v _WPUB2 `VEb  1 e 0 @1194 ]
+"383
+[v _WPUB3 `VEb  1 e 0 @1195 ]
+"384
+[v _WPUB4 `VEb  1 e 0 @1196 ]
+"385
+[v _WPUB5 `VEb  1 e 0 @1197 ]
+"386
+[v _WPUB6 `VEb  1 e 0 @1198 ]
+"387
+[v _WPUB7 `VEb  1 e 0 @1199 ]
+"390
+[v _WPUC0 `VEb  1 e 0 @3192 ]
+"391
+[v _WPUC1 `VEb  1 e 0 @3193 ]
+"392
+[v _WPUC2 `VEb  1 e 0 @3194 ]
+"393
+[v _WPUC3 `VEb  1 e 0 @3195 ]
+"394
+[v _WPUC4 `VEb  1 e 0 @3196 ]
+"395
+[v _WPUC5 `VEb  1 e 0 @3197 ]
+"396
+[v _WPUC6 `VEb  1 e 0 @3198 ]
+"397
+[v _WPUC7 `VEb  1 e 0 @3199 ]
+"400
+[v _WPUE0 `VEb  1 e 0 @2256 ]
+"401
+[v _WPUE1 `VEb  1 e 0 @2257 ]
+"402
+[v _WPUE2 `VEb  1 e 0 @2258 ]
+"403
+[v _WPUE3 `VEb  1 e 0 @2259 ]
+"406
+[v _IOCB0 `VEb  1 e 0 @1200 ]
+"407
+[v _IOCB1 `VEb  1 e 0 @1201 ]
+"408
+[v _IOCB2 `VEb  1 e 0 @1202 ]
+"409
+[v _IOCB3 `VEb  1 e 0 @1203 ]
+"410
+[v _IOCB4 `VEb  1 e 0 @1204 ]
+"411
+[v _IOCB5 `VEb  1 e 0 @1205 ]
+"412
+[v _IOCB6 `VEb  1 e 0 @1206 ]
+"413
+[v _IOCB7 `VEb  1 e 0 @1207 ]
+"429
+[v _ADFM `VEb  1 e 0 @1279 ]
+"432
+[v _SWDTEN `VEb  1 e 0 @2088 ]
+"436
+[v _ANS0 `VEb  1 e 0 @3136 ]
+"437
+[v _ANS1 `VEb  1 e 0 @3137 ]
+"438
+[v _ANS2 `VEb  1 e 0 @3138 ]
+"439
+[v _ANS3 `VEb  1 e 0 @3139 ]
+"440
+[v _ANS4 `VEb  1 e 0 @3140 ]
+"441
+[v _ANS5 `VEb  1 e 0 @3141 ]
+"442
+[v _ANS6 `VEb  1 e 0 @3142 ]
+"443
+[v _ANS7 `VEb  1 e 0 @3143 ]
+"446
+[v _ANS8 `VEb  1 e 0 @3144 ]
+"447
+[v _ANS9 `VEb  1 e 0 @3145 ]
+"448
+[v _ANS10 `VEb  1 e 0 @3146 ]
+"449
+[v _ANS11 `VEb  1 e 0 @3147 ]
+"450
+[v _ANS12 `VEb  1 e 0 @3148 ]
+"451
+[v _ANS13 `VEb  1 e 0 @3149 ]
+"454
+[v _RD `VEb  1 e 0 @3168 ]
+"455
+[v _WR `VEb  1 e 0 @3169 ]
+"456
+[v _WREN `VEb  1 e 0 @3170 ]
+"457
+[v _WRERR `VEb  1 e 0 @3171 ]
+"458
+[v _EEPGD `VEb  1 e 0 @3175 ]
+"89 D:\Work\project\遥控+接收主程序\双信道接收2\src\24lc02.c
+[v _EP_BP `uc  1 e 1 0 ]
+"5 D:\Work\project\遥控+接收主程序\双信道接收2\src\Buffer.C
+[v _RunParam_Reg `S3733  1 s 16 RunParam_Reg ]
+"8 D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c
+[v _Dtime `uc  1 e 1 0 ]
+"84 D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c
+[v _CLRRF_AddTimeSV `us  1 s 2 CLRRF_AddTimeSV ]
+"88
+[v _SysDingShiOne `uc  1 s 1 SysDingShiOne ]
+"89
+[v _SysDingShiCnt `uc  1 s 1 SysDingShiCnt ]
+"90
+[v _SysDingShiSTEP `uc  1 s 1 SysDingShiSTEP ]
+"154
+[v _ChgLV_ZX `DC[6]uc  1 e 6 0 ]
+"155
+[v _ChgLV_FW `DC[7]uc  1 e 7 0 ]
+"175
+[v _KeyVol `ui  1 s 2 KeyVol ]
+"176
+[v _KeyVolSV `ui  1 s 2 KeyVolSV ]
+"181
+[v _KEYKeepAddMark_1 `uc  1 s 1 KEYKeepAddMark_1 ]
+"182
+[v _KEYKeepAddMark_2 `uc  1 s 1 KEYKeepAddMark_2 ]
+"184
+[v _KEYKeepSunMark_1 `uc  1 s 1 KEYKeepSunMark_1 ]
+"185
+[v _KEYKeepSunMark_2 `uc  1 s 1 KEYKeepSunMark_2 ]
+"19 D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c
+[v _Timecnt_3S `us  1 e 2 0 ]
+"21
+[v _SysRunTimeCnt `us  1 e 2 0 ]
+"24
+[v _ack_buf `DC[8]uc  1 e 8 0 ]
+"26
+[v _RF_ADDRESS `[5]uc  1 e 5 0 ]
+"29
+[v _DingShi `uc  1 e 1 0 ]
+"33
+[v _PWM_CH_LED1 `uc  1 e 1 0 ]
+"34
+[v _PWM_CH_LED2 `uc  1 e 1 0 ]
+"44
+[v _Timecnt_LEDTrun `us  1 e 2 0 ]
+"45
+[v _TimeEN_LEDTrun `uc  1 e 1 0 ]
+"13 D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c
+[v _BriCoTem_Value `S469  1 e 2 0 ]
+"16
+[v _crc_2_4G_lib `DC[21]uc  1 e 21 0 ]
+"17
+[v _crc_lab `DC[16]uc  1 e 16 0 ]
+"18
+[v _ble_crc_38 `DC[42]uc  1 e 42 0 ]
+"29
+[v _addr_buf `[16]uc  1 e 16 0 ]
+"30
+[v _rf_buf `[18]uc  1 e 18 0 ]
+"31
+[v _Count_Save `uc  1 e 1 0 ]
+"32
+[v _Pairing_Num `uc  1 e 1 0 ]
+"33
+[v _SysDingShiEn `uc  1 e 1 0 ]
+"34
+[v _LED_ON_Sat `uc  1 e 1 0 ]
+"35
+[v _LED_Chg_Cnt `uc  1 e 1 0 ]
+"36
+[v _LEDR1_Vol `uc  1 e 1 0 ]
+"37
+[v _LEDR2_Vol `uc  1 e 1 0 ]
+"38
+[v _SysRunTime_3S `uc  1 e 1 0 ]
+"8 D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c
+[v _TX_ADDRESS_DEF `[5]uc  1 e 5 0 ]
+"9
+[v _TX2_ADDRESS_DEF `DC[3]uc  1 e 3 0 ]
+"10
+[v _RX2_ADDRESS_DEF `DC[3]uc  1 e 3 0 ]
+"8 D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.c
+[v _Time1s_cot `ui  1 e 2 0 ]
+"11
+[v _clk_count `VEuc  1 e 1 0 ]
+"5 D:\Work\project\遥控+接收主程序\双信道接收2\src\userClock.c
+[v _clk_flag `uc  1 e 1 0 ]
+"6
+[v _dClkCnt0 `uc  1 s 1 dClkCnt0 ]
+"56 D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c
+[v _main `(v  1 e 0 0 ]
+{
+"57
+[v main@i `uc  1 a 1 34 ]
+"58
+[v main@j `uc  1 a 1 33 ]
+"209
+} 0
+"261 D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c
+[v _recive_task `(v  1 e 0 0 ]
+{
+"345
+} 0
+"211 D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c
+[v _Key_Handle `(v  1 e 0 0 ]
+{
+"213
+[v Key_Handle@k `us  1 a 2 29 ]
+"212
+[v Key_Handle@i `uc  1 a 1 32 ]
+"214
+[v Key_Handle@n `uc  1 a 1 31 ]
+"211
+[v Key_Handle@buf `*.0uc  1 p 1 17 ]
+"528
+} 0
+"244 D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c
+[v _Remote_Pairing `(v  1 e 0 0 ]
+{
+"256
+} 0
+"146 D:\Work\project\遥控+接收主程序\双信道接收2\src\24lc02.c
+[v _EP_SetRFAdd `(v  1 e 0 0 ]
+{
+[v EP_SetRFAdd@InP `*.0uc  1 a 1 wreg ]
+"147
+[v EP_SetRFAdd@i `uc  1 a 1 16 ]
+"146
+[v EP_SetRFAdd@InP `*.0uc  1 a 1 wreg ]
+"154
+} 0
+"104
+[v _EP_SetADDCfg `(uc  1 e 1 0 ]
+{
+[v EP_SetADDCfg@ID `uc  1 a 1 wreg ]
+[v EP_SetADDCfg@ID `uc  1 a 1 wreg ]
+"110
+} 0
+"123
+[v _EP_SetONOFFStep `(v  1 e 0 0 ]
+{
+[v EP_SetONOFFStep@D `uc  1 a 1 wreg ]
+[v EP_SetONOFFStep@D `uc  1 a 1 wreg ]
+"126
+} 0
+"168 D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c
+[v _Delete_One_RemoteAddr `(v  1 e 0 0 ]
+{
+"169
+[v Delete_One_RemoteAddr@i `uc  1 a 1 12 ]
+"170
+[v Delete_One_RemoteAddr@j `uc  1 a 1 11 ]
+"171
+[v Delete_One_RemoteAddr@p `uc  1 a 1 10 ]
+"182
+} 0
+"121
+[v _Write_Remote_Addr `(v  1 e 0 0 ]
+{
+"122
+[v Write_Remote_Addr@i `uc  1 a 1 11 ]
+"123
+[v Write_Remote_Addr@j `uc  1 a 1 10 ]
+"135
+} 0
+"80
+[v _rx_data `(uc  1 e 1 0 ]
+{
+"84
+[v rx_data@crc16 `ui  1 a 2 11 ]
+"83
+[v rx_data@i `uc  1 a 1 15 ]
+"81
+[v rx_data@rx_flag `uc  1 a 1 14 ]
+"82
+[v rx_data@rand `uc  1 a 1 13 ]
+"118
+} 0
+"39 D:\Work\project\遥控+接收主程序\双信道接收2\src\24lc02.c
+[v _EEPROM_SendByte `(uc  1 e 1 0 ]
+{
+[v EEPROM_SendByte@REGadds `uc  1 a 1 wreg ]
+"42
+[v EEPROM_SendByte@i `uc  1 a 1 13 ]
+"40
+[v EEPROM_SendByte@cnt `uc  1 a 1 12 ]
+"39
+[v EEPROM_SendByte@REGadds `uc  1 a 1 wreg ]
+[v EEPROM_SendByte@Wdat `uc  1 p 1 10 ]
+"51
+} 0
+"132
+[v _EP_GetRFAdd `(v  1 e 0 0 ]
+{
+[v EP_GetRFAdd@OutP `*.0uc  1 a 1 wreg ]
+"133
+[v EP_GetRFAdd@i `uc  1 a 1 14 ]
+"132
+[v EP_GetRFAdd@OutP `*.0uc  1 a 1 wreg ]
+"141
+} 0
+"93
+[v _EP_IsADDCfg `(uc  1 e 1 0 ]
+{
+"98
+} 0
+"204
+[v _AT24C02_Read_Msg `(v  1 e 0 0 ]
+{
+[v AT24C02_Read_Msg@addr `uc  1 a 1 wreg ]
+"205
+[v AT24C02_Read_Msg@i `uc  1 a 1 9 ]
+"204
+[v AT24C02_Read_Msg@addr `uc  1 a 1 wreg ]
+[v AT24C02_Read_Msg@data `*.0uc  1 p 1 6 ]
+[v AT24C02_Read_Msg@len `uc  1 p 1 7 ]
+"215
+} 0
+"116
+[v _EP_GetONOFFStep `(uc  1 e 1 0 ]
+{
+"120
+} 0
+"190
+[v _AT24C02_Write_Msg `(v  1 e 0 0 ]
+{
+[v AT24C02_Write_Msg@addr `uc  1 a 1 wreg ]
+"191
+[v AT24C02_Write_Msg@i `uc  1 a 1 8 ]
+"190
+[v AT24C02_Write_Msg@addr `uc  1 a 1 wreg ]
+[v AT24C02_Write_Msg@data `*.0uc  1 p 1 4 ]
+[v AT24C02_Write_Msg@len `uc  1 p 1 5 ]
+"201
+} 0
+"169
+[v _AT24C02_Read_Byte1 `(uc  1 e 1 0 ]
+{
+[v AT24C02_Read_Byte1@addr `uc  1 a 1 wreg ]
+"170
+[v AT24C02_Read_Byte1@temp `uc  1 a 1 5 ]
+"169
+[v AT24C02_Read_Byte1@addr `uc  1 a 1 wreg ]
+"185
+} 0
+"54
+[v _EEPROM_ReceByte `(uc  1 e 1 0 ]
+{
+[v EEPROM_ReceByte@REGadds `uc  1 a 1 wreg ]
+[v EEPROM_ReceByte@REGadds `uc  1 a 1 wreg ]
+[v EEPROM_ReceByte@Rdat `*.0uc  1 p 1 11 ]
+"56
+} 0
+"33
+[v _EEPROM_CheckBusy `(uc  1 e 1 0 ]
+{
+"35
+} 0
+"166 D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c
+[v _RF_RxData `(uc  1 e 1 0 ]
+{
+[v RF_RxData@payload_buff `*.0uc  1 a 1 wreg ]
+[v RF_RxData@payload_buff `*.0uc  1 a 1 wreg ]
+[v RF_RxData@length `uc  1 p 1 3 ]
+"176
+} 0
+"94 D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c
+[v _Key_HandRunning `(v  1 e 0 0 ]
+{
+"96
+[v Key_HandRunning@Cnt2 `uc  1 s 1 Cnt2 ]
+"151
+} 0
+"192 D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c
+[v _RF_ENHANCE_RxData `(uc  1 e 1 0 ]
+{
+[v RF_ENHANCE_RxData@payload_buff `*.0uc  1 a 1 wreg ]
+[v RF_ENHANCE_RxData@payload_buff `*.0uc  1 a 1 wreg ]
+[v RF_ENHANCE_RxData@length `uc  1 p 1 3 ]
+[v RF_ENHANCE_RxData@postback_buff `*.cuc  1 p 1 4 ]
+"203
+} 0
+"135
+[v _RF_Init3 `(v  1 e 0 0 ]
+{
+"141
+} 0
+"58
+[v _RF_Init `(v  1 e 0 0 ]
+{
+"77
+[v RF_Init@RF_cal2_data `[6]uc  1 a 6 4 ]
+"75
+[v RF_Init@BB_cal_data `[5]uc  1 a 5 10 ]
+"79
+[v RF_Init@Dem_cal2_data `[3]uc  1 a 3 18 ]
+"76
+[v RF_Init@RF_cal_data `[3]uc  1 a 3 15 ]
+"88
+[v RF_Init@feature `uc  1 a 1 22 ]
+"78
+[v RF_Init@Dem_cal_data `uc  1 a 1 21 ]
+"75
+[v RF_Init@F664 `[5]uc  1 s 5 F664 ]
+"76
+[v RF_Init@F666 `[3]uc  1 s 3 F666 ]
+"77
+[v RF_Init@F668 `[6]uc  1 s 6 F668 ]
+"78
+[v RF_Init@F670 `[1]uc  1 s 1 F670 ]
+"79
+[v RF_Init@F672 `[3]uc  1 s 3 F672 ]
+"132
+} 0
+"231 D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c
+[v _LED_Dimming `(v  1 e 0 0 ]
+{
+[v LED_Dimming@Brightness `uc  1 a 1 wreg ]
+[v LED_Dimming@Brightness `uc  1 a 1 wreg ]
+[v LED_Dimming@Color_Temp `uc  1 p 1 9 ]
+"241
+} 0
+"37 D:\Work\project\遥控+接收主程序\双信道接收2\src\Buffer.C
+[v _BufRuning `(v  1 e 0 0 ]
+{
+"38
+[v BufRuning@i `uc  1 a 1 4 ]
+[v BufRuning@k `uc  1 a 1 3 ]
+"62
+} 0
+"117 D:\Work\project\遥控+接收主程序\双信道接收2\src\iic.c
+[v _I2C_ReadByte1 `(ui  1 e 2 0 ]
+{
+[v I2C_ReadByte1@ack `uc  1 a 1 wreg ]
+"119
+[v I2C_ReadByte1@data `ui  1 a 2 1 ]
+"118
+[v I2C_ReadByte1@cnt `uc  1 a 1 3 ]
+"117
+[v I2C_ReadByte1@ack `uc  1 a 1 wreg ]
+"144
+} 0
+"157 D:\Work\project\遥控+接收主程序\双信道接收2\src\24lc02.c
+[v _AT24C02_Write_Byte1 `(v  1 e 0 0 ]
+{
+[v AT24C02_Write_Byte1@addr `uc  1 a 1 wreg ]
+[v AT24C02_Write_Byte1@addr `uc  1 a 1 wreg ]
+[v AT24C02_Write_Byte1@data `uc  1 p 1 6 ]
+"166
+} 0
+"243 D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c
+[v _IIC_ReceByte `(uc  1 e 1 0 ]
+{
+[v IIC_ReceByte@ACK `uc  1 a 1 wreg ]
+[v IIC_ReceByte@ACK `uc  1 a 1 wreg ]
+[v IIC_ReceByte@Chip_Adds `uc  1 p 1 7 ]
+[v IIC_ReceByte@Reg_Adds `uc  1 p 1 8 ]
+[v IIC_ReceByte@Rdat `*.0uc  1 p 1 9 ]
+"257
+} 0
+"336
+[v _IIC_SendByte `(uc  1 e 1 0 ]
+{
+[v IIC_SendByte@Chip_Adds `uc  1 a 1 wreg ]
+[v IIC_SendByte@Chip_Adds `uc  1 a 1 wreg ]
+[v IIC_SendByte@Reg_Adds `uc  1 p 1 7 ]
+[v IIC_SendByte@Wdat `uc  1 p 1 8 ]
+"346
+} 0
+"413
+[v _IIC_CheckBusy `(uc  1 e 1 0 ]
+{
+[v IIC_CheckBusy@Chip_Adds `uc  1 a 1 wreg ]
+[v IIC_CheckBusy@Chip_Adds `uc  1 a 1 wreg ]
+"418
+} 0
+"284 D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c
+[v _RF_ClearStatus `(v  1 e 0 0 ]
+{
+"286
+} 0
+"278
+[v _RF_ClearFIFO `(v  1 e 0 0 ]
+{
+"281
+} 0
+"289
+[v _RF_GetStatus `(uc  1 e 1 0 ]
+{
+"291
+} 0
+"303
+[v _RF_Set_RxMode1 `(v  1 e 0 0 ]
+{
+"310
+} 0
+"143
+[v _RF_Init4 `(v  1 e 0 0 ]
+{
+"151
+} 0
+"49
+[v _RF_ADDSSet `(v  1 e 0 0 ]
+{
+[v RF_ADDSSet@Buf `*.0uc  1 a 1 wreg ]
+[v RF_ADDSSet@Buf `*.0uc  1 a 1 wreg ]
+"53
+} 0
+"295
+[v _RF_Set_RxMode `(v  1 e 0 0 ]
+{
+"301
+} 0
+"71 D:\Work\project\遥控+接收主程序\双信道接收2\src\24lc02.c
+[v _EEPROM_Init `(uc  1 e 1 0 ]
+{
+[v EEPROM_Init@SPD_I2C `uc  1 a 1 wreg ]
+[v EEPROM_Init@SPD_I2C `uc  1 a 1 wreg ]
+"75
+} 0
+"78 D:\Work\project\遥控+接收主程序\双信道接收2\src\iic.c
+[v _IIC_NACK1 `(v  1 e 0 0 ]
+{
+"85
+} 0
+"67
+[v _IIC_ACK1 `(v  1 e 0 0 ]
+{
+"75
+} 0
+"213 D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c
+[v _Convert_Duty_Cycle2 `(ui  1 e 2 0 ]
+{
+[v Convert_Duty_Cycle2@Brightness `uc  1 a 1 wreg ]
+"214
+[v Convert_Duty_Cycle2@temp `ui  1 a 2 7 ]
+"213
+[v Convert_Duty_Cycle2@Brightness `uc  1 a 1 wreg ]
+[v Convert_Duty_Cycle2@Color_Temp `uc  1 p 1 3 ]
+"228
+} 0
+"195
+[v _Convert_Duty_Cycle1 `(ui  1 e 2 0 ]
+{
+[v Convert_Duty_Cycle1@Brightness `uc  1 a 1 wreg ]
+"196
+[v Convert_Duty_Cycle1@temp `ui  1 a 2 6 ]
+"195
+[v Convert_Duty_Cycle1@Brightness `uc  1 a 1 wreg ]
+[v Convert_Duty_Cycle1@Color_Temp `uc  1 p 1 3 ]
+"210
+} 0
+"548 D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c
+[v _Buffer_VaryFun `(v  1 e 0 0 ]
+{
+[v Buffer_VaryFun@n `uc  1 a 1 wreg ]
+[v Buffer_VaryFun@n `uc  1 a 1 wreg ]
+[v Buffer_VaryFun@dat `i  1 p 2 4 ]
+"559
+} 0
+"65
+[v _LEDCon_Chg `(v  1 e 0 0 ]
+{
+"80
+} 0
+"52
+[v _Pair_LED `(v  1 e 0 0 ]
+{
+"54
+[v Pair_LED@i `uc  1 a 1 4 ]
+"53
+[v Pair_LED@k `uc  1 a 1 5 ]
+"61
+} 0
+"193 D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c
+[v _IIC_Rbyte `(uc  1 e 1 0 ]
+{
+"194
+[v IIC_Rbyte@i `uc  1 a 1 2 ]
+"196
+[v IIC_Rbyte@k `uc  1 a 1 1 ]
+"195
+[v IIC_Rbyte@temp `uc  1 a 1 0 ]
+"213
+} 0
+"160
+[v _IIC_Wbyte `(uc  1 e 1 0 ]
+{
+[v IIC_Wbyte@Wdat `uc  1 a 1 wreg ]
+"163
+[v IIC_Wbyte@i `uc  1 a 1 1 ]
+"160
+[v IIC_Wbyte@Wdat `uc  1 a 1 wreg ]
+"185
+} 0
+"128
+[v _IIC_WACK `(uc  1 e 1 0 ]
+{
+[v IIC_WACK@ACK `uc  1 a 1 wreg ]
+[v IIC_WACK@ACK `uc  1 a 1 wreg ]
+"150
+} 0
+"97
+[v _IIC_RACK `(uc  1 e 1 0 ]
+{
+"98
+[v IIC_RACK@buf `[5]uc  1 a 5 0 ]
+"99
+[v IIC_RACK@i `uc  1 a 1 6 ]
+[v IIC_RACK@k `uc  1 a 1 5 ]
+"119
+} 0
+"72
+[v _IIC_stop `(uc  1 e 1 0 ]
+{
+"87
+} 0
+"48
+[v _IIC_start `(uc  1 e 1 0 ]
+{
+"63
+} 0
+"32 D:\Work\project\遥控+接收主程序\双信道接收2\src\iic.c
+[v _IIC_STOP1 `(v  1 e 0 0 ]
+{
+"38
+} 0
+"42
+[v _IIC_Wait_ACK1 `(uc  1 e 1 0 ]
+{
+"64
+} 0
+"91
+[v _I2C_SendByte1 `(v  1 e 0 0 ]
+{
+[v I2C_SendByte1@Data `uc  1 a 1 wreg ]
+"92
+[v I2C_SendByte1@cnt `uc  1 a 1 5 ]
+"91
+[v I2C_SendByte1@Data `uc  1 a 1 wreg ]
+"113
+} 0
+"20
+[v _IIC_START1 `(v  1 e 0 0 ]
+{
+"28
+} 0
+"26 D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c
+[v _IIC_Init `(v  1 e 0 0 ]
+{
+[v IIC_Init@freq `uc  1 a 1 wreg ]
+[v IIC_Init@freq `uc  1 a 1 wreg ]
+"38
+} 0
+"344 D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c
+[v _RF_ReadReg `(uc  1 e 1 0 ]
+{
+[v RF_ReadReg@reg_addr `uc  1 a 1 wreg ]
+"345
+[v RF_ReadReg@tmp `uc  1 a 1 6 ]
+"344
+[v RF_ReadReg@reg_addr `uc  1 a 1 wreg ]
+"351
+} 0
+"313
+[v _RF_Read_Buff `(v  1 e 0 0 ]
+{
+[v RF_Read_Buff@reg_addr `uc  1 a 1 wreg ]
+"314
+[v RF_Read_Buff@byte_ctr `uc  1 a 1 2 ]
+"313
+[v RF_Read_Buff@reg_addr `uc  1 a 1 wreg ]
+[v RF_Read_Buff@pBuff `*.0uc  1 p 1 5 ]
+[v RF_Read_Buff@length `uc  1 p 1 6 ]
+"321
+} 0
+"324
+[v _RF_Write_Buff `(v  1 e 0 0 ]
+{
+[v RF_Write_Buff@reg_addr `uc  1 a 1 wreg ]
+"325
+[v RF_Write_Buff@i `uc  1 a 1 6 ]
+"324
+[v RF_Write_Buff@reg_addr `uc  1 a 1 wreg ]
+[v RF_Write_Buff@pBuff `*.muc  1 p 2 0 ]
+[v RF_Write_Buff@length `uc  1 p 1 2 ]
+"333
+} 0
+"336
+[v _RF_WriteReg `(v  1 e 0 0 ]
+{
+[v RF_WriteReg@reg_addr `uc  1 a 1 wreg ]
+[v RF_WriteReg@reg_addr `uc  1 a 1 wreg ]
+[v RF_WriteReg@write_data `uc  1 p 1 5 ]
+"341
+} 0
+"190 D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c
+[v _LED_ALLOFF `(v  1 e 0 0 ]
+{
+"206
+} 0
+"235 D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c
+[v _PWM_12SetVol `(v  1 e 0 0 ]
+{
+"238
+} 0
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lbdiv.c
+[v ___lbdiv `(uc  1 e 1 0 ]
+{
+[v ___lbdiv@dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbdiv@quotient `uc  1 a 1 6 ]
+"7
+[v ___lbdiv@counter `uc  1 a 1 5 ]
+"5
+[v ___lbdiv@dividend `uc  1 a 1 wreg ]
+[v ___lbdiv@divisor `uc  1 p 1 3 ]
+"26
+} 0
+"5 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\lwdiv.c
+[v ___lwdiv `(ui  1 e 2 0 ]
+{
+"6
+[v ___lwdiv@quotient `ui  1 a 2 0 ]
+"7
+[v ___lwdiv@counter `uc  1 a 1 2 ]
+"5
+[v ___lwdiv@divisor `ui  1 p 2 3 ]
+[v ___lwdiv@dividend `ui  1 p 2 5 ]
+"26
+} 0
+"3 D:\Work\file\PAN\PAN2416\编译器\CMS_IDE_V1.41.03_CRC_PANCHIP\data\sources\wmul.c
+[v ___wmul `(ui  1 e 2 0 ]
+{
+"4
+[v ___wmul@product `ui  1 a 2 0 ]
+"3
+[v ___wmul@multiplier `ui  1 p 2 3 ]
+[v ___wmul@multiplicand `ui  1 p 2 5 ]
+"13
+} 0
+"6 D:\Work\project\遥控+接收主程序\双信道接收2\src\iic.c
+[v _iic_delay_us `(v  1 e 0 0 ]
+{
+[v iic_delay_us@delay `uc  1 a 1 wreg ]
+[v iic_delay_us@delay `uc  1 a 1 wreg ]
+"8
+} 0
+"138 D:\Work\project\遥控+接收主程序\双信道接收2\src\recive.c
+[v _Data_Check `(uc  1 e 1 0 ]
+{
+"139
+[v Data_Check@i `uc  1 a 1 4 ]
+"140
+[v Data_Check@j `uc  1 a 1 3 ]
+"143
+[v Data_Check@temp `uc  1 a 1 2 ]
+"141
+[v Data_Check@p `uc  1 a 1 1 ]
+"142
+[v Data_Check@k `uc  1 a 1 0 ]
+"165
+} 0
+"53
+[v _UpdateCRC `(us  1 e 2 0 ]
+{
+[v UpdateCRC@CRC_input `*.0uc  1 a 1 wreg ]
+"55
+[v UpdateCRC@CRC_acc `us  1 a 2 6 ]
+"54
+[v UpdateCRC@i `uc  1 a 1 5 ]
+[v UpdateCRC@k `uc  1 a 1 4 ]
+"53
+[v UpdateCRC@CRC_input `*.0uc  1 a 1 wreg ]
+[v UpdateCRC@len `ui  1 p 2 3 ]
+"75
+} 0
+"12 D:\Work\project\遥控+接收主程序\双信道接收2\src\Buffer.C
+[v _BufferRun `(uc  1 e 1 0 ]
+{
+[v BufferRun@BufNo `uc  1 a 1 wreg ]
+[v BufferRun@BufNo `uc  1 a 1 wreg ]
+"33
+} 0
+"107
+[v _GerBuff_RunSAT `(uc  1 e 1 0 ]
+{
+[v GerBuff_RunSAT@BufNo `uc  1 a 1 wreg ]
+[v GerBuff_RunSAT@BufNo `uc  1 a 1 wreg ]
+"110
+} 0
+"68
+[v _BufSetRun `(v  1 e 0 0 ]
+{
+[v BufSetRun@BufNo `uc  1 a 1 wreg ]
+[v BufSetRun@BufNo `uc  1 a 1 wreg ]
+[v BufSetRun@Deg `uc  1 p 1 3 ]
+[v BufSetRun@SPD `uc  1 p 1 4 ]
+[v BufSetRun@PIX `uc  1 p 1 5 ]
+"82
+} 0
+"158 D:\Work\project\遥控+接收主程序\双信道接收2\src\Key.c
+[v _GetChgLV `(uc  1 e 1 0 ]
+{
+[v GetChgLV@vol `uc  1 a 1 wreg ]
+"159
+[v GetChgLV@i `uc  1 a 1 5 ]
+"158
+[v GetChgLV@vol `uc  1 a 1 wreg ]
+"166
+} 0
+"14 D:\Work\project\遥控+接收主程序\双信道接收2\src\I2C_Base.c
+[v _IIC_delay `(i  1 e 2 0 ]
+{
+[v IIC_delay@DLAtime `uc  1 a 1 wreg ]
+"15
+[v IIC_delay@j `uc  1 a 1 4 ]
+"14
+[v IIC_delay@DLAtime `uc  1 a 1 wreg ]
+"17
+} 0
+"369 D:\Work\project\遥控+接收主程序\双信道接收2\src\rf297L.c
+[v _SPI_RW `(uc  1 s 1 SPI_RW ]
+{
+[v SPI_RW@read_reg_addr `uc  1 a 1 wreg ]
+"370
+[v SPI_RW@i `uc  1 a 1 4 ]
+"369
+[v SPI_RW@read_reg_addr `uc  1 a 1 wreg ]
+"391
+} 0
+"354
+[v _SPI_init `(v  1 s 0 SPI_init ]
+{
+"363
+} 0
+"229 D:\Work\project\遥控+接收主程序\双信道接收2\src\main.c
+[v _PWM_LED2 `(v  1 e 0 0 ]
+{
+[v PWM_LED2@PWM `uc  1 a 1 wreg ]
+[v PWM_LED2@PWM `uc  1 a 1 wreg ]
+"231
+} 0
+"223
+[v _PWM_LED1 `(v  1 e 0 0 ]
+{
+[v PWM_LED1@PWM `uc  1 a 1 wreg ]
+[v PWM_LED1@PWM `uc  1 a 1 wreg ]
+"225
+} 0
+"13 D:\Work\project\遥控+接收主程序\双信道接收2\src\userClock.c
+[v _getClock `(v  1 e 0 0 ]
+{
+"14
+[v getClock@temp `uc  1 a 1 3 ]
+"23
+} 0
+"19 D:\Work\project\遥控+接收主程序\双信道接收2\src\WDT.c
+[v _WDT_clear `(v  1 e 0 0 ]
+{
+"21
+} 0
+"11
+[v _WDT_enable `(v  1 e 0 0 ]
+{
+[v WDT_enable@WDT_DIVIDE_RATIO `E551  1 a 1 wreg ]
+[v WDT_enable@WDT_DIVIDE_RATIO `E551  1 a 1 wreg ]
+"16
+} 0
+"37 D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.c
+[v _Timer1_start `(v  1 e 0 0 ]
+{
+[v Timer1_start@T_nums `ui  1 p 2 3 ]
+[v Timer1_start@Timer1_ISR_execution_total_time `uc  1 p 1 5 ]
+"43
+} 0
+"23
+[v _Timer1_Init `(v  1 e 0 0 ]
+{
+[v Timer1_Init@TIMER1_DIVIDER `E560  1 a 1 wreg ]
+[v Timer1_Init@TIMER1_DIVIDER `E560  1 a 1 wreg ]
+"28
+} 0
+"37 D:\Work\project\遥控+接收主程序\双信道接收2\src\system.c
+[v _Enable_Interrupt `(v  1 e 0 0 ]
+{
+"39
+} 0
+"89 D:\Work\project\遥控+接收主程序\双信道接收2\src\Buffer.C
+[v _SetRunEn `(v  1 e 0 0 ]
+{
+[v SetRunEn@BufNo `uc  1 a 1 wreg ]
+[v SetRunEn@BufNo `uc  1 a 1 wreg ]
+[v SetRunEn@RunEn `uc  1 p 1 3 ]
+[v SetRunEn@MID `i  1 p 2 4 ]
+"94
+} 0
+"11 D:\Work\project\遥控+接收主程序\双信道接收2\src\iic.c
+[v _IIC_Init1 `(v  1 e 0 0 ]
+{
+"16
+} 0
+"67 D:\Work\project\遥控+接收主程序\双信道接收2\src\PWM.c
+[v _CCP2_set_duty_cycle `(v  1 e 0 0 ]
+{
+"69
+[v CCP2_set_duty_cycle@i `uc  1 a 1 0 ]
+"67
+[v CCP2_set_duty_cycle@duty_cycle `ui  1 p 2 3 ]
+"75
+} 0
+"52
+[v _CCP1_set_duty_cycle `(v  1 e 0 0 ]
+{
+"53
+[v CCP1_set_duty_cycle@i `uc  1 a 1 0 ]
+"52
+[v CCP1_set_duty_cycle@duty_cycle `ui  1 p 2 3 ]
+"59
+} 0
+"15
+[v _CCPX_Init `(v  1 e 0 0 ]
+{
+[v CCPX_Init@PWM_DIV `E551  1 a 1 wreg ]
+[v CCPX_Init@PWM_DIV `E551  1 a 1 wreg ]
+[v CCPX_Init@T_nums `uc  1 p 1 3 ]
+"44
+} 0
+"10 D:\Work\project\遥控+接收主程序\双信道接收2\src\delay.c
+[v _soft_delay_ms `(v  1 e 0 0 ]
+{
+"12
+[v soft_delay_ms@i `VEui  1 a 2 0 ]
+"13
+[v soft_delay_ms@k `VEuc  1 a 1 3 ]
+[v soft_delay_ms@j `VEuc  1 a 1 2 ]
+"10
+[v soft_delay_ms@ms `ui  1 p 2 3 ]
+"19
+} 0
+"18 D:\Work\project\遥控+接收主程序\双信道接收2\src\system.c
+[v _system_set_CPU_frequency `(v  1 e 0 0 ]
+{
+[v system_set_CPU_frequency@CPU_Frequency `E551  1 a 1 wreg ]
+[v system_set_CPU_frequency@CPU_Frequency `E551  1 a 1 wreg ]
+"21
+} 0
+"47
+[v _ISR `I(v  1 e 0 0 ]
+{
+"49
+[v ISR@peripheral_intterrupt_touch `uc  1 a 1 2 ]
+"81
+} 0
+"58 D:\Work\project\遥控+接收主程序\双信道接收2\src\timer1.c
+[v _TIMER1_ISR `(v  1 e 0 0 ]
+{
+"74
+} 0
